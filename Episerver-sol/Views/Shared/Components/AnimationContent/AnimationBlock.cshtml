@@ -1,0 +1,218 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@model EpiserverBH.Models.Blocks.Animation.AnimationContent
+
+
+<div id="@Model.BlockId">
+	
+	@if (Model.AnimationType == "fadeinright")
+		{
+		<link href="/Assets/Animation/css/aos.css" rel="stylesheet" />
+
+			<div class="fade-right">
+				@Html.Raw(Model.Title)
+
+			<img class="d-none d-lg-block img-fluid" src="@Url.ContentUrl(Model.DesktopImage)" data-aos="fade-right" data-aos-delay="@Model.DataDelay" data-aos-duration="@Model.DataDuration"
+				 loading="lazy">
+			<img class="d-block d-lg-none img-fluid" src="@Url.ContentUrl(Model.MobileImage)" data-aos="fade-right" data-aos-delay="@Model.DataDelay" data-aos-duration="@Model.DataDuration" loading="lazy">
+
+				@Html.Raw(Model.Content)
+			</div>
+
+		<script type="text/javascript" src="/Assets/Animation/js/aos.js"></script>
+
+		}
+
+
+		else if (Model.AnimationType == "fadeinleft")
+		{
+		<link href="/Assets/Animation/css/aos.css" rel="stylesheet" />
+
+			<div class="fade-left">
+			@Html.Raw(Model.Title)
+
+			<img class="d-none d-lg-block img-fluid" src="@Url.ContentUrl(Model.DesktopImage)" data-aos="fade-left" data-aos-delay="@Model.DataDelay" data-aos-duration="@Model.DataDuration" loading="lazy">
+			<img class="d-block d-lg-none img-fluid" src="@Url.ContentUrl(Model.MobileImage)" data-aos="fade-left" data-aos-delay="@Model.DataDelay" data-aos-duration="@Model.DataDuration" loading="lazy">
+
+			@Html.Raw(Model.Content)
+			</div>
+
+
+		<script type="text/javascript" src="/Assets/Animation/js/aos.js"></script>
+
+		}
+
+		else if (Model.AnimationType == "zoomin")
+		{
+		<link href="/Assets/Animation/css/aos.css" rel="stylesheet" />
+
+			<div class="zoom-in">
+				@Html.Raw(Model.Title)
+
+			<img class="d-none d-lg-block img-fluid" src="@Url.ContentUrl(Model.DesktopImage)" data-aos="zoom-in" data-aos-delay="@Model.DataDelay" data-aos-duration="@Model.DataDuration" loading="lazy">
+			<img class="d-block d-lg-none img-fluid" src="@Url.ContentUrl(Model.MobileImage)" data-aos="zoom-in" data-aos-delay="@Model.DataDelay" data-aos-duration="@Model.DataDuration" loading="lazy">
+
+			@Html.Raw(Model.Content)
+			</div>
+
+		<script type="text/javascript" src="/Assets/Animation/js/aos.js"></script>
+
+		}
+
+		else if (Model.AnimationType == "fadein")
+		{
+		<link href="/Assets/Animation/css/aos.css" rel="stylesheet" />
+
+			<div class="fade-in">
+				@Html.Raw(Model.Title)
+
+			<img class="d-none d-lg-block img-fluid" src="@Url.ContentUrl(Model.DesktopImage)" data-aos="fade-in" data-aos-delay="@Model.DataDelay" data-aos-duration="@Model.DataDuration" loading="lazy" />
+			<img class="d-block d-lg-none img-fluid" src="@Url.ContentUrl(Model.MobileImage)" data-aos="fade-in" data-aos-delay="@Model.DataDelay" data-aos-duration="@Model.DataDuration" loading="lazy" />
+
+				@Html.Raw(Model.Content)
+			</div>
+
+		<script type="text/javascript" src="/Assets/Animation/js/aos.js"></script>
+
+		}
+
+	else if (Model.AnimationType == "fadeup")
+	{
+		<link href="/Assets/Animation/css/aos.css" rel="stylesheet" />
+
+		<div class="fade-up">
+			@Html.Raw(Model.Title)
+
+			<img class="d-none d-lg-block img-fluid" src="@Url.ContentUrl(Model.DesktopImage)" data-aos="fade-up" data-aos-delay="@Model.DataDelay" data-aos-duration="@Model.DataDuration" loading="lazy" />
+			<img class="d-block d-lg-none img-fluid" src="@Url.ContentUrl(Model.MobileImage)" data-aos="fade-up" data-aos-delay="@Model.DataDelay" data-aos-duration="@Model.DataDuration" loading="lazy" />
+
+			@Html.Raw(Model.Content)
+		</div>
+
+		<script type="text/javascript" src="/Assets/Animation/js/aos.js"></script>
+
+	}
+
+	else if (Model.AnimationType == "graphanimate")
+	{
+		<link href="/Assets/Animation/css/graph.css" rel="stylesheet" />
+
+		<div class="graphanimate">
+			@Html.Raw(Model.Title)
+
+			<div id="graph_bg">
+				<div class="graph_bar"></div>
+				<div class="pop"></div>
+			</div>
+
+			@Html.Raw(Model.Content)
+		</div>
+
+		<script type="text/javascript" src="/Assets/Animation/js/graph.js"></script>
+	}
+
+	else if (Model.AnimationType == "typerotate1")
+	{
+
+		<div class="typerotate1">
+			@Html.Raw(Model.Title)
+			
+					@foreach (var rotate in Model.LinkListBlock)
+					{
+				<div class="rotate" data-rotate-x="@rotate.rotateX" data-move-z="@rotate.datamovez" data-move-y="@rotate.movey">
+							<img class="d-none d-lg-block img-fluid" src="@Url.ContentUrl(rotate.RotateDesktopImage)" loading="lazy" />
+							<img class="d-block d-lg-none img-fluid" src="@Url.ContentUrl(rotate.RotateMobileImage)" loading="lazy" />
+						</div>
+					}
+			
+
+			@Html.Raw(Model.Content)
+		</div>
+		<script type="text/javascript" src="/Assets/Animation/js/jquery.smoove.min.js"></script>
+		<script type="text/javascript" src="/Assets/Animation/js/rotate.js"></script>
+	}
+
+	else if (Model.AnimationType == "typerotate2")
+	{
+
+		<div class="typerotate2">
+			@Html.Raw(Model.Title)
+					@foreach (var rotate in Model.LinkListBlock)
+					{
+						<div class="rotate" data-move-x="-500px" data-rotate="90deg">
+							<img class="d-none d-lg-block img-fluid" src="@Url.ContentUrl(rotate.RotateDesktopImage)" loading="lazy" />
+							<img class="d-block d-lg-none img-fluid" src="@Url.ContentUrl(rotate.RotateMobileImage)" loading="lazy" />
+						</div>
+					}
+
+
+			@Html.Raw(Model.Content)
+		</div>
+		<script type="text/javascript" src="/Assets/Animation/js/jquery.smoove.min.js"></script>
+		<script type="text/javascript" src="/Assets/Animation/js/rotate.js"></script>
+	}
+
+	else if (Model.AnimationType == "typerotate3")
+	{
+
+		<div class="typerotate2">
+			@Html.Raw(Model.Title)
+					@foreach (var rotate in Model.LinkListBlock)
+					{
+						<div class="rotate" data-rotate-y="270deg" data-move-x="-150%">
+							<img class="d-none d-lg-block img-fluid" src="@Url.ContentUrl(rotate.RotateDesktopImage)" loading="lazy" />
+							<img class="d-block d-lg-none img-fluid" src="@Url.ContentUrl(rotate.RotateMobileImage)" loading="lazy" />
+						</div>
+					}
+
+
+			@Html.Raw(Model.Content)
+		</div>
+		<script type="text/javascript" src="/Assets/Animation/js/jquery.smoove.min.js"></script>
+		<script type="text/javascript" src="/Assets/Animation/js/rotate.js"></script>
+	}
+
+	else if (Model.AnimationType == "typerotate4")
+	{
+
+		<div class="typerotate2">
+			@Html.Raw(Model.Title)
+					@foreach (var rotate in Model.LinkListBlock)
+					{
+						<div class="rotate" data-scale="3" data-skew="90deg,90deg">
+							<img class="d-none d-lg-block img-fluid" src="@Url.ContentUrl(rotate.RotateDesktopImage)" loading="lazy" />
+							<img class="d-block d-lg-none img-fluid" src="@Url.ContentUrl(rotate.RotateMobileImage)" loading="lazy" />
+						</div>
+					}
+
+
+			@Html.Raw(Model.Content)
+		</div>
+		<script type="text/javascript" src="/Assets/Animation/js/jquery.smoove.min.js"></script>
+		<script type="text/javascript" src="/Assets/Animation/js/rotate.js"></script>
+	}
+
+	else if (Model.AnimationType == "typerotate5")
+	{
+
+		<div class="typerotate5">
+			@Html.Raw(Model.Title)
+			@foreach (var rotate in Model.LinkListBlock)
+			{
+				<div class="rotate" data-move-x="500px" data-rotate="90deg">
+					<img class="d-none d-lg-block img-fluid" src="@Url.ContentUrl(rotate.RotateDesktopImage)" loading="lazy" />
+					<img class="d-block d-lg-none img-fluid" src="@Url.ContentUrl(rotate.RotateMobileImage)" loading="lazy" />
+				</div>
+			}
+
+
+			@Html.Raw(Model.Content)
+		</div>
+		<script type="text/javascript" src="/Assets/Animation/js/jquery.smoove.min.js"></script>
+		<script type="text/javascript" src="/Assets/Animation/js/rotate.js"></script>
+	}
+
+	
+</div>
+
+

@@ -1,0 +1,11 @@
+@model EpiserverBH.Models.Blocks.HKLocationBlock.HKLocation
+
+@if (EPiServer.Editor.PageEditing.PageIsInEditMode)
+{
+    <span class="Form__Element ">@Model.TemplateName</span>
+}
+else
+{
+    @Html.AntiForgeryToken()
+    @Html.Raw(ViewBag.HtmlContent)
+}

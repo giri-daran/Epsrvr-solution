@@ -1,0 +1,247 @@
+﻿@using EPiServer.Web.Routing
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EpiserverBH.Models.Blocks.Arestinprofessional
+@using EpiserverBH.Models.ViewModels.ArestinProfessional
+
+@model ArestinResetPasswordViewModel
+
+
+@*<link href="/Assets/Login/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+<link href="/Assets/Arestinprofessional/css/default.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">*@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+
+<div id="login">
+    <div class="container">
+        <div id="login-row">
+            <div id="login-column">
+                <div id="login-box">
+                    @using (Html.BeginForm("ResetPassword", "ArestinResetPasswordBlock", FormMethod.Post, new { @role = "form", id = "ResetForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "required" })
+
+                        if (Model.Username == string.Empty)
+                        {
+                            <div class="fontreset signupthank display-none" id="login-resetpassword-errormessage">
+                                <span>The password reset link has expired and is no longer valid.</span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="fontreset signupthank display-none" style="display: none;" id="reset-errormsg"></div>
+                            <div class="form-group">
+                                <br />
+                                <br />
+                                <input class="input form-control required ng-pristine ng-untouched ng-valid ng-empty" id="Username" name="Username" data-fieldid="720" data-af-field="Username" data-ng-model="form.fields.Username.value" data-ng-keyup="form.fields.Password.touched = true;" af-field-title="Username" type="text" placeholder="Enter EmailID">
+                                <br />
+                                <input class="inputt password required ng-pristine ng-untouched ng-valid ng-empty" id="NewPassword" name="NewPassword" data-fieldid="721" data-af-field="NewPassword" data-ng-model="form.fields.NewPassword.value" data-ng-keyup="form.fields.NewPassword.touched = true;" af-field-title="NewPassword" type="password" placeholder="@Model.NewPasswordText">
+                                <div id="strengthMessage"></div>
+                                <br />
+                                <input class="inputthree  required ng-pristine ng-untouched ng-valid ng-empty" id="ConfirmPassword" name="ConfirmPassword" data-fieldid="722" data-af-field="ConfirmPassword" data-ng-model="form.fields.ConfirmPassword.value" data-ng-keyup="form.fields.ConfirmPassword.touched = true;" data-password-confirm="ConfirmPassword" af-field-title="ConfirmPassword" type="password" placeholder="@Model.ConfirmPasswordText">
+                                <div id="strengthMessage1"></div>                              
+
+                            </div>
+
+                            <div class="form-group">
+
+                                @Html.HiddenFor(x => x.Token, new { @class = "textbox token" })
+                                @Html.HiddenFor(x => x.Username, new { @class = "textbox username" })
+
+                                <ul class="dnnActions dnnClear">
+                                    <li>
+                                        <input type="button" id="ResetPassword" class="dnnPrimaryAction" value="@Model.ChngPassButtonText" />
+                                    </li>
+                                    <li id="dnn_ctr_SendPassword_liCancel"><a id="dnn_ctr_SendPassword_lnkCancel" class="dnnSecondaryAction" href="/">@Model.CancelButtonText</a></li>
+                                </ul>
+                            </div>
+
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/Assets/Login/js/axios.min.js" type="text/javascript" async></script>
+<script src="/Assets/Arestinprofessional/js/FacultyModule.js"></script>
+<script type="text/javascript">
+  
+    $(document).ready(function () {
+       
+        
+
+        $('#NewPassword').keyup(function (event) {
+            if ($('#NewPassword').val().length > 0) {
+                $('#strengthMessage').html(checkStrength($('#NewPassword').val(), $("#strengthMessage")));
+            } else {
+                $("#strengthMessage").attr('class', '');
+                $('#strengthMessage').html('');
+            }
+
+        });
+
+
+    });
+
+
+    function checkStrength(password, fldName1) {
+        var strength = 0;
+
+        var fldName = fldName1;
+
+        if (password.length < 6) {
+            fldName.removeClass();
+            fldName.attr('class', '');
+            fldName.addClass('Short');
+        }
+
+        if (password.length > 7) {
+            strength += 1;
+        }
+
+        if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) {
+            strength += 1;
+        }
+
+        if (password.match(/([a-zA-Z])/) && password.match(/([0-9])/)) {
+            strength += 1;
+        }
+
+        if (password.match(/([a-zA-Z])/) && password.match(/([!,%,&,@@,#,$,^,*,?,_,~])/) && $("#NewPassword").val().length > 2) {
+            strength += 1;
+        }
+
+        if (password.match(/([!,%,&,@@,#,$,^,*,?,_,~])/) && $("#NewPassword").val().length > 6) {
+            strength += 1;
+        }
+
+        if (password.match(/(.*[!,%,&,@@,#,$,^,*,?,_,~].*[!,%,&,@@,#,$,^,*,?,_,~])/) && $("#NewPassword").val().length > 6) {
+            strength += 1;
+        }
+
+        if (strength < 2) {
+
+            fldName.removeClass();
+            fldName.attr('class', '');
+            fldName.addClass('Weak');
+            return 'Weak';
+        }
+        else if (strength > 3) {
+            fldName.removeClass();
+            fldName.attr('class', '');
+            fldName.addClass('Strong');
+            return 'Strong';
+        }
+        else {
+            fldName.removeClass();
+            fldName.attr('class', '');
+            fldName.addClass('Fair');
+            return 'Fair';
+
+        }
+    }
+
+</script>
+
+
+<style>
+    .Short {
+        width: 100%;
+        background-color: rgb(237, 30, 36);
+        margin-top: 8px;
+        height: 3px;
+        color: #444;
+        text-align: right;
+        max-width: 247px;
+        font-weight: 500;
+        font-size: 12px;
+    }
+
+    .Weak {
+        width: 100%;
+        background-color: rgb(237, 30, 36);
+        margin-top: 8px;
+        text-align: right;
+        max-width: 247px;
+        height: 3px;
+        color: #444;
+        font-weight: 500;
+        font-size: 12px;
+    }
+
+    .Fair {
+        width: 100%;
+        background-color: rgb(246, 213, 10);
+        margin-top: 8px;
+        text-align: right;
+        height: 3px;
+        color: #444;
+        font-weight: 500;
+        max-width: 247px;
+        font-size: 12px;
+    }
+
+    .Strong {
+        width: 100%;
+        background-color: rgb(105, 189, 68);
+        margin-top: 8px;
+        height: 3px;
+        text-align: right;
+        max-width: 247px;
+        color: #444;
+        font-weight: 500;
+        font-size: 12px;
+    }
+
+
+    .input {
+        background: #ebebeb;
+        box-shadow: none;
+        border-radius: 3px;
+        border-color: #a7a7a7;
+        color: #333;
+        font-size: 12px;
+        padding: 8px;
+        border-width: 1px;
+        margin-bottom: 2px;
+        line-height: normal;
+        border: 1px solid #c9c9c9;
+        max-width: 247.5px;
+        width: 100%;
+    }
+
+    .inputt {
+        padding: 8px;
+        background: #fff;
+        border: 1px solid #c9c9c9;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        -webkit-box-shadow: 0 1px 0 0 rgb(255 255 255 / 80%), inset 0 1px 2px 0 rgb(0 0 0 / 10%);
+        box-shadow: 0 1px 0 0 rgb(255 255 255 / 80%), inset 0 1px 2px 0 rgb(0 0 0 / 10%);
+        color: #333;
+        font-size: 12px;
+        max-width: 247.5px;
+        width: 100%;
+    }
+
+    .inputthree {
+        padding: 8px;
+        background: #fff;
+        border: 1px solid #c9c9c9;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        -webkit-box-shadow: 0 1px 0 0 rgb(255 255 255 / 80%), inset 0 1px 2px 0 rgb(0 0 0 / 10%);
+        box-shadow: 0 1px 0 0 rgb(255 255 255 / 80%), inset 0 1px 2px 0 rgb(0 0 0 / 10%);
+        color: #333;
+        font-size: 12px;
+        max-width: 247.5px;
+        width: 100%;
+    }
+</style>

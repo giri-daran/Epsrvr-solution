@@ -1,0 +1,594 @@
+﻿@model EpiserverBH.Models.Blocks.Arestinprofessional.ArestinEnrollSchoolBlock
+
+<script src="//app-sj07.marketo.com/js/forms2/js/forms2.min.js"></script>
+<script>MktoForms2.loadForm("//app-sj07.marketo.com", "350-OKO-721", 2019);</script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async></script>
+
+<div class="DnnModule DnnModule-ActionForm DnnModule-4944">
+    <a name="4944"></a>
+    <div id="ContentPane" class="ContentBody">
+        <!-- Start_Module_4944 -->
+
+        <div id="ModuleContent" class="DNNModuleContent ModActionFormC">
+            <div id="Main_pnlContent" class="pnlMessage sunny bstrap30 school-enrollment-form" af-name="" data-moduleid="4944">
+                <div class="common-loading-container" style="display:none">
+                    <div class="common-data-loading"></div>
+                </div>
+                <div data-ng-controller="ActionFormCtrl" has-repeaters="" class="form-root bstrap30 inherit ng-scope" data-rootclass="bstrap30" style=";
+               padding: 0px;color: inherit;" data-ng-init="load('4944')" id="root" xmlns:utils="af:utils" novalidate="novalidate">
+                    <div class="row">
+
+                        <form id="EnrollSchool" action="#" method="post">
+
+                            <div class="c-form  form-horizontal compact label-align-top col-sm-12 ">
+                                <div class="blue-form">
+                                    <div class="error-message">
+                                        <div class="alert alert-danger" style="overflow: hidden;">
+                                            <div class="field-container af-slide  col-sm-12 btnc-left" xmlns:utils="af:utils">
+                                                <input type="text" aria-hidden="true" aria-label="hidden input of static text" style="width:0!important;height:0!important;opacity:0!important;position:absolute!important;" tabindex="-1" data-ng-model="form.fields.ErrorMessage.value" name="dnn4944ErrorMessage" data-fieldid="678" data-af-field="ErrorMessage" value="Your submission is missing information. Please fill in the red fields below." class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                                                <p name="ErrorMessage" data-ng-model="form.fields.ErrorMessage.value" data-ng-bind-html="$sce.trustAsHtml(form.fields.ErrorMessage.value)" class="ng-pristine ng-untouched ng-valid ng-binding ng-not-empty">Your submission is missing information. Please fill in the red fields below.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a name="enroll"></a>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-field">
+                                                <h2>School Information</h2>
+                                                <div class="instruction"><span>(Fields marked with an * are required.)</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="SchoolName" class="control-label af-slide  required " style="">School Name </label></div>
+                                                    <input class="form-control required ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" id="SchoolName" name="SchoolName" data-fieldid="663" data-af-field="SchoolName" data-ng-model="form.fields.SchoolName.value" data-ng-keyup="form.fields.SchoolName.touched = true;" af-field-title="School Name" type="text" maxlength="50" placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="ProgramDirectorFirstName" class="control-label af-slide  required " style="">Program Director First Name </label></div>
+                                                    <input class="form-control required ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" id="ProgramDirectorFirstName" name="ProgramDirectorFirstName" data-fieldid="664" data-af-field="ProgramDirectorFirstName" data-ng-model="form.fields.ProgramDirectorFirstName.value" data-ng-keyup="form.fields.ProgramDirectorFirstName.touched = true;" af-field-title="Program Director First Name" type="text" maxlength="50" placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="clear: both;">&nbsp;</div>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="ProgramDirectorLastName" class="control-label af-slide  required " style="">Program Director Last Name </label></div>
+                                                    <input class="form-control required ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" id="ProgramDirectorLastName" name="ProgramDirectorLastName" data-fieldid="4235" data-af-field="ProgramDirectorLastName" data-ng-model="form.fields.ProgramDirectorLastName.value" data-ng-keyup="form.fields.ProgramDirectorLastName.touched = true;" af-field-title="Program Director Last Name" type="text" maxlength="50" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="NumberofTrialKits" class="control-label af-slide  required " style="">Number of Trial Kits<br><small class="num-kits-msg" style="font-weight:normal;font-size:15px;line-height:27px;">(1 per senior student)</small> </label></div>
+                                                    @*<div class="dropdown-loader ng-hide" data-ng-show="form.fields.NumberofTrialKits.$_loading" data-ng-disabled="form.fields.NumberofTrialKits.value == form.fields.NumberofTrialKits.$_loading">Loading...</div>*@
+                                                    <!--googleoff: all-->
+                                                    <select class="form-control required ng-pristine ng-untouched ng-valid ng-empty" id="NumberofTrialKits" name="NumberofTrialKits" data-fieldid="682" data-af-field="NumberofTrialKits" data-ng-click="form.fields.NumberofTrialKits.touched = true;" data-ng-model="form.fields.NumberofTrialKits.selected" data-ng-change="form.fields.NumberofTrialKits.value = form.fields.NumberofTrialKits.selected.value || '';
+                                       form.fields.NumberofTrialKits.ddValue = form.fields.NumberofTrialKits.selected.value;
+                                       " data-ng-options="o as o.text for o in form.fields.NumberofTrialKits.options" data-val="">
+                                                        <option value="" class="" selected="selected">Please select option below</option>
+                                                        <option label="1" value="1">1</option>
+                                                        <option label="2" value="2">2</option>
+                                                        <option label="3" value="3">3</option>
+                                                        <option label="4" value="4">4</option>
+                                                        <option label="5" value="5">5</option>
+                                                        <option label="6" value="6">6</option>
+                                                        <option label="7" value="7">7</option>
+                                                        <option label="8" value="8">8</option>
+                                                        <option label="9" value="9">9</option>
+                                                        <option label="10" value="10">10</option>
+                                                        <option label="11" value="11">11</option>
+                                                        <option label="12" value="12">12</option>
+                                                        <option label="13" value="13">13</option>
+                                                        <option label="14" value="14">14</option>
+                                                        <option label="15" value="15">15</option>
+                                                        <option label="16" value="16">16</option>
+                                                        <option label="17" value="17">17</option>
+                                                        <option label="18" value="18">18</option>
+                                                        <option label="19" value="19">19</option>
+                                                        <option label="20" value="20">20</option>
+                                                        <option label="21" value="21">21</option>
+                                                        <option label="22" value="22">22</option>
+                                                        <option label="23" value="23">23</option>
+                                                        <option label="24" value="24">24</option>
+                                                        <option label="25" value="25">25</option>
+                                                        <option label="26" value="26">26</option>
+                                                        <option label="27" value="27">27</option>
+                                                        <option label="28" value="28">28</option>
+                                                        <option label="29" value="29">29</option>
+                                                        <option label="30" value="30">30</option>
+                                                        <option label="31" value="31">31</option>
+                                                        <option label="32" value="32">32</option>
+                                                        <option label="33" value="33">33</option>
+                                                        <option label="34" value="34">34</option>
+                                                        <option label="35" value="35">35</option>
+                                                        <option label="36" value="36">36</option>
+                                                        <option label="37" value="37">37</option>
+                                                        <option label="38" value="38">38</option>
+                                                        <option label="39" value="39">39</option>
+                                                        <option label="40" value="40">40</option>
+                                                        <option label="41" value="41">41</option>
+                                                        <option label="42" value="42">42</option>
+                                                        <option label="43" value="43">43</option>
+                                                        <option label="44" value="44">44</option>
+                                                        <option label="45" value="45">45</option>
+                                                        <option label="46" value="46">46</option>
+                                                        <option label="47" value="47">47</option>
+                                                        <option label="48" value="48">48</option>
+                                                        <option label="49" value="49">49</option>
+                                                        <option label="50" value="50">50</option>
+                                                    </select>
+                                                    <!--googleon: all-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="ProgramDirectorEmail" class="control-label af-slide  required " style="">Program Director Email </label></div>
+                                                    <input class="email form-control required ng-pristine ng-untouched ng-valid ng-empty" id="ProgramDirectorEmail" name="ProgramDirectorEmail" data-fieldid="665" data-af-field="ProgramDirectorEmail" data-ng-model="form.fields.ProgramDirectorEmail.value" data-ng-keyup="form.fields.ProgramDirectorEmail.touched = true;" af-field-title="Program Director Email" type="text" placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-field">
+                                                <hr>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 btnc-left" xmlns:utils="af:utils">
+                                                    <input type="text" aria-hidden="true" aria-label="hidden input of static text" style="width:0!important;height:0!important;opacity:0!important;position:absolute!important;" tabindex="-1" data-ng-model="form.fields.PointofContactNotice.value" name="PointofContactNotice" data-fieldid="669" data-af-field="PointofContactNotice" value="<h3>Faculty Contact</h3> Please provide information for the person who will serve as point-of-contact between your school and the <b>ARESTIN</b> Student Access Program." class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                                                    <p name="PointofContactNotice" data-ng-model="form.fields.PointofContactNotice.value" data-ng-bind-html="$sce.trustAsHtml(form.fields.PointofContactNotice.value)" class="ng-pristine ng-untouched ng-valid ng-binding ng-not-empty">
+                                                        <h3>Faculty Contact</h3>
+                                                        Please provide information for the person who will serve as point-of-contact between your school and the <b>ARESTIN</b> Student Access Program.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="ProgramFacultyContactName" class="control-label af-slide  required " style="">Program Faculty Contact Name </label></div>
+                                                    <input class="form-control required ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" id="ProgramFacultyContactName" name="ProgramFacultyContactName" data-fieldid="679" data-af-field="ProgramFacultyContactName" data-ng-model="form.fields.ProgramFacultyContactName.value" data-ng-keyup="form.fields.ProgramFacultyContactName.touched = true;" af-field-title="Program Faculty Contact Name" type="text" maxlength="50" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="ProgramFacultyContactEmail" class="control-label af-slide  required " style="">Program Faculty Contact Email </label></div>
+                                                    <input class="email form-control required ng-pristine ng-untouched ng-valid ng-empty" id="ProgramFacultyContactEmail" name="ProgramFacultyContactEmail" data-fieldid="680" data-af-field="ProgramFacultyContactEmail" data-ng-model="form.fields.ProgramFacultyContactEmail.value" data-ng-keyup="form.fields.ProgramFacultyContactEmail.touched = true;" af-field-title="Program Faculty Contact Email" type="text" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="PrimaryPhoneNumber" class="control-label af-slide  required " style="">Primary Phone Number </label></div>
+                                                    <input class="phoneus form-control required ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" id="PrimaryPhoneNumber" name="PrimaryPhoneNumber" data-fieldid="681" data-af-field="PrimaryPhoneNumber" data-ng-model="form.fields.PrimaryPhoneNumber.value" data-ng-keyup="form.fields.PrimaryPhoneNumber.touched = true;" af-field-title="Primary Phone Number" type="text" maxlength="10" placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 btnc-left" xmlns:utils="af:utils">
+                                                    <input type="text" aria-hidden="true" aria-label="hidden input of static text" style="width:0!important;height:0!important;opacity:0!important;position:absolute!important;" tabindex="-1" data-ng-model="form.fields.LicensedDentistText.value" name="LicensedDentistText" data-fieldid="683" data-af-field="LicensedDentistText" value="<h3>Dentist Information</h3> Please provide information for the licensed dentist associated with your program. The Program Dentist will be required to fill out and fax the <a href=&quot;/Portals/104/docs/faculty/Arestin-student-trial-kit.pdf&quot; target=&quot;_blank&quot;><b>ARESTIN</b> Student Trial Kit Sample Request Form</a>." class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                                                    <p name="LicensedDentistText" data-ng-model="form.fields.LicensedDentistText.value" data-ng-bind-html="$sce.trustAsHtml(form.fields.LicensedDentistText.value)" class="ng-pristine ng-untouched ng-valid ng-binding ng-not-empty">
+                                                        <h3>Dentist Information</h3>
+                                                        Please provide information for the licensed dentist associated with your program. The Program Dentist will be required to fill out and fax the <a href="/siteassets/docs/faculty/Arestin-student-trial-kit.pdf" target="_blank"><b>ARESTIN</b> Student Trial Kit Sample Request Form</a>.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="ProgramDentistName" class="control-label af-slide  required " style="">Program Dentist Name </label></div>
+                                                    <input class="form-control required ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" id="ProgramDentistName" name="ProgramDentistName" data-fieldid="666" data-af-field="ProgramDentistName" data-ng-model="form.fields.ProgramDentistName.value" data-ng-keyup="form.fields.ProgramDentistName.touched = true;" af-field-title="Program Dentist Name" type="text" maxlength="50" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="ProgramDentistEmail" class="control-label af-slide  required " style="">Program Dentist Email </label></div>
+                                                    <input class="email form-control required ng-pristine ng-untouched ng-valid ng-empty" id="ProgramDentistEmail" name="ProgramDentistEmail" data-fieldid="667" data-af-field="ProgramDentistEmail" data-ng-model="form.fields.ProgramDentistEmail.value" data-ng-keyup="form.fields.ProgramDentistEmail.touched = true;" af-field-title="Program Dentist Email" type="text" placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="clear: both;">&nbsp;</div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-field">
+                                                &nbsp;
+                                                <h2>Shipping Information</h2>
+                                                <div class="instruction">(Fields marked with an * are required.)</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 btnc-left" xmlns:utils="af:utils">
+                                                    <input type="text" aria-hidden="true" aria-label="hidden input of static text" style="width:0!important;height:0!important;opacity:0!important;position:absolute!important;" tabindex="-1" data-ng-model="form.fields.ShippingNotice.value" name="ShippingNotice" data-fieldid="673" data-af-field="ShippingNotice" value="Please note: Student Trial Kits must be shipped to the attention of the Program Dentist listed above." class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                                                    <p name="ShippingNotice" data-ng-model="form.fields.ShippingNotice.value" data-ng-bind-html="$sce.trustAsHtml(form.fields.ShippingNotice.value)" class="ng-pristine ng-untouched ng-valid ng-binding ng-not-empty">Please note: Student Trial Kits must be shipped to the attention of the Program Dentist listed above.</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="ProgramDentistNameShipping" class="control-label af-slide  required " style="">Program Dentist Name </label></div>
+                                                    <input class="form-control required ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" id="ProgramDentistNameShipping" name="ProgramDentistNameShipping" data-fieldid="670" data-af-field="ProgramDentistNameShipping" data-ng-model="form.fields.ProgramDentistNameShipping.value" data-af-bindvalue="parse(form.fields.ProgramDentistName.value)" data-ng-keyup="form.fields.ProgramDentistNameShipping.touched = true;" af-field-title="Program Dentist Name" type="text" maxlength="50" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="Address" class="control-label af-slide  required " style="">Address 1 </label></div>
+                                                    <input class="form-control required ng-pristine ng-untouched ng-valid ng-empty" id="Address" name="Address" data-fieldid="684" data-af-field="Address" data-ng-model="form.fields.Address.value" data-ng-keyup="form.fields.Address.touched = true;" af-field-title="Address 1" type="text" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="Address2" class="control-label af-slide  " style="">Address 2 </label></div>
+                                                    <input class="form-control ng-pristine ng-untouched ng-valid ng-empty" id="Address2" name="Address2" data-fieldid="685" data-af-field="Address2" data-ng-model="form.fields.Address2.value" data-ng-keyup="form.fields.Address2.touched = true;" af-field-title="Address 2" type="text" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="City" class="control-label af-slide  required " style="">City </label></div>
+                                                    <input class="form-control required ng-pristine ng-untouched ng-valid ng-empty" id="City" name="City" data-fieldid="686" data-af-field="City" data-ng-model="form.fields.City.value" data-ng-keyup="form.fields.City.touched = true;" af-field-title="City" type="text" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="State" class="control-label af-slide required required " style="">State </label></div>
+                                                    @*<div class="dropdown-loader ng-hide" data-ng-show="form.fields.State.$_loading" data-ng-disabled="form.fields.State.value == form.fields.State.$_loading">Loading...</div>*@
+                                                    <!--googleoff: all-->
+                                                    <select class="form-control required ng-pristine ng-untouched ng-valid ng-empty" id="State" name="State" data-fieldid="687" data-af-field="State" data-ng-click="form.fields.State.touched = true;" data-ng-model="form.fields.State.selected" data-ng-change="form.fields.State.value = form.fields.State.selected.value || '';
+                                       form.fields.State.ddValue = form.fields.State.selected.value;
+                                       " data-ng-options="o as o.text for o in form.fields.State.options" data-val="">
+                                                        <option value="" class="" selected="selected">Please select option below</option>
+                                                        <option label="Alabama" value="Alabama">Alabama</option>
+                                                        <option label="Alaska" value="Alaska">Alaska</option>
+                                                        <option label="American Samoa" value="American Samoa">American Samoa</option>
+                                                        <option label="Arizona" value="Arizona">Arizona</option>
+                                                        <option label="Arkansas" value="Arkansas">Arkansas</option>
+                                                        <option label="California" value="California">California</option>
+                                                        <option label="Colorado" value="Colorado">Colorado</option>
+                                                        <option label="Connecticut" value="Connecticut">Connecticut</option>
+                                                        <option label="Delaware" value="Delaware">Delaware</option>
+                                                        <option label="District of Columbia" value="District of Columbia">District of Columbia</option>
+                                                        <option label="Florida" value="Florida">Florida</option>
+                                                        <option label="Georgia" value="Georgia">Georgia</option>
+                                                        <option label="Guam" value="Guam">Guam</option>
+                                                        <option label="Hawaii" value="Hawaii">Hawaii</option>
+                                                        <option label="Idaho" value="Idaho">Idaho</option>
+                                                        <option label="Illinois" value="Illinois">Illinois</option>
+                                                        <option label="Indiana" value="Indiana">Indiana</option>
+                                                        <option label="Iowa" value="Iowa">Iowa</option>
+                                                        <option label="Kansas" value="Kansas">Kansas</option>
+                                                        <option label="Kentucky" value="Kentucky">Kentucky</option>
+                                                        <option label="Louisiana" value="Louisiana">Louisiana</option>
+                                                        <option label="Maine" value="Maine">Maine</option>
+                                                        <option label="Maryland" value="Maryland">Maryland</option>
+                                                        <option label="Massachusetts" value="Massachusetts">Massachusetts</option>
+                                                        <option label="Michigan" value="Michigan">Michigan</option>
+                                                        <option label="Minnesota" value="Minnesota">Minnesota</option>
+                                                        <option label="Mississippi" value="Mississippi">Mississippi</option>
+                                                        <option label="Missouri" value="Missouri">Missouri</option>
+                                                        <option label="Montana" value="Montana">Montana</option>
+                                                        <option label="Nebraska" value="Nebraska">Nebraska</option>
+                                                        <option label="Nevada" value="Nevada">Nevada</option>
+                                                        <option label="New Hampshire" value="New Hampshire">New Hampshire</option>
+                                                        <option label="New Jersey" value="New Jersey">New Jersey</option>
+                                                        <option label="New Mexico" value="New Mexico">New Mexico</option>
+                                                        <option label="New York" value="New York">New York</option>
+                                                        <option label="North Carolina" value="North Carolina">North Carolina</option>
+                                                        <option label="North Dakota" value="North Dakota">North Dakota</option>
+                                                        <option label="North Mariana Islands" value="North Mariana Islands">North Mariana Islands</option>
+                                                        <option label="Ohio" value="Ohio">Ohio</option>
+                                                        <option label="Oklahoma" value="Oklahoma">Oklahoma</option>
+                                                        <option label="Oregon" value="Oregon">Oregon</option>
+                                                        <option label="Pennsylvania" value="Pennsylvania">Pennsylvania</option>
+                                                        <option label="Puerto Rico" value="Puerto Rico">Puerto Rico</option>
+                                                        <option label="Rhode Island" value="Rhode Island">Rhode Island</option>
+                                                        <option label="South Carolina" value="South Carolina">South Carolina</option>
+                                                        <option label="South Dakota" value="South Dakota">South Dakota</option>
+                                                        <option label="Tennessee" value="Tennessee">Tennessee</option>
+                                                        <option label="Texas" value="Texas">Texas</option>
+                                                        <option label="Utah" value="Utah">Utah</option>
+                                                        <option label="Vermont" value="Vermont">Vermont</option>
+                                                        <option label="Virgin Islands" value="Virgin Islands">Virgin Islands</option>
+                                                        <option label="Virginia" value="Virginia">Virginia</option>
+                                                        <option label="Washington" value="Washington">Washington</option>
+                                                        <option label="West Virginia" value="West Virginia">West Virginia</option>
+                                                        <option label="Wisconsin" value="Wisconsin">Wisconsin</option>
+                                                        <option label="Wyoming" value="Wyoming">Wyoming</option>
+                                                    </select>
+                                                    <!--googleon: all-->
+                                                </div>
+                                            </div>
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="ZipCode" class="control-label af-slide  required " style="">Zip Code </label></div>
+                                                    <input class="number form-control required ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" id="ZipCode" name="ZipCode" data-fieldid="688" data-af-field="ZipCode" data-ng-model="form.fields.ZipCode.value" data-ng-keyup="form.fields.ZipCode.touched = true;" af-field-title="Zip Code" type="text" maxlength="5" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="FaxNumber" class="control-label af-slide  " style="">Fax Number </label></div>
+                                                    <input class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" id="FaxNumber" name="FaxNumber" data-fieldid="661" data-af-field="FaxNumber" data-ng-model="form.fields.FaxNumber.value" data-ng-keyup="form.fields.FaxNumber.touched = true;" af-field-title="Fax Number" type="text" maxlength="10" placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                                            <div class="form-field"><strong>After the shipment of ARESTIN Student Trial Kits arrives, you will receive an email containing the Acknowledgement of Contents form. This form confirms that the samples have been received and must be signed and returned to OraPharma.</strong></div>
+                                            <div class="form-field">
+                                                <div class="terms-check col-sm-1" style="padding-right: 0px;">
+                                                    <div role="group" aria-label="checkbox list" id="Terms" class="field-container af-slide  form-group-enroll-checkbox col-sm-12  checkbox-list " xmlns:utils="af:utils">
+                                                        <div class="label-top"><label for="Terms" class="control-label af-slide hide required " style="">Terms </label></div>
+                                                        <!-- ngRepeat: o in form.fields.Terms.options -->
+                                                        <div class="checkbox enroll-checkbox ng-pristine ng-untouched ng-valid ng-scope ng-not-empty" data-ng-repeat="o in form.fields.Terms.options" data-ng-model="form.fields.Terms.value">
+                                                            <label><input type="checkbox" name="Terms" class="normalCheckBox required-cblist enroll-checkbox ng-pristine ng-untouched ng-valid ng-empty" data-validation-group="Terms-group" id="Terms" data-ng-model="o.selected" data-ng-truevalue="o.value" value="&quot;True&quot;" data-ng-change="concatValues(form.fields.Terms)"><span data-ng-bind-html="$sce.trustAsHtml(o.text)" class="ng-binding"></span></label><!-- ngIf: $last -->
+                                                            <div repeat-done="" ng-if="$last" class="ng-scope"></div>
+                                                            <!-- end ngIf: $last -->
+                                                        </div>
+                                                        <!-- end ngRepeat: o in form.fields.Terms.options -->
+                                                        <div class="err-placeholder"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="terms-text col-sm-11" style="padding-left: 0px;">
+                                                    <div class="field-container af-slide  col-sm-12 btnc-left" xmlns:utils="af:utils">
+                                                        <input type="text" aria-hidden="true" aria-label="hidden input of static text" style="width:0!important;height:0!important;opacity:0!important;position:absolute!important;" tabindex="-1" data-ng-model="form.fields.TermsText.value" name="TermsText" data-fieldid="676" data-af-field="TermsText" value="By filling out this enrollment form on ArestinProfessional.com, you agree to receive additional product information/future promotions about <strong>ARESTIN</strong> from OraPharma. The information you submit with the enrollment will be governed by our site's <a href=&quot;http://valeant.com/privacy&quot; target=&quot;_blank&quot; class=&quot;ext_link_disabled&quot;>Privacy Policy</a>. To stop receiving additional communications, please contact us as specified in our site's <a href=&quot;http://valeant.com/privacy&quot; target=&quot;_blank&quot; class=&quot;ext_link_disabled&quot;>Privacy Policy</a>.</div>" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                                                        <p name="TermsText" data-ng-model="form.fields.TermsText.value" data-ng-bind-html="$sce.trustAsHtml(form.fields.TermsText.value)" class="ng-pristine ng-untouched ng-valid ng-binding ng-not-empty">By filling out this enrollment form on ArestinProfessional.com, you agree to receive additional product information/future promotions about <strong>ARESTIN</strong> from OraPharma. The information you submit with the enrollment will be governed by our site's <a href="http://valeant.com/privacy" target="_blank" class="ext_link_disabled">Privacy Policy</a>. To stop receiving additional communications, please contact us as specified in our site's <a href="http://valeant.com/privacy" target="_blank" class="ext_link_disabled">Privacy Policy</a>.</p>
+                                                    </div>
+                                                </div>
+                                                <div style="clear: both;">&nbsp;</div>
+                                                <div class="form-field">
+                                                    <div class="field-container af-slide  form-group-recaptcha-display-error-message col-sm-12 " xmlns:utils="af:utils">
+                                                        <div class="label-top"><label for="SecurityCheck" class="control-label af-slide  required " style="">Security Check </label></div>
+                                                        <div class="recaptcha-display-error-message required ng-pristine ng-untouched ng-valid ng-empty" id="SecurityCheck" name="SecurityCheck" data-fieldid="677" data-af-field="SecurityCheck" data-ng-model="form.fields.SecurityCheck.value" data-ng-keyup="form.fields.SecurityCheck.touched = true;">                                                            
+                                                            <label for="g-recaptcha-response" style="display:none;">CAPTCHA</label><div class="g-recaptcha" data-sitekey="6LdF6C0UAAAAANMg9VVPBWgLjFqMgufK13PYOK37" data-callback="recaptchaCallback">		   </div>
+                                                            <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-field"></div>
+                                                <div style="clear: both;">&nbsp;</div>
+                                                <div class="form-field">
+                                                    <div class="field-container af-slide  col-sm-12 btnc-left" xmlns:utils="af:utils">
+                                                        <input type="text" aria-hidden="true" aria-label="hidden input of static text" style="width:0!important;height:0!important;opacity:0!important;position:absolute!important;" tabindex="-1" data-ng-model="form.fields.SponsorText.value" name="SponsorText" data-fieldid="672" data-af-field="SponsorText" value="<em>The <strong>ARESTIN</strong> Student Access Program is sponsored by OraPharma, a division of Bausch Health US, LLC.</em>" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                                                        <p name="SponsorText" data-ng-model="form.fields.SponsorText.value" data-ng-bind-html="$sce.trustAsHtml(form.fields.SponsorText.value)" class="ng-pristine ng-untouched ng-valid ng-binding ng-not-empty"><em>The <strong>ARESTIN</strong> Student Access Program is sponsored by OraPharma, a division of Bausch Health US, LLC.</em></p>
+                                                    </div>
+                                                </div>
+                                                <div style="clear: both;">&nbsp;</div>
+                                            </div>
+                                        </div>
+                                        <div style="clear: both;">&nbsp;</div>
+                                        <div class="enroll">
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-offset-4 col-sm-4 btn-form btnc  col-sm-offset-4 btnc-center" xmlns:utils="af:utils">
+                                                    <button type="button" data-loading-text="Please wait..." data-name="EnrollMySchool" class="btn submit form-button af-btn-loading
+                                    btn-normal btn-info  " id="EnrollMySchool" style="" data-ng-click="form.fields.EnrollMySchool.onChange(form);" data-validation="on" data-default-button="on" data-submiturl="/DesktopModules/DnnSharp/ActionForm/Submit.ashx?_mid=4944&amp;_tabId=1954&amp;_portalId=70&amp;_alias=www.arestinprofessional.com&amp;openMode=Always&amp;language=en-US&amp;referrer=https%3a%2f%2fwww.arestinprofessional.com%2fmanage-profile&amp;event=click&amp;b=674" data-submitquery="_mid=4944&amp;_tabId=1954&amp;_portalId=70&amp;_alias=www.arestinprofessional.com&amp;openMode=Always&amp;language=en-US&amp;referrer=https%3a%2f%2fwww.arestinprofessional.com%2fmanage-profile&amp;event=click&amp;b=674">
+                                                        Enroll My School
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger server-error" id="recaptcha-error" style="display: none;">reCAPTCHA verification failed.</div>
+                            </div>
+                            <div class="alert alert-info submit-confirm" style="display: none; text-align: center;"></div>
+
+                        </form>
+                        
+                    </div>
+                    <div dnnsf-modal=""></div>
+                </div>
+            </div>
+        </div>
+        <!-- End_Module_4944 -->
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#EnrollSchool').validate({
+            errorPlacement: function (error, element) {
+                return false;
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).parents("div.form-field").addClass('has-error');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).parents(".has-error").removeClass('has-error');
+            },
+            rules: {
+                SchoolName: {
+                    required: true
+                },
+                ProgramDirectorFirstName: {
+                    required: true
+                },
+                ProgramDirectorLastName: {
+                    required: true
+                },
+                NumberofTrialKits: {
+                    required: true
+                },
+                ProgramDirectorEmail: {
+                    required: true,
+                    email: true
+                },
+                ProgramFacultyContactName: {
+                    required: true
+                },
+                ProgramFacultyContactEmail: {
+                    required: true,
+                    email: true
+                },
+                PrimaryPhoneNumber: {
+                    required: true,
+                    number: true,
+                    minlength: 7
+                },
+                ProgramDentistName: {
+                    required: true
+                },
+                ProgramDentistEmail: {
+                    required: true,
+                    email: true
+                },
+                ProgramDentistNameShipping: {
+                    required: true
+                },
+                Address: {
+                    required: true
+                },
+                City: {
+                    required: true
+                },
+                State: {
+                    required: true
+                },
+                ZipCode: {
+                    required: true
+                },
+                SecurityCheck: {
+                    required: true
+                },
+                Terms: {
+                    required: true
+                },
+               
+            }
+        });
+    });
+
+
+    $("#EnrollMySchool").click(function () {
+        validateForm();
+    });
+
+    function validateForm() {
+
+        $("#EnrollSchool").validate();
+
+        var isValid = $("#EnrollSchool").valid();
+
+        event.preventDefault();
+
+        if (isValid) {
+            if (grecaptcha.getResponse() == '') {
+                $("#recaptcha-error").show();
+                event.preventDefault();
+                return false;
+            } else {
+                $("#recaptcha-error").hide();
+            }
+            $(".show").removeClass("show");
+
+            var baseURL = window.location.origin;
+
+            if (baseURL[baseURL.length - 1] !== "/") {
+                baseURL = baseURL + "/";
+            }
+
+            let request = {
+                EnrollSchoolName: $("#SchoolName").val(),
+                ProgramDirectorFirstName: $("#ProgramDirectorFirstName").val(),
+                ProgramDirectorLastName: $("#ProgramDirectorLastName").val(),
+                ProgramDirectorEmail: $("#ProgramDirectorEmail").val(),
+                NumberofTrialKits: $("#NumberofTrialKits").val(),
+                ProgramFacultyContactName: $("#ProgramFacultyContactName").val(),
+                ProgramFacultyContactEmail: $("#ProgramFacultyContactEmail").val(),
+                ProgramDentistName: $("#ProgramDentistName").val(),
+                ProgramDentistEmail: $("#ProgramDentistEmail").val(),
+                PrimaryPhoneNumber: $("#PrimaryPhoneNumber").val(),
+                ProgramDentistNameShipping: $("#ProgramDentistNameShipping").val(),
+                Address: $("#Address").val(),
+                Address2: ($("#Address2").val() == null ? "" : $("#Address2").val()),
+                City: $("#City").val(),
+                State: $("#State").val(),
+                ZipCode: $("#ZipCode").val(),
+                FaxNumber: ($("#FaxNumber").val() == null ? "" : $("#FaxNumber").val()),
+                Terms: $("#Terms").val(),
+                NumberofAdditionalHandles: ""
+            }
+
+            $.ajax({
+                type: "POST",
+                url: baseURL + 'api/ArestinEnrollSchoolBlock/EnrollMySchool',
+                data: JSON.stringify(request),
+                dataType: 'JSON',
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data != undefined || data != null) {
+
+                        if (data.IsSuccess) {
+
+                            var myForm = MktoForms2.getForm(2019);
+
+                            let mRequest = {
+                                
+                                //These are the values which will be submitted to Marketo Marketo fields on left, form fields on right
+                                "schoolName": request.EnrollSchoolName,
+                                "FirstName": request.ProgramDirectorFirstName,
+                                "LastName": request.ProgramDirectorLastName,
+                                "Email": request.ProgramDirectorEmail,
+                                "numberTrialKits": request.NumberofTrialKits,
+                                "programFacultyName": request.ProgramFacultyContactName,
+                                "programFacultyEmail": request.ProgramFacultyContactEmail,
+                                "programDentistName": request.ProgramDentistName,
+                                "programDentistEmail": request.ProgramDentistEmail,
+                                "Phone": request.PrimaryPhoneNumber,
+                                "programDentistNameShipping": request.ProgramDentistNameShipping,
+                                "Address": request.Address,
+                                "address2": request.Address2,
+                                "City": request.City,
+                                "State": request.State,
+                                "PostalCode": request.ZipCode,
+                                "Fax": request.FaxNumber,
+                                "orapharmaArestinOptin": request.Terms
+                            };
+
+                            myForm.addHiddenFields(mRequest);
+                            myForm.onSuccess(function (values, followUpUrl) {
+                                var redirectURL = '';
+                                redirectURL = '/enrollment-confirmation';
+                                location.href = redirectURL;
+                                return false;
+                            });
+
+                            myForm.submit();
+                        }                        
+                    }
+                },
+                error: function (e, h, c) {
+                    console.log(h)
+                }
+            });
+
+            event.preventDefault();
+            return false;
+
+        }
+        else {
+            $(".error-message").addClass("show");
+            return false;
+        }
+    }
+
+
+</script>
+
+
+

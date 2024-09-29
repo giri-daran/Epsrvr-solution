@@ -1,0 +1,116 @@
+﻿@model EpiserverBH.Models.Blocks.Arestinprofessional.ArestinProfileBlock
+@using EPiServer.Web.Mvc.Html
+@using Microsoft.AspNetCore.Http.Extensions
+
+<div id="dnn_SidebarPane" class="SidebarPane">
+    <div class="DnnModule DnnModule-ActionGrid DnnModule-4936">
+        <a name="4936"></a>
+        <div class="arestincontainerblue_h1">
+            <div class="col-md-12 head">
+                <span id="dnnTITLE_titleLabel" class="TitleH1">Profile</span>
+            </div>
+            <div class="col-md-12">
+                <div id="ContentPane" class="ContentBody">
+                    <div id="ModuleContent" class="DNNModuleContent ModActionGridC">
+                        <span id="Main_lblContent" class="bstrap30"></span>
+                        <div id="Main_pnlAct"></div>
+                        <div id="Main_app" class="ng-scope">
+                            <div class="bstrap30" data-ngbootstrap="ActionGridApp4936">
+                                <div data-ng-controller="ActionGridCtl4936" class="ng-scope">
+                                    <div data-angrid="" data-settings="settings" data-base-url="/DesktopModules/DnnSharp/ActionGrid/static/angrid" data-source="dataSource" data-template-url="/DesktopModules/DnnSharp/ActionGrid/static/angrid/grid.html?v=5.0.46" data-version="5.0.46" class="ng-isolate-scope" id="angrid4936">
+                                        <div class="angrid-popup modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only ng-binding">Close</span></button>
+                                                        <h4 class="modal-title ng-binding"></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="angrid" data-ng-class="{'angrid-error': error }">
+
+                                            <div data-ng-include="settings.viewUrl + '?v=' + settings.v"></div>
+                                            <div data-angrid-view="" class="ng-scope">
+                                                <p class="ng-scope">
+                                                </p>
+                                                <div class="angrid-listing-view ng-scope">
+                                                    <div data-ng-repeat="item in source.data" class="angrid-item col-xs-NaN col-sm-NaN col-md-NaN col-lg-NaN" data-ng-class="{'selected':item.$_selected}" data-toggle="popover" index="0">
+                                                        <div class="panel-default">
+                                                            <div data-ng-if="settings.columns[1]" class="ng-scope">
+                                                                <div data-ng-repeat="c in settings.columns" data-ng-click="toggleSelect(item, $event)" data-ng-if="!$first &amp;&amp; !item.$_confirmAction" data-ng-class="{ 'hidden-xs': !c.showOn.mobile, 'hidden-sm': !c.showOn.tablet, 'hidden-md': !c.showOn.desktop, 'hidden-lg': !c.showOn.large }" index="1" cell-actions="" class="ng-scope">
+                                                                    <h4>
+                                                                    </h4>
+                                                                    <span class="grid-field-value ng-scope ng-isolate-scope" data-ng-if="(!isEditable(c, item) || isViewMode(c, item)) &amp;&amp; !c.isForm" data-angrid-formatting="" data-column="c" data-item="item">
+                                                                        <h4>Name:</h4>
+                                                                        @Context.Session.GetString("FirstName") @Context.Session.GetString("LastName")
+                                                                    </span>
+                                                                </div>
+                                                                <div data-ng-repeat="c in settings.columns" data-ng-click="toggleSelect(item, $event)" data-ng-if="!$first &amp;&amp; !item.$_confirmAction" data-ng-class="{ 'hidden-xs': !c.showOn.mobile, 'hidden-sm': !c.showOn.tablet, 'hidden-md': !c.showOn.desktop, 'hidden-lg': !c.showOn.large }" index="2" cell-actions="" class="ng-scope">
+                                                                    @{
+                                                                        var val1 = Context.Request.GetDisplayUrl().ToLower().Contains("program-for-faculty") ? "Profession:" : "Student Type:";
+
+                                                                        <h4><label class="grid-field-label ng-binding ng-scope" data-ng-if="c.displayLabel">@val1</label></h4>
+                                                                        <span class="grid-field-value ng-scope ng-isolate-scope" data-ng-if="(!isEditable(c, item) || isViewMode(c, item)) &amp;&amp; !c.isForm" data-angrid-formatting="" data-column="c" data-item="item">@Context.Session.GetString("Profession")</span>
+                                                                    }
+                                                                </div>
+
+                                                                <div data-ng-repeat="c in settings.columns" data-ng-click="toggleSelect(item, $event)" data-ng-if="!$first &amp;&amp; !item.$_confirmAction" data-ng-class="{ 'hidden-xs': !c.showOn.mobile, 'hidden-sm': !c.showOn.tablet, 'hidden-md': !c.showOn.desktop, 'hidden-lg': !c.showOn.large }" index="3" cell-actions="" class="ng-scope">
+                                                                    <h4>
+                                                                        <label class="grid-field-label ng-binding ng-scope" data-ng-if="c.displayLabel">Email Address:</label>
+                                                                    </h4>
+                                                                    <span class="grid-field-value ng-scope ng-isolate-scope" data-ng-if="(!isEditable(c, item) || isViewMode(c, item)) &amp;&amp; !c.isForm" data-angrid-formatting="" data-column="c" data-item="item">@Context.Session.GetString("Email")</span>
+                                                                </div>
+                                                                <div data-ng-repeat="c in settings.columns" data-ng-click="toggleSelect(item, $event)" data-ng-if="!$first &amp;&amp; !item.$_confirmAction" data-ng-class="{ 'hidden-xs': !c.showOn.mobile, 'hidden-sm': !c.showOn.tablet, 'hidden-md': !c.showOn.desktop, 'hidden-lg': !c.showOn.large }" index="4" cell-actions="" class="ng-scope">
+                                                                    <h4>
+                                                                        <label class="grid-field-label ng-binding ng-scope" data-ng-if="c.displayLabel">School:</label>
+                                                                    </h4>
+                                                                    <span class="grid-field-value ng-scope ng-isolate-scope" data-ng-if="(!isEditable(c, item) || isViewMode(c, item)) &amp;&amp; !c.isForm" data-angrid-formatting="" data-column="c" data-item="item">@Context.Session.GetString("SchoolName")</span>
+                                                                </div>
+                                                                <div data-ng-repeat="c in settings.columns" data-ng-click="toggleSelect(item, $event)" data-ng-if="!$first &amp;&amp; !item.$_confirmAction" data-ng-class="{ 'hidden-xs': !c.showOn.mobile, 'hidden-sm': !c.showOn.tablet, 'hidden-md': !c.showOn.desktop, 'hidden-lg': !c.showOn.large }" index="5" cell-actions="" class="ng-scope">
+                                                                    <h4>
+                                                                    </h4>
+                                                                </div>
+                                                                <div data-ng-repeat="c in settings.columns" data-ng-click="toggleSelect(item, $event)" data-ng-if="!$first &amp;&amp; !item.$_confirmAction" data-ng-class="{ 'hidden-xs': !c.showOn.mobile, 'hidden-sm': !c.showOn.tablet, 'hidden-md': !c.showOn.desktop, 'hidden-lg': !c.showOn.large }" index="6" cell-actions="" class="ng-scope">
+                                                                    <h4>
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            </div>
+                                            <span class="grid-field-value ng-scope ng-isolate-scope" data-column="c" data-item="item"><a href="~/manage-profile">Manage Profile</a></span>
+                                            <p class="angrid-error text-muted ng-binding ng-hide" data-ng-show="error" id="error" data-ng-bind-html="(settings.localization.error.title || 'Error:') + error">Error:</p>
+
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#ProfileHeader').append('<h1>Welcome to the&nbsp;<strong>ARESTIN</strong> Student Access Program,&nbsp; @Context.Session.GetString("FirstName") @Context.Session.GetString("LastName")</h1>');
+        $('#error').css('display', 'none');
+    });
+
+</script>
+
+
+

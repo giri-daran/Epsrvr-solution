@@ -1,0 +1,181 @@
+﻿@using EPiServer
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.ServiceLocation
+@model EpiserverBH.Models.Blocks.GenericAccordionBlock
+
+
+@if (Model.BootstrapVersion == "BT4")
+{
+    @if (EPiServer.Editor.PageEditing.PageIsInEditMode)
+    {
+        
+        if (Model.AccordionBlocks.Count > 0)
+        {
+            <div @Html.EditAttributes(m => m.AccordionBlocks)>
+                @for (var i = 0; i < Model.AccordionBlocks.Items.Count; i++)
+                {
+                    var items = Model.AccordionBlocks.Items[i];
+
+                    var repository = ServiceLocator.Current.GetInstance<IContentRepository>();
+                    IContent block = repository.Get<IContent>(items.ContentLink);
+
+                    ContentAreaItem item = (ContentAreaItem)items;
+                    var contentArea = new ContentArea();
+                    contentArea.Items.Add(item);
+
+                    var blockNumber = i + 1;
+                    <div id="@Html.DisplayFor(model => model.ParentId)-@blockNumber">
+                        <div class="ac card acrdn-@blockNumber" @Html.EditAttributes(m => m.AccordionBlocks)>
+                            <div class="card-header collapsed" data-toggle="collapse" data-parent="#@Html.DisplayFor(model => model.ParentId)-@blockNumber" data-target="#@Html.DisplayFor(model => model.DataIdName)-@blockNumber" aria-controls="@Html.DisplayFor(model => model.DataIdName)-@blockNumber" aria-label="accordian">
+                                <div class="container save-container accord">
+                                    <div class="row">
+                                        <div class="col-lg-1 col-2 save">
+                                            <div class="button"><img class="plus" src="/siteassets/img/img-71x69-invalid-name-yellow.webp" alt="plus-icon" data-cmp-info="10"> <img class="minus" src="/siteassets/img/img-52x12-invalid-name-yellow-minus.webp" alt="minus-icon" data-cmp-info="10"></div>
+                                        </div>
+                                        <div class="col-lg-11 col-10 saving">
+                                            <h3>@Html.Raw(block.Name)</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dropdown collapse" id="@Html.DisplayFor(model => model.DataIdName)-@blockNumber">
+                                <div class="card-body">
+                                    <div class="container save-container open">
+                                        <div class="row">
+                                            <div class="dropdown-section">
+                                                @Html.PropertyFor(x => contentArea)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    }
+    else
+    {
+        if (Model.AccordionBlocks.Count > 0)
+        {
+            @for (var i = 0; i < Model.AccordionBlocks.Items.Count; i++)
+            {
+                var items = Model.AccordionBlocks.Items[i];
+
+                var repository = ServiceLocator.Current.GetInstance<IContentRepository>();
+                IContent block = repository.Get<IContent>(items.ContentLink);
+
+                ContentAreaItem item = (ContentAreaItem)items;
+                var contentArea = new ContentArea();
+                contentArea.Items.Add(item);
+
+                // Adding a unique block number
+                var blockNumber = i + 1;
+                <div id="@Html.DisplayFor(model => model.ParentId)-@blockNumber">
+                    <div class="ac card acrdn-@blockNumber" @Html.EditAttributes(m => m.AccordionBlocks)>
+                        <div class="card-header collapsed" data-toggle="collapse" data-parent="#@Html.DisplayFor(model => model.ParentId)-@blockNumber" data-target="#@Html.DisplayFor(model => model.DataIdName)-@blockNumber" aria-controls="@Html.DisplayFor(model => model.DataIdName)-@blockNumber" aria-label="accordian">
+                            <div class="container save-container accord">
+                                <div class="row">
+                                    <div class="col-lg-1 col-2 save">
+                                        <div class="button"><img class="plus" src="/siteassets/img/img-71x69-invalid-name-yellow.webp" alt="plus-icon" data-cmp-info="10"> <img class="minus" src="/siteassets/img/img-52x12-invalid-name-yellow-minus.webp" alt="minus-icon" data-cmp-info="10"></div>
+                                    </div>
+                                    <div class="col-lg-11 col-10 saving">
+                                        <h3>@Html.Raw(block.Name)</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown collapse" id="@Html.DisplayFor(model => model.DataIdName)-@blockNumber">
+                            <div class="card-body">
+                                <div class="container save-container open">
+                                    <div class="row">
+                                        <div class="dropdown-section">
+                                            @Html.PropertyFor(x => contentArea)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    }
+
+}
+else if (Model.BootstrapVersion == "BT5")
+{
+    @if (EPiServer.Editor.PageEditing.PageIsInEditMode)
+    {
+
+        if (Model.AccordionBlocks.Count > 0)
+        {
+            <div @Html.EditAttributes(m => m.AccordionBlocks)>
+                @for (var i = 0; i < Model.AccordionBlocks.Items.Count; i++)
+                {
+                    var items = Model.AccordionBlocks.Items[i];
+
+                    var repository = ServiceLocator.Current.GetInstance<IContentRepository>();
+                    IContent block = repository.Get<IContent>(items.ContentLink);
+
+                    ContentAreaItem item = (ContentAreaItem)items;
+                    var contentArea = new ContentArea();
+                    contentArea.Items.Add(item);
+                    var blockNumber = i + 1;
+
+                    <div class="accordion" id="@Html.DisplayFor(model => model.ParentId)-@blockNumber">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="@Html.DisplayFor(model => model.HeaderId)-@blockNumber">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#@Html.DisplayFor(model => model.DataIdName)-@blockNumber" aria-controls="@Html.DisplayFor(model => model.DataIdName)-@blockNumber">
+                                    @Html.Raw(block.Name)
+                                </button>
+                            </h2>
+                            <div id="@Html.DisplayFor(model => model.DataIdName)-@blockNumber" class="accordion-collapse collapse" aria-labelledby="@Html.DisplayFor(model => model.HeaderId)-@blockNumber" data-bs-parent="#@Html.DisplayFor(model => model.ParentId)-@blockNumber">
+                                @Html.PropertyFor(x => contentArea)
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    }
+    else
+    {
+        if (Model.AccordionBlocks.Count > 0)
+        {
+            @for (var i = 0; i < Model.AccordionBlocks.Items.Count; i++)
+            {
+                var items = Model.AccordionBlocks.Items[i];
+
+                var repository = ServiceLocator.Current.GetInstance<IContentRepository>();
+                IContent block = repository.Get<IContent>(items.ContentLink);
+
+                ContentAreaItem item = (ContentAreaItem)items;
+                var contentArea = new ContentArea();
+                contentArea.Items.Add(item);
+
+                // Adding a unique block number
+
+                var blockNumber = i + 1;
+                <div class="accordion" id="@Html.DisplayFor(model => model.ParentId)@blockNumber">
+                    <div class="accordion-item copay-saving background">
+                        <h2 class="accordion-header" id="@Html.DisplayFor(model => model.HeaderId)@blockNumber">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#@Html.DisplayFor(model => model.DataIdName)@blockNumber" aria-expanded="true" aria-controls="@Html.DisplayFor(model => model.DataIdName)@blockNumber">
+                                @Html.Raw(block.Name)
+                            </button>
+                        </h2>
+                        <div id="@Html.DisplayFor(model => model.DataIdName)@blockNumber" class="accordion-collapse collapse" aria-labelledby="@Html.DisplayFor(model => model.HeaderId)@blockNumber" data-bs-parent="#@Html.DisplayFor(model => model.ParentId)@blockNumber">
+                            <div class="accordion-body">
+                                @Html.PropertyFor(x => contentArea)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    }
+}
+
+

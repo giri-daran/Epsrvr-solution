@@ -1,0 +1,311 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@model EpiserverBH.Models.Blocks.Wistia.WistiaBlock
+
+
+<script type="text/javascript" src="https://fast.wistia.com/assets/external/E-v1.js"></script>
+
+
+<div id="@Model.BlockID">
+
+@if (Model.WistiaType == "Popover")
+	{
+
+		<div class="wistia-title">
+			@Html.Raw(Model.VideoTitle)
+		</div>
+		<div class="wistia-description">
+			@Html.Raw(Model.VideoDescriptions)
+		</div>
+		string path = Model.VideoID + ".jsonp";
+		<script type="text/javascript" src="https://fast.wistia.com/embed/medias/@path"></script>
+		<span class="wistia_embed wistia_async_@Model.VideoID popover=true popoverAnimateThumbnail=true" style="display:inline-block;height:169px;width:300px">&nbsp;</span>
+
+	}
+
+	else if (Model.WistiaType == "Inline")
+	{
+		<div class="wistia-title">
+			@Html.Raw(Model.VideoTitle)
+		</div>
+		<div class="wistia-description">
+			@Html.Raw(Model.VideoDescriptions)
+		</div>
+		string path = Model.VideoID + ".jsonp";
+		<script type="text/javascript" src="https://fast.wistia.com/embed/medias/@path"></script>
+		<div class="wistia_responsive_padding" style="padding: 56.25% 0 0 0; position: relative;">
+			<div class="wistia_responsive_wrapper" style="height: 100%; left: 0; position: absolute; top: 0; width: 100%;">
+				<div class="wistia_embed wistia_async_@Model.VideoID seo=true videoFoam=true wmode=transparent wistia_embed_initialized" id="wistia-@Model.VideoID-1" style="height: 100%; position: relative; width: 100%;">
+				</div>
+				<div class="video">
+					<img class="img-fluid d-none d-lg-block " src="@Url.ContentUrl(Model.DescImage)" alt="">
+					<img class="img-fluid d-block d-lg-none" src="@Url.ContentUrl(Model.MobImage)" alt="">
+				</div>
+			</div>
+		</div>
+	}
+
+	else if (Model.WistiaType == "CustomSlider")
+	{
+
+
+		<link href="/Assets/Wistia/css/slick.min.css" rel="stylesheet" />
+		<link href="/Assets/Wistia/css/slick-theme.min.css" rel="stylesheet" />
+
+
+		<div class="main">
+			<div class="container">
+				<div class="row">
+					@foreach (var slider in Model.WistiaList)
+					{
+						string path = slider.SlideVideoID + ".jsonp";
+						<script type="text/javascript" src="https://fast.wistia.com/embed/medias/@path"></script>
+					}
+					<div class="slider-top">
+						<div class="wistia-title">
+							@Html.Raw(Model.VideoTitle)
+						</div>
+						<div class="slider slider-for">
+							@* @foreach (var slider in Model.WistiaList)
+					{
+
+
+						<div class="slide-head">
+
+
+							<div class="wistia_responsive_padding" style="padding: 56.25% 0 0 0; position: relative;">
+								<div class="wistia_responsive_wrapper" style="height: 100%; left: 0; position: absolute; top: 0; width: 100%;">
+									<div class="wistia_embed wistia_async_@slider.SlideVideoID seo=true videoFoam=true wistia_embed_initialized" id="wistia-@slider.SlideVideoID-1" style="height: 100%; position: relative; width: 100%;">
+									</div>
+								</div>
+							</div>
+						</div>
+
+					} *@
+
+							<div class="slide-head">
+
+
+								<div class="wistia_responsive_padding" style="padding: 56.25% 0 0 0; position: relative;">
+									<div class="wistia_responsive_wrapper" style="height: 100%; left: 0; position: absolute; top: 0; width: 100%;">
+										<div class="wistia_embed wistia_async_@Model.VideoID seo=true videoFoam=true wmode=transparent wistia_embed_initialized" id="wistia-@Model.VideoID-1" style="height: 100%; position: relative; width: 100%;">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="wistia-description">
+							@Html.Raw(Model.VideoDescriptions)
+						</div>
+					</div>
+					<div class="slider-bottom">
+						<div class="slide-title">
+							@Html.Raw(Model.SlideTitle)
+						</div>
+						<div class="slider slider-nav">
+							@foreach (var slider1 in Model.WistiaList)
+							{
+
+
+
+								<div class="slide-body">
+									<div class="slider-img">
+										<a href="@Url.ContentUrl(slider1.SliderLink)">
+											<img class="img-fluid" src="@Url.ContentUrl(slider1.SlideImage)" alt="">
+											@Html.Raw(slider1.SlideText)
+										</a>								
+
+									</div>
+								</div>
+
+
+							}
+
+						</div>			
+
+					</div>
+				</div>
+			</div>	
+
+		</div>
+
+		<script type="text/javascript" src="/Assets/Wistia/js/slick.min.js"></script>
+		<script type="text/javascript" src="/Assets/Wistia/js/script.min.js"></script>
+
+
+	}
+
+	else if (Model.WistiaType == "Grid")
+	{
+
+		<div class="grid-view-section">
+			<div class="container">
+				<div class="row">
+					@foreach (var slider2 in Model.WistiaList)
+					{
+						string path = slider2.WistiaGridID + ".jsonp";
+						<script type="text/javascript" src="https://fast.wistia.com/embed/medias/@path"></script>
+
+						<div class="col-lg grid-view">
+
+							<div class="wistia_responsive_padding" style="padding: 56.25% 0 0 0; position: relative;">
+								<div class="wistia_responsive_wrapper" style="height: 100%; left: 0; position: absolute; top: 0; width: 100%;">
+									<div class="wistia_embed wistia_async_@slider2.WistiaGridID seo=true videoFoam=true wmode=transparent wistia_embed_initialized" id="wistia-@slider2.WistiaGridID-1" style="height: 100%; position: relative; width: 100%;">
+									</div>
+								</div>
+							</div>
+							@Html.Raw(slider2.SlideText)
+						</div>
+					}
+				</div>
+			</div>
+		</div>
+	}
+
+	else if (Model.WistiaType == "Slider")
+	{
+		<link href="/Assets/Wistia/css/slick.min.css" rel="stylesheet" />
+		<link href="/Assets/Wistia/css/slick-theme.min.css" rel="stylesheet" />
+
+		<div class="main">
+			<div class="container">
+				<div class="row">
+					@foreach (var slider in Model.WistiaList)
+					{
+						string path = slider.SlideVideoID + ".jsonp";
+						<script type="text/javascript" src="https://fast.wistia.com/embed/medias/@path"></script>
+					}
+					<div class="slider-top">
+						<div class="wistia-title">
+							@Html.Raw(Model.VideoTitle)
+						</div>
+						<div class="slider slider-for">
+							@foreach (var slider in Model.WistiaList)
+							{
+
+
+								<div class="slide-head">
+
+
+									<div class="wistia_responsive_padding" style="padding: 56.25% 0 0 0; position: relative;">
+										<div class="wistia_responsive_wrapper" style="height: 100%; left: 0; position: absolute; top: 0; width: 100%;">
+											<div class="wistia_embed wistia_async_@slider.SlideVideoID seo=true videoFoam=true wmode=transparent wistia_embed_initialized" id="wistia-@slider.SlideVideoID-1" style="height: 100%; position: relative; width: 100%;">
+											</div>
+										</div>
+									</div>
+									@Html.Raw(slider.SlideText)
+								</div>
+
+							}
+						</div>
+
+					</div>
+					<div class="slider-bottom">
+						<div class="slide-title">
+							@Html.Raw(Model.SlideTitle)
+						</div>
+						<div class="slider slider-nav">
+							@foreach (var slider1 in Model.WistiaList)
+							{
+
+
+
+								<div class="slide-body">
+									<div class="slider-img">
+										<img class="img-fluid" src="@Url.ContentUrl(slider1.SlideImage)" alt="">
+										@Html.Raw(slider1.SlideText)
+
+									</div>
+								</div>
+
+
+							}
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<script type="text/javascript" src="/Assets/Wistia/js/slick.min.js"></script>
+		<script type="text/javascript" src="/Assets/Wistia/js/slider.min.js"></script>
+
+	}
+
+	else if (Model.WistiaType == "CustomSlick")
+	{
+		var lcCnt = 1;
+		var lcSld = 1;
+		var lcact = "";
+
+		<link href="/Assets/Wistia/css/customslick.css" rel="stylesheet">
+		<link href="/Assets/Wistia/css/owl.carousel.min.css" rel="stylesheet">
+		<link href="/Assets/Wistia/css/slick.min.css" rel="stylesheet">
+		<link href="/Assets/Wistia/css/slick-theme.min.css" rel="stylesheet">
+
+		<div id="patient-stories">
+			<div class="hear_section light-theme-block">
+				<div class="container">
+					<div class="img-wrapper">
+
+						@foreach (var slider in Model.WistiaList)
+						{
+							string path = slider.SlideVideoID + ".jsonp";
+							<script type="text/javascript" src="https://fast.wistia.com/embed/medias/@path"></script>
+						}
+
+						<div class="img-inner">
+							<div class="img-inner-main">
+								@foreach (var slider in Model.WistiaList)
+								{
+									lcact = lcCnt == 1 ? " active" : "";
+
+									<div class="img-main img-inner-@lcCnt @lcact">
+										<div class="video">
+											<div class="wistia_responsive_padding" style="padding: 56.25% 0 0 0; position: relative;">
+												<div class="wistia_responsive_wrapper" style="height: 100%; left: 0; position: absolute; top: 0; width: 100%;">
+													<div class="wistia_embed wistia_async_@slider.SlideVideoID seo=true videoFoam=true wmode=transparent wistia_embed_initialized" id="wistia-@slider.SlideVideoID-1" style="height: 100%; position: relative; width: 100%;">
+													</div>
+												</div>
+											</div>
+											@Html.Raw(slider.SlideText)
+										</div>
+									</div>
+
+									lcCnt++;
+								}
+							</div>
+						</div>
+						<div class="slider-bottom">
+							<div class="slide-title">
+								@Html.Raw(Model.SlideTitle)
+							</div>
+							<div class="slider slider-nav">
+								@foreach (var slider1 in Model.WistiaList)
+								{
+									<div class="slide-body">
+										<div class="slider-img img-thumb-item-@lcSld" data-id="@lcSld">
+											<img class="img-fluid" src="@Url.ContentUrl(slider1.SlideImage)" alt="">
+											@Html.Raw(slider1.SlideText)
+
+										</div>
+									</div>
+
+									lcSld++;
+								}
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="/Assets/Wistia/js/slick.min.js"></script>
+		<script type="text/javascript" src="/Assets/Wistia/js/owl.carousel.min.js"></script>
+		<script type="text/javascript" src="/Assets/Wistia/js/customslick.min.js"></script>
+	}
+
+</div>

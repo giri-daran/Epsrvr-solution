@@ -1,0 +1,24 @@
+@model PhysicianFinderElementBlock
+
+@{
+    var url = string.Format("https://maps.googleapis.com/maps/api/js?key={0}&libraries=geometry&callback=initMap", Model.MapApiKey);
+
+}
+
+@if (EPiServer.Editor.PageEditing.PageIsInEditMode)
+{
+    <span class="Form__Element ">@Model.TemplateName</span>
+}
+else
+{
+    <script async defer src="@url"></script>
+
+    <script type="text/javascript">
+        var GoogleApi = '@Model.MapGeoCodeKey';
+        var moduleID = '@Model.ModuleID';
+        var tablename = '@Model.TableName';
+    </script>
+
+    @Html.AntiForgeryToken()
+    @Html.Raw(ViewBag.HtmlContent)
+}

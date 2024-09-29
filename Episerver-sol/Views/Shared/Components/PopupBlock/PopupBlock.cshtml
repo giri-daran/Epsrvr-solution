@@ -1,0 +1,64 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@model EpiserverBH.Models.Blocks.PopupBlock
+
+@if (Model.BootstrapVersion == "BT4")
+{
+	<link href="/Assets/PopUpBlock/css/popup.css" rel="stylesheet" />
+
+	<div class="popupBlock" id="@Model.modelId">
+		<div class="leaving-Popup-bg"><!-- --></div>
+		<div class="leaving-Popup">
+			@if (Model.hasCloseBtn)
+			{
+				<button class="close" type="button">X</button>
+			}
+			<h2>@Html.Raw(Model.Title)</h2>
+			<p>@Html.Raw(Model.Descriptions)</p>
+			<div class="leaving-btn-area">
+				@foreach (var linkdtl in Model.LinkListBlock)
+				{
+					<a class="@linkdtl.LinkClass">
+						@linkdtl.LinkText <img alt="" src="@Url.ContentUrl(linkdtl.LinkImage)">
+					</a>
+				}
+			</div>
+		</div>
+	</div>
+
+	<script src="/Assets/PopUpBlock/js/popupnew.js"></script>
+
+}
+
+else if (Model.BootstrapVersion == "BT5")
+{
+
+	<div class="modal fade interstitialModal" id="@Model.modelId" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2>@Html.Raw(Model.Title)</h2>
+					@if (Model.hasCloseBtn)
+					{
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					}
+				</div>
+				<div class="modal-body">
+					<p>@Html.Raw(Model.Descriptions)</p>
+				</div>
+				<div class="modal-footer">
+					@foreach (var linkdtl in Model.LinkListBlock)
+					{
+						<a class="@linkdtl.LinkClass">
+							@linkdtl.LinkText <img alt="" src="@Url.ContentUrl(linkdtl.LinkImage)">
+						</a>
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<script src="/Assets/PopUpBlock/js/popup.js"></script>
+}

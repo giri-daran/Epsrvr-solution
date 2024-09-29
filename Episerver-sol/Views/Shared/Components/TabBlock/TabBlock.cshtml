@@ -1,0 +1,32 @@
+﻿@using EPiServer
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.ServiceLocation
+@model EpiserverBH.Models.Blocks.Tab.TabBlock
+
+
+<div class="tab-section">
+	<nav>
+		<div class="nav nav-tabs" id="nav-@Model.BlockID" role="tablist">
+			@foreach (var button in Model.TabList)
+			{
+				var lcVal = Convert.ToString(button.TabText).Replace(" ", "_");
+				<a href="#@button.TabID" class="nav-link" id="btn-@lcVal" data-bs-toggle="tab" data-bs-target="#@button.TabID" role="tab" aria-controls="@button.TabID" aria-selected="true">
+					@Html.Raw(button.TabText)
+				</a>
+			}
+
+		</div>
+	</nav>
+	<div class="tab-content border bg-light" id="@Model.BlockID">
+		@foreach (var content in Model.TabList)
+		{
+			<div class="tab-pane fade" id="@content.TabID" role="tabpanel" aria-labelledby="@content.TabID-tab">
+				@Html.Raw(content.Content)
+			</div>
+		}
+
+	</div>
+</div>
+
+<script src="/Assets/Tabblock/js/tab.min.js"></script>

@@ -1,0 +1,82 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EpiserverBH.Models.Blocks.Arestinprofessional
+@using EpiserverBH.Models.ViewModels.ArestinProfessional
+
+@model ArestinStudentViewModel
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+
+
+
+<div id="login" class="logtop margtwo">
+    @using (Html.BeginForm("InternalLogin", "ArestinStudentBlock", FormMethod.Post, new { @role = "form", id = "loginForm" }))
+    {
+
+
+        @*<form id="login-form" class="form loginform ui grid" action="" method="post">*@
+        @Html.HiddenFor(x => x.ReturnUrl)
+        @Html.AntiForgeryToken()
+
+        <div class="form-top">
+            <div class="field-container af-slide col-sm-12">
+                <h5>Student Login</h5>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="field-container af-slide col-sm-12">
+                <div class="label-top"><label for="Username" class="control-label af-slide required " style="">@Model.UsernameText</label></div>
+                <input class="form-control required ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched" name="Username" id="Username">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="field-container af-slide col-sm-12">
+                <div class="label-top"><label for="Password" class="control-label af-slide required " style="">@Model.PasswordText</label></div>
+                <input class="form-control required ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched" type="password" name="Password" id="Password">
+            </div>
+        </div>
+        <div class="form-group studpad">
+            <div class="field-container af-slide col-sm-6 form-checkbox">
+                <div class="checkbox">
+                    <label class="RememberMefont" style=""><input type="checkbox" id="RememberMe" class="normalCheckBox form-check-input ng-valid ng-dirty ng-valid-parse ng-empty ng-touched"><span>Remember Login</span></label>
+                </div>
+            </div>
+            <div class="field-container af-slide  form-group-reset-password col-sm-offset-1 col-sm-5 btnc-right" style="">
+                <input type="text" aria-hidden="true" aria-label="hidden input of static text" style="width:0!important;height:0!important;opacity:0!important;position:absolute!important;" tabindex="-1" data-ng-model="form.fields.ResetPassword.value" name="dnn4871ResetPassword" data-fieldid="660" data-af-field="ResetPassword" value="<a href=&quot;/educational-resources/arestin-student-certification-program/ctl/SendPassword?returnurl=/&quot; onclick=&quot;return dnnModal.show('/educational-resources/arestin-student-certification-program/ctl/sendpassword?returnurl=/educational-resources/arestin-student-certification-program/&amp;popUp=true',/*showReturn*/true,300,650,true,'')&quot; style=&quot;font-family: Avenir W01,Arial; color: #00aded; font-size: 14.99px;font-weight: 300;line-height: 21px;text-align: right;transform: scaleY(1.0023);&quot;>Reset Password</a>" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                <p name="ResetPassword" id="myBtn" data-ng-model="form.fields.ResetPassword.value" data-ng-bind-html="$sce.trustAsHtml(form.fields.ResetPassword.value)" class="ng-pristine ng-untouched ng-valid ng-binding ng-not-empty"><a href="/educational-resources/arestin-student-certification-program/" @*onclick="return Modal.show('/thankyou&amp;popUp=true',/*showReturn*/true,300,650,true,'')"*@ style="">Reset Password</a></p>
+            </div>
+        </div>
+        <div class="form-group Remindpad">
+            <div class="field-container af-slide  col-sm-2 btn-form btnc  btnc-left">
+                <input type="submit" class="btn btn-primary btn-md jsUsersSigninBtn" value="@Model.LoginButtonText" />
+            </div>
+            @*<div class="field-container af-slide  col-sm-2 btn-form btnc  btnc-left">
+                <button type="button" class="btn submit form-button af-btn-loading btn-normal btn-default  " id="btnCancel" style="font-weight:bold;">
+                    @Model.CancelButtonText
+                </button>
+            </div>*@
+
+            @*<br />*@
+        </div>
+        
+
+        <div class="alert alert-danger display-none" style="display: none;" id="login-signin-errormessage"></div>
+    }
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js"
+        integrity="sha512-XZEy8UQ9rngkxQVugAdOuBRDmJ5N4vCuNXCh8KlniZgDKTvf7zl75QBtaVG1lEhMFe2a2DuA22nZYY+qsI2/xA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/Assets/Arestinprofessional/js/StudentModule.js"></script>

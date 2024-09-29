@@ -1,0 +1,396 @@
+﻿@using EPiServer.Framework.Web.Mvc.Html
+@model EpiserverBH.Models.Blocks.Arestinprofessional.ArestinManageProfileBlock
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async></script>
+@Html.AntiForgeryToken()
+<div id="ContentPane">
+    <div class="DnnModule DnnModule-DNN_HTML DnnModule-4980 DnnVersionableControl">
+        <a name="4980"></a>
+        <div id="ContentPane" class="ContentBody">
+            <!-- Start_Module_4980 -->
+            <div id="ModuleContent" class="DNNModuleContent ModDNNHTMLC">
+                <div id="HtmlModule_lblContent">
+                    <h1>Manage&nbsp;your profile</h1>
+                    <p>Please ensure your <strong>ARESTIN</strong>&nbsp;Student Access profile is up to date in order to receive appropriate communications and resources.</p>
+                </div>
+            </div>
+            <!-- End_Module_4980 -->
+        </div>
+    </div>
+    <div class="DnnModule DnnModule-ActionForm DnnModule-4981">
+        <a name="4981"></a>
+        <div id="ContentPane" class="ContentBody">
+            <!-- Start_Module_4981 -->
+            <div id="ModuleContent" class="DNNModuleContent ModActionFormC">
+                <div id="Main_pnlContent" class="pnlMessage sunny bstrap30 manage-profile-form" af-name="" data-moduleid="4981">
+                    <div class="common-loading-container" style="display:none">
+                        <div class="common-data-loading"></div>
+                    </div>
+                    <div data-ng-controller="ActionFormCtrl" has-repeaters="" class="form-root bstrap30 inherit ng-scope" data-rootclass="bstrap30" style=";
+                  padding: 0px;color: inherit;" data-ng-init="load('4981')" id="dnn4981root" xmlns:utils="af:utils" novalidate="novalidate">
+                        <div class="row">
+                            <form id="ManageProfile" action="#" method="post">
+
+                                <div class="c-form  form-horizontal compact label-align-top col-sm-12 ">
+                                    <div class="blue-form ">
+                                        <div class="error-message">
+                                            <div class=" alert alert-danger" style="overflow: hidden;">
+                                                <div class="field-container af-slide  col-sm-12 btnc-left" xmlns:utils="af:utils">
+                                                    <input type="text" aria-hidden="true" aria-label="hidden input of static text" style="width:0!important;height:0!important;opacity:0!important;position:absolute!important;" tabindex="-1" data-ng-model="form.fields.ErrorMessage.value" id="ErrorMessage" name="ErrorMessage" data-fieldid="725" data-af-field="ErrorMessage" value="Your profile is missing information. Please fill in the red fields below." class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                                                    <p name="ErrorMessage" data-ng-model="form.fields.ErrorMessage.value" data-ng-bind-html="$sce.trustAsHtml(form.fields.ErrorMessage.value)" class="ng-pristine ng-untouched ng-valid ng-binding ng-not-empty">Your profile is missing information. Please fill in the red fields below.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 padmleft0">
+                                            <div class="form-field">
+                                                <h2>Name</h2>
+                                                <div class="instruction">(Fields marked with an * are required.)</div>
+                                            </div>
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="FirstName" class="control-label af-slide  required " style="">First Name </label></div>
+                                                    <input class="form-control required ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-maxlength" id="FirstName" name="FirstName" data-fieldid="715" data-af-field="FirstName" data-ng-model="form.fields.FirstName.value" data-ng-keyup="form.fields.FirstName.touched = true;" af-field-title="First Name" type="text" maxlength="50" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="LastName" class="control-label af-slide  required " style="">Last Name </label></div>
+                                                    <input class="form-control required ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-maxlength" id="LastName" name="LastName" data-fieldid="716" data-af-field="LastName" data-ng-model="form.fields.LastName.value" data-ng-keyup="form.fields.LastName.touched = true;" af-field-title="Last Name" type="text" maxlength="50" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-field"></div>
+
+                                            @{
+                                                if (Convert.ToString(Context.Session.GetString("ProfileType")) == "Student")
+                                                {
+                                                    <div class="form-field">
+                                                        <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                            <div class="label-top"><label for="Profession" class="control-label af-slide  required " style="">Student Type </label></div>
+                                                            @*<div class="dropdown-loader ng-hide" data-ng-show="form.fields.Profession.$_loading" data-ng-disabled="form.fields.Profession.value == form.fields.Profession.$_loading">Loading...</div>*@
+                                                            <!--googleoff: all-->
+                                                            <select class="form-control required ng-pristine ng-untouched ng-valid ng-not-empty" id="Profession" name="Profession" data-fieldid="718" data-af-field="Profession" data-ng-click="form.fields.Profession.touched = true;" data-ng-model="form.fields.Profession.selected" data-ng-change="form.fields.Profession.value = form.fields.Profession.selected.value || '';
+	                                                            form.fields.Profession.ddValue = form.fields.Profession.selected.value;
+	                                                            " data-ng-options="o as o.text for o in form.fields.Profession.options" data-val="/Student – Dental">
+                                                                <option value="" class="">Please select option below</option>
+                                                                <option label="Student – Dental" value="Student – Dental" selected="selected">Student – Dental</option>
+                                                                <option label="Student – Dental Hygiene" value="Student – Dental Hygiene">Student – Dental Hygiene</option>
+                                                            </select>
+                                                            <!--googleon: all-->
+                                                        </div>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="form-field">
+                                                        <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                            <div class="label-top"><label for="Profession" class="control-label af-slide  required " style="">Profession </label></div>
+                                                            @*<div class="dropdown-loader ng-hide" data-ng-show="form.fields.Profession.$_loading" data-ng-disabled="form.fields.Profession.value == form.fields.Profession.$_loading">Loading...</div>*@
+                                                            <!--googleoff: all-->
+                                                            <select class="form-control required ng-pristine ng-untouched ng-valid ng-not-empty" id="Profession" name="Profession" data-fieldid="718" data-af-field="Profession" data-ng-click="form.fields.Profession.touched = true;" data-ng-model="form.fields.Profession.selected" data-ng-change="form.fields.Profession.value = form.fields.Profession.selected.value || '';
+	                                                           form.fields.Profession.ddValue = form.fields.Profession.selected.value;
+	                                                           " data-ng-options="o as o.text for o in form.fields.Profession.options" data-val="/Faculty – Dental">
+                                                                <option value="" class="">Please select option below</option>
+                                                                <option label="Faculty – Dental" value="Faculty – Dental" selected="selected">Faculty – Dental</option>
+                                                                <option label="Faculty – Hygiene" value="Faculty – Hygiene">Faculty – Hygiene</option>
+                                                            </select>
+                                                            <!--googleon: all-->
+                                                        </div>
+                                                    </div>
+                                                }
+                                            }
+
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="SchoolName" class="control-label af-slide  required " style="">School Name </label></div>
+                                                    <input class="form-control required ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-maxlength" id="SchoolName" name="SchoolName" data-fieldid="713" data-af-field="SchoolName" data-ng-model="form.fields.SchoolName.value" data-ng-keyup="form.fields.SchoolName.touched = true;" af-field-title="School Name" type="text" maxlength="50" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div style="clear: both;"></div>
+                                        </div>
+                                        <div class="col-sm-6 padmleft0">
+                                            <div class="form-field">
+                                                <h2>Email &amp; Password</h2>
+                                                <div class="instruction">(Fields marked with an * are required.)</div>
+                                            </div>
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="Email" class="control-label af-slide  required " style="">Email Address </label></div>
+                                                    <input class="email form-control required ng-pristine ng-untouched ng-valid ng-not-empty" id="Email" name="Email" data-fieldid="719" data-af-field="Email" data-ng-model="form.fields.Email.value" data-ng-keyup="form.fields.Email.touched = true;" af-field-title="Email Address" type="text" placeholder="" disabled="">
+                                                </div>
+                                            </div>
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="SecondaryEmailAddress" class="control-label af-slide  " style="">Secondary Email Address </label></div>
+                                                    <input class="email form-control ng-pristine ng-untouched ng-valid ng-not-empty" id="SecondaryEmailAddress" name="SecondaryEmailAddress" data-fieldid="720" data-af-field="SecondaryEmailAddress" data-ng-model="form.fields.SecondaryEmailAddress.value" data-ng-keyup="form.fields.SecondaryEmailAddress.touched = true;" af-field-title="Secondary Email Address" type="text" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="Password" class="control-label af-slide  required " style="">Password </label></div>
+                                                    <input class="password form-control required ng-pristine ng-untouched ng-valid ng-empty" id="Password" name="Password" data-fieldid="721" data-af-field="Password" data-ng-model="form.fields.Password.value" data-ng-keyup="form.fields.Password.touched = true;" af-field-title="Password" type="password" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-field">
+                                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                                    <div class="label-top"><label for="RetypePassword" class="control-label af-slide  required " style="">Retype Password </label></div>
+                                                    <input class="form-control required ng-pristine ng-untouched ng-valid ng-empty" id="RetypePassword" name="RetypePassword" data-fieldid="722" data-af-field="RetypePassword" data-ng-model="form.fields.RetypePassword.value" data-ng-keyup="form.fields.RetypePassword.touched = true;" data-password-confirm="dnn4981Password" af-field-title="Retype Password" type="password" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div style="clear: both;"></div>
+                                        </div>
+                                        <div style="clear: both;"></div>
+                                        <div class="col-sm-12 padmleft0">
+                                            <div class="additional-faculty-profile">
+                                                <div class="form-field">
+                                                    <hr>
+                                                </div>
+                                                <div style="clear: both;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 padmleft0">
+                                            <div class="form-field col-sm-4">
+                                                <div class="field-container af-slide  form-group-recaptcha-display-error-message col-sm-12 " xmlns:utils="af:utils">
+                                                             <div class="
+                                                    label-top"><label for="SecurityCheck" class="control-label af-slide  required " style="">Security Check </label></div>
+                                                             <div class="recaptcha-display-error-message required ng-pristine ng-untouched ng-valid ng-empty" id="dnn4981SecurityCheck" name="SecurityCheck" data-fieldid="727" data-af-field="SecurityCheck" data-ng-model="form.fields.SecurityCheck.value" data-ng-keyup="form.fields.SecurityCheck.touched = true;">                                                                
+                                                                 <label for="g-recaptcha-response" style="display:none;">CAPTCHA</label><div class="g-recaptcha" data-sitekey="6LdF6C0UAAAAANMg9VVPBWgLjFqMgufK13PYOK37" data-callback="recaptchaCallback">		   </div>
+                                                                 <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha" />
+                                                             </div>
+                                                         </div>
+                                            </div>
+                                            <div class="form-field col-sm-8">
+                                                <div class="success-message">
+                                                    <div class="successbox">
+                                                        <div class="field-container af-slide  col-sm-12 btnc-left" xmlns:utils="af:utils">
+                                                            <input type="text" aria-hidden="true" aria-label="hidden input of static text" style="width:0!important;height:0!important;opacity:0!important;position:absolute!important;" tabindex="-1" data-ng-model="form.fields.SuccessMessage.value" name="dnn4981SuccessMessage" data-fieldid="726" data-af-field="SuccessMessage" value="<div class=&quot;col-sm-1 col-xs-2&quot; style=&quot;padding-right:5px;text-align:right;padding-top:10px&quot;><span class=&quot;glyphicon glyphicon-ok&quot;></span></div>
+                                                            <div class=&quot;col-sm-11 col-xs-10&quot; style=&quot;padding-left:5px;&quot;>
+                                                                <h4> Success</h4>
+                                                                <p>You have successfully modified your account. <a href=&quot;/educational-resources/arestin-student-certification-program&quot;>Return to your dashboard</a> </p>
+                                                            </div>" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+
+                                                            <div class="col-sm-1 col-xs-2" style="padding-right:5px;text-align:right;padding-top:10px"><span class="glyphicon glyphicon-ok"></span></div>
+                                                            <div class="col-sm-11  col-xs-10" style="padding-left:5px;">
+                                                                <h4> Success</h4>
+                                                                <p>You have successfully modified your account. <a href="/educational-resources/arestin-student-certification-program">Return to your dashboard</a> </p>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="errormsg" style="display:none;">
+                                                    <div class="errorbox">
+                                                        <div class="field-container af-slide  col-sm-12 btnc-left" xmlns:utils="af:utils">
+
+                                                            <div class="col-sm-1 col-xs-2" style="padding-right:5px;text-align:right;padding-top:10px;"><span class="glyphicon glyphicon-remove"></span></div>
+                                                            <div class="col-sm-11  col-xs-10" style="padding-left:5px;">
+                                                                <h4> Error</h4>
+                                                                <p id="errorId"></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-field">
+                                            <div class="field-container af-slide  col-sm-offset-4 col-sm-2 btn-form btnc  col-sm-offset-4 btnc-right" xmlns:utils="af:utils">
+                                                <button type="submit" data-loading-text="Please wait..." data-name="Update" class="
+                                 btn submit form-button af-btn-loading
+                                 btn-normal btn-info  " id="Update" style="" data-ng-click="form.fields.Update.onChange(form);" data-validation="on" data-default-button="on" data-submiturl="/DesktopModules/DnnSharp/ActionForm/Submit.ashx?_mid=4981&amp;_tabId=1962&amp;_portalId=70&amp;_alias=www.arestinprofessional.com&amp;openMode=Always&amp;language=en-US&amp;referrer=https%3a%2f%2fwww.arestinprofessional.com%2fmanage-profile&amp;event=click&amp;b=723" data-submitquery="_mid=4981&amp;_tabId=1962&amp;_portalId=70&amp;_alias=www.arestinprofessional.com&amp;openMode=Always&amp;language=en-US&amp;referrer=https%3a%2f%2fwww.arestinprofessional.com%2fmanage-profile&amp;event=click&amp;b=723">
+                                                    Update
+                                                </button>
+                                            </div>
+                                            <div class="field-container af-slide  form-group-btn-ms-cancel col-sm-2 btn-form btnc  btnc-left" xmlns:utils="af:utils">
+                                                <button type="button" data-loading-text="Please wait..." data-name="Cancel" class="
+                                 btn submit form-button af-btn-loading
+                                 btn-normal btn-default  btn-ms-cancel" id="Cancel" style="" data-ng-click="form.fields.Cancel.onChange(form);" data-default-button="on" data-submiturl="/DesktopModules/DnnSharp/ActionForm/Submit.ashx?_mid=4981&amp;_tabId=1962&amp;_portalId=70&amp;_alias=www.arestinprofessional.com&amp;openMode=Always&amp;language=en-US&amp;referrer=https%3a%2f%2fwww.arestinprofessional.com%2fmanage-profile&amp;event=click&amp;b=724" data-submitquery="_mid=4981&amp;_tabId=1962&amp;_portalId=70&amp;_alias=www.arestinprofessional.com&amp;openMode=Always&amp;language=en-US&amp;referrer=https%3a%2f%2fwww.arestinprofessional.com%2fmanage-profile&amp;event=click&amp;b=724">
+                                                    Cancel
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div style="clear: both;"></div>
+                                        <div class="form-field"></div>
+                                    </div>
+                                    <div class="alert alert-danger server-error" id="recaptcha-error" style="display: none;">reCAPTCHA verification failed.</div>
+                                </div>
+                                <div class="alert alert-info submit-confirm" style="display: none; text-align: center;"></div>
+
+                            </form>
+
+
+
+
+
+                        </div>
+                        <div dnnsf-modal=""></div>
+                    </div>
+                </div>
+            </div>
+            <!-- End_Module_4981 -->
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        $('#FirstName').val("@Context.Session.GetString("FirstName")");
+        $('#LastName').val("@Context.Session.GetString("LastName")");
+        $('#Profession').val("@Context.Session.GetString("Profession")".replace("&#x2013;", "–"));
+        $('#SchoolName').val("@Context.Session.GetString("SchoolName")");
+        $('#Email').val("@Context.Session.GetString("Email")");
+        $('#SecondaryEmailAddress').val("@Context.Session.GetString("SEmail")");
+        $('#Password').val('');
+        $('#RetypePassword').val('');
+
+        $('#ManageProfile').validate({
+            errorPlacement: function (error, element) {
+                return false;
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).parents("div.form-field").addClass('has-error');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).parents(".has-error").removeClass('has-error');
+            },
+            rules: {
+                FirstName: {
+                    required: true,
+                },
+                LastName: {
+                    required: true,
+                },
+                Profession: {
+                    required: true
+                },
+                SchoolName: {
+                    required: true
+                },
+                EmailAddress: {
+                    required: true,
+                    email: true
+                },
+                Password: {
+                    required: true
+                },
+                RetypePassword: {
+                    required: true,
+                    equalTo: "#Password"
+                }
+                //},
+                //Added for google recaptcha v3 client side validation
+                //as all operations done in client side
+                //hiddenRecaptcha: {
+                //    required: function () {
+                //        if (grecaptcha.getResponse() == '') {
+                //            return true;
+                //        } 
+                //        else {
+                //            return false;
+                //        }
+                //    }
+                //}
+                
+            },
+            messages: {
+                FirstName: "Please enter your FirstName",
+                LastName: "Please enter your LastName",
+                Profession: "Please enter your Value",
+                SchoolName: "Please enter your SchoolName",
+                EmailAddress: "Please enter your EmailAddress",
+                Password: "Please enter your Password",
+                RetypePassword: "Please enter your RetypePassword"
+            }
+
+
+        });
+
+        $("#Update").click(function () {
+            validateForm();
+        });
+
+        $("#Cancel").click(function () {
+            history.go(-1);
+        });
+
+    });
+
+
+    function validateForm() {
+
+        $("#ManageProfile").validate();
+
+        var isValid = $("#ManageProfile").valid();
+
+        event.preventDefault();
+
+        if (isValid) {
+            //if (grecaptcha.getResponse() == '') {
+            //    $("#recaptcha-error").show();
+            //    event.preventDefault();
+            //    return false;
+            //} 
+            //else {
+            //    $("#recaptcha-error").hide();
+            //}
+
+            $(".show").removeClass("show");
+
+            var baseURL = window.location.origin;
+
+            if (baseURL[baseURL.length - 1] !== "/") {
+                baseURL = baseURL + "/";
+            }
+
+            let request = {
+                FirstName: $("#FirstName").val(),
+                LastName: $("#LastName").val(),
+                Profession: $("#Profession").val(),
+                SchoolName: $("#SchoolName").val(),
+                EmailAddress: $("#Email").val(),
+                SecondaryEmailAddress: $("#SecondaryEmailAddress").val(),
+                Password: $("#Password").val(),
+                RetypePassword: $("#RetypePassword").val(),
+                __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val(),
+            }
+
+            $.ajax({
+                url: baseURL + 'api/ArestinManageProfileBlock/ProfileUpdate',
+                type: "POST",
+                data: request,
+                success: function (data) {
+                    if (data !== undefined || data !== null) {
+                        if (data.IsSuccess) {
+                            $(".success-message").addClass("show");
+                            $('#Password').val('');
+                            $('#RetypePassword').val('');
+                        }
+                        else {
+                            $(".errormsg").addClass("show");
+                            $('#errorId').text(data.Message);
+
+                            //$("#ContentPane").html(data);
+                            //TODO:: display the error message in the appropriate div
+                            //$("#<divname>").html(data.ErrorMessage);
+                        }
+                    }
+                },
+                error: function (e, h, c) {
+                    console.log(h)
+                }
+            });
+        }
+        else {
+            $(".error-message").addClass("show");
+        }
+    }
+
+
+</script>
+
+
+

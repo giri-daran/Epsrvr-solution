@@ -1,0 +1,137 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@model EpiserverBH.Models.Blocks.ProgressiveSlider.ProgressiveSliderBlock
+
+<link href="/Assets/ProgressiveSlider/css/slider.css" rel="stylesheet" />
+@{
+    var imgCnt = 0;
+    var thumbCnt = 0;
+    var btnCnt = 0;
+    var sldCnt = 0;
+    var GenCnt = 0;
+}
+
+<div id="@Model.BlockID">
+
+    @Html.Raw(Model.Title)
+
+    <div class="slider-container">
+
+        @{
+            var Tabs = Model.ThumbList.DistinctBy(x => x.Gender);
+        }
+
+        @Html.Raw(Model.Description)
+
+        @foreach (var tab in Tabs)
+        {
+            string lcClss = (GenCnt == 0) ? "active" : "";
+
+            <div class="main-slide-content @lcClss" data-index="@GenCnt">
+
+                @foreach (var thumb in Model.ThumbList.Where(x => x.Gender == tab.Gender))
+                {
+                    string lcCls = (imgCnt == 0) ? "active" : "";
+                    imgCnt = 0;
+                    btnCnt = 0;
+
+                    <div class="main-pro-slider @lcCls sld-@GenCnt" data-index="@thumbCnt">
+                        <div class="slider-heading">@Html.Raw(@thumb.SliderTitle)</div>
+                        <div class="slides slides-anim-2">
+
+                            @foreach (var img in thumb.ImageList)
+                            {
+                                string lcClass = (imgCnt == 0) ? "active" : "";
+
+                                <div class="slide @lcClass" data-index="@imgCnt"><img src="@Url.ContentUrl(img.ImageStage)" alt="@img.ImageAltDescription"></div>
+                                imgCnt++;
+                            }
+                        </div>
+
+                        <div class="navigation">
+
+                            @foreach (var img in thumb.ImageList)
+                            {
+                                string lcClass = (btnCnt == 0) ? "active" : "";
+
+                                <button class="nav-btn @lcClass" data-index="@btnCnt">
+                                    <span>@img.ImageStageDescription</span>
+
+                                    @if (!string.IsNullOrEmpty(img.ImageHoverText))
+                                    {
+                                        <span class="hover-caption">@img.ImageHoverText</span>
+                                    }
+
+                                </button>
+                                btnCnt++;
+                            }
+
+                        </div>
+                    </div>
+
+                    thumbCnt++;
+                }
+
+                @{
+                    thumbCnt = 0;
+                    imgCnt = 0;
+                    GenCnt++;
+                }
+
+            </div>
+        }
+
+        <div class="pro-slider-thumb">
+            <div class="slide-tabs">
+                <ul class="tabs">
+
+                    @{
+                        GenCnt = 0;
+                    }
+
+                    @foreach (var tab in Tabs)
+                    {
+                        string lcClss = (GenCnt == 0) ? "active" : "";
+
+                        <li class="tab @lcClss" data-index="@GenCnt"> @tab.Gender</li>
+                        GenCnt++;
+                    }
+
+                    @{
+                        GenCnt = 0;
+                    }
+
+                </ul>
+            </div>
+
+            @foreach (var tab in Tabs)
+            {
+                string lcClss = (GenCnt == 0) ? "active" : "";
+
+                <div class="thumb-navigation tab-content @lcClss" data-index="@GenCnt">
+
+                    @foreach (var thm in Model.ThumbList.Where(x => x.Gender == tab.Gender))
+                    {
+                        string lcClass = (sldCnt == 0) ? "active" : "";
+
+                        <div class="nav-btn-thumb @lcClass tmb-@GenCnt" data-index="@sldCnt">
+                            <img src="@Url.ContentUrl(thm.ImageStage)" alt="@thm.ImageStageAltDescription">
+                            <div class="slider-grp-title">
+                                @Html.Raw(@thm.ThumbDescription)
+                            </div>
+                        </div>
+
+                        sldCnt++;
+                    }
+
+                </div>
+
+                sldCnt = 0;
+                GenCnt++;
+            }
+
+        </div>
+    </div>
+</div>
+
+<script src="/Assets/ProgressiveSlider/js/main.js"></script>

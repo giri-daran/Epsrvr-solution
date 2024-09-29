@@ -1,0 +1,37 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@model EpiserverBH.Models.Blocks.ISIBlock
+
+
+<link href="/Assets/ISIBlock/css/isi.min.css" rel="stylesheet" />
+
+<div class="isiSection" id="@Model.ModelId">
+
+		<div id="positionISI" class="@Model.PositionClass">
+			<div id="sticky-isi-module">
+				<div class="container">
+						<a href="javascript:void(0)" class="seeMore">See More</a>
+						@Html.Raw(Model.Title1)
+						@Html.Raw(Model.Descriptions1)
+						@Html.Raw(Model.Title2)
+						@Html.Raw(Model.Descriptions2)
+				</div>
+			</div>
+			<div class="expandedView">
+				<div class="container">
+					<a href="javascript:void(0)" class="seeLess">See Less</a>
+					@Html.Raw(Model.StaticTitle1)
+					@Html.Raw(Model.StaticDescriptions1)
+					@Html.Raw(Model.StaticTitle2)
+					@Html.Raw(Model.StaticDescriptions2)
+				</div>
+			</div>
+		</div>
+</div>
+
+
+
+<script src="/Assets/ISIBlock/js/isi.min.js"></script>
+
+
+

@@ -1,0 +1,153 @@
+﻿@using EPiServer
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@model EpiserverBH.Models.Blocks.DescriptionList.DescriptionListBlock
+
+@if (EPiServer.Editor.PageEditing.PageIsInEditMode)
+{
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+}
+<link href="/Assets/DescriptionList/css/list.css" rel="stylesheet" />
+
+@if (Model.DescripTitleList != null)
+{
+
+
+    <div class="container pt-5 @Model.ListLayout">
+
+        @if (Model.ListType == "descriptionlist")
+        {
+            <div class="dl-heading">
+                <h1 @Html.EditAttributes(m => m.ProductTitle)>@Html.Raw(Model.ProductTitle)</h1>
+                <p @Html.EditAttributes(m => m.Description)>@Html.Raw(Model.Description)</p>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+
+                    @foreach (var Desc12 in Model.DescripTitleList)
+                    {
+                        foreach (var Desc in Desc12.DescripList)
+                        {
+                            var lcUrl = Desc.LinkUrl == null ? "javascript:void(0)" : Desc.LinkUrl;
+                            <div class="dl-list-block" @Html.EditAttributes(m => m.DescripTitleList)>
+                                <div class="dl-list-header">
+                                    <h2><a href="@Url.ContentUrl(lcUrl)">@Html.Raw(Desc12.ListTitle)</a></h2>
+                                </div>
+                                <div class="dl-list-body">
+                                    <p>@Html.Raw(Desc.ListDescription)</p>
+                                </div>
+                                <div class="dl-list-footer" style="text-align: @Desc.LinkPosition;">
+                                    <a href="@Url.ContentUrl(lcUrl)" class="btn-list-link">@Desc.LinkText <span class="fa fa-chevron-right" aria-hidden="true"><!--a--></span></a>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        }
+        else if (Model.ListType == "productslist")
+        {
+            <div class="dl-heading img-View">
+                <p @Html.EditAttributes(m => m.HeaderTitle)>@Html.Raw(Model.HeaderTitle)</p>
+                <h2 @Html.EditAttributes(m => m.ProductTitle)>@Html.Raw(Model.ProductTitle)</h2>
+                <p @Html.EditAttributes(m => m.Description)>@Html.Raw(Model.Description)</p>
+                <h2 class="sub-dl-heading" @Html.EditAttributes(m => m.CategoryTitle)>@Html.Raw(Model.CategoryTitle)</h2>
+            </div>
+
+            <div class="row">
+
+                <div class="col-12">
+
+                    @foreach (var Desc12 in Model.DescripTitleList)
+                    {
+
+                        var lcStyle = Desc12.ListSeperator ? ("border-bottom-width: " + Desc12.ListSeperatorThickness + "; border-bottom-style: solid; border-bottom-color: " + Desc12.ListSeperatorColor + ";") : "";
+
+                        <div class="list-block-variation" style="@lcStyle" @Html.EditAttributes(m => m.DescripTitleList)>
+
+                            <div class="row align-items-center">
+
+                                <div class="dl-list-header">
+                                    <h2 class="h6">@Html.Raw(Desc12.ListTitle)</h2>
+                                </div>
+
+                                @foreach (var Desc in Desc12.DescripList)
+                                {
+                                    var lcUrl = Desc.LinkUrl == null ? "javascript:void(0)" : Desc.LinkUrl;
+
+                                    <div class="col-8 col-sm-8 col-md-9 col-lg-10">
+                                        <div class="dl-list-body">
+                                            <p class="mb-1">@Html.Raw(Desc.ListDescription)</p>
+                                            <p class="sub-content">@Html.Raw(Desc.FootNote)</p>
+                                        </div>
+                                    </div>
+
+
+                                    if (Desc.LinkText != "")
+                                    {
+                                        <div class="col-4 col-sm-4 col-md-3 col-lg-2">
+                                            <div class="dl-list-footer" style="text-align: right;">
+                                                <a href="@Url.ContentUrl(lcUrl)" class="btn-list-link"> @Desc.LinkText <span class="fa fa-solid fa-chevron-right" aria-hidden="true"><!--g--></span></a>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+
+
+                    }
+
+                    @{var lcFUrl = Model.FooterUrl == null ? "javascript:void(0)" : Model.FooterUrl;
+                    }
+
+                    <div class="list-block-backto-publsh" @Html.EditAttributes(m => m.FooterUrlText)>
+                        <a href="@lcFUrl" class="btn-list-link-backto">@Html.Raw(Model.FooterUrlText)<span class="fa fa-chevron-right pull-right"></span></a>
+                    </div>
+
+                </div>
+            </div>
+        }
+
+        else if (Model.ListType == "descriptionwithimagelist")
+        {
+            <div class="dl-heading">
+                <h1 @Html.EditAttributes(m => m.ProductTitle)>@Html.Raw(Model.ProductTitle)</h1>
+                <p @Html.EditAttributes(m => m.Description)>@Html.Raw(Model.Description)</p>
+            </div>
+
+            foreach (var Desc12 in Model.DescripTitleList)
+            {
+                foreach (var Desc in Desc12.DescripList)
+                {
+                    <div class="row new-margin">
+                        <div class="col-lg-2 d-none d-lg-block">
+                            <div class="dl-list-img">
+                                <img class="img-fluid" src="@Url.ContentUrl(Desc.DescImage)">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-10">
+                            @{var lcUrl = Desc.LinkUrl == null ? "javascript:void(0)" : Desc.LinkUrl; }
+                            <div class="dl-list-block" @Html.EditAttributes(m => m.DescripTitleList)>
+                                <div class="dl-list-header">
+                                    <h2><a href="@Url.ContentUrl(lcUrl)">@Html.Raw(Desc12.ListTitle)</a></h2>
+                                </div>
+                                <div class="dl-list-body">
+                                    <p>@Html.Raw(Desc.ListDescription)</p>
+                                </div>
+                                <div class="dl-list-footer" style="text-align: @Desc.LinkPosition;">
+                                    <a href="@Url.ContentUrl(lcUrl)" class="btn-list-link">@Desc.LinkText <span class="fa fa-chevron-right" aria-hidden="true"><!--a--></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+
+}

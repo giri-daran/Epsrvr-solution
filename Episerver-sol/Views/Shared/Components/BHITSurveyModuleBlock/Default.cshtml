@@ -1,0 +1,198 @@
+﻿@model EpiserverBH.Models.Blocks.BHITSurvey.BHITSurveyModuleBlock
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.2.0/mustache.js" type="text/javascript"></script>
+
+<script type="x-tmpl-mustache" id="tmplResponse">
+    {{#Response}}
+    <div id="ModuleContent" class="DNNModuleContent ModBHITSurveyC">
+        <span id="View_Message_Label">Thank You for Participating</span>
+        <div id="response" class="Questionpollresult">
+            <h2>Poll Results</h2>
+            <table id="lstResults" cellspacing="0" cellpadding="4" style="border-collapse:collapse;">
+                <tbody>
+                    <tr>
+                        <td>
+                            <span id="lblQuestion" class="NormalBold">{{Question}}</span>
+                            <br>
+                            <span id="lstResults" class="Normal">
+                                <br>
+                                <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                                    <tbody>
+                                        {{#Options}}
+                                        <tr>
+                                            <td valign="top" class="YourCompanyNameSurveyResults">{{OptionName}}</td>
+                                            <td class="clspercent">{{VotePercentage}}%</td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" colspan="2" valign="top" class="Normal NOWRAP">
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" style="width: {{VotePercentage}}%" aria-valuenow="{{VotePercentage}}" aria-valuemin="0" aria-valuemax="100">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {{/Options}}
+                                    </tbody>
+                                </table>
+                            </span>
+                            <br>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        &nbsp;
+    </div>
+    <div class="clear"></div>
+    {{/Response}}
+</script>
+
+<script type="x-tmpl-mustache" id="tmplSurvey">
+    {{#Response}}
+    <tbody>
+        <tr>
+            <td>
+                <span id="lstSurvey_QuestionLabel" style="font-weight:normal;">{{{Question}}}</span><br>
+                <table id="lstSurvey_optOptions">
+                    <tbody>
+                        {{#Options}}
+                        <tr>
+                            <td>
+                                <input id="lstSurvey_optOptions_{{ViewOrder}}" type="radio" name="optOptions" value="{{SurveyOptionId}}"><label for="lstSurvey_optOptions_{{ViewOrder}}">{{OptionName}}</label>
+                            </td>
+                        </tr>
+                        {{/Options}}
+                    </tbody>
+                </table>
+                <br>
+            </td>
+        </tr>
+    </tbody>
+    {{/Response}}
+</script>
+
+
+@Html.AntiForgeryToken()
+<div id="ModuleContent" class="DNNModuleContent ModBHITSurveyC">
+    <!-- Survey -->
+    <div id="pnlSurvey" class="Questionpoll">
+        <h2>Take the Poll</h2>
+        <table id="lstSurvey" cellspacing="0" cellpadding="4" style="border-collapse:collapse;">
+        </table>
+        @*<a id="voteSubmit" title="Vote >" class="CommandButton btnsubmit">Vote &gt;</a>&nbsp;*@
+        <a id="voteSubmit" title="Vote >" class="CommandButton">Vote &gt;</a>&nbsp;
+    </div>
+    <!-- Response -->
+    <div id="pnlResponse" class="Questionpoll">
+    </div>
+    &nbsp;
+</div>
+
+<script type="text/javascript">
+
+    var baseUrl = window.location.origin;
+
+    if (baseUrl[baseUrl.length - 1] !== '/') {
+        baseUrl = baseUrl + '/';
+    }
+
+    //function isCookieExists(name) {
+    //    debugger;
+    //    var index = document.cookie.indexOf(name);
+    //    return index > -1;
+    //}
+
+    $("#pnlSurvey").on('click', "#voteSubmit", function () {
+        //debugger;
+        saveSurvey();
+    });
+
+    $(document).ready(function () {
+        //debugger;
+        refreshSurvey(false);
+    });
+
+    function saveSurvey() {
+        //debugger;
+        var selectedOption = $('[name=optOptions]:checked').val();
+
+        // if (selectedOption !== null || selectedOption !== undefined || selectedOption !== NaN) {
+        if (selectedOption !== undefined) {
+            let request = {
+                SurveyOptionId: selectedOption,
+                UserId: -1,
+                __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val(),
+            };
+
+            $.ajax({
+                url: baseUrl + 'api/BHITSurveyModuleBlock/SaveSurveyResult',
+                type: "POST",
+                data: request,
+                success: function (data) {
+                    //debugger;
+                    if (data !== null || data !== undefined) {
+                        refreshSurvey(true);
+                    }
+                },
+                error: function (a, b, c) {
+                    console.log(b);
+                }
+            });
+        }
+    }
+
+    function refreshSurvey(force) {
+        $.ajax({
+            url: baseUrl + 'api/BHITSurveyModuleBlock/GetSurvey',
+            type: "GET",
+            contentType: "application/json",
+            success: function (data) {
+                //debugger;
+                if (data !== null || data !== undefined) {
+                    if (force) {
+                        //debugger;
+                        //$('#pnlResponse') //to be Shown
+                        //$("#pnlSurvey") //to be hidden
+
+                        var template = $("#tmplResponse").html();
+                        var contentToRender = Mustache.render(template, data);
+
+                        $("#pnlSurvey").hide();
+                        $("#pnlResponse").show();
+                        $("#pnlResponse").html(contentToRender);
+                    }
+                    else {
+                        //debugger;
+                        //if (isCookieExists("_Survey")) {
+                        if (data.IsDisplayResponse) {
+                            //$('#pnlResponse') //to be Shown
+                            //$("#pnlSurvey") //to be hidden
+
+                            var template = $("#tmplResponse").html();
+                            var contentToRender = Mustache.render(template, data);
+
+                            $("#pnlSurvey").hide();
+                            $("#pnlResponse").show();
+                            $("#pnlResponse").html(contentToRender);
+                        }
+                        else {
+                            //$('#pnlResponse') //to be hidden
+                            //$("#pnlSurvey") //to be Shown
+
+                            var template = $("#tmplSurvey").html();
+                            var contentToRender = Mustache.render(template, data);
+
+                            $("#pnlResponse").hide();
+                            $("#lstSurvey").empty();
+                            $("#lstSurvey").append(contentToRender);
+                            $("#pnlSurvey").show();
+                        }
+                    }
+                }
+            },
+            error: function (a, b, c) {
+                console.log(b);
+            }
+        });
+    }
+</script>

@@ -1,0 +1,112 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EpiserverBH.Models.Blocks.Arestinprofessional
+@using EpiserverBH.Models.ViewModels.ArestinProfessional
+
+@model ArestinForgotPasswordViewModel
+
+@*<link href="/Assets/Arestinprofessional/css/default.css" rel="stylesheet" />
+<link href="/Assets/Arestinprofessional/css/skin.css" rel="stylesheet" />*@
+
+
+<div id="login">
+    <div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Password Reset</span></div>
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column">
+                <div id="login-box">
+
+                    @using (Html.BeginForm("ForgotPassword1", "ArestinForgotPasswordBlock", FormMethod.Post, new { @role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "required" })
+
+                        @Html.HiddenFor(m => m.ReturnUrl, new { @class = "ReturnUrl" })
+                        @Html.HiddenFor(m => m.CurrentBlockID, new { @class = "CurrentBlockID" })
+
+
+                        <div class="dnnForm dnnSendPassword dnnClear" id="ForgotSendForm">
+
+                            <div id="dnn_ctr_SendPassword_pnlRecover">
+                                <div style="display: none;" id="forgotpassword_errormessage"  class="dnnFormMessage dnnFormValidationSummary">
+
+                                </div>
+
+                                <div class="dnnFormMessage dnnFormInfo"><span id="dnn_ctr_SendPassword_lblHelp">If you forgot your password, an email with a password reset link will be sent to the address you enter below. Click on the link in that email and you will be taken to a page where you can then create a new password.</span></div>
+
+                                <div id="dnn_ctr_SendPassword_divPassword" class="dnnSendPasswordContent">
+
+                                    <div id="dnn_ctr_SendPassword_divEmail" class="dnnFormItem">
+
+                                        <div class="dnnLabel" style="position: relative;">
+                                            <label id="dnn_ctr_SendPassword_plEmail_label" for="dnn_ctr_SendPassword_txtEmail">
+                                                <span id="dnn_ctr_SendPassword_plEmail_lblLabel">Email Address</span>
+                                            </label>
+                                            <div id="dnn_ctr_SendPassword_plEmail_pnlHelp" class="dnnTooltip" style="position: absolute; right: -29%;">
+
+                                                <div class="dnnFormHelpContent dnnClear" style="display:none">
+                                                    <span id="dnn_ctr_SendPassword_plEmail_lblHelp" class="dnnHelpText">Enter the email address provided during registration to retrieve your password.</span>
+                                                    <a href="#" class="pinHelp" aria-label="Pin"></a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                        <input name="dnn$ctr$SendPassword$txtEmail" placeholder="eg, your_email@address.com" type="text" id="Email">
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <ul class="dnnActions dnnClear">
+                                <li>
+                                    <input type="button" id="SendPassword" class="dnnPrimaryAction" value="@Model.ResetButtonText" />
+                                </li>
+                                @* <li id="dnn_ctr_SendPassword_liCancel"><a id="dnn_ctr_SendPassword_lnkCancel" class="dnnSecondaryAction" href="~/educational-resources/arestin-student-certification-program">@Model.CancelButtonText</a></li> *@
+                            </ul>
+
+                        </div>
+
+
+                        <div id="ForgotSuccess" class="DNNModuleContent ModC" style="display:none;">
+                            <div id="dnn_ctr_ctl00_dnnSkinMessage" class="dnnFormMessage dnnFormSuccess">
+
+
+                                <span id="dnn_ctr_ctl00_lblMessage">If the details entered were correct, you should receive an email message shortly with a link to reset your password.</span>
+
+                            </div>
+
+                            <script type="text/javascript">
+                                jQuery(document).ready(function ($) {
+                                    var $body = window.opera ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
+                                    var scrollTop = $('#dnn_ctr_ctl00_dnnSkinMessage').offset().top - parseInt($(document.body).css("margin-top"));
+                                    $body.animate({ scrollTop: scrollTop }, 'fast');
+                                });
+                            </script>
+
+                            <div class="dnnForm dnnSendPassword dnnClear">
+
+
+
+                                <ul class="dnnActions dnnClear">
+
+                                 <!--   <li id="dnn_ctr_SendPassword_liCancel"><a id="dnn_ctr_SendPassword_lnkCancel" class="dnnSecondaryAction" href="~/educational-resources/arestin-student-certification-program/">Cancel</a></li>
+                                    -->
+                                </ul>
+
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="/Assets/Login/js/axios.min.js" type="text/javascript" async></script>

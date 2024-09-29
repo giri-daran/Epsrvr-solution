@@ -1,0 +1,214 @@
+﻿@using EPiServer
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@model EpiserverBH.Models.Blocks.BadgeGrid.BadgeGridBlock
+
+@if (EPiServer.Editor.PageEditing.PageIsInEditMode)
+{
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+}
+
+<link href="/Assets/BadgeGrid/css/badge.css" rel="stylesheet" />
+
+@if (Model.BadgeGridListBlock != null)
+{
+    var selSlideList = Model.BadgeGridListBlock.Where(a => a.Active == true);
+    var BadgeMaxCnt = Convert.ToInt32(Model.MaxNumberofBadge);
+    var bdgCount = 0;
+
+    if (selSlideList.Count() > 0)
+    {
+        var lcFWcolor = Model.BackgroundLayout == "fullwidth" ? "background-color:" + Model.BackgroundColor : "";
+        var lcCWcolor = Model.BackgroundLayout == "container-width" ? "background-color:" + Model.BackgroundColor : "";
+
+        <div id="@Model.BlockId" class="@Model.BlockClass">
+        <div class="white-Bg-bnr @Model.BackgroundLayout" style="@lcFWcolor;">
+            
+            @if (Model.BadgeGridTitle != null)
+            {
+                <div class="bg-title-background" style="background-color:@Model.BadgeGridTitleBackground;">
+                    <div class="@Model.BadgeLayoutType container">
+                         <div class="row">
+                                <div class="col-12">
+                                <div class="bg-title-heading">
+                                    <h3 @Html.EditAttributes(m => m.BadgeGridTitle)>@Html.Raw(Model.BadgeGridTitle)</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="@Model.BadgeLayoutType container" style="@lcCWcolor; width:@Model.BadgeMaxWidth;">
+                <div class="row justify-content-center">
+
+                    @foreach (var slide in selSlideList)
+                    {
+                        if (BadgeMaxCnt > bdgCount)
+                        {
+                            string lcClasscard = (Model.BadgeType == "colorbackground") ? "col-lg mb-xl-0 bg-coloum colorbackground" : (Model.BadgeType == "imagetitle") ? "col-lg mb-xl-0 bg-coloum imagetitlecrd" : (Model.BadgeType == "iconwithtext") ? "col-lg mb-xl-0 bg-coloum iconwithtxt" : "col-lg mb-xl-0 bg-coloum";
+                            if (Model.BadgeType == "multilink")
+                            {
+                                lcClasscard = "col-lg mb-xl-0 bg-coloum multilink";
+                            }
+
+                            <div class="@lcClasscard">
+
+                                @{
+                                    string lcClass = (Model.BadgeType == "imagetitle") ? "card-new h-100 card-img" : "card-new h-100";
+
+                                }
+
+                                <div class="@lcClass" style="box-shadow:@Model.BadgeShadow;" @Html.EditAttributes(m => m.BadgeGridListBlock)>
+
+                                    @if (Model.BadgeType == "sitetype")
+                                    {
+                                        <div class="bg-card-middle-text">
+                                            <h5 class="bg-card-title">@Html.Raw(slide.BadgeHeader) </h5>
+                                            <p class="bg-card-text">@Html.Raw(slide.Content)</p>
+                                        </div>
+
+                                        foreach (var linkdtl in slide.LinkListBlock)
+                                        {
+                                            var lcUrl = linkdtl.LinkUrl == null ? "javascript:void(0)" : linkdtl.LinkUrl;
+                                            var lcLabel = string.IsNullOrEmpty(slide.BadgeLabel) ? "" : slide.BadgeLabel;
+                                            <div class="bg-card-foot-img" style="text-align: @linkdtl.LinkPosition;">
+                                                <a title="@lcLabel" href="@Url.ContentUrl(lcUrl)" aria-label="Card" class="btn p-3">
+                                                    <img alt="" src="@Url.ContentUrl(linkdtl.LinkImage)">
+                                                </a>
+                                            </div>
+                                        }
+                                    }
+                                    else if (Model.BadgeType == "multilink")
+                                    {
+                                        <div class="bg-card-middle-text">
+                                            <h5 class="bg-card-title">@Html.Raw(slide.BadgeHeader) </h5>
+                                            <p class="bg-card-text">@Html.Raw(slide.Content)</p>
+                                        </div>
+
+                                        <div class="bg-list-group">
+
+                                            @foreach (var lnkdtl in slide.LinkListBlock)
+                                            {
+                                                var lcUrl = lnkdtl.LinkUrl == null ? "javascript:void(0)" : lnkdtl.LinkUrl;
+                                                var lcLabel = string.IsNullOrEmpty(slide.BadgeLabel) ? "" : slide.BadgeLabel;
+                                                if (lnkdtl.LinkType == "image")
+                                                {
+                                                    <a title="@lcLabel" href="@Url.ContentUrl(lcUrl)" aria-label="Card" class="bg-card-link" style="text-align: @lnkdtl.LinkPosition;"><img alt="" src="@Url.ContentUrl(lnkdtl.LinkImage)"></a>
+                                                }
+                                                else
+                                                {
+                                                    <a title="@lcLabel" href="@Url.ContentUrl(lcUrl)" aria-label="Card" class="bg-card-link" style="text-align:@lnkdtl.LinkPosition;"> @lnkdtl.LinkText <span class="fa fa-chevron-right pull-right"></span></a>
+                                                }
+                                            }
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        if (Model.BadgeType == "iconwithtext")
+                                        {
+                                            foreach (var linkdetail in slide.LinkListBlock)
+                                            {
+                                                var lcUrl = linkdetail.LinkUrl == null ? "javascript:void(0)" : linkdetail.LinkUrl;
+                                                var lcLabel = string.IsNullOrEmpty(slide.BadgeLabel) ? "" : slide.BadgeLabel;
+                                                <a title="@lcLabel" href="@Url.ContentUrl(lcUrl)" class="bg-card-header bg-card-icontext" style="background-color:@slide.BadgeBgColor;">
+                                                    @Html.Raw(slide.BadgeHeader)
+                                                </a>
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            foreach (var linkdetail in slide.LinkListBlock)
+                                            {
+                                                var lcUrl = linkdetail.LinkUrl == null ? "javascript:void(0)" : linkdetail.LinkUrl;
+                                                var lcLabel = string.IsNullOrEmpty(slide.BadgeLabel) ? "" : slide.BadgeLabel;
+                                                <div class="bg-card-header">
+                                                    <a title="@lcLabel" href="@Url.ContentUrl(lcUrl)">
+                                                        @Html.Raw(slide.BadgeHeader)
+                                                    </a>
+                                                </div>
+                                            }
+                                        }
+
+                                        if (slide.BadgeMiddleHeader != null)
+                                        {
+                                            foreach (var linkdetail in slide.LinkListBlock)
+                                            {
+                                                var lcUrl = linkdetail.LinkUrl == null ? "javascript:void(0)" : linkdetail.LinkUrl;
+
+                                                var lcLabel = string.IsNullOrEmpty(slide.BadgeLabel) ? "" : slide.BadgeLabel;
+
+                                                var lcAlt = string.IsNullOrEmpty(slide.BadgeAlt) ? "" : slide.BadgeAlt;
+
+
+
+                                                <div class="bg-card-middle-header">
+                                                    <a href="@Url.ContentUrl(lcUrl)" title="@lcLabel">
+                                                        <img class="img-fluid d-none d-lg-block " src="@Url.ContentUrl(slide.DescImage)" alt="@lcAlt">
+                                                        <img class="img-fluid d-block d-lg-none" src="@Url.ContentUrl(slide.MobImage)" alt="@lcAlt">
+                                                        @Html.Raw(slide.BadgeMiddleHeader)
+                                                    </a>
+                                                </div>
+                                            }
+                                        }
+
+                                        <div class="bg-card-middle-text">
+                                            <p>@Html.Raw(slide.Content)</p>
+                                        </div>
+                                       
+
+                                        foreach (var linkdetail in slide.LinkListBlock)
+                                        {
+                                            var lcUrl = linkdetail.LinkUrl == null ? "javascript:void(0)" : linkdetail.LinkUrl;
+                                            var lcLabel = string.IsNullOrEmpty(slide.BadgeLabel) ? "" : slide.BadgeLabel;
+
+                                            if (linkdetail.LinkType == "button")
+                                            {
+                                                <div class="bg-card-foot-img card-foot-cta" style="text-align: @linkdetail.LinkPosition;">
+                                                    <a title="@lcLabel" href="@Url.ContentUrl(lcUrl)" class="btn btn-cta"> @linkdetail.LinkText <span class="fa fa-chevron-right pull-right"></span></a>
+                                                </div>
+                                            }
+                                            else if (linkdetail.LinkType == "image")
+                                            {
+                                                <div class="bg-card-foot-img" style="text-align: @linkdetail.LinkPosition;">
+                                                    <a title="@lcLabel" href="@Url.ContentUrl(lcUrl)" aria-label="Card" class="btn p-3">
+                                                        <img alt="" src="@Url.ContentUrl(linkdetail.LinkImage)">
+                                                    </a>
+                                                </div>
+                                            }
+                                            else if (linkdetail.LinkType == "text")
+                                            {
+                                                <div class="bg-card-foot-img card-foot-cta">
+                                                    <a title="@lcLabel" href="@Url.ContentUrl(lcUrl)" class="bg-list-group"> @linkdetail.LinkText <span class="fa fa-chevron-right pull-right"></span></a>
+                                                </div>
+                                            }
+                                        }
+                                        @if (slide.BadgeFooter != null)
+                                        {
+                                            <div class="bg-card-last-text">
+                                                @Html.Raw(slide.BadgeFooter)
+                                            </div>
+                                        }
+                                     
+                                    }
+
+                                </div>
+                            </div>
+
+                            bdgCount++;
+                        }
+                        else
+                        {
+                            break;
+                        }
+
+                    }
+                </div>
+            </div>
+        </div>
+        </div>
+    }
+}

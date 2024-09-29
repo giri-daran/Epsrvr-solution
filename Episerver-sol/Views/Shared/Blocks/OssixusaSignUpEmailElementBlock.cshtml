@@ -1,0 +1,242 @@
+﻿@model EpiserverBH.Models.Blocks.Ossixusa.OssixusaSignUpEmailElementBlock
+<script src="//app-sj07.marketo.com/js/forms2/js/forms2.min.js"></script>
+<script>MktoForms2.loadForm("//app-sj07.marketo.com", "350-OKO-721", 1980);</script>
+<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async></script>
+<style>
+    .bstrap30 .radio, .bstrap30 .checkbox {
+        margin-top: 0px;
+        margin-bottom: 10px;
+        padding-left: 0px;
+    }
+
+    .error {
+        color: #a94442 !important;
+        font-family: 'Frutiger LT W01_55 Roma1475738' !important;
+        font-size: 12px !important;
+    }
+
+    .radiovalidate {
+        margin-left: 20px !important;
+    }
+
+    #hiddenRecaptcha-error {
+        display: none !important;
+    }
+   
+    div#Signup i.fa-action-form {
+        color: #ffffff;
+        position: relative;
+        right: 32px;
+        top: 3px;
+    }
+</style>
+
+<div class="Signup" id="Signup">
+    <form id="SignupEmail" action="#" method="post" onsubmit="validateForm();">
+       
+        <div data-ng-controller="ActionFormCtrl" has-repeaters="" class="form-root bstrap30 inherit ng-scope" data-rootclass="bstrap30" style=";
+                padding: 0px;color: inherit;" data-ng-init="load('22882')" id="dnn22882root" xmlns:utils="af:utils" novalidate="novalidate">
+            <div class="row">
+                <div class="c-form  form-horizontal normal label-align-inside col-sm-12 ">
+                    <div class="container ossix-form">
+                        <div class="main-copy">
+                            <h2 id="Signup-22882" class="section-title col-sm-12 ng-pristine ng-untouched ng-valid ng-binding ng-not-empty emails" data-ng-model="form.fields.Signup.value" data-ng-bind-html="$sce.trustAsHtml(form.fields.Signup.value)">SIGN UP FOR EMAILS</h2>
+                        </div>
+
+                        <div class="sub-copy">
+                            <div class="field-container af-slide  col-sm-12 btnc-left" xmlns:utils="af:utils">
+                                <input class="ng-pristine ng-untouched ng-valid ng-not-empty" style="width: 0!important; height: 0!important; opacity: 0!important; position: absolute!important;" tabindex="-1" name="SubHeading" type="text" value="&lt;p&gt;
+                        Interested in learning more? Just provide your information below to sign up for emails about the &lt;em&gt;OSSIX&lt;/em&gt; portfolio.
+                        &lt;/p&gt;" aria-hidden="true" aria-label="hidden input of static text" data-ng-model="form.fields.SubHeading.value" data-fieldid="5592" data-af-field="SubHeading" />
+                                <p class="learning">Interested in learning more? Just provide your information below to sign up for emails about the <em>OSSIX</em> portfolio.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-7 col-xs-12">
+                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils"><input id="FirstName" class="CommonValidatorFirstnamelettersOnly form-control required ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" maxlength="50" name="FirstName" type="text" placeholder="*FIRST NAME" data-fieldid="5593" data-af-field="FirstName" data-ng-model="form.fields.FirstName.value" data-ng-keyup="form.fields.FirstName.touched = true;" /></div>
+                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils"><input id="LastName" class="CommonValidatorLastnamelettersOnly form-control required ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" maxlength="50" name="LastName" type="text" placeholder="*LAST NAME" data-fieldid="5594" data-af-field="LastName" data-ng-model="form.fields.LastName.value" data-ng-keyup="form.fields.LastName.touched = true;" /></div>
+                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils"><input id="Email" class="email CommonValidatorEmailLength form-control required ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" maxlength="200" name="Email" type="text" placeholder="*EMAIL ADDRESS" data-fieldid="5595" data-af-field="Email" data-ng-model="form.fields.Email.value" data-ng-keyup="form.fields.Email.touched = true;" /></div>
+                                <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils"><input id="ZipCode" class="CommonValidatorZipLength number form-control required ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" maxlength="5" name="ZipCode" type="text" placeholder="*ZIP CODE" data-fieldid="5596" data-af-field="ZipCode" data-ng-model="form.fields.ZipCode.value" data-ng-keyup="form.fields.ZipCode.touched = true;" /></div>
+                                <div role="radiogroup" aria-label="radio group" id="Following" class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                    <div class="
+                           label-inside"><label class="control-label af-slide  " for="Following">ARE YOU ONE OF THE FOLLOWING? </label></div>
+                                    <!-- ngRepeat: o in form.fields.Following.options -->
+                                    <div class="radio ng-scope" data-ng-repeat="o in form.fields.Following.options">
+                                        <label><input class="normalCheckBox ng-pristine ng-untouched ng-valid ng-empty" name="Following" type="radio" value="GENERAL PRACTITIONER" data-ng-model="form.fields.Following.value" data-ng-truevalue="o.value" data-ng-click="form.fields.Following.touched = true;" /><span data-ng-bind-html="$sce.trustAsHtml(sf.localization[o.text] || o.text)" class="ng-binding">GENERAL PRACTITIONER</span></label><!-- ngIf: $last -->
+                                    </div>
+                                    <!-- end ngRepeat: o in form.fields.Following.options -->
+                                    <div class="radio ng-scope" data-ng-repeat="o in form.fields.Following.options">
+                                        <label><input class="normalCheckBox ng-pristine ng-untouched ng-valid ng-empty" name="Following" type="radio" value="SPECIALIST" data-ng-model="form.fields.Following.value" data-ng-truevalue="o.value" data-ng-click="form.fields.Following.touched = true;" /><span data-ng-bind-html="$sce.trustAsHtml(sf.localization[o.text] || o.text)" class="ng-binding">SPECIALIST</span></label><!-- ngIf: $last -->
+                                    </div>
+                                    <!-- end ngRepeat: o in form.fields.Following.options -->
+                                    <div class="radio ng-scope" data-ng-repeat="o in form.fields.Following.options">
+                                        <label><input class="normalCheckBox ng-pristine ng-untouched ng-valid ng-empty" name="Following" type="radio" value="ORAL SURGEON" data-ng-model="form.fields.Following.value" data-ng-truevalue="o.value" data-ng-click="form.fields.Following.touched = true;" /><span data-ng-bind-html="$sce.trustAsHtml(sf.localization[o.text] || o.text)" class="ng-binding">ORAL SURGEON</span></label><!-- ngIf: $last -->
+                                    </div>
+                                    <!-- end ngRepeat: o in form.fields.Following.options -->
+                                    <div class="radio ng-scope" data-ng-repeat="o in form.fields.Following.options">
+                                        <label><input class="normalCheckBox ng-pristine ng-untouched ng-valid ng-empty" name="Following" type="radio" value="OTHER" data-ng-model="form.fields.Following.value" data-ng-truevalue="o.value" data-ng-click="form.fields.Following.touched = true;" /><span data-ng-bind-html="$sce.trustAsHtml(sf.localization[o.text] || o.text)" class="ng-binding">OTHER</span></label><!-- ngIf: $last --> <!-- end ngIf: $last -->
+                                    </div>
+                                    <!-- end ngRepeat: o in form.fields.Following.options -->
+                                </div>
+                                <div class="txt-Other">
+                                    <div class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils"><input id="Other" class="lettersOnly form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" maxlength="100" name="Other" type="text" placeholder="" data-fieldid="5597" data-af-field="Other" data-ng-model="form.fields.Other.value" data-ng-change="form.fields.Other.onChange(form);" data-ng-keyup="form.fields.Other.touched = true;" /></div>
+                                </div>
+                                <div role="radiogroup" aria-label="radio group" id="Extractions" class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                    <div class="
+                           label-inside"><label class="control-label af-slide  " for="Extractions">DO YOU CURRENTLY PERFORM EXTRACTIONS? </label></div>
+                                    <!-- ngRepeat: o in form.fields.Extractions.options -->
+                                    <div class="radio ng-scope" data-ng-repeat="o in form.fields.Extractions.options">
+                                        <label style="text-transform: uppercase;"><input class="normalCheckBox ng-pristine ng-untouched ng-valid ng-empty" name="Extractions" type="radio" value="Yes" data-ng-model="form.fields.Extractions.value" data-ng-truevalue="o.value" data-ng-click="form.fields.Extractions.touched = true;" /><span data-ng-bind-html="$sce.trustAsHtml(sf.localization[o.text] || o.text)" class="ng-binding">Yes</span></label><!-- ngIf: $last -->
+                                    </div>
+                                    <!-- end ngRepeat: o in form.fields.Extractions.options -->
+                                    <div class="radio ng-scope" data-ng-repeat="o in form.fields.Extractions.options">
+                                        <label style="text-transform: uppercase;"><input class="normalCheckBox ng-pristine ng-untouched ng-valid ng-empty" name="Extractions" type="radio" value="No" data-ng-model="form.fields.Extractions.value" data-ng-truevalue="o.value" data-ng-click="form.fields.Extractions.touched = true;" /><span data-ng-bind-html="$sce.trustAsHtml(sf.localization[o.text] || o.text)" class="ng-binding">No</span></label><!-- ngIf: $last --> <!-- end ngIf: $last -->
+                                    </div>
+                                    <!-- end ngRepeat: o in form.fields.Extractions.options -->
+                                </div>
+                                <div role="radiogroup" aria-label="radio group" id="Preservations" class="field-container af-slide  col-sm-12 " xmlns:utils="af:utils">
+                                    <div class="
+                           label-inside"><label class="control-label af-slide  " for="Preservations">DO YOU CURRENTLY PERFORM SOCKET PRESERVATIONS? </label></div>
+                                    <!-- ngRepeat: o in form.fields.Preservations.options -->
+                                    <div class="radio ng-scope" data-ng-repeat="o in form.fields.Preservations.options">
+                                        <label style="text-transform: uppercase;"><input class="normalCheckBox ng-pristine ng-untouched ng-valid ng-empty" name="Preservations" type="radio" value="Yes" data-ng-model="form.fields.Preservations.value" data-ng-truevalue="o.value" data-ng-click="form.fields.Preservations.touched = true;" /><span data-ng-bind-html="$sce.trustAsHtml(sf.localization[o.text] || o.text)" class="ng-binding">Yes</span></label><!-- ngIf: $last -->
+                                    </div>
+                                    <!-- end ngRepeat: o in form.fields.Preservations.options -->
+                                    <div class="radio ng-scope" data-ng-repeat="o in form.fields.Preservations.options">
+                                        <label style="text-transform: uppercase;"><input class="normalCheckBox ng-pristine ng-untouched ng-valid ng-empty" name="Preservations" type="radio" value="No" data-ng-model="form.fields.Preservations.value" data-ng-truevalue="o.value" data-ng-click="form.fields.Preservations.touched = true;" /><span data-ng-bind-html="$sce.trustAsHtml(sf.localization[o.text] || o.text)" class="ng-binding">No</span></label><!-- ngIf: $last --> <!-- end ngIf: $last -->
+                                    </div>
+                                    <!-- end ngRepeat: o in form.fields.Preservations.options -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field-container af-slide  col-sm-12 btn-form btnc  btnc-left" xmlns:utils="af:utils">
+                            <div class="g-recaptcha" data-sitekey="6LdCIKUeAAAAAEV7woJHs_tW1t_fAFkueI9sClPl" data-callback="recaptchaCallback">		   </div>
+                            <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha" />
+                            <span id="recaptcha-error" class="error" style="display:none">reCAPTCHA verification failed.</span>
+                        </div>
+
+                            <div class="field-container af-slide  col-sm-12 btn-form btnc  btnc-left" xmlns:utils="af:utils">
+                                <input type="submit" data-loading-text="Please wait..." data-name="BtnSubmit" class="
+                           btn submit form-button af-btn-loading
+                           btn-normal btn-info  avt-form-btn" id="BtnSubmit" data-ng-click="form.fields.BtnSubmit.onChange(form);" data-validation="on" data-default-button="on" data-submiturl="" data-submitquery="" placeholder="submit" />
+                            <i class="fa fa-action-form <i class=&quot;fa fa-angle-right r_arrow&quot; aria-hidden=&quot;true&quot;></i>"></i>
+                            <div class="sub-copy">
+                                <div class="field-container af-slide  col-sm-12 btnc-left" xmlns:utils="af:utils">
+                                    <input class="ng-pristine ng-untouched ng-valid ng-not-empty" style="width: 0!important; height: 0!important; opacity: 0!important; position: absolute!important;" tabindex="-1" name="LegalNotice" type="text" value="&lt;p&gt;
+                           By submitting your information you confirm you have read and agree with our &lt;a href=&quot;https://www.bauschhealth.com/privacy&quot; class=&quot;link-default&quot; target=&quot;_blank&quot;&gt;Privacy Policy&lt;/a&gt; and &lt;a href=&quot;https://www.bauschhealth.com/terms&quot; class=&quot;link-default&quot; target=&quot;_blank&quot;&gt;Legal Notice&lt;/a&gt;.
+                           &lt;/p&gt;" aria-hidden="true" aria-label="hidden input of static text" data-ng-model="form.fields.LegalNotice.value" data-fieldid="5588" data-af-field="LegalNotice" />
+                                    <p>By submitting your information you confirm you have read and agree with our <a href="https://www.bauschhealth.com/privacy" target="_blank" class="link-default" rel="noopener">Privacy Policy</a> and <a href="https://www.bauschhealth.com/terms" target="_blank" class="link-default" rel="noopener">Legal Notice</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+</form>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#SignupEmail').validate({
+            rules: {
+                FirstName: {
+                    required: true
+                },
+                LastName: {
+                    required: true
+                },
+                Email: {
+                    required: true
+                },
+                ZipCode: {
+                    required: true,
+                    maxlength: 5,
+                    minlength: 5
+                },
+
+            messages:
+            {
+                FirstName: {
+                    required: "This field is required."                  
+                },
+                LastName: {
+                    required: "This field is required."
+                },
+                Email: {
+                    required: "This field is required.",
+                    email: "Please enter a valid email address."
+                },
+                ZipCode: {
+                    required: "This field is required.",
+                    maxlength: "Enter 5 numeric characters.",
+                    minlength: "Enter 5 numeric characters.",
+                    zipcode: "Please enter a valid integer number."
+                },
+            }
+}
+        });
+    });
+
+    function validateForm() {
+        //debugger;
+        $("#SignupEmail").validate();
+        var isValid = $("#SignupEmail").valid();
+        event.preventDefault();
+
+        if (isValid) {
+
+            //debugger;
+            if (grecaptcha.getResponse() == '') {
+                $("#recaptcha-error").show();
+                event.preventDefault();
+                return false;
+            } else {
+                $("#recaptcha-error").hide();
+            }
+            var Following = $("input[name='Following']:checked").val();
+            var Extractions = $("input[name='Extractions']:checked").val();
+            var Preservations = $("input[name='Preservations']:checked").val();
+
+            let request = {
+                FirstName: $("#FirstName").val(),
+                LastName: $("#LastName").val(),                
+                Email: $("#Email").val(),               
+                ZipCode: $("#ZipCode").val(), 
+                Following: Following,
+                Extractions: Extractions === undefined || Extractions === null ? 'N' : 'Y',
+                Preservations: Preservations === undefined || Preservations === null ? 'N' : 'Y',
+            };
+
+                var myForm = MktoForms2.getForm(1980);
+
+                let mRequest = {
+                    "FirstName": request.FirstName,
+                    "LastName": request.LastName,
+                    "Email": request.Email,
+                    "PostalCode": request.ZipCode,
+                    "profession-specialty": request.Following === undefined || request.Following === null ? '' : request.Following,
+                    "comments": request.Extractions === 'Y' ? 'True' : 'False',
+                    "comments2": request.Preservations === 'Y' ? 'True' : 'False',
+                };
+
+                    myForm.addHiddenFields(mRequest);
+                    myForm.onSuccess(function (values, followUpUrl) {
+                    //debugger;
+                    var redirectURL = '';
+                    redirectURL = '/ossix/signupthankyou';
+                    location.href = redirectURL;
+                    return false;
+                               
+                });
+                     myForm.submit();
+
+            event.preventDefault();
+            return false;
+        }
+        else {
+            return false;
+        }
+    }
+</script>

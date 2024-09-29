@@ -1,0 +1,33 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@model EpiserverBH.Models.Blocks.HKImageContent.HKBlock
+
+
+<div id="@Model.BlockID">
+<section class=@Model.ImageSection>
+<div class="container">
+    <div class="row">
+        <section class="block1">
+            <div class="blk-container">
+                <div class="block-1 @Model.ImagePosition">
+                    <div class="blk-img">
+                        <!--<img class="img-fluid" src="@Url.ContentUrl(Model.Image)">-->
+                        <img class="img-fluid d-none d-lg-block" src="@Url.ContentUrl(Model.Image)">
+                        <img class="img-fluid d-block d-lg-none" src="@Url.ContentUrl(Model.MobileImage)">
+                    </div>
+                    <div class="blk-para">
+                        <div class="para-bg @Model.CurvePosition" style="background-color:@Model.BackgroundColor;">
+                            @Html.Raw(Model.Title)
+
+                            @Html.Raw(Model.Subheading)
+
+                            @* <a href="#null">Link here</a>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+</section>
+</div>

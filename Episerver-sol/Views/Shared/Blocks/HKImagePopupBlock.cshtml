@@ -1,0 +1,67 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@model EpiserverBH.Models.Blocks.HKImagePopup.HKImagePopupBlock
+
+@if (Model.ImageList != null)
+{
+    var imgList = @Model.ImageList;
+
+    <!-- Block - 3 - Start-->
+    <section class="block3">
+        <div class="container">
+            <div class="row">
+
+                @foreach (var imgpoplist in imgList)
+                {
+                    <div class="col-12 col-lg-3 col-md-6 col-sm-3">
+                        <div class="share_blk popup_main">
+                            <a href="#msg1" title="" class="fancybox open_popup">
+                                <img src="@Url.ContentUrl(imgpoplist.DesktopImage)" class="img-fluid" alt="Cherrie Tam Tan Yayuan">
+                                <div class="blk-text"><span>@Html.Raw(imgpoplist.Title)</span></div>
+                            </a>
+                            <div class="popup_body">
+                                <div class="popup_back"></div>
+                                <div class="popup_contain">
+                                    <div class="gradiant-cls"></div>
+                                    <div class="popup_close">&#10006;</div>
+                                    <div class="msg-popup">
+                                        <div class="share_msg" id="msg1">
+                                            <div class="row">
+                                                <div class="col-12 col-lg-4 col-md-4 col-sm-4 f_left">
+                                                    <img src="@Url.ContentUrl(imgpoplist.DesktopImage)" class="img-fluid"
+                                                         alt="Cherrie Tam Tan Yayuan">
+                                                </div>
+                                                <div class="col-12 col-lg-8 col-md-8 col-sm-8 f_right">
+                                                    <div class="clearfix">
+                                                        <h2>@Html.Raw(imgpoplist.Title)</h2>
+                                                        <div class="popup-discrpiotin">
+                                                            <p>
+                                                                @Html.Raw(imgpoplist.Description)
+                                                            </p>
+                                                            <p class="quote">
+                                                                @Html.Raw(imgpoplist.Description2)
+                                                            </p>
+                                                            <a href=" @Html.Raw(imgpoplist.Link)"
+                                                               target="_blank">
+                                                                @Html.Raw(imgpoplist.LinkTitle)
+                                                            </a>
+                                                            <p>
+                                                                @Html.Raw(imgpoplist.FootNote)
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+
+    </section>
+}

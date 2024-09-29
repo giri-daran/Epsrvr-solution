@@ -1,0 +1,40 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@model EpiserverBH.Models.Blocks.HKAccordion.HKAccordionBlock
+
+@if (Model.AccordionList != null)
+{
+    var qnsList = @Model.AccordionList;
+    int i = 1;
+    var h = "heading";
+    var k = "collapse";
+    <div class="container">
+        <div class="row">
+            <section class="block2">
+                <div class="accordion" id="accordionExample">
+                    @foreach (var qnscnt in qnsList)
+                    {
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="@h@i">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#@k@i" aria-expanded="true" aria-controls="@k@i">
+                                    <div class="q-no"><span class="accord-no"></span>@Html.Raw(qnscnt.QuestionNo)</div>@Html.Raw(qnscnt.QuestionName)
+                                </button>
+                            </h2>
+                            <div id="@k@i" class="accordion-collapse collapse"
+                         aria-labelledby="@h@i" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    @Html.Raw(qnscnt.QDescription)
+                                </div>
+                            </div>
+                        </div>
+                        i++;
+                    }
+
+
+                </div>
+            </section>
+        </div>
+    </div>
+}

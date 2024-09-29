@@ -1,0 +1,91 @@
+﻿<script src="/Static/js/jquery.js" type="text/javascript"></script>
+<script src="/Static/js/bootstrap.js" type="text/javascript"></script>
+
+<script src="//app-sj07.marketo.com/js/forms2/js/forms2.min.js"></script>
+<script>MktoForms2.loadForm("//app-sj07.marketo.com", "350-OKO-721", 1961);</script>
+
+<div class="row" style="margin-right: 0px; margin-left: 0px;" id="subscribeMailContainer">
+    <form id="registrationForm">
+        <div class="c-form  form-horizontal normal label-align-inside col-sm-12 ">
+            <div class="bg-container keep-in-touch" id="keep-in-touch">
+                <div class="container">
+                    <div class="keep-in-touch-info">
+                        <h3 class="section-title col-sm-12 ng-pristine ng-untouched ng-valid ng-binding ng-not-empty" data-ng-model="form.fields.Title.value" data-ng-bind-html="$sce.trustAsHtml(form.fields.Title.value)">
+                            Want to keep in touch?
+                        </h3>
+                        <div class="field-container af-slide  col-sm-12 btnc-left formbottom" xmlns:utils="af:utils">
+                            <input type="text" aria-hidden="true" aria-label="hidden input of static text" style="width: 0!important; height: 0!important; opacity: 0!important; position: absolute!important;" data-ng-model="form.fields.EmailText.value" name="EmailText" id="EmailText" data-fieldid="293" data-af-field="EmailText" value="Enter your email address below and we&amp;rsquo;ll keep you up to date with all things acne and ONEXTON." class="ng-pristine ng-untouched ng-valid ng-not-empty" tabindex="-1" />
+                            <p name="dnn3031EmailText" data-ng-model="form.fields.EmailText.value" data-ng-bind-html="$sce.trustAsHtml(form.fields.EmailText.value)" class="ng-pristine ng-untouched ng-valid ng-binding ng-not-empty">Enter your email address below and we&rsquo;ll keep you up to date with all things acne and ONEXTON.</p>
+                        </div>
+                        <div class="field-container af-slide  form-group-subscribe-field col-sm-12  formbottom" xmlns:utils="af:utils">
+                            <input class="subscribe-field email form-control required ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" id="subscribeEmail" name="subscribeEmail" data-fieldid="294" data-af-field="Email" data-ng-model="form.fields.Email.value" data-ng-keyup="form.fields.Email.touched = true;" af-field-title="Enter your email" type="text" maxlength="225" placeholder="Enter your email" />
+                        </div>
+                        <div class="field-container af-slide  form-group-cta-btn col-sm-6 btn-form btnc  btnc-left formbottom" xmlns:utils="af:utils">
+                            <button type="submit"  id="btnSubmit" data-loading-text="Please wait..." data-name="Submit" class=" btn submit form-button af-btn-loading btn-normal btn-info  cta-btn">
+                                SUBSCRIBE
+                            </button>
+                        </div>
+                        <div class="subscribe-policy">
+                            <div class="field-container af-slide  col-sm-12 btnc-left formbottom" xmlns:utils="af:utils" >
+                                <input type="text" aria-hidden="true" aria-label="hidden input of static text" style="width: 0!important; height: 0!important; opacity: 0!important; position: absolute!important;" data-ng-model="form.fields.Privacypolicy.value" name="dnn3031Privacypolicy" data-fieldid="295" data-af-field="Privacypolicy" value="By submitting your information you confirm you have read and agree with our Privacy Policy." class="ng-pristine ng-untouched ng-valid ng-not-empty" tabindex="-1" />
+                                <p name="dnn3031Privacypolicy" data-ng-model="form.fields.Privacypolicy.value" data-ng-bind-html="$sce.trustAsHtml(form.fields.Privacypolicy.value)" class="ng-pristine ng-untouched ng-valid ng-binding ng-not-empty">By submitting your information you confirm you have read and agree with our Privacy Policy.</p>
+                            </div>
+                            <div class="field-container af-slide  col-sm-12 btnc-left formbottom" xmlns:utils="af:utils">
+                                <input type="text" aria-hidden="true" aria-label="hidden input of static text" style="width: 0!important; height: 0!important; opacity: 0!important; position: absolute!important;" data-ng-model="form.fields.Footenote.value" name="dnn3031Footenote" data-fieldid="296" data-af-field="Footenote" value="Ortho Dermatologics greatly respects your privacy and will never sell, rent, lease, or give away your information (name, address, email, etc.) to any third party. Nor will we send you unsolicited email. &lt;a target=&quot;_blank&quot; class=&quot;click-here&quot; href=&quot;https://www.bauschhealth.com/privacy&quot;&gt;Click here&lt;/a&gt; for Privacy Policy." class="ng-pristine ng-untouched ng-valid ng-not-empty" tabindex="-1" />
+                                <p name="dnn3031Footenote" data-ng-model="form.fields.Footenote.value" data-ng-bind-html="$sce.trustAsHtml(form.fields.Footenote.value)" class="ng-pristine ng-untouched ng-valid ng-binding ng-not-empty">Ortho Dermatologics greatly respects your privacy and will never sell, rent, lease, or give away your information (name, address, email, etc.) to any third party. Nor will we send you unsolicited email. <a target="_blank" class="click-here" href="https://www.bauschhealth.com/privacy" rel="noopener">Click here</a> for Privacy Policy.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#registrationForm").validate({
+            rules: {
+                subscribeEmail: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                subscribeEmail: {
+                    required: "This field is required.",
+                    email: "Please enter a valid email address."
+                }
+            },
+            submitHandler: function (form) {
+                //Marketo code here 
+                var myForm = MktoForms2.allForms()[0];
+
+                myForm.onSuccess(function (values, followUpUrl) {
+                    $("#subscribeMailContainer").hide();
+                    $('html, body').animate({
+                        scrollTop: $(".saving-section").offset().top -75
+                    }, 'slow');
+                    return false;
+                });
+
+                let values = {
+                    "Email": $('#subscribeEmail').val(),  // form.fields.EmailAddress.value,
+                };
+
+                myForm.addHiddenFields(values);
+
+                myForm.submit();
+                
+            }
+        });
+    });
+    //$(".btn").on('click', function () {
+    //    var dataLoadingText = $(this).attr("data-loading-text");
+    //    if (typeof dataLoadingText !== typeof undefined && dataLoadingText !== false) {
+    //        console.log(dataLoadingText);
+    //        $(this).text(dataLoadingText).addClass("disabled");
+    //    }
+    //});
+  
+</script>

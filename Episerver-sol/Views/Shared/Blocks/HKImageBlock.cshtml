@@ -1,0 +1,43 @@
+﻿<!--@using EPiServer
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@model EpiserverBH.Models.Blocks.HKBAImage.HKImageBlock
+
+@if (EPiServer.Editor.PageEditing.PageIsInEditMode)
+{
+
+}
+    @if (Model.ImageList != null)
+{
+    var imgList = @Model.ImageList;
+
+ 
+    <!-- Block - 4 - Start-->
+<section class="block4">
+    
+            @foreach (var imgpoplist in imgList)
+            {
+                <div class="before-after-blk" style="width: @Html.Raw(imgpoplist.ImageWidth)">
+                    <div class="ba-Slider" unselectable='on'
+                         onselectstart='return false;' onmousedown='return false;'>
+                    <div class="before-img">
+                            <img style="width: @Html.Raw(imgpoplist.ImageWidth)" src="@Url.ContentUrl(imgpoplist.BeforeImage)" />
+
+                        </div>
+                        
+                    <div class="after-img">
+                            <img style="width: @Html.Raw(imgpoplist.ImageWidth)" src="@Url.ContentUrl(imgpoplist.AfterImage)" />
+
+                        </div>
+                    <div class="slider"></div>
+                    </div>
+                    <div class="b-and-f-title">
+                        <span class="img-title-before">@Html.Raw(imgpoplist.Title)</span>
+                        <span class="img-title-after">@Html.Raw(imgpoplist.Title2)</span>
+                    </div>
+                </div>
+
+            }    
+</section>
+   
+}

@@ -1,0 +1,118 @@
+﻿@model EpiserverBH.Models.Blocks.Ossixusa.OssixusaCaseStudiesElementBlock
+
+@Html.AntiForgeryToken()
+<div class="inner_banner_section">
+    <div class="container">
+        <div>
+            <a class="case_study_back_button">
+                <i class="fa fa-angle-left r_arrow case_arrow" aria-hidden="true"></i> BACK TO RESOURCES
+            </a>
+        </div>
+        <div class="sub_page_header">
+            <div class="innercasestudy_title">
+                <span id="TitleID"></span>
+            </div>
+        </div>
+        <div class="innercasestudysubtitle">
+            <h2 id="SubTitleID"> </h2>
+        </div>
+        <p class="innercasestudypara" id="ParaID"> </p>
+    </div>
+</div>
+<div class="container">
+    <div class="sub_casestudy_title" id="ArticleID">
+
+    </div>
+</div>
+<div id="dnn_ctr22922_ViewEasyDNNNewsMain_ctl00_pnlArticelImagesGallery" class="edn_article_gallery">
+    <ul>
+        <li>
+            <a href="/siteassets/Ossix/EasyDNNNews/other-75x105-thumb.jpg" rel="ednSmbLight" data-smbdata="{&quot;id&quot;:944,&quot;type&quot;:&quot;image&quot;,&quot;src&quot;:&quot;/siteassets/Ossix/EasyDNNNews/other-75x105-thumb.jpg&quot;,&quot;socialUrl&quot;:&quot;&quot;,&quot;comments&quot;:{&quot;backend&quot;:&quot;&quot;,&quot;count&quot;:0},&quot;likes&quot;:{&quot;likedByUser&quot;:false,&quot;numOfLikes&quot;:0}}">
+                <img id="dnn_ctr22922_ViewEasyDNNNewsMain_ctl00_repArticleImages_imgArticleGalleryImage_0" alt="" src="/siteassets/Ossix/EasyDNNNews/100100cthumbother-75x105-thumb.jpg">
+            </a>
+        </li>
+    </ul>
+</div>
+<input type="hidden" name="dnn$ctr22922$ViewEasyDNNNewsMain$ctl00$hfRate" id="dnn_ctr22922_ViewEasyDNNNewsMain_ctl00_hfRate" value=" .000">
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        
+        ShowContent();
+        
+		setTimeout(function() {                
+		 $(".thumb").click(function () {
+            $(".thumb").removeClass("active"), $(this).addClass("active");
+        });
+        1 == $(".product-slider").length &&
+            ($(".thumb:nth-child(1)").addClass("active"),
+                $(".thumb").click(function () {
+                    $(".thumb").removeClass("active"), $(this).addClass("active");
+                })),
+            //$(".case_study_back_button").click(function () {
+            //    history.go(-1);
+            //}),
+            $("#carousel a.left").click(function () {
+                var i = $("#carousel .carousel-inner .item.active").index();
+                0 == i
+                    ? ((i = $("#carousel .carousel-inner .item").length - 1), $(".carousel-inner .item .thumb").removeClass("active"), $('.carousel-inner .item .thumb[data-slide-to="' + i + '"]').addClass("active"))
+                    : (i--, $(".carousel-inner .item .thumb").removeClass("active"), $('.carousel-inner .item .thumb[data-slide-to="' + i + '"]').addClass("active"));
+            }),
+            $("#carousel a.right").click(function () {
+                var i = $("#carousel .carousel-inner .item.active").index();
+                $("#carousel .carousel-inner .item").length - 1 == i
+                    ? ((i = 0), $(".carousel-inner .item .thumb").removeClass("active"), $('.carousel-inner .item .thumb[data-slide-to="' + i + '"]').addClass("active"))
+                    : (i++, $(".carousel-inner .item .thumb").removeClass("active"), $('.carousel-inner .item .thumb[data-slide-to="' + i + '"]').addClass("active"));
+            }),
+            $('.product-slider .carousel').carousel({
+                interval: false,
+            });
+        }, 2500);
+		
+    });
+
+
+
+    
+
+    function ShowContent() {
+        var str = window.location.pathname.replace("/ossix/case-studies-slide-show/", "");
+        let request = { ArtID: str, __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val() };
+        // 
+        var baseURL = window.location.origin;
+
+        if (baseURL[baseURL.length - 1] !== "/") {
+            baseURL = baseURL + "/";
+        }
+
+
+        $.ajax({
+            type: "POST",
+            url: baseURL + 'api/OssixusaCaseStudiesElementBlock/BuildContent',
+            data: request,//JSON.stringify(request),
+            dataType: 'JSON',
+           //contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if (data != null) {
+                    if (data.IsSuccess) {
+
+                        $('#TitleID').append(data.Title);
+                        $('#SubTitleID').append(data.SubTitle);
+                        $('#ArticleID').append(data.Article);
+                        $('#ParaID').append(data.Para);
+                    }
+                    else {
+                        //
+                    }
+                }
+            },
+            error: function (e, h, c) {
+                console.log(h);
+            }
+        });
+    }
+
+</script>

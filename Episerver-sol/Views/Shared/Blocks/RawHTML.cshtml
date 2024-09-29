@@ -1,0 +1,11 @@
+@using EPiServer.Core
+@using EpiserverBH.Controllers
+@model RawHTML
+
+@*<div>
+  @Html.PropertyFor(m => m.HTMLContent)
+</div>*@
+
+
+    <div @Html.EditAttributes(x => x.HTMLContent)>@Html.Raw(@Model.HTMLContent)</div>
+      

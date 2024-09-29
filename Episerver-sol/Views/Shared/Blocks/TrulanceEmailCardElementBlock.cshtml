@@ -1,0 +1,169 @@
+﻿@model EpiserverBH.Models.Blocks.Trulance.TrulanceEmailCardElementBlock
+
+<script src="//app-sj07.marketo.com/js/forms2/js/forms2.min.js"></script>
+<script>MktoForms2.loadForm("//app-sj07.marketo.com", "350-OKO-721", 1869);</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+
+<style>
+    .bstrap30 .radio, .bstrap30 .checkbox {
+        margin-top: 0px;
+        margin-bottom: 10px;
+        padding-left: 0px;
+    }
+
+    .error {
+        color: #d45252 !important;
+        font-size: 12px !important;
+        line-height: 18px !important;
+        display: inline-block;
+        position: relative;
+        top: 0px;
+        font-family: "Arial,Helvetica,sans-serif;" !important;
+    }
+
+    .err-placeholder {
+        margin-left: 20px !important;
+    }
+
+    .invalid{
+        color: red;
+    }
+
+</style>
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#EmailForm").validate({
+            ignore: ".ignore",
+            errorClass: "invalid",
+            rules: {
+
+                EmailAddress: {
+                    required: true,
+                    email: true
+                },
+                ConfirmEmail: {
+                    equalTo: "#EmailAddress"
+                },
+                Checkboxagree: {
+                    required: true
+                },
+            },
+            errorPlacement: function (error, element) {
+                if (element.attr("type") == "checkbox") {
+                    error.appendTo(element.parent().parent().parent().find('div.err-placeholder'));
+                }
+                else {
+                    error.insertAfter(element);
+                }
+            },
+            messages:
+            {
+                EmailAddress: {
+                    required: "Please enter a valid e-mail address"
+                },
+                ConfirmEmail: {
+                    equalTo: "Please make sure your e-mail addresses match"
+                },
+                Checkboxagree: {
+                    required: "You must be at least 18 years of age"
+                },
+            }            
+        });
+    });
+
+    function ValidateEmail() {
+
+        $("#EmailForm").validate();
+        var isValid = $("#EmailForm").valid();
+
+        event.preventDefault();
+
+        if (isValid) {
+            //debugger;
+            if (grecaptcha.getResponse() == '') {
+                $("#recaptcha-error").show();
+                return false;
+            } else {
+                $("#recaptcha-error").hide();
+            }
+
+            var baseURL = window.location.origin;
+
+            if (baseURL[baseURL.length - 1] !== "/") {
+                baseURL = baseURL + "/";
+            }
+
+            var chkCond = $("input[name='Checkboxagree']:checked").val();
+            chkCond = (chkCond === undefined || chkCond === null) ? 'N' : 'Y';
+
+            var AgeRadio = $("input[name='Ageradio']:checked").val();
+            AgeRadio = (AgeRadio === undefined || AgeRadio === null) ? 'N' : 'Y';
+
+            let request = {
+                EmailAddress: $("#EmailAddress").val(),
+                Checkboxagree: chkCond
+            };
+
+            $.ajax({
+                type: "POST",
+                url: baseURL + 'api/TrulanceEmailCardElementBlock/SendEmailCard',
+                data: {
+                    EmailAddress: $("#EmailAddress").val()
+                }
+,
+                //dataType: 'JSON',
+                success: function (data) {
+                    if (data != null) {
+                        if (data.IsSuccess) {
+                            if (data.LeadID != '') {
+                                $("#api-error").hide();
+                                var myForm = MktoForms2.getForm(1869);
+                                myForm.addHiddenFields({
+                                    //These are the values which will be submitted to Marketo Marketo fields on left, form fields on right	
+                                    "Email": request.EmailAddress,
+                                    "confirmemail": request.EmailAddress,
+                                    "iam18orOlder": chkCond === 'Y' ? 'True' : 'False',
+                                    "salixPhoneTxtEmailOptin": AgeRadio === 'Y' ? 'True' : 'False',
+                                    "Patient": "TRUE",
+                                    "PersonBelongsToSalix": "TRUE",
+                                    "couponID": data.LeadID
+                                });
+                                myForm.onSuccess(function (values, followUpUrl) {
+                                    var url = $(location).attr('href');
+                                    url = (!url.endsWith("/") ? url + "/" : url) + "confirmation";
+                                    $(location).attr('href', url);
+                                    return false;
+                                });
+                                myForm.submit();
+                            }
+                            else {
+
+                                $("#api-error").show();
+                            }
+                        }
+                        else {
+                            $("#api-error").show();
+                            //alert(data.ErrorMsg);
+                        }
+                    }
+                },
+                error: function (e, h, c) {
+                    console.log(h)
+                }
+            });
+
+            event.preventDefault();
+            return false;
+        }
+        else {
+            return false;
+        }
+    }
+
+</script>

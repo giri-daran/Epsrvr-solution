@@ -1,0 +1,156 @@
+﻿@model EpiserverBH.Models.Blocks.Ibsdtakesguts.IbsdtakesgutsQuizElementBlock
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        // Starts Validations
+
+        $('form').validate({
+            rules: {
+                //Radio button Validation Rule
+                quesOne: {
+                    required: true
+                },
+                quesTwo: {
+                    required: true
+                },
+                //Added for google recaptcha v3 client side validation
+                //as all operations done in client side
+                hiddenRecaptcha: {
+                    required: function () {
+                        if (grecaptcha.getResponse() == '') {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                }
+            },
+            errorPlacement: function (error, element) {
+                if (element.attr("type") == "radio" || element.attr("type") == "checkbox") {
+                    //error.insertBefore(element);
+                    error.appendTo(element.parent().parent().parent().parent().find('div.radiovalidate'));
+                } else {
+                    error.insertAfter(element);
+                }
+            },
+            messages: {
+                //Radio button Validation Message
+                quesOne: {
+                    required: "This field is required."
+                },
+                quesTwo: {
+                    required: "At least one item needs to be selected."
+                },
+            }
+        });
+
+
+        $(".sixthtext").hide();
+        $(".seventhtext").hide();
+        $("#sixchkYes").click(function () {
+            $(".sixthtext").show();
+        });
+        $("#sixchkNo").click(function () {
+            $(".sixthtext").hide();
+        });
+        $("#sevenchkYes").click(function () {
+            $(".seventhtext").show();
+        });
+        $("#sevenchkNo").click(function () {
+            $(".seventhtext").hide();
+        });
+
+    });
+
+    function validateQuiz() {
+
+        $('form').validate();
+
+        var isValid = $('form').valid();
+
+        event.preventDefault();
+
+        if (isValid) {
+            //debugger;
+            var baseURL = window.location.origin;
+
+            if (baseURL[baseURL.length - 1] !== "/") {
+                baseURL = baseURL + "/";
+            }
+
+            var quesOne = $("input[name='quesOne']:checked").val();
+            var quesTwo = '';
+            $("input[name='quesTwo']:checked").each(function () { quesTwo = quesTwo + $(this).val() + ','; });
+            var quesThree = $("input[name='quesThree']:checked").val();
+            var quesFour = $("input[name='quesFour']:checked").val();
+            var quesFive = $("input[name='quesFive']:checked").val();
+            var quesSix = $("input[name='quesSix']:checked").val();
+            var quesSeven = $("input[name='quesSeven']:checked").val();
+            var quesEight = $("input[name='quesEight']:checked").val();
+
+            //debugger;
+            let request = {
+                QuesOne: quesOne,
+                QuesTwo: quesTwo,
+                QuesThree: quesThree,
+                QuesFour: quesFour,
+                QuesFive: quesFive,
+                QuesSix: quesSix,
+                QuesSeven: quesSeven,
+                QuesEight: quesEight,
+                OptionOne: $("#OptionOne").val(),
+                OptionTwo: $("#OptionTwo").val(),
+                __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+            };
+
+
+            //Ajax code need to add
+            $.ajax({
+                url: baseURL + 'api/IbsdtakesgutsQuizElementBlock/SubmitQuiz',
+                type: "POST",
+                //contentType: "application/json; charset=utf-8",
+                data: request,
+                success: function (data) {
+                    //debugger;
+                    if (data !== null) {
+                        if (data.IsSuccess) {
+                            //data.PDFName
+                            var url = baseURL + 'siteassets/Quiz-PDF/' + data.PDFName;
+                            $("#downloadPDF").attr('href', url);
+                            $("#printPDF").attr('href', url);
+
+                            if (request.QuesThree == "No") {
+                                $('.mightNotBe').css('display', 'block');
+                                $('.mightBe').css('display', 'none');
+                            }
+                            else {
+                                $('.mightBe').css('display', 'block');
+                                $('.mightNotBe').css('display', 'none');
+
+                            }
+                            $("#quizResponse").show();
+
+                        }
+                        else {
+                            // Ignore
+                        }
+                    }
+                },
+                error: function (e, h, c) {
+                    console.log(h)
+                }
+            });
+
+            event.preventDefault();
+            return false;
+        } else {
+            return false;
+        }
+    }
+    function recaptchaCallback() {
+        $('#hiddenRecaptcha').valid();
+    };
+</script>

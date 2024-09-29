@@ -1,0 +1,55 @@
+﻿@using EPiServer
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@model EpiserverBH.Models.Blocks.Patents.PatentsBlock
+
+@if (EPiServer.Editor.PageEditing.PageIsInEditMode)
+{
+    <link href="/Assets/SalixPatents/css/styles.css" rel="stylesheet" type="text/css" />
+    <link href="/Assets/SalixPatents/css/datatable.css" rel="stylesheet" type="text/css" />
+    <link href="/Assets/SalixPatents/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+}
+@if (Model.PatentsListBlock != null)
+{
+    var Patentlist = Model.PatentsListBlock;
+    if (Patentlist.Count > 0)
+    {
+        <table id="myTable" align="left" border="0" class="table table-striped" cellspacing="0" width="100%" @Html.EditAttributes(m => m.PatentsListBlock)>
+
+
+            <thead>
+                <tr>
+                    <th>
+                        PRODUCT
+                    </th>
+                    <th width="160">
+                        PATENT NO.
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Patent in Patentlist)
+                {
+                    <tr>
+                        <td>
+                            @Html.Raw(Patent.ProductName)
+                        </td>
+                        <td>
+                            @Html.Raw(Patent.Patent)
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+    }
+}
+
+@if (EPiServer.Editor.PageEditing.PageIsInEditMode)
+{
+
+    <script src="/Assets/SalixPatents/js/bootstrap.min.js"></script>
+    <script src="/Assets/SalixPatents/js/datatables.js"></script>
+}

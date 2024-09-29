@@ -1,0 +1,261 @@
+@model EpiserverBH.Models.Blocks.Xifaxan.XifaxanDtcQuizBlock
+
+
+
+
+@* <link href="~/Assets/Xifaxan-DTC/css/main.min.css" rel="stylesheet" /> *@
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+@*<script src="~/Assets/Xifaxan-DTC/js/main.min.js"></script>*@
+<script src="/Assets/Xifaxan-DTC/js/FileSaver.js"></script>
+<script src="/Assets/Xifaxan-DTC/js/FileSaver.min.js"></script>
+<script src="/Assets/Xifaxan-DTC/js/jszip.js"></script>
+<script src="/Assets/Xifaxan-DTC/js/jszip-utils.js"></script>
+
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+@Html.AntiForgeryToken()
+<div class="pnlMessage sunny bstrap30 avt-action-form" af-name="">
+    <div class="common-loading-container" style="display:none">
+        <div class="common-data-loading"></div>
+    </div>
+    <div data-ng-controller="ActionFormCtrl" has-repeaters="" class="form-root bstrap30 ng-scope" data-rootclass="bstrap30" style=";
+                padding: 0px;" data-ng-init="load('59331')" id="root" xmlns:utils="af:utils" novalidate="novalidate">
+        <div>
+            <div class="c-form  form-horizontal normal label-align-right">
+                <div class="d-none d-lg-block yes_No_text">
+                    <p class="yes_No_text_1">YES</p>
+                    <p class="yes_No_text_2">NO</p>
+                </div>
+                <div class="container quizsection">
+                    <div class="row">
+                        <div class="c-form  form-horizontal normal label-align-right col-sm-12">
+                            <div class="form-group bg">
+                                <div class="
+                label-right col-sm-9 " xmlns:utils="af:utils"><label for="QuesOne" class="text-indent_2 control-label af-slide Que required " style=""><b>1.</b> Are you currently trying to manage your IBS-D symptoms with a prescription treatment? </label></div><div role="radiogroup" aria-label="radio group" id="QuesOne" class="field-container af-slide form-group-ans col-sm-3" xmlns:utils="af:utils"><!-- ngRepeat: o in form.fields.Qone.options --><div class="radio-as-buttons required ans radio radio-inline ng-scope" data-ng-repeat="o in form.fields.Qone.options"><label class="radio-boxes-labels"><input type="radio" name="QuesOne" class="normalCheckBox required ans ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched" data-ng-model="form.fields.Qone.value" data-ng-truevalue="o.value" value="Yes" data-ng-click="form.fields.Qone.touched = true;" data-ng-change="form.fields.Qone.onChange(form);" style=""><span data-ng-bind-html="$sce.trustAsHtml(dnnsf.localization[o.text] || o.text)" class="radio-boxes-buttons btn btn-default ng-binding" style="">YES</span></label><div class="radio-btn-text"><!-- ngIf: ($index + 1) !== form.fields.Qone.options.length --><span class="radio-boxes-buttons-words ng-scope" style=";" ng-if="($index + 1) !== form.fields.Qone.options.length"></span><!-- end ngIf: ($index + 1) !== form.fields.Qone.options.length --></div><!-- ngIf: $last --></div><!-- end ngRepeat: o in form.fields.Qone.options --><div class="radio-as-buttons required ans radio radio-inline ng-scope" data-ng-repeat="o in form.fields.Qone.options"><label class="radio-boxes-labels"><input type="radio" name="QuesOne" class="normalCheckBox required ans ng-pristine ng-untouched ng-valid ng-not-empty" data-ng-model="form.fields.Qone.value" data-ng-truevalue="o.value" value="No" data-ng-click="form.fields.Qone.touched = true;" data-ng-change="form.fields.Qone.onChange(form);" style=""><span data-ng-bind-html="$sce.trustAsHtml(dnnsf.localization[o.text] || o.text)" class="radio-boxes-buttons btn btn-default ng-binding" style="">NO</span></label><div class="radio-btn-text"><!-- ngIf: ($index + 1) !== form.fields.Qone.options.length --></div><!-- ngIf: $last --><div repeat-done="" ng-if="$last" class="ng-scope"></div><!-- end ngIf: $last --></div><!-- end ngRepeat: o in form.fields.Qone.options --><div class="err-placeholder"></div></div>
+                            </div>
+
+                            <div class="form-group qy">
+                                <div class="
+                label-right col-sm-9 " xmlns:utils="af:utils"><label for="Questwoyes" class=" text-indent_1 control-label af-slide Que  " style=""><b>2.</b> Are you having trouble finding relief from your IBS-D symptoms? </label></div><div role="radiogroup" aria-label="radio group" id="Questwoyes" class="field-container af-slide form-group-ans col-sm-3" xmlns:utils="af:utils"><!-- ngRepeat: o in form.fields.Qtwoyes.options --><div class="radio-as-buttons ans radio radio-inline ng-scope" data-ng-repeat="o in form.fields.Qtwoyes.options"><label class="radio-boxes-labels"><input type="radio" name="Questwoyes" class="normalCheckBox ans ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched" data-ng-model="form.fields.Qtwoyes.value" data-ng-truevalue="o.value" value="Yes" data-ng-click="form.fields.Qtwoyes.touched = true;" data-ng-change="form.fields.Qtwoyes.onChange(form);" style=""><span data-ng-bind-html="$sce.trustAsHtml(dnnsf.localization[o.text] || o.text)" class="radio-boxes-buttons btn btn-default ng-binding" style="">YES</span></label><div class="radio-btn-text"><!-- ngIf: ($index + 1) !== form.fields.Qtwoyes.options.length --><span class="radio-boxes-buttons-words ng-scope" style=";" ng-if="($index + 1) !== form.fields.Qtwoyes.options.length"></span><!-- end ngIf: ($index + 1) !== form.fields.Qtwoyes.options.length --></div><!-- ngIf: $last --></div><!-- end ngRepeat: o in form.fields.Qtwoyes.options --><div class="radio-as-buttons ans radio radio-inline ng-scope" data-ng-repeat="o in form.fields.Qtwoyes.options"><label class="radio-boxes-labels"><input type="radio" name="Questwoyes" class="normalCheckBox ans ng-pristine ng-untouched ng-valid ng-not-empty" data-ng-model="form.fields.Qtwoyes.value" data-ng-truevalue="o.value" value="No" data-ng-click="form.fields.Qtwoyes.touched = true;" data-ng-change="form.fields.Qtwoyes.onChange(form);" style=""><span data-ng-bind-html="$sce.trustAsHtml(dnnsf.localization[o.text] || o.text)" class="radio-boxes-buttons btn btn-default ng-binding" style="">NO</span></label><div class="radio-btn-text"><!-- ngIf: ($index + 1) !== form.fields.Qtwoyes.options.length --></div><!-- ngIf: $last --><div repeat-done="" ng-if="$last" class="ng-scope"></div><!-- end ngIf: $last --></div><!-- end ngRepeat: o in form.fields.Qtwoyes.options --><div class="err-placeholder"></div></div>
+                            </div>
+
+                            <div class="form-group qy">
+                                <div class="
+                label-right col-sm-9 " xmlns:utils="af:utils"><label for="Questhreeyes" class="text-indent_1 control-label af-slide Que text-indent_1 " style=""><b>3.</b> Are you looking for a treatment option that can help reduce IBS-D symptoms of both diarrhea and abdominal pain? </label></div><div role="radiogroup" aria-label="radio group" id="Questhreeyes" class="field-container af-slide form-group-ans col-sm-3" xmlns:utils="af:utils"><!-- ngRepeat: o in form.fields.Qthreeyes.options --><div class="radio-as-buttons ans radio radio-inline ng-scope" data-ng-repeat="o in form.fields.Qthreeyes.options"><label class="radio-boxes-labels"><input type="radio" name="Questhreeyes" class="normalCheckBox ans ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched" data-ng-model="form.fields.Qthreeyes.value" data-ng-truevalue="o.value" value="Yes" data-ng-click="form.fields.Qthreeyes.touched = true;" data-ng-change="form.fields.Qthreeyes.onChange(form);" style=""><span data-ng-bind-html="$sce.trustAsHtml(dnnsf.localization[o.text] || o.text)" class="radio-boxes-buttons btn btn-default ng-binding" style="">YES</span></label><div class="radio-btn-text"><!-- ngIf: ($index + 1) !== form.fields.Qthreeyes.options.length --><span class="radio-boxes-buttons-words ng-scope" style=";" ng-if="($index + 1) !== form.fields.Qthreeyes.options.length"></span><!-- end ngIf: ($index + 1) !== form.fields.Qthreeyes.options.length --></div><!-- ngIf: $last --></div><!-- end ngRepeat: o in form.fields.Qthreeyes.options --><div class="radio-as-buttons ans radio radio-inline ng-scope" data-ng-repeat="o in form.fields.Qthreeyes.options"><label class="radio-boxes-labels"><input type="radio" name="Questhreeyes" class="normalCheckBox ans ng-pristine ng-untouched ng-valid ng-not-empty" data-ng-model="form.fields.Qthreeyes.value" data-ng-truevalue="o.value" value="No" data-ng-click="form.fields.Qthreeyes.touched = true;" data-ng-change="form.fields.Qthreeyes.onChange(form);" style=""><span data-ng-bind-html="$sce.trustAsHtml(dnnsf.localization[o.text] || o.text)" class="radio-boxes-buttons btn btn-default ng-binding" style="">NO</span></label><div class="radio-btn-text"><!-- ngIf: ($index + 1) !== form.fields.Qthreeyes.options.length --></div><!-- ngIf: $last --><div repeat-done="" ng-if="$last" class="ng-scope"></div><!-- end ngIf: $last --></div><!-- end ngRepeat: o in form.fields.Qthreeyes.options --><div class="err-placeholder"></div></div>
+                            </div>
+
+                            <div class="form-group qy">
+                                <div class="
+                label-right col-sm-9 " xmlns:utils="af:utils"><label for="Quesfouryes" class="text-indent_3 control-label af-slide Que text-indent_1 " style=""><b>4.</b> Are you aware there's a different type of treatment option to treat <br class="hidden-xs hidden-sm hidden-md d-lg-none">IBS-D? </label></div><div role="radiogroup" aria-label="radio group" id="Quesfouryes" class="field-container af-slide form-group-ans col-sm-3" xmlns:utils="af:utils"><!-- ngRepeat: o in form.fields.Qfouryes.options --><div class="radio-as-buttons ans radio ng-scope" data-ng-repeat="o in form.fields.Qfouryes.options"><label class="radio-boxes-labels"><input type="radio" name="Quesfouryes" class="normalCheckBox ans ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched" data-ng-model="form.fields.Qfouryes.value" data-ng-truevalue="o.value" value="Yes" data-ng-click="form.fields.Qfouryes.touched = true;" data-ng-change="form.fields.Qfouryes.onChange(form);" style=""><span data-ng-bind-html="$sce.trustAsHtml(dnnsf.localization[o.text] || o.text)" class="radio-boxes-buttons btn btn-default ng-binding" style="">YES</span></label><div class="radio-btn-text"><!-- ngIf: ($index + 1) !== form.fields.Qfouryes.options.length --><span class="radio-boxes-buttons-words ng-scope" style=";" ng-if="($index + 1) !== form.fields.Qfouryes.options.length"></span><!-- end ngIf: ($index + 1) !== form.fields.Qfouryes.options.length --></div><!-- ngIf: $last --></div><!-- end ngRepeat: o in form.fields.Qfouryes.options --><div class="radio-as-buttons ans radio ng-scope" data-ng-repeat="o in form.fields.Qfouryes.options"><label class="radio-boxes-labels"><input type="radio" name="Quesfouryes" class="normalCheckBox ans ng-pristine ng-untouched ng-valid ng-not-empty" data-ng-model="form.fields.Qfouryes.value" data-ng-truevalue="o.value" value="No" data-ng-click="form.fields.Qfouryes.touched = true;" data-ng-change="form.fields.Qfouryes.onChange(form);" style=""><span data-ng-bind-html="$sce.trustAsHtml(dnnsf.localization[o.text] || o.text)" class="radio-boxes-buttons btn btn-default ng-binding" style="">NO</span></label><div class="radio-btn-text"><!-- ngIf: ($index + 1) !== form.fields.Qfouryes.options.length --></div><!-- ngIf: $last --><div repeat-done="" ng-if="$last" class="ng-scope"></div><!-- end ngIf: $last --></div><!-- end ngRepeat: o in form.fields.Qfouryes.options --><div class="err-placeholder"></div></div>
+                            </div>
+
+                            <div class="form-group noborder qy">
+                                <div class="
+                label-right col-sm-9 " xmlns:utils="af:utils"><label for="Quesfiveyes" class="text-indent_1 control-label af-slide Que " style=""><b>5.</b> Are you interested in trying the #1 doctor prescribed medication approved for <font class="text-nowrap">IBS-D*?</font> <br><span class="footnote desktopform">*Based on aggregated total of all prescribers as of December 2020.</span> </label></div><div role="radiogroup" aria-label="radio group" id="Quesfiveyes" class="field-container af-slide form-group-ans col-sm-3" xmlns:utils="af:utils"><!-- ngRepeat: o in form.fields.Qfiveyes.options --><div class="radio-as-buttons ans radio ng-scope" data-ng-repeat="o in form.fields.Qfiveyes.options"><label class="radio-boxes-labels"><input type="radio" name="Quesfiveyes" class="normalCheckBox ans ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched" data-ng-model="form.fields.Qfiveyes.value" data-ng-truevalue="o.value" value="Yes" data-ng-click="form.fields.Qfiveyes.touched = true;" data-ng-change="form.fields.Qfiveyes.onChange(form);" style=""><span data-ng-bind-html="$sce.trustAsHtml(dnnsf.localization[o.text] || o.text)" class="radio-boxes-buttons btn btn-default ng-binding" style="">YES</span></label><div class="radio-btn-text"><!-- ngIf: ($index + 1) !== form.fields.Qfiveyes.options.length --><span class="radio-boxes-buttons-words ng-scope" style=";" ng-if="($index + 1) !== form.fields.Qfiveyes.options.length"></span><!-- end ngIf: ($index + 1) !== form.fields.Qfiveyes.options.length --></div><!-- ngIf: $last --></div><!-- end ngRepeat: o in form.fields.Qfiveyes.options --><div class="radio-as-buttons ans radio ng-scope" data-ng-repeat="o in form.fields.Qfiveyes.options"><label class="radio-boxes-labels"><input type="radio" name="Quesfiveyes" class="normalCheckBox ans ng-pristine ng-untouched ng-valid ng-not-empty" data-ng-model="form.fields.Qfiveyes.value" data-ng-truevalue="o.value" value="No" data-ng-click="form.fields.Qfiveyes.touched = true;" data-ng-change="form.fields.Qfiveyes.onChange(form);" style=""><span data-ng-bind-html="$sce.trustAsHtml(dnnsf.localization[o.text] || o.text)" class="radio-boxes-buttons btn btn-default ng-binding" style="">NO</span></label><div class="radio-btn-text"><!-- ngIf: ($index + 1) !== form.fields.Qfiveyes.options.length --></div><!-- ngIf: $last --><div repeat-done="" ng-if="$last" class="ng-scope"></div><!-- end ngIf: $last --></div><!-- end ngRepeat: o in form.fields.Qfiveyes.options --><div class="err-placeholder"></div></div>
+                            </div>
+
+                            <div class="form-group noborder sub qy">
+                                <div class="label-right">
+                                    <div class="control-label"><span class="footnote mobileform">*Based on aggregated total of all prescribers as of December 2020.</span></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group qn" style="display: none;">
+                                <div class="
+                label-right col-sm-9 " xmlns:utils="af:utils"><label for="Questwono" class="control-label af-slide Que " style=""><b>2.</b> Have you tried over-the-counter treatments? </label></div><div role="radiogroup" aria-label="radio group" id="Questwono" class="field-container af-slide  form-group-ans col-sm-3 " xmlns:utils="af:utils"><!-- ngRepeat: o in form.fields.Qtwono.options --><div class="radio-as-buttons ans radio ng-scope" data-ng-repeat="o in form.fields.Qtwono.options"><label class="radio-boxes-labels"><input type="radio" name="Questwono" class="normalCheckBox ans ng-pristine ng-untouched ng-valid ng-empty" data-ng-model="form.fields.Qtwono.value" data-ng-truevalue="o.value" value="Yes" data-ng-click="form.fields.Qtwono.touched = true;" data-ng-change="form.fields.Qtwono.onChange(form);"><span data-ng-bind-html="$sce.trustAsHtml(dnnsf.localization[o.text] || o.text)" class="radio-boxes-buttons btn btn-default ng-binding" style="">YES</span></label><div class="radio-btn-text"><!-- ngIf: ($index + 1) !== form.fields.Qtwono.options.length --><span class="radio-boxes-buttons-words ng-scope" style=";" ng-if="($index + 1) !== form.fields.Qtwono.options.length"></span><!-- end ngIf: ($index + 1) !== form.fields.Qtwono.options.length --></div><!-- ngIf: $last --></div><!-- end ngRepeat: o in form.fields.Qtwono.options --><div class="radio-as-buttons ans radio ng-scope" data-ng-repeat="o in form.fields.Qtwono.options"><label class="radio-boxes-labels"><input type="radio" name="Questwono" class="normalCheckBox ans ng-pristine ng-untouched ng-valid ng-empty" data-ng-model="form.fields.Qtwono.value" data-ng-truevalue="o.value" value="No" data-ng-click="form.fields.Qtwono.touched = true;" data-ng-change="form.fields.Qtwono.onChange(form);"><span data-ng-bind-html="$sce.trustAsHtml(dnnsf.localization[o.text] || o.text)" class="radio-boxes-buttons btn btn-default ng-binding" style="">NO</span></label><div class="radio-btn-text"><!-- ngIf: ($index + 1) !== form.fields.Qtwono.options.length --></div><!-- ngIf: $last --><div repeat-done="" ng-if="$last" class="ng-scope"></div><!-- end ngIf: $last --></div><!-- end ngRepeat: o in form.fields.Qtwono.options --><div class="err-placeholder"></div></div>
+                            </div>
+
+                            <div class="form-group qn" style="display: none;">
+                                <div class="
+                label-right col-sm-9 " xmlns:utils="af:utils"><label for="Questhreeno" class="control-label af-slide Que " style=""><b>3.</b> Have you tried to manage your symptoms with diet and/or lifestyle changes? </label></div><div role="radiogroup" aria-label="radio group" id="Questhreeno" class="field-container af-slide  form-group-ans col-sm-3 " xmlns:utils="af:utils"><!-- ngRepeat: o in form.fields.Qthreeno.options --><div class="radio-as-buttons ans radio ng-scope" data-ng-repeat="o in form.fields.Qthreeno.options"><label class="radio-boxes-labels"><input type="radio" name="Questhreeno" class="normalCheckBox ans ng-pristine ng-untouched ng-valid ng-empty" data-ng-model="form.fields.Qthreeno.value" data-ng-truevalue="o.value" value="Yes" data-ng-click="form.fields.Qthreeno.touched = true;" data-ng-change="form.fields.Qthreeno.onChange(form);"><span data-ng-bind-html="$sce.trustAsHtml(dnnsf.localization[o.text] || o.text)" class="radio-boxes-buttons btn btn-default ng-binding" style="">YES</span></label><div class="radio-btn-text"><!-- ngIf: ($index + 1) !== form.fields.Qthreeno.options.length --><span class="radio-boxes-buttons-words ng-scope" style=";" ng-if="($index + 1) !== form.fields.Qthreeno.options.length"></span><!-- end ngIf: ($index + 1) !== form.fields.Qthreeno.options.length --></div><!-- ngIf: $last --></div><!-- end ngRepeat: o in form.fields.Qthreeno.options --><div class="radio-as-buttons ans radio ng-scope" data-ng-repeat="o in form.fields.Qthreeno.options"><label class="radio-boxes-labels"><input type="radio" name="Questhreeno" class="normalCheckBox ans ng-pristine ng-untouched ng-valid ng-empty" data-ng-model="form.fields.Qthreeno.value" data-ng-truevalue="o.value" value="No" data-ng-click="form.fields.Qthreeno.touched = true;" data-ng-change="form.fields.Qthreeno.onChange(form);"><span data-ng-bind-html="$sce.trustAsHtml(dnnsf.localization[o.text] || o.text)" class="radio-boxes-buttons btn btn-default ng-binding" style="">NO</span></label><div class="radio-btn-text"><!-- ngIf: ($index + 1) !== form.fields.Qthreeno.options.length --></div><!-- ngIf: $last --><div repeat-done="" ng-if="$last" class="ng-scope"></div><!-- end ngIf: $last --></div><!-- end ngRepeat: o in form.fields.Qthreeno.options --><div class="err-placeholder"></div></div>
+                            </div>
+
+                            <div class="form-group qn" style="display: none;">
+                                <div class="
+                label-right col-sm-9 " xmlns:utils="af:utils"><label for="Quesfourno" class="control-label af-slide Que " style=""><b>4.</b> Are you satisfied with your current treatment? </label></div><div role="radiogroup" aria-label="radio group" id="Quesfourno" class="field-container af-slide  form-group-ans col-sm-3 " xmlns:utils="af:utils"><!-- ngRepeat: o in form.fields.Qfourno.options --><div class="radio-as-buttons ans radio ng-scope" data-ng-repeat="o in form.fields.Qfourno.options"><label class="radio-boxes-labels"><input type="radio" name="Quesfourno" class="normalCheckBox ans ng-pristine ng-untouched ng-valid ng-empty" data-ng-model="form.fields.Qfourno.value" data-ng-truevalue="o.value" value="Yes" data-ng-click="form.fields.Qfourno.touched = true;" data-ng-change="form.fields.Qfourno.onChange(form);"><span data-ng-bind-html="$sce.trustAsHtml(dnnsf.localization[o.text] || o.text)" class="radio-boxes-buttons btn btn-default ng-binding" style="">YES</span></label><div class="radio-btn-text"><!-- ngIf: ($index + 1) !== form.fields.Qfourno.options.length --><span class="radio-boxes-buttons-words ng-scope" style=";" ng-if="($index + 1) !== form.fields.Qfourno.options.length"></span><!-- end ngIf: ($index + 1) !== form.fields.Qfourno.options.length --></div><!-- ngIf: $last --></div><!-- end ngRepeat: o in form.fields.Qfourno.options --><div class="radio-as-buttons ans radio ng-scope" data-ng-repeat="o in form.fields.Qfourno.options"><label class="radio-boxes-labels"><input type="radio" name="Quesfourno" class="normalCheckBox ans ng-pristine ng-untouched ng-valid ng-empty" data-ng-model="form.fields.Qfourno.value" data-ng-truevalue="o.value" value="No" data-ng-click="form.fields.Qfourno.touched = true;" data-ng-change="form.fields.Qfourno.onChange(form);"><span data-ng-bind-html="$sce.trustAsHtml(dnnsf.localization[o.text] || o.text)" class="radio-boxes-buttons btn btn-default ng-binding" style="">NO</span></label><div class="radio-btn-text"><!-- ngIf: ($index + 1) !== form.fields.Qfourno.options.length --></div><!-- ngIf: $last --><div repeat-done="" ng-if="$last" class="ng-scope"></div><!-- end ngIf: $last --></div><!-- end ngRepeat: o in form.fields.Qfourno.options --><div class="err-placeholder"></div></div>
+                            </div>
+
+                            <div class="form-group noborder qn" style="display: none;">
+                                <div class="
+                label-right col-sm-9 " xmlns:utils="af:utils"><label for="Quesfiveno" class="control-label af-slide Que " style=""><b>5.</b> Are you interested in trying the #1 doctor prescribed medication approved for <font class="text-nowrap">IBS-D*?</font> <br><span class="footnote desktopform">*Based on aggregated total of all prescribers as of December 2020.</span> </label></div><div role="radiogroup" aria-label="radio group" id="Quesfiveno" class="field-container af-slide  form-group-ans col-sm-3 " xmlns:utils="af:utils"><!-- ngRepeat: o in form.fields.Qfiveno.options --><div class="radio-as-buttons ans radio ng-scope" data-ng-repeat="o in form.fields.Qfiveno.options"><label class="radio-boxes-labels"><input type="radio" name="Quesfiveno" class="normalCheckBox ans ng-pristine ng-untouched ng-valid ng-empty" data-ng-model="form.fields.Qfiveno.value" data-ng-truevalue="o.value" value="Yes" data-ng-click="form.fields.Qfiveno.touched = true;" data-ng-change="form.fields.Qfiveno.onChange(form);"><span data-ng-bind-html="$sce.trustAsHtml(dnnsf.localization[o.text] || o.text)" class="radio-boxes-buttons btn btn-default ng-binding" style="">YES</span></label><div class="radio-btn-text"><!-- ngIf: ($index + 1) !== form.fields.Qfiveno.options.length --><span class="radio-boxes-buttons-words ng-scope" style=";" ng-if="($index + 1) !== form.fields.Qfiveno.options.length"></span><!-- end ngIf: ($index + 1) !== form.fields.Qfiveno.options.length --></div><!-- ngIf: $last --></div><!-- end ngRepeat: o in form.fields.Qfiveno.options --><div class="radio-as-buttons ans radio ng-scope" data-ng-repeat="o in form.fields.Qfiveno.options"><label class="radio-boxes-labels"><input type="radio" name="Quesfiveno" class="normalCheckBox ans ng-pristine ng-untouched ng-valid ng-empty" data-ng-model="form.fields.Qfiveno.value" data-ng-truevalue="o.value" value="No" data-ng-click="form.fields.Qfiveno.touched = true;" data-ng-change="form.fields.Qfiveno.onChange(form);"><span data-ng-bind-html="$sce.trustAsHtml(dnnsf.localization[o.text] || o.text)" class="radio-boxes-buttons btn btn-default ng-binding" style="">NO</span></label><div class="radio-btn-text"><!-- ngIf: ($index + 1) !== form.fields.Qfiveno.options.length --></div><!-- ngIf: $last --><div repeat-done="" ng-if="$last" class="ng-scope"></div><!-- end ngIf: $last --></div><!-- end ngRepeat: o in form.fields.Qfiveno.options --><div class="err-placeholder"></div></div>
+                            </div>
+
+                            <div class="form-group noborder sub qn" style="display: none;">
+                                <div class="label-right">
+                                    <div class="control-label"><span class="footnote mobileform">*Based on aggregated total of all prescribers as of December 2020.</span></div>
+                                </div>
+                            </div>
+
+                            <div class="hdnFilePath" style="display:none;"><input id="filePath" name="filePath" type="hidden" value=""> <!--  <input type="hidden" name="strfilepath" data-fieldid="13550" data-af-field="strfilepath" value="" data-ng-model="form.fields.strfilepath.value" data-val="{{ form.fields.strfilepath.value }}" xmlns:utils="af:utils"> --></div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="gray-theme-block Quizresult" style="display:none">
+                        <div class="d-flex ">
+                            <img class="img-fluid" src="/siteassets/ibsd/img/img-323x194-chat-bubble-global.png" alt="Chat icon" loading="lazy">
+                            <div>
+                             <p>
+                                    Connect with a Nurse Navigator<sup>†</sup> to learn more about XIFAXAN or explore more on your own.
+                             </p>
+                            <div class="abt_btn">
+                                <a class="btnPrimary whiteCta" id="toDoctor" href="https://in.rxengage.app/?fuuid=c6254dd6-7a3d-44a1-bf21-552febbdd2bf" target="_blank" rel="noopener">
+                                        Get Started <span class="material-symbols-outlined">arrow_outward</span>
+                                </a>
+                            </div>
+
+                            </div>
+                        </div>
+
+                                
+                                @*<div class="field-container af-slide col-sm-9 btn-form btnc btnc-center" data-ng-show="(parse(form.fields.Qfiveyes.value) != '') || (parse(form.fields.Qfiveno.value) !='')" xmlns:utils="af:utils" style=""><button type="button" data-loading-text="Please wait..." data-name="Download" class="btn submit form-button af-btn-loading btn-normal btn-info" id="QuizDownload" style="" data-ng-show="(parse(form.fields.Qfiveyes.value) != '') || (parse(form.fields.Qfiveno.value) !='')" data-validation="on" data-default-button="on" data-submiturl="/DesktopModules/DnnSharp/ActionForm/Submit.ashx?_mid=59331&amp;_tabId=21477&amp;_portalId=587&amp;_alias=www.xifaxan.com&amp;openMode=Always&amp;language=en-US&amp;referrer=https%3a%2f%2fwww.xifaxan.com%2f&amp;event=click&amp;b=13549" data-submitquery="_mid=59331&amp;_tabId=21477&amp;_portalId=587&amp;_alias=www.xifaxan.com&amp;openMode=Always&amp;language=en-US&amp;referrer=https%3a%2f%2fwww.xifaxan.com%2f&amp;event=click&amp;b=13549">Get Started</button></div>*@
+
+                        <div class="download-Results">
+                            <a id="direct_download" href="javascript:void()">
+                                <span class="material-symbols-outlined">download</span> No thanks, I&rsquo;ll download the <br class="d-desk-none" />answers and talk to my
+                                doctor.
+                            </a>
+                            <p><sup>†</sup>Patient is not eligible to use our Navigator services if he/she participates in or seeks reimbursement or submits a claim for reimbursement to any federal or state healthcare program with prescription drug coverage.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="alert alert-danger server-error" style="display: none;"></div>
+            </div><div class="alert alert-info submit-confirm" style="display: none; text-align: center;"></div>
+        </div><div dnnsf-modal=""></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+        $("input[name='QuesOne']").click(function () {
+
+            $('.buttonrow').css('display', 'none');
+            $('.Quizresult').css('display', 'none');
+
+            if ($("input[name='QuesOne']:checked").val() == 'Yes' && $("input[name='Quesfiveyes']:checked").val() != undefined) {
+                $('.buttonrow').css('display', 'flex');
+                $('.Quizresult').css('display', 'block');
+            }
+
+            if ($("input[name='QuesOne']:checked").val() == 'No' && $("input[name='Quesfiveno']:checked").val() != undefined) {
+                $('.buttonrow').css('display', 'flex');
+                $('.Quizresult').css('display', 'block');
+            }
+
+            $('.form-group').removeClass('bg');
+
+            if ($("input[name='QuesOne']:checked").val() == 'Yes') {
+                $('.qy').css('display', 'flex');
+                $('.qn').css('display', 'none');
+            }
+            else if ($("input[name='QuesOne']:checked").val() == 'No') {
+                $('.qy').css('display', 'none');
+                $('.qn').css('display', 'flex');
+            }
+        });
+
+        $("input[name='Quesfiveyes']").click(function () {
+            if ($("input[name='QuesOne']:checked").val() != undefined && $("input[name='Questwoyes']:checked").val() != undefined && $("input[name='Questhreeyes']:checked").val() != undefined && $("input[name='Quesfouryes']:checked").val() != undefined && $("input[name='Quesfiveyes']:checked").val() != undefined) {
+                $('.buttonrow').css('display', 'flex');
+                $('.Quizresult').css('display', 'block');
+            }            
+        });
+
+        $("input[name='Quesfiveno']").click(function () {
+
+            if ($("input[name='QuesOne']:checked").val() != undefined && $("input[name='Questwono']:checked").val() != undefined && $("input[name='Questhreeno']:checked").val() != undefined && $("input[name='Quesfourno']:checked").val() != undefined && $("input[name='Quesfiveno']:checked").val() != undefined) {
+                $('.buttonrow').css('display', 'flex');
+                $('.Quizresult').css('display', 'block');
+            }
+
+        });
+    });
+
+    $('#direct_download').click(function () {
+    
+
+        var baseURL = window.location.origin;
+
+        if (baseURL[baseURL.length - 1] !== "/") {
+            baseURL = baseURL + "/";
+        }
+
+        let request = {
+
+            strQy1: $("input[name='QuesOne']:checked").val(),
+            strQy2: $("input[name='Questwoyes']:checked").val(),
+            strQy3: $("input[name='Questhreeyes']:checked").val(),
+            strQy4: $("input[name='Quesfouryes']:checked").val(),
+            strQy5: $("input[name='Quesfiveyes']:checked").val(),
+
+            strQn2: $("input[name='Questwono']:checked").val(),
+            strQn3: $("input[name='Questhreeno']:checked").val(),
+            strQn4: $("input[name='Quesfourno']:checked").val(),
+            strQn5: $("input[name='Quesfiveno']:checked").val(),
+            __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: baseURL + 'api/XifaxanDtcQuizBlock/Execute',
+            data: request,            
+            success: function (data) {
+                if (data != null) {
+                    if (data.IsSuccess) {
+
+                        $('#filePath').val(data.PdfFileName);
+                        var filePath = $("#filePath").val();
+                        var hostname = window.location.origin;
+
+                        var urls = [
+                            hostname + "/siteassets/Quiz-PDF/" + filePath,
+                            hostname + "/siteassets/pdfs/xifaxan550-pi.pdf"
+                        ];
+
+                        var filename = "doctor-discussion-guide";
+                        compressed_img(urls, filename);
+
+                        //var myForm = MktoForms2.getForm(3543);
+
+                        //myForm.addHiddenFields({
+                        //    //These are the values which will be submitted to Marketo Marketo fields on left, form fields on right
+                        //    "MktFormID": "3543",
+                        //    "RedirectUrl": "",
+                        //    "ThankyouMessage": "",
+                        //});
+
+                        //$('#quizForm').show();
+
+                        //myForm.onSuccess(function (values, followUpUrl) {
+                        //$('#filePath').val(data.PDFpath);
+                        //return false;
+                        //});
+
+                        //myForm.submit();
+
+                    }
+                    else {
+                        //alert(data.ErrorMsg);
+                    }
+                }
+            },
+            error: function (e, h, c) {
+                console.log(h)
+            }
+        });
+
+        event.preventDefault();
+        return false;
+
+    });
+
+
+</script>

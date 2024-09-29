@@ -1,0 +1,267 @@
+﻿@model EpiserverBH.Models.Blocks.Trulance.TrulanceDocDiscGuideElementBlock
+<script src="https://www.google.com/recaptcha/api.js?render=6Lef7k0jAAAAAGWPtROX_3Sl6y6xe8ca-s74ctHT"></script>
+
+<style type="text/css">
+    #q-stoolscale .slider-container .slider-horizontal:nth-child(1) {
+        display: none;
+    }
+    /*   #hiddenRecaptcha-error {
+        display: none !important;
+    }*/
+</style>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#stoolLink").click(function () {
+            event.preventDefault();
+            var href = $(this).attr('href');
+            window.open(href, '_blank');
+        });
+        $("#Submit").click(function (e) {
+            e.preventDefault();
+            grecaptcha.ready(function () {
+                grecaptcha.execute('6Lef7k0jAAAAAGWPtROX_3Sl6y6xe8ca-s74ctHT', { action: 'submit' }).then(function (token) {
+                    // Add your logic to submit to your backend server here.
+                    validateForm();
+                });
+            });
+        });
+    });
+
+    function validateForm() {
+
+            let request = {
+                Question11: getControlValue("input[name='Question11-0']:checked", "Y"),
+                Question12: getControlValue("input[name='Question12-0']:checked", "Y"),
+                Question13: getControlValue("input[name='Question13-0']:checked", "Y"),
+                Question14: getControlValue("input[name='Question14-0']:checked", "Y"),
+                Question15: getControlValue("input[name='Question15-0']:checked", "Y"),
+                Question16: getControlValue("input[name='Question16-0']:checked", "Y"),
+
+                Question2: getControlValue("input[name='Question2']:checked", "Y"),
+
+                Question41First: getQuestion41First(),
+                Question41Next: getQuestion41Next(),
+                Question42First: getQuestion42First(),
+                Question42Next: getQuestion42Next(),
+                Question51: getControlValue("input[name='Question51']:checked", "Y"),
+
+                Question52: getQuestion52(),
+                Question6: getQuestion6(),
+                Question7: getControlValue("input[name='Question7']:checked", "Y"),
+                sliderValue: $("#stool-default").val(),
+            __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+            };
+            //debugger;
+            //console.log(request);
+
+            var baseURL = window.location.origin;
+
+            if (baseURL[baseURL.length - 1] !== "/") {
+                baseURL = baseURL + "/";
+            }
+
+            $.ajax({
+                url: baseURL + 'api/TrulanceDocDiscGuideElementBlock/GeneratePDF',
+                type: "POST",
+                data: request,
+                success: function (data) {
+                    //debugger;
+                    if (data !== undefined || data !== null) {
+                        if (data === "<span>Error</span>") {
+                            //handle error
+                        }
+                        else {
+                            $("#ContentPane").html(data);
+                        }
+                    }
+                },
+                error: function (e, h, c) {
+                    console.log(h)
+                }
+            });
+        
+    }
+
+    function getControlValue(selector, returnEmpty) {
+        var controlValue = $(selector).val();
+
+        if (controlValue === undefined || controlValue === null) {
+            if (returnEmpty !== undefined) {
+                controlValue = '';
+            }
+            else {
+                controlValue = null;
+            }
+        }
+
+        return controlValue;
+    }
+
+    function trimLastComma(input) {
+        if (input !== undefined || input !== null) {
+            var lastChar = input[input.length - 1];
+            if (lastChar === '|') {
+                return input.substring(0, input.length - 1);
+            }
+            else {
+                return input;
+            }
+        }
+    }
+
+    function getQuestion41First() {
+        var q1options = '';
+        var val = getControlValue("input[name='Question41First-0']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+        val = getControlValue("input[name='Question41First-1']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+
+        val = getControlValue("input[name='Question41First-2']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+
+        val = getControlValue("input[name='Question41First-3']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+
+        return trimLastComma(q1options);
+    }
+    function getQuestion41Next() {
+        var q1options = '';
+        var val = getControlValue("input[name='Question41Next-0']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+        val = getControlValue("input[name='Question41Next-1']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+
+        val = getControlValue("input[name='Question41Next-2']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+
+        val = getControlValue("input[name='Question41Next-3']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+
+        return trimLastComma(q1options);
+    }
+
+    function getQuestion42First() {
+        var q1options = '';
+        var val = getControlValue("input[name='Question42First-0']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+        val = getControlValue("input[name='Question42First-1']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+
+        val = getControlValue("input[name='Question42First-2']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+
+        val = getControlValue("input[name='Question42First-3']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+
+        return trimLastComma(q1options);
+    }
+    function getQuestion42Next() {
+        var q1options = '';
+        var val = getControlValue("input[name='Question42Next-0']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+        val = getControlValue("input[name='Question42Next-1']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+
+        val = getControlValue("input[name='Question42Next-2']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+
+        val = getControlValue("input[name='Question42Next-3']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+
+        return trimLastComma(q1options);
+    }
+
+    function getQuestion52() {
+        //debugger;
+        var q1options = '';
+        var val = getControlValue("input[name='Question52-0']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+        val = getControlValue("input[name='Question52-1']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+
+        val = getControlValue("input[name='Question52-2']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+
+        val = getControlValue("input[name='Question52-3']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+        val = getControlValue("input[name='Question52-4']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+        return trimLastComma(q1options);
+    }
+
+    function getQuestion6() {
+        var q1options = '';
+        var val = getControlValue("input[name='Question6-0']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+        val = getControlValue("input[name='Question6-1']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+
+        val = getControlValue("input[name='Question6-2']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+
+        val = getControlValue("input[name='Question6-3']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+        val = getControlValue("input[name='Question6-4']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+        val = getControlValue("input[name='Question6-5']:checked");
+        if (val != null) {
+            q1options = q1options + val + '|';
+        }
+        return trimLastComma(q1options);
+    }
+   
+</script>

@@ -1,0 +1,158 @@
+﻿@model EpiserverBH.Models.Blocks.Trulance.TrulanceActivateCardElementBlock
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6Lef7k0jAAAAAGWPtROX_3Sl6y6xe8ca-s74ctHT"></script>
+
+<style>
+    .bstrap30 .radio, .bstrap30 .checkbox {
+        margin-top: 0px;
+        margin-bottom: 10px;
+        padding-left: 0px;
+    }
+
+    .error {
+        color: #d45252 !important;
+        font-size: 12px !important;
+        line-height: 18px !important;
+        display: inline-block;
+        position: relative;
+        top: 0px;
+        font-family: "Arial,Helvetica,sans-serif;" !important;
+    }
+
+    .err-placeholder span {
+        padding: 5px 0px 10px 0px;
+        display: table;
+    }
+
+    .err-placeholder {
+        margin-left: 0px;
+    }
+
+    .invalid {
+        color: red;
+    }
+</style>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#form-success').hide();
+
+        $("#ActivateForm").validate({
+            ignore: ".ignore",
+            errorClass: "invalid",
+            rules:
+            {
+                CardID: {
+                    required: true,
+                    maxlength: 11,
+                    minlength: 11
+                },
+                ConfirmCardID: {
+                    equalTo: "#CardID"
+                },
+                Checkboxagree: {
+                    required: true
+                },
+                Yes: {
+                    required: true
+                },
+
+            },
+            errorPlacement: function (error, element) {
+                if (element.attr("type") == "radio") {
+                    error.appendTo(element.parent().parent().parent().find('div.err-placeholder1'));
+                }
+                else {
+                    error.insertAfter(element);
+                }
+            },
+            messages:
+            {
+                CardID: {
+                    required: "Please enter a valid 11-digit ID number"
+                },
+                ConfirmCardID: {
+                    equalTo: "Please make sure the ID numbers you entered match"
+                },
+                Checkboxagree: {
+                    required: "You must be at least 18 years of age"
+                },
+                Yes: {
+                    required: "Please select the above options"
+                },
+
+            }
+        });
+        $("#Submit").click(function (e) {
+            e.preventDefault();
+            grecaptcha.ready(function () {
+                grecaptcha.execute('6Lef7k0jAAAAAGWPtROX_3Sl6y6xe8ca-s74ctHT', { action: 'submit' }).then(function (token) {
+                    // Add your logic to submit to your backend server here.
+                    FormActivate();
+                });
+            });
+        });
+    });
+
+
+    function FormActivate() {
+
+        $("#ActivateForm").validate();
+        var isValid = $("#ActivateForm").valid();
+
+        event.preventDefault();
+
+        if (isValid) {
+
+            var chkCond = $("input[name='Checkboxagree']:checked").val();
+
+            let request = {
+                CardID: $("#CardID").val(),
+                Checkboxagree: chkCond === undefined || chkCond === null ? 'N' : 'Y',
+                __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: window.location.origin + '/api/TrulanceActivateCardElementBlock/ActivateCard',
+                data: request,
+                dataType: 'JSON',
+                success: function (data) {
+                    if (data != null) {
+                        if (data.IsSuccess) {
+                            $("#api-error").hide();
+                            $("html, body").animate({
+                                scrollTop: 0
+                            }, 500, function () {
+                                $(this).parents().find('.form-wrapper').hide();
+                                $(this).parents().find('#form-success').fadeIn(500);
+                                $(this).parents().find('#signup-activate').hide();
+                                $(this).parents().find('#initial').hide();
+
+                                reloadIsi();
+                            });
+                        }
+                        else {
+                            $("#api-error").show();
+                            $('#server-error').html(data.ErrorMsg);
+                            $('#server-error').css('display', 'block');
+                        }
+                    }
+                },
+                error: function (e, h, c) {
+                    console.log(h)
+                }
+            });
+
+            event.preventDefault();
+            return false;
+        }
+        else {
+            return false;
+        }
+    }
+
+
+</script>

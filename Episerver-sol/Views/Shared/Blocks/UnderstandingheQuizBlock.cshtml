@@ -1,0 +1,578 @@
+﻿@model EpiserverBH.Models.Blocks.Understandinghe.UnderstandingheQuizBlock
+
+<section class="quiz_heading">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 text-center">
+                <h2 class="physicaltop">Physical Symptoms</h2>
+            </div>
+            <div class="col-12 col-md-8">
+                <div class="row justify-content-center no-gutters">
+                    <div class="col-6">
+                        <div class="box">
+                            <h5 class="ques" id="question1">Change in sleep patterns</h5>
+                            <div class="quesb selection-block" id="question1b" style="display:none;">
+                                <div class="rate">
+                                    <p>Please rate the severity</p>
+                                </div>
+                                <div class="mild">
+                                    <input type="checkbox" id="q11" name="ques1" value="mild">
+                                    <label for="q11">
+                                        <img src="/siteassets/img/icon-1-mild.png/" />
+                                        mild
+                                    </label>
+                                </div>
+                                <div class="moderate">
+                                    <input type="checkbox" id="q12" name="ques1" value="moderate">
+                                    <label for="q12">
+                                        <img src="/siteassets/img/icon-2-moderate.png/" />
+                                        moderate
+                                    </label>
+                                </div>
+                                <div class="severe">
+
+                                    <input type="checkbox" id="q13" name="ques1" value="severe">
+                                    <label for="q13">
+                                        <img src="/siteassets/img/icon-3-severe.png/" />
+                                        severe
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="box">
+                            <h5 class="ques" id="question2">Musty or sweet breath odor</h5>
+                            <div class="quesb selection-block" id="question2b" style="display:none;">
+                                <div class="rate">
+                                    <p>Please rate the severity</p>
+                                </div>
+                                <div class="mild">
+                                    <input type="checkbox" id="q21" name="ques2" value="mild">
+                                    <label for="q21">
+                                        <img src="/siteassets/img/icon-1-mild.png/" />
+                                        mild
+                                    </label>
+                                </div>
+                                <div class="moderate">
+                                    <input type="checkbox" id="q22" name="ques2" value="moderate">
+                                    <label for="q22">
+                                        <img src="/siteassets/img/icon-2-moderate.png/" />
+                                        moderate
+                                    </label>
+                                </div>
+                                <div class="severe">
+
+                                    <input type="checkbox" id="q23" name="ques2" value="severe">
+                                    <label for="q23">
+                                        <img src="/siteassets/img/icon-3-severe.png/" />
+                                        severe
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="box">
+                            <h5 class="ques" id="question3">Uncontrollable hand flapping or tremors of the hands or arms</h5>
+                            <div class="quesb selection-block" id="question3b" style="display:none;">
+                                <div class="rate">
+                                    <p>Please rate the severity</p>
+                                </div>
+                                <div class="mild">
+                                    <input type="checkbox" id="q31" name="ques3" value="mild">
+                                    <label for="q31">
+                                        <img src="/siteassets/img/icon-1-mild.png/" />
+                                        mild
+                                    </label>
+                                </div>
+                                <div class="moderate">
+                                    <input type="checkbox" id="q32" name="ques3" value="moderate">
+                                    <label for="q32">
+                                        <img src="/siteassets/img/icon-2-moderate.png/" />
+                                        moderate
+                                    </label>
+                                </div>
+                                <div class="severe">
+
+                                    <input type="checkbox" id="q33" name="ques3" value="severe">
+                                    <label for="q33">
+                                        <img src="/siteassets/img/icon-3-severe.png/" />
+                                        severe
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="box">
+                            <h5 class="ques" id="question4">Slurred speech</h5>
+                            <div class="quesb selection-block" id="question4b" style="display:none;">
+                                <div class="rate">
+                                    <p>Please rate the severity</p>
+                                </div>
+                                <div class="mild">
+                                    <input type="checkbox" id="q41" name="ques4" value="mild">
+                                    <label for="q41">
+                                        <img src="/siteassets/img/icon-1-mild.png/" />
+                                        mild
+                                    </label>
+                                </div>
+                                <div class="moderate">
+                                    <input type="checkbox" id="q42" name="ques4" value="moderate">
+                                    <label for="q42">
+                                        <img src="/siteassets/img/icon-2-moderate.png/" />
+                                        moderate
+                                    </label>
+                                </div>
+                                <div class="severe">
+
+                                    <input type="checkbox" id="q43" name="ques4" value="severe">
+                                    <label for="q43">
+                                        <img src="/siteassets/img/icon-3-severe.png/" />
+                                        severe
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="box">
+                            <h5 class="ques" id="question5">Difficulty Writing</h5>
+                            <div class="quesb selection-block" id="question5b" style="display:none;">
+                                <div class="rate">
+                                    <p>Please rate the severity</p>
+                                </div>
+                                <div class="mild">
+                                    <input type="checkbox" id="q51" name="ques5" value="mild">
+                                    <label for="q51">
+                                        <img src="/siteassets/img/icon-1-mild.png/" />
+                                        mild
+                                    </label>
+                                </div>
+                                <div class="moderate">
+                                    <input type="checkbox" id="q52" name="ques5" value="moderate">
+                                    <label for="q52">
+                                        <img src="/siteassets/img/icon-2-moderate.png/" />
+                                        moderate
+                                    </label>
+                                </div>
+                                <div class="severe">
+
+                                    <input type="checkbox" id="q53" name="ques5" value="severe">
+                                    <label for="q53">
+                                        <img src="/siteassets/img/icon-3-severe.png/" />
+                                        severe
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="box">
+                            <h5 class="ques" id="question6">Lack of coordination</h5>
+                            <div class="quesb selection-block" id="question6b" style="display:none;">
+                                <div class="rate">
+                                    <p>Please rate the severity</p>
+                                </div>
+                                <div class="mild">
+                                    <input type="checkbox" id="q61" name="ques6" value="mild">
+                                    <label for="q61">
+                                        <img src="/siteassets/img/icon-1-mild.png/" />
+                                        mild
+                                    </label>
+                                </div>
+                                <div class="moderate">
+                                    <input type="checkbox" id="q62" name="ques6" value="moderate">
+                                    <label for="q62">
+                                        <img src="/siteassets/img/icon-2-moderate.png/" />
+                                        moderate
+                                    </label>
+                                </div>
+                                <div class="severe">
+
+                                    <input type="checkbox" id="q63" name="ques6" value="severe">
+                                    <label for="q63">
+                                        <img src="/siteassets/img/icon-3-severe.png/" />
+                                        severe
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-12 col-md-8 text-center">
+                <h2>Mental Symptoms</h2>
+            </div>
+            <div class="col-12 col-md-8">
+                <div class="row justify-content-left no-gutters">
+                    <div class="col-6">
+                        <div class="box">
+                            <h5 class="ques" id="question7">Anxiety</h5>
+                            <div class="quesb selection-block" id="question7b" style="display:none;">
+                                <div class="rate">
+                                    <p>Please rate the severity</p>
+                                </div>
+                                <div class="mild">
+                                    <input type="checkbox" id="q71" name="ques7" value="mild">
+                                    <label for="q71">
+                                        <img src="/siteassets/img/icon-1-mild.png/" />
+                                        mild
+                                    </label>
+                                </div>
+                                <div class="moderate">
+                                    <input type="checkbox" id="q72" name="ques7" value="moderate">
+                                    <label for="q72">
+                                        <img src="/siteassets/img/icon-2-moderate.png/" />
+                                        moderate
+                                    </label>
+                                </div>
+                                <div class="severe">
+
+                                    <input type="checkbox" id="q73" name="ques7" value="severe">
+                                    <label for="q73">
+                                        <img src="/siteassets/img/icon-3-severe.png/" />
+                                        severe
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="box">
+                            <h5 class="ques" id="question8">Bizarre or Inappropriate Behavior</h5>
+                            <div class="quesb selection-block" id="question8b" style="display:none;">
+                                <div class="rate">
+                                    <p>Please rate the severity</p>
+                                </div>
+                                <div class="mild">
+                                    <input type="checkbox" id="q81" name="ques8" value="mild">
+                                    <label for="q81">
+                                        <img src="/siteassets/img/icon-1-mild.png/" />
+                                        mild
+                                    </label>
+                                </div>
+                                <div class="moderate">
+                                    <input type="checkbox" id="q82" name="ques8" value="moderate">
+                                    <label for="q82">
+                                        <img src="/siteassets/img/icon-2-moderate.png/" />
+                                        moderate
+                                    </label>
+                                </div>
+                                <div class="severe">
+
+                                    <input type="checkbox" id="q83" name="ques8" value="severe">
+                                    <label for="q83">
+                                        <img src="/siteassets/img/icon-3-severe.png/" />
+                                        severe
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="box">
+                            <h5 class="ques" id="question9">Shortened Attention Span</h5>
+                            <div class="quesb selection-block" id="question9b" style="display:none;">
+                                <div class="rate">
+                                    <p>Please rate the severity</p>
+                                </div>
+                                <div class="mild">
+                                    <input type="checkbox" id="q91" name="ques9" value="mild">
+                                    <label for="q91">
+                                        <img src="/siteassets/img/icon-1-mild.png/" />
+                                        mild
+                                    </label>
+                                </div>
+                                <div class="moderate">
+                                    <input type="checkbox" id="q92" name="ques9" value="moderate">
+                                    <label for="q92">
+                                        <img src="/siteassets/img/icon-2-moderate.png/" />
+                                        moderate
+                                    </label>
+                                </div>
+                                <div class="severe">
+
+                                    <input type="checkbox" id="q93" name="ques9" value="severe">
+                                    <label for="q93">
+                                        <img src="/siteassets/img/icon-3-severe.png/" />
+                                        severe
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="box">
+                            <h5 class="ques" id="questionA">General Confusion</h5>
+                            <div class="quesb selection-block" id="questionAb" style="display:none;">
+                                <div class="rate">
+                                    <p>Please rate the severity</p>
+                                </div>
+                                <div class="mild">
+                                    <input type="checkbox" id="q101" name="ques10" value="mild">
+                                    <label for="q101">
+                                        <img src="/siteassets/img/icon-1-mild.png/" />
+                                        mild
+                                    </label>
+                                </div>
+                                <div class="moderate">
+                                    <input type="checkbox" id="q102" name="ques10" value="moderate">
+                                    <label for="q102">
+                                        <img src="/siteassets/img/icon-2-moderate.png/" />
+                                        moderate
+                                    </label>
+                                </div>
+                                <div class="severe">
+                                    <input type="checkbox" id="q103" name="ques10" value="severe">
+                                    <label for="q103">
+                                        <img src="/siteassets/img/icon-3-severe.png/" />
+                                        severe
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="box">
+                            <h5 class="ques" id="questionB">Forgetfulness</h5>
+                            <div class="quesb selection-block" id="questionBb" style="display:none;">
+                                <div class="rate">
+                                    <p>Please rate the severity</p>
+                                </div>
+                                <div class="mild">
+                                    <input type="checkbox" id="q111" name="ques11" value="mild">
+                                    <label for="q111">
+                                        <img src="/siteassets/img/icon-1-mild.png/" />
+                                        mild
+                                    </label>
+                                </div>
+                                <div class="moderate">
+                                    <input type="checkbox" id="q112" name="ques11" value="moderate">
+                                    <label for="q112">
+                                        <img src="/siteassets/img/icon-2-moderate.png/" />
+                                        moderate
+                                    </label>
+                                </div>
+                                <div class="severe">
+                                    <input type="checkbox" id="q113" name="ques11" value="severe">
+                                    <label for="q113">
+                                        <img src="/siteassets/img/icon-3-severe.png/" />
+                                        severe
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="box">
+                            <h5 class="ques" id="questionC">Confusion about date and time</h5>
+                            <div class="quesb selection-block" id="questionCb" style="display:none;">
+                                <div class="rate">
+                                    <p>Please rate the severity</p>
+                                </div>
+                                <div class="mild">
+                                    <input type="checkbox" id="q121" name="ques12" value="mild">
+                                    <label for="q121">
+                                        <img src="/siteassets/img/icon-1-mild.png/" />
+                                        mild
+                                    </label>
+                                </div>
+                                <div class="moderate">
+                                    <input type="checkbox" id="q122" name="ques12" value="moderate">
+                                    <label for="q122">
+                                        <img src="/siteassets/img/icon-2-moderate.png/" />
+                                        moderate
+                                    </label>
+                                </div>
+                                <div class="severe">
+                                    <input type="checkbox" id="q123" name="ques12" value="severe">
+                                    <label for="q123">
+                                        <img src="/siteassets/img/icon-3-severe.png/" />
+                                        severe
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="box">
+                            <h5 class="ques" id="questionD">Difficulty Adding or subtracting numbers</h5>
+                            <div class="quesb selection-block" id="questionDb" style="display:none;">
+                                <div class="rate">
+                                    <p>Please rate the severity</p>
+                                </div>
+                                <div class="mild">
+                                    <input type="checkbox" id="q131" name="ques13" value="mild">
+                                    <label for="q131">
+                                        <img src="/siteassets/img/icon-1-mild.png/" />
+                                        mild
+                                    </label>
+                                </div>
+                                <div class="moderate">
+                                    <input type="checkbox" id="q132" name="ques13" value="moderate">
+                                    <label for="q132">
+                                        <img src="/siteassets/img/icon-2-moderate.png/" />
+                                        moderate
+                                    </label>
+                                </div>
+                                <div class="severe">
+                                    <input type="checkbox" id="q133" name="ques13" value="severe">
+                                    <label for="q133">
+                                        <img src="/siteassets/img/icon-3-severe.png/" />
+                                        severe
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="box">
+                            <h5 class="ques" id="questionE">Mood swings</h5>
+                            <div class="quesb selection-block" id="questionEb" style="display:none;">
+                                <div class="rate">
+                                    <p>Please rate the severity</p>
+                                </div>
+                                <div class="mild">
+                                    <input type="checkbox" id="q141" name="ques14" value="mild">
+                                    <label for="q141">
+                                        <img src="/siteassets/img/icon-1-mild.png/" />
+                                        mild
+                                    </label>
+                                </div>
+                                <div class="moderate">
+                                    <input type="checkbox" id="q142" name="ques14" value="moderate">
+                                    <label for="q142">
+                                        <img src="/siteassets/img/icon-2-moderate.png/" />
+                                        moderate
+                                    </label>
+                                </div>
+                                <div class="severe">
+                                    <input type="checkbox" id="q143" name="ques14" value="severe">
+                                    <label for="q143">
+                                        <img src="/siteassets/img/icon-3-severe.png/" />
+                                        severe
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="box">
+                            <h5 class="ques" id="questionF">Disorientation</h5>
+                            <div class="quesb selection-block" id="questionFb" style="display:none;">
+                                <div class="rate">
+                                    <p>Please rate the severity</p>
+                                </div>
+                                <div class="mild">
+                                    <input type="checkbox" id="q151" name="ques15" value="mild">
+                                    <label for="q151">
+                                        <img src="/siteassets/img/icon-1-mild.png/" />
+                                        mild
+                                    </label>
+                                </div>
+                                <div class="moderate">
+                                    <input type="checkbox" id="q152" name="ques15" value="moderate">
+                                    <label for="q152">
+                                        <img src="/siteassets/img/icon-2-moderate.png/" />
+                                        moderate
+                                    </label>
+                                </div>
+                                <div class="severe">
+                                    <input type="checkbox" id="q153" name="ques15" value="severe">
+                                    <label for="q153">
+                                        <img src="/siteassets/img/icon-3-severe.png/" />
+                                        severe
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="formsumit col-12">
+                <div class="row justify-content-center">
+                    <button id="GetMyPrintOut" formaction="Approve" class="btn submit form-button" title="GET MY PRINTOUT" type="button">
+                        Get My PrintOut
+                        <img class="lazy" alt="download" src="/siteassets/img/icon-42x47-download.png" />
+                    </button>
+                </div>
+            </div>
+            <div class="col-12 col-lg-9">
+                <p class="footnote">*This list does not represent all possible HE symptoms. Make sure to talk to your doctor about any symptoms you may be experiencing that may or may not be associated with HE.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+<script type="text/javascript">
+
+
+    $("#GetMyPrintOut").click(function () {
+
+        var lbMsg = false;
+
+        for (var i = 1; i < 16; i++) {
+            var str = "input[name='ques" + i + "']:checked";
+            if ($(str).val() != undefined) {
+                lbMsg = true;
+            }
+        }
+
+        if (!lbMsg) {
+            $('#error-msg').css("display", "block");
+            return false;
+        }
+
+        var quesOne = $("input[name='ques1']:checked").val();
+        var quesTwo = $("input[name='ques2']:checked").val();
+        var quesThree = $("input[name='ques3']:checked").val();
+        var quesFour = $("input[name='ques4']:checked").val();
+        var quesFive = $("input[name='ques5']:checked").val();
+        var quesSix = $("input[name='ques6']:checked").val();
+        var quesSeven = $("input[name='ques7']:checked").val();
+        var quesEight = $("input[name='ques8']:checked").val();
+        var quesNine = $("input[name='ques9']:checked").val();
+        var quesTen = $("input[name='ques10']:checked").val();
+        var quesEleven = $("input[name='ques11']:checked").val();
+        var quesTwelve = $("input[name='ques12']:checked").val();
+        var quesThirteen = $("input[name='ques13']:checked").val();
+        var quesFourteen = $("input[name='ques14']:checked").val();
+        var quesFifteen = $("input[name='ques15']:checked").val();
+
+        var lcUrl = "take-action-today?";
+        lcUrl = lcUrl + "question1=" + (quesOne == undefined ? "" : quesOne) + "&;";
+        lcUrl = lcUrl + "question2=" + (quesTwo == undefined ? "" : quesTwo) + "&;";
+        lcUrl = lcUrl + "question3=" + (quesThree == undefined ? "" : quesThree) + "&;";
+        lcUrl = lcUrl + "question4=" + (quesFour == undefined ? "" : quesFour) + "&;";
+        lcUrl = lcUrl + "question5=" + (quesFive == undefined ? "" : quesFive) + "&;";
+        lcUrl = lcUrl + "question6=" + (quesSix == undefined ? "" : quesSix) + "&;";
+        lcUrl = lcUrl + "question7=" + (quesSeven == undefined ? "" : quesSeven) + "&;";
+        lcUrl = lcUrl + "question8=" + (quesEight == undefined ? "" : quesEight) + "&;";
+        lcUrl = lcUrl + "question9=" + (quesNine == undefined ? "" : quesNine) + "&;";
+        lcUrl = lcUrl + "questionA=" + (quesTen == undefined ? "" : quesTen) + "&;";
+        lcUrl = lcUrl + "questionB=" + (quesEleven == undefined ? "" : quesEleven) + "&;";
+        lcUrl = lcUrl + "questionC=" + (quesTwelve == undefined ? "" : quesTwelve) + "&;";
+        lcUrl = lcUrl + "questionD=" + (quesThirteen == undefined ? "" : quesThirteen) + "&;";
+        lcUrl = lcUrl + "questionE=" + (quesFourteen == undefined ? "" : quesFourteen) + "&;";
+        lcUrl = lcUrl + "questionF=" + (quesFifteen == undefined ? "" : quesFifteen);
+
+        var url = $(location).attr('href');
+        url = (!url.endsWith("/") ? url + "/" : url) + lcUrl;
+        $(location).attr('href', url.replace("#track-symptoms/", ""));
+
+    });
+
+</script>
+

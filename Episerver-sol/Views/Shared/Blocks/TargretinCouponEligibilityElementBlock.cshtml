@@ -1,0 +1,327 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@model EpiserverBH.Models.Blocks.Targretin.TargretinCouponEligibilityElementBlock
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async></script>
+
+
+<style>
+    .bstrap30 .radio, .bstrap30 .checkbox {
+        margin-top: 0px;
+        margin-bottom: 10px;
+        padding-left: 0px;
+    }
+
+    .error {
+        color: #dc3545 !important;
+        font-size: 18px !important;
+        line-height: 18px !important;
+        display: inline-block;
+        position: relative;
+        top: 0px;
+        font-family: "Helvetica Neue LT W05_55 Roman" !important;
+    }
+
+    .radiovalidate {
+        margin-left: 20px !important;
+    }
+
+    #hiddenRecaptcha-error {
+        display: none !important;
+    }
+</style>
+<div>
+    <a></a>
+    <div class="signup" id="SignupPanel">
+        <div id="ContentPane1">
+            <!-- Start_Module_21534 -->
+            <div id="ModuleContent" class="ModCouponCodeFormC">
+                <!--Form Area-->
+                <form id="CouponEligibility" action="#" method="post" onsubmit="validateForm();">
+                    <div id="signup" class="page_left page_full page_smaller actions-forms-req">
+                        <h3><span id="lblError" style="color: red;"><!--new--></span></h3>
+                        <h1 class="text-uppercase">Get Your TARGRETIN Co-Pay Coupon.</h1>
+                        <h2 class="text-red text-regularcase">First, we need to determine your eligibility.</h2>
+                        <br /><br />
+                              <div class="form">
+                                  <div class="form-group">
+                                      <p>Please enter the date of birth of the <br />person who will use this coupon.</p>
+                                      <input name="birthday" type="text" id="birthday" data-date-format="mm/dd/yyyy" data-provide="datepicker" placeholder="MM/DD/YYYY" class="form-control input-lg" data-date-max-view-mode="decade" onkeydown="return false;" data-date-start-view="decade" data-date-autoclose="true" data-date-end-date="0d">
+                                  </div>
+                                  <div class="form-group">
+                                      <p>Please enter the 5-digit zip code of the residence <br />of the patient who will use this coupon.</p>
+                                      <input id="zipcode" class="form-control input-lg" maxlength="5" name="zipcode" pattern="\d{5}-?(\d{4})?" type="text" placeholder="Ex. 12345" />
+                                  </div>
+                                  <div class="form-group">
+                                      <p>Is the patient who will use this coupon eligible for <br />reimbursement of prescriptions (in whole or in part) <br />under any commercial insurance?</p>
+                                      <label class="radio-inline">
+                                          <input class="commercial" id="commercial" name="commercial" type="radio" value="Yes" /> Yes
+                                      </label>
+                                      <br />
+                                      <label class="radio-inline">
+                                          <input id="commercial1" class="commercial" name="commercial" required="required" type="radio" value="No" /> No
+                                      </label>
+                                      <div class="radiovalidate">
+
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <p>Is the patient who will use this coupon eligible for reimbursement of prescriptions (in whole or in part) under any federal, state, or other governmental programs, including, but not limited to, Medicare (including Medicare Advantage and Part A, B and D plans), Medicaid, TRICARE, Veterans Administration or Department of Defense health coverage, CHAMPUS, the Puerto Rico Government Health Insurance Plan, or any other federal or state healthcare programs?</p>
+                                      <label class="radio-inline">
+                                          <input id="government" name="government" type="radio" value="Yes" /> Yes
+                                      </label> <br />
+                                      <label class="radio-inline">
+                                          <input id="government1" name="government" type="radio" value="No" /> No
+                                      </label>
+                                      <div class="radiovalidate">
+
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <p>Please confirm that, by registering for this coupon, you have read, understand, and will comply with the terms and conditions of the program, and that you currently meet all eligibility criteria.</p>
+                                      <label class="radio-inline">
+                                          <input id="confirmation" name="confirmation" type="radio" value="Yes" /> Yes
+                                      </label> <br />
+                                      <label class="radio-inline">
+                                          <input id="confirmation1" name="confirmation" type="radio" value="No" /> No
+                                      </label>
+                                      <div class="radiovalidate">
+
+                                      </div>
+                                  </div>
+                                  @*<div class="g-recaptcha" data-sitekey="6Lc3HK8UAAAAABMGB1NdYINHPAmrLZXnKdTMrZUi" data-callback="recaptchaCallback"></div>*@
+                                  <div>
+                                      <div class="g-recaptcha" data-sitekey="6Lc3HK8UAAAAABMGB1NdYINHPAmrLZXnKdTMrZUi" data-callback="recaptchaCallback"></div>
+                                      <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha">
+                                  </div>
+                                  <div style="text-align: center; display: inline-block; margin-bottom: 0; width: 100%;">
+                                      @*<input id="submit" class="link_button" style="background: #4d4aaa;" name="submit" type="submit" value="SUBMIT" />*@
+                                      <button id="submit" class="link_button" style="background: #4d4aaa;" type="submit">SUBMIT</button>
+                                  </div>
+                              </div>
+                    </div>
+                    <!--Pass--> <!--Fail-->
+                </form>
+            </div>
+
+        </div>
+        <div class="clear">
+
+        </div>
+    </div>
+    <!--Pass-->
+    <div class="eligible" id="eligiblePanel" hidden="hidden">
+        <div id="eligible-user" class="page_left page_full page_smaller result-page-cls">
+            <div class="hide-this-while-printing">
+                <h1 class="text-uppercase">
+                    Thank you.
+                </h1>
+                <br>
+                <p class="text-19">
+                    Your coupon is now activated and you may use it today.<br>
+                    Please note that your coupon must be provided to the pharmacist when you fill your prescription.<br>
+                    <br>
+                    Please keep track of this for your records.
+                </p>
+                <br>
+            </div>
+            
+            <div id="coupon-print-area-set" class="coupon">
+                <img src="~/Assets/Targretin-DTC/img/coupon.jpg" />
+                <div class="numbers">
+                    <span id="groupNumber"><%= strGroupNumber %></span>
+                    <span id="couponNumber"><%= strCouponNumber %></span>
+                </div>
+            </div>
+            <div class="hide-this-while-printing">
+                <div class="align-this-btns-center-1">
+                    <a href="/" class="link_button" style="background: #9f9fa2;">HOME</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Fail-->
+    <div class="ineligible" id="ineligiblePanel" hidden="hidden">
+        <div id="not-eligible-user" class="page_left page_full page_smaller result-page-cls">
+            <h1 class="text-uppercase">
+                Thank you.
+            </h1>
+            <h2 class="text-red text-regularcase">
+                At this time, you are ineligible for the coupon.
+            </h2>
+            <br>
+            <p class="text-medium text-19">
+                Patient Eligibility Criteria:
+            </p>
+            <p class="text-medium text-19 line-height-4">
+                This offer is only valid for patients with commercial insurance. Commercially insured patients whose insurance does not cover TARGRETIN will pay more. These savings offers are not valid for any person eligible for reimbursement of prescriptions, in whole or in part, by any federal, state, or other governmental programs, including, but not limited to, Medicare, (including Medicare Advantage and Part A, B and D Plans), Medicaid, TRICARE, Veterans Administration or Department of Defense health coverage, CHAMPUS, the Puerto Rico Government Health Insurance Plan, or any other federal or state health care programs. Void where prohibited by law, taxed or restricted. Cannot be redeemed at government-subsidized clinics.
+                This offer is good only in the United States of America (including the District of Columbia, Puerto Rico and the U.S. Virgin Islands) at retail pharmacies owned and operated by Walgreen Co. (or its affiliates) and other participating independent retail pharmacies. This offer is not valid in Massachusetts or Minnesota or where otherwise prohibited, taxed, or otherwise restricted. This offer is not valid for redemption in the State of California or by any resident of the State of California with regard to any product for which a therapeutically equivalent generic product is available, including but not limited to TARGRETIN capsules.
+                Ortho Dermatologics reserves the right to rescind, revoke, or amend this offer without notice. You agree not to seek reimbursement for all or any part of the benefit received through this offer and are responsible for making any required reports of your use of this offer to any insurer or other third party who pays any part of the prescription filled. You must be 18 years of age or older to redeem this offer for yourself or a minor. You must present this coupon along with your prescription to participate in this program. You must activate this coupon before using by calling 1-888-201-1385. Reimbursement limitations apply. Patient is responsible for all additional costs and expenses after reimbursement limits are reached. This coupon and offer are not health insurance.
+            </p>
+            <br>
+            <div class="align-this-btns-center-1">
+                <a class="link_button" style="background: #9f9fa2;" href="/coupon-eligibility">BACK</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+    
+        $('#CouponEligibility').validate({
+            rules: {
+                birthday: {
+                    required: true
+                },
+                zipcode: {
+                    required: true,
+                    maxlength: 5,
+                    minlength: 5
+                },
+                commercial: {
+                    required: true
+                },
+                government: {
+                    required: true
+                },
+                confirmation: {
+                    required: true
+                },
+                //Added for google recaptcha v3 client side validation
+                //as all operations done in client side
+                hiddenRecaptcha: {
+                    required: function () {
+                        if (grecaptcha.getResponse() == '') {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                }
+            },
+            errorPlacement: function (error, element) {
+                if (element.attr("type") == "radio") {
+                    //error.insertBefore(element);
+                    error.appendTo(element.parent().parent().find('div.radiovalidate'));
+                }
+                else {
+                    error.insertAfter(element);
+                }
+            },
+
+            messages:
+            {
+                birthday: {
+                    required: "Enter Date of Birth.",
+                    //minAge: "Age should be minimum 18 years."
+                },
+                zipcode: {
+                    required: "Enter a valid Zip code.",
+                    maxlength: "Zipcode must be in 5 number.",
+                    minlength: "Zipcode must be in 5 number."
+                },
+                //Radio button Validation Message
+                commercial: {
+                    required: "This field is required."
+                },
+                //Radio button Validation Message
+                government: {
+                    required: "This field is required."
+                },
+                //Radio button Validation Message
+                confirmation: {
+                    required: "This field is required."
+                },
+            }
+
+        });
+    });
+
+    function validateForm() {
+       // debugger;
+        $("#CouponEligibility").validate();
+
+        var isValid = $("#CouponEligibility").valid();
+
+        event.preventDefault();
+        //debugger; 
+        if (isValid) {
+            var baseURL = window.location.origin;
+
+            if (baseURL[baseURL.length - 1] !== "/") {
+                baseURL = baseURL + "/";
+            }
+           // debugger;
+            var commercial = $("input[name='commercial']:checked").val();
+            var government = $("input[name='government']:checked").val();
+            var confirmation = $("input[name='confirmation']:checked").val();
+
+            let request = {
+                Birthday: $("#birthday").val(),
+                Zipcode: $("#zipcode").val(),
+                Commercial: commercial,
+                Government: government,
+                Confirmation: confirmation,
+
+            };
+
+			 $("#eligiblePanel").hide();
+                            //$("#ineligiblePanel").show();
+                            $("#SignupPanel").hide();
+             $.ajax({
+                url: baseURL + 'api/TargretinCouponEligibilityElementBlock/SignUpUser',
+                 type: "POST", 
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(request), 
+              success: function (data) { 
+//debugger; 
+                    if (data !== null) { 
+                        if (data.IsSuccess) 
+                         { 
+                             $("#groupNumber").text(data.GroupNumber);
+                           $("#couponNumber").text(data.CouponNumber);
+                          $("#eligiblePanel").show();
+                             $("#ineligiblePanel").hide();
+                             $("#SignupPanel").hide();
+                            printThis();
+                        } 
+                        else 
+                        { 
+                           $("#eligiblePanel").hide();
+                             $("#ineligiblePanel").show();
+                             $("#SignupPanel").hide();
+                         } 
+                  }
+              }, 
+                error: function (e, h, c) { 
+                    console.log(h) 
+                 }
+           }); 
+
+            event.preventDefault();
+            return false;
+        }
+        else {
+            return false;
+        }
+    }
+
+  
+    function printThis() {
+        display();
+        window.print();
+    }
+
+    function display() {
+        document.getElementById("eligiblePanel").style.margin = "120px 20px";
+		}
+
+		function recaptchaCallback() {
+        $('#hiddenRecaptcha').valid();
+    };
+</script>
+

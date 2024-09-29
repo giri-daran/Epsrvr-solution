@@ -1,0 +1,17 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@model EpiserverBH.Models.Blocks.HKImageContent.HKImagecolBlock
+
+
+<div class="block-1 col-md-4 col-sm-4 @Model.ImagePosition ">
+    <div class="blk-img">
+        <img class="img-fluid" src="@Url.ContentUrl(Model.Image)">
+    </div>
+    <div class="blk-para">
+        <div class="para-bg" style="background-color:@Model.BackgroundColor;">
+            @Html.Raw(Model.Title)
+            @Html.Raw(Model.Subheading)
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,179 @@
+﻿@using EPiServer
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@model EpiserverBH.Models.Blocks.Accordion.AccordionSliderBlock
+
+@if (EPiServer.Editor.PageEditing.PageIsInEditMode)
+{
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link href="/Assets/Accordion/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/Assets/Accordion/css/main.css" rel="stylesheet" />
+}
+
+
+@if (Model.AccordionSliderListBlock != null)
+{
+    //var Slidelist = Model.AccordionSliderListBlock;
+
+    int slidecount = Convert.ToInt32(Model.MaxNumberofImage);
+
+    var selSlideList = Model.AccordionSliderListBlock.Where(a => a.Active == true);
+    int cnt = 0;
+
+    if (selSlideList.Count() > 0)
+    {
+
+        <section>
+            <div class="@Model.ContainerLayout widthCalc" style="width:@Model.ContainerSize">
+                <h2 style="text-align:@Model.TitlePosition" ;>@Html.Raw(Model.AccordionTitle)</h2>
+                @*<div class="row">*@
+
+                <div class="offerslide" style="margin-top:@Model.MarginTop;margin-bottom:@Model.MarginBottom;">
+                    <div class="grd-filter" style="background:@Model.Gradient"></div>
+
+
+                    @if (slidecount > selSlideList.Count())
+                    {
+                        foreach (var slide in selSlideList)
+                        {
+
+                            if (slide.Link != null)
+
+                            {
+                                @*<a href="(@slide.Link)">*@
+
+                                <div class="offerItem">
+                                    <h4 class="offerItemTitle" style="align-items:@Model.CloseimgTitleDecPosition" ;>@Html.Raw(slide.ListTitle)</h4>
+                                    <div class="offer-detail">
+                                        <div class="offer-img">
+                                            <div class="grd-filter"></div>
+                                            <img src="@Url.ContentUrl(slide.DesktopImage)" alt="@Html.Raw(slide.AltTag)" class="img-fluid img-desk">
+                                            <img src="@Url.ContentUrl(slide.MobileImage)" alt="@Html.Raw(slide.AltTag)" class="img-fluid img-mobile">
+                                            <div class="offer-content" style="justify-content:@Model.ImgTitleDecPosition" ;>
+                                                <h2>@Html.Raw(slide.ListTitle)</h2>
+                                                <p>
+                                                    @Html.Raw(slide.Description)
+                                                </p>
+                                                @*<a style="color:@Model.LinkColor" href="@Url.ContentUrl(slide.Link)">@slide.LinkTitle</a>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @*</a>*@
+                            }
+
+                            else
+                            {
+                                <div class="offerItem">
+                                    <h4 class="offerItemTitle" style="align-items:@Model.CloseimgTitleDecPosition" ;>@Html.Raw(slide.ListTitle)</h4>
+                                    <div class="offer-detail">
+                                        <div class="offer-img">
+                                            <div class="grd-filter"></div>
+                                            <img src="@Url.ContentUrl(slide.DesktopImage)" alt="@Html.Raw(slide.AltTag)" class="img-fluid img-desk">
+                                            <img src="@Url.ContentUrl(slide.MobileImage)" alt="@Html.Raw(slide.AltTag)" class="img-fluid img-mobile">
+                                            <div class="offer-content" style="justify-content:@Model.ImgTitleDecPosition" ;>
+                                                <h2>@Html.Raw(slide.ListTitle)</h2>
+                                                <p>
+                                                    @Html.Raw(slide.Description)
+                                                </p>
+                                                @*<a style="color:@Model.LinkColor" href="@Url.ContentUrl(slide.Link)">@slide.LinkTitle</a>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        foreach (var slide in selSlideList)
+                        {
+
+                            if (cnt >= slidecount)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                if (slide.Link != null)
+
+                                {
+                                    @*<a href="(@slide.Link)">*@
+
+                                    <div class="offerItem">
+                                        <h4 class="offerItemTitle" style="align-items:@Model.CloseimgTitleDecPosition" ;>@Html.Raw(slide.ListTitle)</h4>
+                                        <div class="offer-detail">
+                                            <div class="offer-img">
+                                                <div class="grd-filter"></div>
+                                                <img src="@Url.ContentUrl(slide.DesktopImage)" alt="@Html.Raw(slide.AltTag)" class="img-fluid img-desk">
+                                                <img src="@Url.ContentUrl(slide.MobileImage)" alt="@Html.Raw(slide.AltTag)" class="img-fluid img-mobile">
+                                                <div class="offer-content" style="justify-content:@Model.ImgTitleDecPosition" ;>
+                                                    <h2>@Html.Raw(slide.ListTitle)</h2>
+                                                    <p>
+                                                        @Html.Raw(slide.Description)
+                                                    </p>
+                                                    @*<a style="color:@Model.LinkColor" href="@Url.ContentUrl(slide.Link)">@slide.LinkTitle</a>*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @*</a>*@
+                                }
+
+                                else
+                                {
+                                    <div class="offerItem">
+                                        <h4 class="offerItemTitle" style="align-items:@Model.CloseimgTitleDecPosition" ;>@Html.Raw(slide.ListTitle)</h4>
+                                        <div class="offer-detail">
+                                            <div class="offer-img">
+                                                <div class="grd-filter"></div>
+                                                <img src="@Url.ContentUrl(slide.DesktopImage)" alt="@Html.Raw(slide.AltTag)" class="img-fluid img-desk">
+                                                <img src="@Url.ContentUrl(slide.MobileImage)" alt="@Html.Raw(slide.AltTag)" class="img-fluid img-mobile">
+                                                <div class="offer-content" style="justify-content:@Model.ImgTitleDecPosition" ;>
+                                                    <h2>@Html.Raw(slide.ListTitle)</h2>
+                                                    <p>
+                                                        @Html.Raw(slide.Description)
+                                                    </p>
+                                                    @*<a style="color:@Model.LinkColor" href="@Url.ContentUrl(slide.Link)">@slide.LinkTitle</a>*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                }
+
+                                cnt++;
+                            }
+
+                        }
+
+
+                    }
+                </div>
+            </div>
+        </section>
+
+    }
+}
+
+
+
+
+@if (EPiServer.Editor.PageEditing.PageIsInEditMode)
+{
+    @*<script src="/Assets/Accordion/js/jquery.min.js"></script>
+        <script src="/Assets/Accordion/js/bootstrap.min.js"></script>*@
+        <script src="/Assets/Accordion/js/main.js"></script>
+}
+
+

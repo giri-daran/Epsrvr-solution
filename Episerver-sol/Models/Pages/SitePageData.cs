@@ -1,0 +1,123 @@
+using EPiServer.SpecializedProperties;
+using EPiServer.Web;
+using EpiserverBH.Business.Rendering;
+using Geta.Optimizely.Sitemaps.SpecializedProperties;
+using System.ComponentModel.DataAnnotations;
+
+namespace EpiserverBH.Models.Pages
+{
+    ///<summary>
+    /// Base class for all page types
+    ///</summary>
+    public abstract class SitePageData : PageData, ICustomCssInContentArea
+    {
+        [Display(
+            GroupName = Globals.GroupNames.MetaData,
+            Order = 100)]
+        [CultureSpecific]
+        public virtual string MetaTitle
+        {
+            get
+            {
+                var metaTitle = this.GetPropertyValue(p => p.MetaTitle);
+
+                // Use explicitly set meta title, otherwise fall back to page name
+                return !string.IsNullOrWhiteSpace(metaTitle)
+                       ? metaTitle
+                       : PageName;
+            }
+            set => this.SetPropertyValue(p => p.MetaTitle, value);
+        }
+
+        [Display(
+            GroupName = Globals.GroupNames.MetaData,
+            Order = 200)]
+        [CultureSpecific]
+        //[BackingType(typeof(PropertyStringList))]
+        public virtual string[] MetaKeywords { get; set; }
+
+        [Display(
+            GroupName = Globals.GroupNames.MetaData,
+            Order = 300)]
+        [CultureSpecific]
+        [UIHint(UIHint.Textarea)]
+        public virtual string MetaDescription { get; set; }
+
+        [Display(
+            GroupName = Globals.GroupNames.MetaData,
+            Order = 400)]
+        [CultureSpecific]
+        public virtual bool DisableIndexing { get; set; }
+
+        [Display(
+            GroupName = SystemTabNames.Content,
+            Order = 100)]
+        [UIHint(UIHint.Image)]
+        public virtual ContentReference PageImage { get; set; }
+
+        [Display(
+            GroupName = SystemTabNames.Content,
+            Order = 200)]
+        [CultureSpecific]
+        [UIHint(UIHint.Textarea)]
+        public virtual string TeaserText
+        {
+            get
+            {
+                var teaserText = this.GetPropertyValue(p => p.TeaserText);
+
+                // Use explicitly set teaser text, otherwise fall back to description
+                return !string.IsNullOrWhiteSpace(teaserText)
+                    ? teaserText
+                    : MetaDescription;
+            }
+            set => this.SetPropertyValue(p => p.TeaserText, value);
+        }
+
+        [Display(
+            GroupName = SystemTabNames.Settings,
+            Order = 200)]
+        [CultureSpecific]
+        public virtual bool HideSiteHeader { get; set; }
+
+        [Display(
+            GroupName = SystemTabNames.Settings,
+            Order = 300)]
+        [CultureSpecific]
+        public virtual bool HideSiteFooter { get; set; }
+
+        public string ContentAreaCssClass => "teaserblock";
+
+        [CultureSpecific]
+        [Display(
+                     Name = "Black Box Message",
+                     GroupName = SystemTabNames.Content,
+                     Order = 1000)]
+        public virtual XhtmlString BlackBox { get; set; }
+        [Display(
+  GroupName = Globals.GroupNames.MetaData,
+             Order = 1000)]
+        [UIHint("SeoSitemap")]
+        [BackingType(typeof(PropertySEOSitemaps))]
+        public virtual string SEOSitemaps { get; set; }
+        [Display(
+            Name = "Remove Trailing Slash",
+           GroupName = SystemTabNames.Settings,
+           Order = 100)]
+        [CultureSpecific]
+        public virtual bool TrailingSlash { get; set; }
+        public override void SetDefaultValues(ContentType contentType)
+        {
+            base.SetDefaultValues(contentType);
+            TrailingSlash = false;
+        }
+        [Display(
+           Name = "Page MetaData",
+          GroupName = SystemTabNames.PageHeader,
+          Order = 100)]
+        [CultureSpecific]
+        [UIHint(UIHint.Textarea)]
+        public virtual string MetaData { get; set; }
+
+    }
+}

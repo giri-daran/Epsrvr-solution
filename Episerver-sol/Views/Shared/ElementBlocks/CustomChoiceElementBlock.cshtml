@@ -1,0 +1,64 @@
+@*
+    ====================================
+    Version: 5.3.0.0. Modified: 20221017
+    ====================================
+*@
+
+@using EPiServer.Forms.Helpers.Internal
+@using EPiServer.Forms.Implementation.Elements
+@model ChoiceElementBlock
+
+@{
+    var formElement = Model.FormElement;
+    var items = Model.GetItems();
+    var cssClasses = Model.GetValidationCssClasses();
+ 
+    var labelText = Model.Label;
+   
+}
+
+@{ string labelcss = "", inputcss = "", divcss = "";
+    divcss = Convert.ToString(Model.FormElement.SourceContent.Property["DivCSS"]);
+    inputcss = Convert.ToString(Model.FormElement.SourceContent.Property["InputCSS"]);
+    labelcss = Convert.ToString(Model.FormElement.SourceContent.Property["LabelCSS"]);
+}
+<div class="@divcss">
+@using (Html.BeginElement(Model, new { id = formElement.Guid, @class = "FormChoice" + cssClasses, data_f_type = "choice", aria_invalid = Util.GetAriaInvalidByValidationCssClasses(cssClasses) }, true))
+{
+    <fieldset aria-describedby="@Util.GetAriaDescribedByElementName(formElement.ElementName)">
+        @if (!string.IsNullOrWhiteSpace(Model.Label))
+        {
+            <legend class="Form__Element__Caption @labelcss">@Model.Label</legend>
+        }
+        @foreach (var item in items.Select((item, index) => new { index, item }))
+        {
+            var defaultCheckedString = Model.GetDefaultSelectedString(item.item);
+            var checkedString = string.IsNullOrEmpty(defaultCheckedString) ? string.Empty : "checked";
+            var choiceId = string.Format("{0}_{1}", formElement.Guid, item.index);
+
+            @if (Model.AllowMultiSelect)
+            {
+               
+                        <label for="@choiceId" class="FormChoice__Label @labelcss">
+                        <input type="checkbox" id="@choiceId" name="@formElement.ElementName" value="@item.item.Value" class="@inputcss FormChoice__Input FormChoice__Input--Checkbox" @checkedString @defaultCheckedString data-f-datainput />
+                       
+                        @item.item.Caption
+                    </label>
+               
+            }
+            else
+            {
+               
+                        <label for="@choiceId" class="FormChoice__Label @labelcss">
+                    <input type="radio" id="@choiceId" name="@formElement.ElementName" value="@item.item.Value" class="@inputcss FormChoice__Input FormChoice__Input--Radio" @checkedString @defaultCheckedString data-f-datainput />
+                      
+                        @item.item.Caption
+                    </label>
+              
+            }
+
+        }
+    </fieldset>
+    @Html.ValidationMessageFor(Model)
+}
+</div>

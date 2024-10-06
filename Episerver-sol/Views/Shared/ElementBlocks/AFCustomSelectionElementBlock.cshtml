@@ -1,0 +1,63 @@
+@*
+    ====================================
+    Version: 5.4.0.0. Modified: 20221219
+    ====================================
+*@
+
+@using EPiServer.Forms.UI.SelectionFactory
+@using EPiServer.Shell.Web.Mvc.Html
+@using EPiServer.Forms.Helpers.Internal
+@using EPiServer.Forms.Implementation.Elements
+@model SelectionElementBlock
+
+@{
+    var formElement = Model.FormElement;
+    var labelText = Model.Label;
+    var placeholderText = Html.FilterHtml(Model.PlaceHolder);
+    var defaultOptionSelected = !Model.AllowMultiSelect && !Model.Items.Any(x => x.Checked.HasValue && x.Checked.Value) ? "selected=\"selected\"" : "";
+    var items = Model.GetItems();
+    var defaultValue = Model.GetDefaultValue();
+    var cssClasses = Model.GetValidationCssClasses();
+    var autoComplete = AutoCompleteSelectionFactory.GetStringValue(Model.AutoComplete);
+}
+
+@{
+
+    string labelcss = "", inputcss = "", divcss = "", labeldivcss = "", inputdivcss = "";
+    divcss = Convert.ToString(Model.FormElement.SourceContent.Property["DivCSS"]);
+    inputcss = Convert.ToString(Model.FormElement.SourceContent.Property["InputCSS"]);
+    labelcss = Convert.ToString(Model.FormElement.SourceContent.Property["LabelCSS"]);
+    inputdivcss = Convert.ToString(Model.FormElement.SourceContent.Property["InputDivCSS"]);
+    labeldivcss = Convert.ToString(Model.FormElement.SourceContent.Property["LabelDivCSS"]);
+
+}
+
+
+<div class="@divcss">
+
+    @using (Html.BeginElement(Model, new { @class = "FormSelection" + cssClasses, data_f_type = "selection" }))
+    {
+        <div class="@labeldivcss">
+            <label for="@formElement.Guid" class="@labelcss Form__Element__Caption">@labelText</label>
+        </div>
+        <div class="@inputdivcss">
+            <select class="@inputcss" name="@formElement.ElementName" id="@formElement.Guid" @(Model.AllowMultiSelect ? "multiple" : "") @Html.Raw(Model.AttributesString) data-f-datainput
+                    aria-describedby="@Util.GetAriaDescribedByElementName(formElement.ElementName)"
+                    aria-invalid="@Util.GetAriaInvalidByValidationCssClasses(cssClasses)"
+                    autocomplete="@autoComplete">
+                <!option disabled="disabled" @defaultOptionSelected value="">
+                    @(!string.IsNullOrWhiteSpace(placeholderText) ? placeholderText : Html.Translate(string.Format("/episerver/forms/viewmode/selection/{0}", Model.AllowMultiSelect ? "selectoptions" : "selectanoption")))
+                </!option>
+                @foreach (var item in items)
+                {
+                    var defaultSelectedString = Model.GetDefaultSelectedString(item, defaultValue);
+                    var selectedString = string.IsNullOrEmpty(defaultSelectedString) ? string.Empty : "selected";
+
+                    <!option value="@item.Value" @selectedString @defaultSelectedString data-f-datainput>@item.Caption</!option>
+                }
+            </select>
+        </div>
+
+        @Html.ValidationMessageFor(Model)
+    }
+</div>

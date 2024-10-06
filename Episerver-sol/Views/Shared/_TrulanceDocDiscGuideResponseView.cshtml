@@ -1,0 +1,716 @@
+﻿@model EpiserverBH.Controllers.Trulance.Request
+
+@{
+    var pdfName = Url.Content(Model.PDFName);
+}
+
+@if (Model.IsSuccess)
+{
+    <div class="ddg-final-summary">
+        <section class="answer-row" id="summary">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-5 col-sm-offset-1">
+                        @if (Model.StatusVal > 2)
+                        {
+                            <h2 class="text-gray ddg-summary-title">
+                                Based on your answers, it seems like you are
+                                <span class="text-brand-primary">headed in the right direction</span>.
+                            </h2>
+                        }
+                        else if (Model.StatusVal <= 1)
+                        {
+                            <h2 class="text-gray ddg-summary-title">
+                                Based on your answers, it seems like you are
+                                <span class="text-brand-primary">unsatisfied</span> with your current treatment.
+                            </h2>
+                        }
+                        else if (Model.StatusVal == 2)
+                        {
+                            <h2 class="text-gray ddg-summary-title">
+                                Based on your answers, it seems like you have parts of your treatment down, but you are
+                                <span class="text-brand-primary">still looking for something that works</span>  for you.
+                            </h2>
+                        }
+                        else
+                        {
+                            <h2 class="text-gray ddg-summary-title">
+                                Based on your answers, it seems like you are
+                                <span class="text-brand-primary">headed in the right direction</span>.
+                            </h2>
+                        }
+
+                        <p>Discussing your constipation, including any experiences with treatment side effects, can be key to helping your doctor find the right treatment option for you.</p>
+                        <p>
+                            To help get this conversation started,
+                            <span class="text-brand-primary">take this personalized Discussion Guide to your next doctor's appointment</span>. Along with your responses, there are important questions to ask your doctor to see if Trulance is right for you.
+                        </p>
+                    </div>
+                    <div class="col-sm-5 col-md-4 col-lg-3 col-sm-offset-1">
+                        <div class="btn-wrapper">
+                            <h1>Your Personalized Discussion Guide</h1>
+                            <a class="btn btn-default btn-lg btn-block btn-icon icon-dl" download="" href="@pdfName" id="download-ddg-output" role="button" target="_blank">
+                                <img class="svg lazy" src="@Url.Content("~/Assets/Trulance-DTC/img/icon-download.svg")" width="60" />
+                                @* <object type="image/svg+xml" data="@Url.Content("~/Assets/Trulance-DTC/img/icon-download.svg")"></object>*@
+                                <span>Download</span>
+                            </a>
+                            <a class="btn btn-default btn-lg btn-block btn-icon icon-print" href="@pdfName" id="print-ddg-output" role="button" target="_blank"> <img class="svg lazy" src="@Url.Content("~/Assets/Trulance-DTC/img/icon-print.svg")" width="60"> <span>Print</span> </a> <a class="link-gray" href="https://www.bauschhealth.com/Portals/25/Pdf/PI/trulance-pi.pdf" id="click-here-ddg-output" target="_blank"><u>Click here</u> to download the Prescribing Information and Medication Guide</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- END row -->
+            </div>
+        </section>
+        <section class="answer-row" id="about-me">
+            <div class="container">
+                <div class="row">
+                    <div class="mobile-row">
+                        <div class="col-xs-12 col-sm-1 col-icon">
+                            <svg class="svg icon-body icon-md lazy" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="0 0 144 144" enable-background="new 0 0 144 144" xml:space="preserve">
+                            <metadata><?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
+                            <x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c137 79.159768, 2016/08/11-13:24:42        ">
+                            <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+                            <rdf:Description rdf:about="" />
+
+
+
+                               </rdf:RDF>
+                            </x:xmpmeta>
+                            <?xpacket end="w"?></metadata>
+                            <circle fill="#FBAB18" cx="72" cy="72.3" r="69.5" />
+
+
+
+                            <g>
+                            <defs>
+                            <circle id="SVGID_1_" cx="72" cy="72.3" r="59.6" />
+
+
+
+	                            </defs>
+                            <clipPath id="SVGID_2_">
+                            <use xlink:href="#SVGID_1_" overflow="visible" />
+
+
+
+	                            </clipPath>
+                            <g clip-path="url(#SVGID_2_)">
+		
+                            <path fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+			                            M113.9,76.5c0,0-12.5,12.2-41,12.2c-28.5,0-41-12.2-41-12.2" />
+
+
+
+
+
+
+		
+                            <path fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+			                            M29.2,87.6C47,99.3,56.7,98.3,69.8,114.4c0.8,1,1.9,1.4,3.1,1.4c1.2,0,2.3-0.4,3.1-1.4c13.1-16.2,22.8-15.1,40.6-26.9" />
+
+
+
+
+
+
+		
+                            <line fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="72.9" y1="115.8" x2="72.9" y2="135.8" />
+
+
+
+                            <g>
+			
+                            <path fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+				                            M38.7,59.7c-1,2.8-2.2,5.6-3.7,8.6c-4.2,8.3-6.7,17.3-6.7,26.6c0,11.1,2.3,25.6,11.4,40.8" />
+
+
+
+
+
+
+			
+                            <path fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+				                            M37.2,20.9c0,0,8,12.5,3.3,32.4" />
+
+
+
+
+
+
+			
+                            <path fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+				                            M54,62.9c-17.7-2.3-30.2-7.8-30.2-14.2c0-4.1,5-7.8,13.2-10.5" />
+
+
+
+
+
+
+			
+                            <polyline fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+				                            56.9,56.1 62.5,64.2 54.9,70.2 			" />
+
+
+
+		                            </g>
+                            <g>
+			
+                            <path fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+				                            M107.1,59.7c1,2.8,2.2,5.6,3.7,8.6c4.2,8.3,6.7,17.3,6.7,26.6c0,11.1-2.3,25.6-11.4,40.8" />
+
+
+
+
+
+
+			
+                            <path fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+				                            M108.5,20.9c0,0-8,12.5-3.3,32.4" />
+
+
+
+
+
+
+			
+                            <path fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+				                            M91.7,62.9c17.7-2.3,30.2-7.8,30.2-14.2c0-4.1-5-7.8-13.2-10.5" />
+
+
+
+
+
+
+			
+                            <polyline fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+				                            88.8,56.1 83.2,64.2 90.8,70.2 			" />
+
+
+
+		                            </g>
+	                            </g>
+                            </g>
+                            </svg>
+                        </div>
+                        <div class="col-xs-12 col-sm-5" id="text-aboutme">
+                            <h4>About me and my condition:</h4>
+                            <ul class="ul-timespan ul-diagnosed">
+                                @foreach (var aboutCondition in Model.About.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries))
+                                {
+                                    <li class="ddg-litag">@aboutCondition</li>
+
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mobile-row">
+                        <div class="col-xs-12 col-sm-1 col-icon">
+                            <svg class="svg icon-md icon-clipboard lazy" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="0 0 144 144" enable-background="new 0 0 144 144" xml:space="preserve">
+                            <metadata><?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
+                            <x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c137 79.159768, 2016/08/11-13:24:42        ">
+                            <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+                            <rdf:Description rdf:about="" />
+
+
+
+                               </rdf:RDF>
+                            </x:xmpmeta>
+                            <?xpacket end="w"?></metadata>
+                            <circle fill="#FBAB18" cx="73" cy="72.3" r="69.5" />
+
+
+
+                            <g>
+                            <path fill="#FFFFFF" d="M72.5,21h9.4c0,0,1.7-0.2,1.7,1.5v4.8h7c0,0,2.2,0.2,2.4,2V38c0,0,0.2,1.3-2,2.2H72.7h0H54.4
+		                            c-2.2-0.9-2-2.2-2-2.2v-8.7c0.2-1.7,2.4-2,2.4-2h7v-4.8c0-1.7,1.7-1.5,1.7-1.5h9.4H72.5z" />
+
+
+
+                            <path fill="none" stroke="#FFFFFF" stroke-width="4" d="M50.9,33.6h-7.4c0,0-2.8-0.2-3,3.5v72.8c0,0,0,2.8,3,3h59.2
+		                            c0,0,3,0,2.8-3.2V37c0,0,0.6-3-2.9-3.2h-8.1" />
+
+
+
+                            <path fill="#FFFFFF" d="M58.7,53.5c0,1-0.8,1.7-1.7,1.7h-2.8c-1,0-1.7-0.8-1.7-1.7v-2.8c0-1,0.8-1.7,1.7-1.7H57
+		                            c1,0,1.7,0.8,1.7,1.7V53.5z" />
+
+
+
+                            <path fill="#FFFFFF" d="M58.7,66.4c0,1-0.8,1.7-1.7,1.7h-2.8c-1,0-1.7-0.8-1.7-1.7v-2.8c0-1,0.8-1.7,1.7-1.7H57
+		                            c1,0,1.7,0.8,1.7,1.7V66.4z" />
+
+
+
+                            <path fill="#FFFFFF" d="M58.7,79.4c0,1-0.8,1.7-1.7,1.7h-2.8c-1,0-1.7-0.8-1.7-1.7v-2.8c0-1,0.8-1.7,1.7-1.7H57
+		                            c1,0,1.7,0.8,1.7,1.7V79.4z" />
+
+
+
+                            <path fill="#FFFFFF" d="M58.7,92.6c0,1-0.8,1.7-1.7,1.7h-2.8c-1,0-1.7-0.8-1.7-1.7v-2.8c0-1,0.8-1.7,1.7-1.7H57
+		                            c1,0,1.7,0.8,1.7,1.7V92.6z" />
+
+
+
+                            <line fill="none" stroke="#FFFFFF" stroke-width="4.4212" x1="61.8" y1="52.1" x2="93.6" y2="52.1" />
+
+
+
+                            <line fill="none" stroke="#FFFFFF" stroke-width="4.4212" x1="61.6" y1="65.1" x2="93.4" y2="65.1" />
+
+
+
+                            <line fill="none" stroke="#FFFFFF" stroke-width="4.4212" x1="61.6" y1="78" x2="93.4" y2="78" />
+
+
+
+                            <line fill="none" stroke="#FFFFFF" stroke-width="4.4212" x1="61.6" y1="91.2" x2="93.4" y2="91.2" />
+
+
+
+                            </g>
+                            </svg>
+                        </div>
+                        <div class="col-xs-12 col-sm-5">
+                            <h4>I experience the following symptoms:</h4>
+                            <ul class="ul-symptoms">
+                                @foreach (var symptom in Model.Symptoms.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries))
+                                {
+                                    if (@symptom != "null")
+                                    {
+                                        <li class="ddg-litag">@symptom</li>
+                                    }
+
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- END row -->
+            </div>
+        </section>
+        <section class="answer-row">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-1 col-icon">
+                        <svg class="svg icon-person icon-md lazy" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             viewBox="-233 325 144 144" style="enable-background:new -233 325 144 144;" xml:space="preserve">
+                        <style type="text/css">
+                            .st0 {
+                                fill: #FFFFFF;
+                            }
+
+                            .st1 {
+                                fill: #FF9B00;
+                            }
+</style>
+                        <g>
+                        <path class="st0" d="M-160.5,434.9c-29.3,0-52.5-25-53.5-26c-1.1-1.3-1.1-3.1,0-4.4c1-1.1,24.2-26,53.5-26s52.5,25,53.5,26
+		                                c1.1,1.3,1.1,3.1,0,4.4C-107.9,410-131.1,434.9-160.5,434.9z M-206.7,406.7c6.2,5.9,24.8,21.6,46.3,21.6s40.1-15.7,46.3-21.6
+		                                c-6.2-5.9-24.8-21.6-46.3-21.6C-182,385.1-200.5,400.8-206.7,406.7z" />
+
+
+
+                                </g>
+                        <g>
+                        <path class="st0" d="M-160.5,420c-7.4,0-13.5-6-13.5-13.3c0-7.3,6.1-13.3,13.6-13.3s13.6,6,13.6,13.3C-146.9,414-153,420-160.5,420
+		                                z M-160.5,400c-3.8,0-6.8,3-6.8,6.7c0,3.7,3.1,6.7,6.8,6.7c3.8,0,6.8-3,6.8-6.7C-153.6,403-156.7,400-160.5,400z" />
+
+
+
+                                </g>
+                        <g>
+                        <path class="st0" d="M-160.5,434.9c-15.9,0-28.9-12.7-28.9-28.2c0-15.5,12.9-28.2,28.9-28.2s28.9,12.7,28.9,28.2
+		                                S-144.5,434.9-160.5,434.9z M-160.5,385.1c-12.2,0-22.1,9.7-22.1,21.6c0,11.9,9.9,21.6,22.1,21.6s22.1-9.7,22.1-21.6
+		                                C-138.4,394.8-148.3,385.1-160.5,385.1z" />
+
+
+
+                                </g>
+                        <g>
+                        <path class="st0" d="M-160.5,375.1c-1.9,0-3.4-1.5-3.4-3.3v-15c0-1.8,1.5-3.3,3.4-3.3s3.4,1.5,3.4,3.3v15
+		                                C-157.1,373.6-158.6,375.1-160.5,375.1z" />
+
+
+
+                                </g>
+                        <g>
+                        <path class="st0" d="M-123.3,384.1c-0.6,0-1.2-0.1-1.7-0.4c-1.6-0.9-2.2-2.9-1.2-4.5l7.6-12.9c0.9-1.6,3-2.1,4.6-1.2
+		                                s2.2,2.9,1.2,4.5l-7.6,12.9C-121,383.5-122.1,384.1-123.3,384.1z" />
+
+
+
+                                </g>
+                        <g>
+                        <path class="st0" d="M-197.2,384.1c-1.2,0-2.3-0.6-2.9-1.6l-7.6-12.9c-0.9-1.6-0.4-3.6,1.2-4.5s3.7-0.4,4.6,1.2l7.6,12.9
+		                                c0.9,1.6,0.4,3.6-1.2,4.5C-196.1,383.9-196.7,384.1-197.2,384.1z" />
+
+
+
+                                </g>
+                        <g>
+                        <g>
+                        <g>
+                        <ellipse class="st1" cx="-161" cy="396.4" rx="72" ry="70.4" />
+
+
+
+		                                </g>
+	                                </g>
+                        <path class="st0" d="M-126.1,442c-1.9,0-2.2-1.5-2.2-3.3v-23.2c0-3.6-2.6-8.1-5.2-10.6c-2.6-2.6-7.2-5.1-10.9-5.1H-177
+		                                c-3.7,0-8.3,2.5-10.9,5.1c-2.6,2.6-5.2,7.1-5.2,10.6v23.3c0,1.8-0.4,3.3-2.2,3.3s-2.2-1.5-2.2-3.3v-23.3c0-5.4,2.1-10.4,6-14.2
+		                                c3.9-3.8,9.1-5.9,14.5-5.9h32.5c5.5,0,10.6,2.1,14.5,5.9c3.9,3.8,6,8.9,6,14.2v23.3C-123.9,440.6-124.3,442-126.1,442z
+		                                 M-138.2,370.6c0-12.1-10.1-22-22.5-22s-22.5,9.9-22.5,22s10.1,22,22.5,22S-138.2,382.7-138.2,370.6z M-142.7,370.6
+		                                c0,8.5-5.4,17.6-18,17.6c-11.7,0-18-9.1-18-17.6s5.5-17.6,18-17.6C-149.2,353-142.7,362.1-142.7,370.6z M-177.6,438.7V422
+		                                c0-1.8-0.4-3.3-2.2-3.3s-2.2,1.5-2.2,3.3v16.8c0,1.8,0.4,3.3,2.2,3.3S-177.6,440.6-177.6,438.7z M-139.4,438.7V422
+		                                c0-1.8-0.4-3.3-2.2-3.3c-1.9,0-2.2,1.5-2.2,3.3v16.8c0,1.8,0.4,3.3,2.2,3.3C-139.7,442-139.4,440.6-139.4,438.7z" />
+
+
+
+                                </g>
+                        </svg>
+                    </div>
+                    <div class="col-xs-12 col-sm-11">
+                        <h4>My most frequent Bristol Stool Form Scale score when not treated:</h4>
+                        <!-- Stool Scale -->
+                        <div class="stool-scale">
+                            <div class="mobile-icons">&nbsp;</div>
+                            <div class="line">&nbsp;</div>
+                            <ol>
+                                @if (Model.slidervalue == "1")
+                                {
+                                    <li class="scale-1 current"><span class="graphic"></span><span class="num">1</span><span class="current">current</span></li>
+                                }
+                                else
+                                {
+                                    <li class="scale-1"><span class="graphic"></span><span class="num">1</span><span class="current">current</span></li>
+                                }
+                                @if (Model.slidervalue == "2")
+                                {
+                                    <li class="scale-2 current"><span class="graphic"></span><span class="num">2</span><span class="current">current</span></li>
+                                }
+                                else
+                                {
+                                    <li class="scale-2"><span class="graphic"></span><span class="num">2</span><span class="current">current</span></li>
+                                }
+                                @if (Model.slidervalue == "3")
+                                {
+                                    <li class="scale-3 current"><span class="graphic"></span><span class="num">3</span><span class="current">current</span></li>
+                                }
+                                else
+                                {
+                                    <li class="scale-3"><span class="graphic"></span><span class="num">3</span><span class="current">current</span></li>
+                                }
+                                @if (Model.slidervalue == "4")
+                                {
+                                    <li class="scale-4 current"><span class="graphic"></span><span class="num">4</span><span class="current">current</span></li>
+                                }
+                                else
+                                {
+                                    <li class="scale-4"><span class="graphic"></span><span class="num">4</span><span class="current">current</span></li>
+                                }
+                                @if (Model.slidervalue == "5")
+                                {
+                                    <li class="scale-5 current"><span class="graphic"></span><span class="num">5</span><span class="current">current</span></li>
+                                }
+                                else
+                                {
+                                    <li class="scale-5"><span class="graphic"></span><span class="num">5</span><span class="current">current</span></li>
+                                }
+                                @if (Model.slidervalue == "6")
+                                {
+                                    <li class="scale-6 current"><span class="graphic"></span><span class="num">6</span><span class="current">current</span></li>
+                                }
+                                else
+                                {
+                                    <li class="scale-6"><span class="graphic"></span><span class="num">6</span><span class="current">current</span></li>
+                                }
+                                @if (Model.slidervalue == "7")
+                                {
+                                    <li class="scale-7 current"><span class="graphic"></span><span class="num">7</span><span class="current">current</span></li>
+                                }
+                                else
+                                {
+                                    <li class="scale-7"><span class="graphic"></span><span class="num">7</span><span class="current">current</span></li>
+                                }
+
+                            </ol>
+                        </div>
+                        <!-- End Stool Scale -->
+                        <div class="box box-outline-a"><span class="text-brand-primary">Talk to your doctor to see if Trulance is an option for you.</span></div>
+                    </div>
+                    <!-- END .col -->
+                </div>
+                <!-- END .row -->
+            </div>
+        </section>
+        <!-- Past / Current remedies -->
+        <section class="answer-row" id="past">
+            <div class="container">
+                <div class="row">
+                    <div class="mobile-row">
+                        <div class="col-xs-12 col-sm-1 col-icon">
+                            <svg class="svg icon-md icon-pills lazy" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="-233 325 144 144" style="enable-background:new -233 325 144 144;" xml:space="preserve">
+                            <style type="text/css">
+                                .st0 {
+                                    fill: #FF9B00;
+                                }
+
+                                .st1 {
+                                    fill: #FFFFFF;
+                                }
+</style>
+                            <circle class="st0" cx="-160" cy="397.3" r="69.5" />
+
+
+
+                            <path class="st1" d="M-120.1,393c-2.8-2.8-6.4-4.1-10-4.1c-3.6,0-7.2,1.4-10,4.1l-13.5,13.4l0,0l0,0l-13.4,13.5
+	                                c-2.8,2.8-4.1,6.4-4.1,10s1.4,7.2,4.1,10l0,0c2.8,2.8,6.4,4.1,10,4.1s7.2-1.4,10-4.1l26.9-26.9c2.8-2.8,4.1-6.4,4.1-10
+	                                S-117.4,395.7-120.1,393L-120.1,393z M-149.1,437.8c-2.2,2.2-5.1,3.3-7.9,3.3c-2.9,0-5.7-1.1-7.9-3.3l0,0c-2.2-2.2-3.3-5.1-3.3-7.9
+	                                c0-2.9,1.1-5.7,3.3-7.9l12.4-12.4l15.9,15.9L-149.1,437.8z M-122.2,410.9l-12.4,12.4l-15.9-15.8l12.4-12.5c2.2-2.2,5.1-3.3,7.9-3.3
+	                                c2.9,0,5.7,1.1,7.9,3.3l0,0c2.2,2.2,3.3,5.1,3.3,7.9C-118.9,405.8-120,408.7-122.2,410.9z" />
+
+
+
+                            <path class="st1" d="M-165.4,392c0-11.2-9.1-20.3-20.3-20.3c-11.2-0.1-20.3,9-20.3,20.3c0,11.2,9.1,20.3,20.3,20.3
+	                                c5.6,0,10.7-2.3,14.4-5.9l0,0l0,0C-167.6,402.7-165.4,397.6-165.4,392z M-173.4,379.6c3.2,3.2,5.1,7.5,5.1,12.3
+	                                c0,4.3-1.6,8.2-4.1,11.2l-24.5-24.4c3-2.6,6.9-4.1,11.2-4.1C-180.9,374.5-176.5,376.5-173.4,379.6z M-198,404.3
+	                                c-3.2-3.2-5.1-7.5-5.1-12.3c0-4.3,1.6-8.2,4.1-11.2l24.5,24.5c-3,2.6-6.9,4.1-11.2,4.1C-190.5,409.4-194.8,407.4-198,404.3z" />
+
+
+
+                            <path class="st1" d="M-135.2,367.1c0-7.3-5.8-13.1-13-13.1s-13.1,5.8-13.1,13.1c0,7.2,5.8,13.1,13.1,13.1
+	                                C-141,380.1-135.2,374.3-135.2,367.1z M-158.4,367.1c0-2.8,1.1-5.3,3-7.2c1.8-1.8,4.4-3,7.2-3c2.8,0,5.3,1.1,7.2,3
+	                                c1.8,1.8,3,4.4,3,7.2c0,2.8-1.1,5.3-3,7.2c-1.8,1.8-4.4,3-7.2,3c-2.8,0-5.3-1.1-7.2-3C-157.2,372.4-158.4,369.9-158.4,367.1z" />
+
+
+
+                            </svg>
+                        </div>
+                        <div class="col-xs-12 col-sm-5">
+                            <h4>In the past, I’ve tried:</h4>
+                            <ul class="ul-past-remedy">
+                                @foreach (var pastEntry in Model.Past.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries))
+                                {
+                                    if (pastEntry == "None of these")
+                                    {
+                                         <li class="ddg-litag">My treatment is not listed in this form</li>
+                                    }
+                                    else
+                                    {
+                                        <li class="ddg-litag">@pastEntry</li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mobile-row">
+                        <div class="col-xs-12 col-sm-1 col-icon">
+                            <svg class="svg icon-fiber icon-md lazy" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="0 0 144 144" enable-background="new 0 0 144 144" xml:space="preserve">
+                            <metadata><?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
+                            <x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c137 79.159768, 2016/08/11-13:24:42        ">
+                            <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+                            <rdf:Description rdf:about="" />
+
+
+
+                                   </rdf:RDF>
+                                </x:xmpmeta>
+                                 <?xpacket end="w"?></metadata>
+                            <circle fill="#FBAB18" cx="70.5" cy="72.3" r="69.5" />
+
+
+
+                            <g>
+                            <path fill="#FFFFFF" d="M83.5,26.7h-26c-0.5,0-1,0.5-1,1.1v2.7h28v-2.7C84.5,27.1,84.1,26.7,83.5,26.7z" />
+
+
+
+                            <path fill="#FFFFFF" d="M84.8,41.1v-5.5h0.3c0.9,0,1.6-0.7,1.6-1.6s-0.7-1.6-1.6-1.6H55.9c-0.9,0-1.6,0.7-1.6,1.6
+		                                c0,0.9,0.7,1.6,1.6,1.6h0.3v5.5c0,0-9.1,2.4-8.3,9.8l2.4,60.1c0,0-0.8,6.6,4.1,7.1H70h1h15.6c4.9-0.5,4.1-7.1,4.1-7.1l2.4-60.1
+		                                C93.9,43.5,84.8,41.1,84.8,41.1z M89.9,50.5c0,0.1,0,0.2,0,0.2l-2.4,60.1c0,0.2,0,0.3,0,0.5c0.1,0.9,0,2.6-0.5,3.2
+		                                c-0.1,0.1-0.2,0.2-0.5,0.3H71h-1H54.6c-0.3-0.1-0.4-0.2-0.5-0.3c-0.5-0.6-0.6-2.3-0.5-3.2c0-0.2,0-0.4,0-0.5l-2.4-60.1
+		                                c0-0.1,0-0.2,0-0.2c-0.5-4.4,5.7-6.2,5.9-6.3c1.4-0.4,2.4-1.7,2.4-3.1v-5.5h22.1l0,5.5c0,1.5,1,2.8,2.4,3.1
+		                                C84,44.3,90.4,46,89.9,50.5z" />
+
+
+
+                            <path fill="#FFFFFF" d="M75.9,82.7c-1.2,3.5-2.1,6.3-2.7,7.9c2.1,2.9,2.8,6.9,1.6,10.6c-1.6,5.2-6.6,8.4-10.5,8.4l0,0
+		                                c-0.7,0-1.4-0.1-2-0.3l-1.9-0.6l6.1-19.9l1.9-6.1H55.8l1,25.9c0,0.1,0,0.3,0,0.4c-0.1,0.7,0,2.1,0.4,2.6c0.1,0.1,0.1,0.2,0.4,0.2
+		                                h12.5h0.8h12.5c0.3,0,0.3-0.1,0.4-0.2c0.4-0.5,0.5-1.8,0.4-2.6c0-0.1,0-0.3,0-0.4l1-25.9L75.9,82.7z" />
+
+
+
+                            <path fill="#FFFFFF" d="M81.3,48.9L68.5,89.4l-0.1,0.3L63,107.5c3.3,1,8.5-1.8,10-6.8c1.1-3.7,0.1-7.5-2-9.6
+		                                c1.2-3.4,11-32.8,12.1-36.4C84.4,50.4,81.3,48.9,81.3,48.9z" />
+
+
+
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="col-xs-12 col-sm-5">
+                            <h4>I'm currently using:</h4>
+                            <ul class="ul-current-remedy">
+                                @foreach (var currentlyEntry in Model.Currently.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries))
+                                {
+                                    if (currentlyEntry == "None of these")
+                                    {
+                                        <li class="ddg-litag">My treatment is not listed in this form</li>
+                                    }
+                                    else
+                                    {
+                                        <li class="ddg-litag">@currentlyEntry</li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- END row -->
+            </div>
+        </section>
+        <!-- END Past / Current remedies --><!-- Treatment -->
+        <section class="answer-row" id="current">
+            <div class="container">
+                <div class="row">
+                    <div class="mobile-row">
+                        <div class="col-xs-12 col-sm-1 col-icon">
+                            <svg class="svg icon-dr icon-md lazy" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="-233 325 144 144" style="enable-background:new -233 325 144 144;" xml:space="preserve">
+                            <style type="text/css">
+                                .st0 {
+                                    fill: #FF9D00;
+                                }
+
+                                .st1 {
+                                    fill: #FFFFFF;
+                                }
+</style>
+                            <circle class="st0" cx="-160" cy="397.3" r="69.5" />
+
+
+
+                            <path class="st1" d="M-136.3,350.6c-1.3-2.8-3.8-5.1-5.5-4.8c0.8-0.5,2-0.1,3.2,0.8c0.2,0.1,0.4,0.1,0.3-0.1
+	                                c-0.2-0.4-0.4-0.8-0.5-0.9c-0.8-0.8-1.6-1.5-2.5-2.2c-1.5-1.1-3.7-0.7-4.8,0.8s-0.7,3.7,0.8,4.8c1.5,1,2.7,1.9,4,2
+	                                c0.2,0,0.4,0.1,0.6,0.4c0.6,1.2,1,2.6,1,4.4v9.5c0,2.6-0.1,3.9-0.8,5.9c-0.2,0.6-0.4,0.7-0.9,1c-5.4,3-12.5,4.8-20.2,4.8
+	                                s-14.8-1.8-20.2-4.8c-0.5-0.3-0.8-0.7-0.9-1c-0.7-1.9-0.8-3.3-0.8-5.9v-9.5c0-1.8,0.5-3.2,1.2-4.4c0.1-0.1,0.4-0.3,0.5-0.4
+	                                c1.3-0.2,2.5-1,4-2c1.6-1,1.9-3.2,0.8-4.8c-1.1-1.5-3.2-1.9-4.8-0.8c-0.9,0.6-1.8,1.4-2.5,2.2c-0.2,0.2-0.4,0.6-0.6,1
+	                                c-0.1,0.2,0.1,0.3,0.2,0.2c1.1-0.9,2.2-1.4,3.1-1c0.2,0.1,0.1,0.2-0.1,0.2c-1.7-0.1-4.1,2.1-5.2,4.7c-0.8,1.9-1.3,3.7-1.3,5.2v9.5
+	                                c0,2.7,0.2,4.9,1.1,7.4s2.4,5.3,4.9,9.8c2.6,4.6,5,8.9,8.1,12.3c2.5,2.8,5.7,4.8,9.6,5.5c0.3,0.1,0.7,0.4,0.7,0.8
+	                                c0,3.8,0.2,7.3,1.4,10.7c1.4,4.1,4.4,7.8,9.7,10.5c8,4.1,11.2,8.5,11.1,12.1c0.1,3.4-4.4,8.9-9.8,12c-0.5,0.3-0.8-0.6,0.1-1
+	                                c0.8-0.4,1.8-1.4,2.4-2.1c0.5-0.6,0.4-1.1-0.2-1.2c-0.5-0.1-0.9-0.2-1.4-0.2c-3.3,0-6,2.7-6,6c0,3.3,2.7,6,6,6s6-2.7,6-6
+	                                c0-0.7-0.1-1.3-0.3-1.9c4.1-3.2,7.5-7.3,7.5-11.6c-0.1-6.1-4.9-11.4-13.4-15.8c-4.6-2.4-6.6-5-7.7-8.1c-0.9-2.6-1.1-5.7-1.1-9.2
+	                                c0-0.4,0.1-0.7,0.6-0.8c3.9-0.7,7.1-2.8,9.6-5.5c3.1-3.4,5.6-7.7,8.1-12.3c2.6-4.6,4-7.3,4.9-9.8s1.1-4.7,1.1-7.4v-9.5
+	                                C-135.1,354.3-135.5,352.5-136.3,350.6z M-141.9,374.5c-0.8,1.5-1.8,3.4-3.1,5.7c-2.6,4.5-4.9,8.6-7.5,11.4c-2.6,2.8-5.2,4.3-9,4.3
+	                                s-6.4-1.5-9-4.3c-2.6-2.8-4.9-6.9-7.5-11.4c-1.4-2.4-2.4-4.3-3.1-5.8c-0.1-0.2,0.1-0.4,0.4-0.3c5.4,2.6,12,4.1,19.3,4.1
+	                                c7.2,0,13.9-1.5,19.3-4.2C-141.9,374-141.7,374.2-141.9,374.5z" />
+
+
+
+                            </svg>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-5">
+                            <h4>Status of my current treatment:</h4>
+                            <ul class="ul-satisfaction">
+                                @if (!string.IsNullOrWhiteSpace(Model.Question52))
+                                {
+                                    foreach (var currentStatusEntry in Model.Question52.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries))
+                                    {
+                                        <li class="ddg-litag">@currentStatusEntry</li>
+                                    }
+                                }
+                                else
+                                {
+                                    if (!string.IsNullOrWhiteSpace(Model.Status))
+                                    {
+                                        foreach (var currentStatusEntry in Model.Status.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries))
+                                        {
+                                            <li class="ddg-litag">@currentStatusEntry</li>
+                                        }
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mobile-row">
+                        <div class="col-xs-12 col-sm-1 col-icon">
+                            <svg class="svg icon-check icon-md lazy" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="-233 325 144 144" style="enable-background:new -233 325 144 144;" xml:space="preserve">
+                            <style type="text/css">
+                                .st0 {
+                                    fill: #FF9D00;
+                                }
+
+                                .st1 {
+                                    fill: #FFFFFF;
+                                }
+</style>
+                            <circle class="st0" cx="-160" cy="397.3" r="69.5" />
+
+
+
+                            <g transform="translate(0,-952.36218)">
+                            <path class="st1" d="M-119.2,1314.7c-0.8,0-1.5,0.4-2,1c-10.7,11.2-29.8,32.1-41.2,44.1l-14.8-11.4c-1.3-1-3.2-0.8-4.2,0.5
+		                                s-0.8,3.2,0.5,4.2c0,0,0,0,0.1,0l17,13c1.2,0.9,2.9,0.8,4-0.3c11.2-11.7,31.9-34.4,43-46c1.2-1.2,1.2-3.1,0-4.2
+		                                C-117.5,1315-118.3,1314.6-119.2,1314.7z M-193,1318.7c-1.7,0-3,1.3-3,3v60c0,1.7,1.3,3,3,3h60c1.7,0,3-1.3,3-3v-32
+		                                c0-1.7-1.3-3-3-3s-3,1.3-3,3v0.1v29h-54v-54h51c1.7,0,3-1.3,3-3c0-1.7-1.3-3-3-3h-0.1L-193,1318.7L-193,1318.7z" />
+
+
+
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="col-xs-12 col-sm-5">
+                            <h4>For me, treatment success means:</h4>
+                            <ul class="ul-treatments">
+                                @foreach (var successMeanEntry in Model.Success.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries))
+                                {
+                                    <li class="ddg-litag">@successMeanEntry</li>
+
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- END row -->
+            </div>
+        </section>
+        <!-- END Current -->
+        <section class="notes spaced">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="alt">Questions to ask your doctor about Trulance:</h2>
+                        <ol class="counter-lg">
+                            <li>
+                                <p>Can Trulance help me have more regular, well-formed bowel movements?</p>
+                            </li>
+                            <li>
+                                <p>What are the side effects of Trulance?</p>
+                            </li>
+                            <li>
+                                <p>Is Trulance appropriate for me?</p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- END row -->
+            </div>
+        </section>
+        <!-- END notes -->
+    </div>
+}
+else
+{
+    <span>Error</span>
+}
+
+<script type="text/javascript">
+    $("body").addClass("ddg-output");
+    $("body").removeClass("ddg-questions");
+</script>

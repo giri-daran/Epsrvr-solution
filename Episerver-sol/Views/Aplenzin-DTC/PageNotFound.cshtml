@@ -1,0 +1,162 @@
+﻿@using EpiserverBH
+@using EPiServer.Web.Mvc.Html
+@using EpiserverBH.Business
+@using EPiServer.Web
+@model PageViewModel<Error>
+@{ Layout = null; }
+
+
+<!DOCTYPE html>
+<html lang="@Model.CurrentPage.Language">
+<head id="Head">
+    <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/645261401196b.js" data-cmp-host="d.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="1"></script>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="google-site-verification" content="C4nN4pXcrYmpJSBJYQxq4HM8nkFg76N28eit2hMAtR4" />
+    <meta id="MetaRobots" name="ROBOTS" content="INDEX, FOLLOW" />
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="/Assets/Aplenzin-DTC/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Assets/Aplenzin-DTC/css/global.min.css" rel="stylesheet" />
+    <link href="/Assets/Aplenzin-DTC/css/sitemap-form.css" rel="stylesheet" />
+    <link href="/Assets/Aplenzin-DTC/css/pnf.css" rel="stylesheet" />
+    <script type="text/javascript">
+        (function () {
+            var didInit = false;
+            function initMunchkin() {
+                if (didInit === false) {
+                    didInit = true;
+                    Munchkin.init('350-OKO-721', { "wsInfo": "j09NcQ%3D%3D" });
+                }
+            }
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = '//munchkin.marketo.net/munchkin-beta.js';
+            s.onreadystatechange = function () {
+                if (this.readyState == 'complete' || this.readyState == 'loaded') {
+                    initMunchkin();
+                }
+            };
+            s.onload = initMunchkin;
+            document.getElementsByTagName('head')[0].appendChild(s);
+        })();
+    </script>
+
+    <title>@Model.CurrentPage.MetaTitle</title>
+
+    @if (Model.CurrentPage.MetaKeywords != null && Model.CurrentPage.MetaKeywords.Length > 0)
+    {
+        <meta name="keywords" content="@string.Join(",", Model.CurrentPage.MetaKeywords)" />
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.CurrentPage.MetaDescription))
+    {
+        <meta name="description" content="@Model.CurrentPage.MetaDescription" />
+
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Model.CurrentPage.MetaData))
+    {
+        @Html.Raw(Model.CurrentPage.MetaData)
+    }
+
+    <link rel="shortcut icon" href="@Url.Content("/siteassets/img/favicon.jpg")" />
+
+
+
+
+    @{
+
+        if (Model.Layout.GoogleTagManager != null)
+        {
+
+            <script type="text/javascript">
+
+                (function (w, d, s, l, i) {
+                    w[l] = w[l] || []; w[l].push({ 'eaSendGaEvents': true, 'pageVariant': 'Default' });
+                    w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                            'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                    /**/
+                })(window, document, 'script', 'dataLayer', '@Model.Layout.GoogleTagManager');
+            </script>
+        }
+
+    }
+</head>
+
+
+<body id="Body">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        @{ if (Model.Layout.GoogleTagManager != null)
+            {
+                <iframe src="//www.googletagmanager.com/ns.html?id=@Model.Layout.GoogleTagManager"
+                        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+            } }
+    </noscript>
+
+    <header>
+        <div class="header-top">
+            @Html.PropertyFor(x => x.CurrentPage.HeaderLinksAboveMenu, new { })
+        </div>
+        <div class="header-top-logo-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-2 logo-new">
+                        <div class="logo">
+                            @Html.PropertyFor(x => x.CurrentPage.ContentArea_1, new { })
+
+                        </div>
+                    </div>
+                    <div class="hamburger-menu d-lg-none"><a> <i class="fas fa-bars"></i> </a></div>
+                    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-10 menu-new d-none d-lg-block">
+                        <nav class="menu d-flex justify-content-end">
+
+                            @Html.PropertyFor(x => x.CurrentPage.HeaderLinksMobile, new { })
+
+                        </nav>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 d-block d-lg-none mobile-menu">
+
+                        @Html.PropertyFor(x => x.CurrentPage.ContentArea_3, new { })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    @Html.PropertyFor(x => x.CurrentPage.Banner, new { })
+
+    @Html.PropertyFor(x => x.CurrentPage.ContentArea_2, new { })
+
+
+
+    <div id="IndicationOuterSection">
+        <section class="indications-section" id="IndicationSection">
+            @Html.PropertyFor(x => x.CurrentPage.BodyISI, new { })
+        </section>
+    </div>
+
+    <footer class="Footer-Sec">
+        @Html.PropertyFor(x => x.CurrentPage.Footer, new { })
+    </footer>
+
+    <div id="interstitial-modal" class="interstitial">
+        @Html.PropertyFor(x => x.CurrentPage.ContentArea_6, new { })
+    </div>
+
+
+    <div id="footer-modal" class="footer-modal">
+        @Html.PropertyFor(x => x.CurrentPage.ContentArea_7, new { })
+    </div>
+
+    
+    <script type="text/javascript" src="/Assets/Aplenzin-DTC/js/jquery.slim.min.js"></script>
+    <script type="text/javascript" src="/Assets/Aplenzin-DTC/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Assets/Aplenzin-DTC/js/jquery.lazy.min.js"></script>
+    <script type="text/javascript" src="/Assets/Aplenzin-DTC/js/main.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Editor
+@using EPiServer.Web
+@model PageViewModel<EpiserverBH.Models.Pages.HCP>
+
+
+
+<footer class="Footer-Sec">
+    @Html.PropertyFor(x => x.CurrentPage.Footer, new { })
+</footer>
+<div id="interstitial-modal" class="interstitial">
+    @Html.PropertyFor(x => x.CurrentPage.ContentArea_6, new { })
+</div>
+
+
+
+<div id="footer-modal" class="footer-modal">
+    @Html.PropertyFor(x => x.CurrentPage.ContentArea_7, new { })
+</div>

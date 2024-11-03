@@ -1,0 +1,33 @@
+@using EpiserverBH
+@using EPiServer.Web.Mvc.Html
+@using EpiserverBH.Business
+@model PageViewModel<EpiserverBH.Models.Pages.Development.GenericHome>
+
+
+@{ string layouturl = null;
+    @*if (Model.CurrentPage.SiteTemplate != null)
+        {
+            Layout = "~/Views/OrthoRX/Layouts/_Root.cshtml";
+
+        }*@
+    Layout = "~/Views/Arestin-DTC/Layouts/_Root.cshtml"; }
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-9 p-0">
+            @Html.PropertyFor(x => x.CurrentPage.BannerSlider, new { })
+            @Html.PropertyFor(x => x.CurrentPage.BannerContent, new { })
+            @Html.PropertyFor(x => x.CurrentPage.ContentArea, new { })
+            @Html.PropertyFor(x => x.CurrentPage.FormArea)
+            @Html.PropertyFor(x => x.CurrentPage.PopUp)
+        </div>
+
+        <div class="col-lg-3 p-0">
+            @Html.PropertyFor(x => x.CurrentPage.ISISection)
+        </div>
+    </div>
+    
+
+</div>
+
+    

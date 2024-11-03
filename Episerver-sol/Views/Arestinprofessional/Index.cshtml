@@ -1,0 +1,150 @@
+@using EpiserverBH
+@using EPiServer.Web.Mvc.Html
+@using EpiserverBH.Business
+@model PageViewModel<EpiserverBH.Models.Pages.Development.GenericHome>
+
+
+@{ string layouturl = null;
+    @*if (Model.CurrentPage.SiteTemplate != null)
+        {
+            Layout = "~/Views/OrthoRX/Layouts/_Root.cshtml";
+
+        }*@
+    Layout = "/Views/Arestinprofessional/Layouts/_Root.cshtml";
+}
+
+
+
+@{
+    if (Convert.ToString(Context.Request.Path).ToLower().Contains("program-for-students"))
+    {
+        @*program-for-students*@
+        <section class="main-content student">
+            <div class="container">
+                <div id="ContentHeaderPane">
+                    @Html.PropertyFor(x => x.CurrentPage.BannerSlider, new { })
+                </div>
+                <div class="row">
+                    <div class="col-md-8 col-2-main">
+                        <div id="dnn_ContentPane">
+                            @Html.PropertyFor(x => x.CurrentPage.BannerContent, new { })
+                        </div>
+                    </div>
+                    <div class="col-md-4 mobile-top-sm col-2-aside">
+                        <div id="SidebarPane" class="SidebarPane">
+                            @Html.PropertyFor(x => x.CurrentPage.ContentArea, new { })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        @Html.PropertyFor(x => x.CurrentPage.FormArea)
+        @Html.PropertyFor(x => x.CurrentPage.PopUp)
+        @Html.PropertyFor(x => x.CurrentPage.ISISection)
+
+    }
+    else if (Convert.ToString(Context.Request.Path).ToLower().Contains("program-for-faculty"))
+    {
+        @*program-for-faculty*@
+        <section class="main-content faculty">
+            <div class="container">
+                @Html.PropertyFor(x => x.CurrentPage.BannerSlider, new { })
+                <div class="row">
+                    <div class="col-md-8 col-2-main">
+                        <div id="ContentPane">
+                            @Html.PropertyFor(x => x.CurrentPage.BannerContent, new { })
+                        </div>
+                    </div>
+                    <div class="col-md-4 mobile-top-sm col-2-aside">
+                        <div id="dnn_SidebarPane" class="SidebarPane">
+                            @Html.PropertyFor(x => x.CurrentPage.ContentArea, new { })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        @Html.PropertyFor(x => x.CurrentPage.FormArea)
+        @Html.PropertyFor(x => x.CurrentPage.PopUp)
+        @Html.PropertyFor(x => x.CurrentPage.ISISection)
+
+    }
+
+    else if (Convert.ToString(Context.Request.Path).ToLower().Contains("enroll-your-school"))
+    {
+        @*program-for-faculty*@
+        <section class="enroll-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        @Html.PropertyFor(x => x.CurrentPage.BannerSlider, new { })
+                        @Html.PropertyFor(x => x.CurrentPage.BannerContent, new { })
+                        @Html.PropertyFor(x => x.CurrentPage.ContentArea, new { })
+                    </div>
+                </div>
+            </div>
+        </section>
+        @Html.PropertyFor(x => x.CurrentPage.FormArea)
+        @Html.PropertyFor(x => x.CurrentPage.PopUp)
+        @Html.PropertyFor(x => x.CurrentPage.ISISection)
+
+    }
+
+
+    else if (Convert.ToString(Context.Request.Path).ToLower().Contains("enrollment-confirmation"))
+    {
+        @*program-for-faculty*@
+        <section class="enroll-confirmation">
+            @Html.PropertyFor(x => x.CurrentPage.BannerSlider, new { })
+            @Html.PropertyFor(x => x.CurrentPage.BannerContent, new { })
+            @Html.PropertyFor(x => x.CurrentPage.ContentArea, new { })
+        </section>
+        @Html.PropertyFor(x => x.CurrentPage.FormArea)
+        @Html.PropertyFor(x => x.CurrentPage.PopUp)
+        @Html.PropertyFor(x => x.CurrentPage.ISISection)
+
+    }
+
+
+
+    else
+    {
+        @Html.PropertyFor(x => x.CurrentPage.BannerSlider, new { })
+        @Html.PropertyFor(x => x.CurrentPage.BannerContent, new { })
+        @Html.PropertyFor(x => x.CurrentPage.ContentArea, new { })
+        @Html.PropertyFor(x => x.CurrentPage.FormArea)
+        @Html.PropertyFor(x => x.CurrentPage.PopUp)
+        @Html.PropertyFor(x => x.CurrentPage.ISISection)
+
+    }
+}
+
+
+
+<script>
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("myBtn");
+    var btn1 = document.getElementById("myBtn1");
+    var span = document.getElementsByClassName("close")[0];
+
+    if (btn != null) {
+        btn.onclick = function () {
+            $('#myModal').css("display", "block");
+            return false;
+        }
+    }
+
+    if (btn1 != null) {
+        btn1.onclick = function () {
+            $('#myModal').css("display", "block");
+            return false;
+        }
+    }
+
+    if (span != null) {
+        span.onclick = function () {
+            $('#myModal').css("display", "none");
+            window.location.href = "/educational-resources/arestin-student-certification-program/";
+        }
+    }
+
+</script>

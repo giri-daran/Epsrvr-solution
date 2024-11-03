@@ -1,0 +1,108 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Editor
+@using EPiServer.Core
+@using EPiServer.Web
+@using EpiserverBH.Helpers;
+@model PageViewModel<EpiserverBH.Models.Pages.Home>
+
+@*Menu Code Starts Here*@
+
+@{ 
+HelperResult MenuTemplate(HtmlHelpers.MenuItem menuItem)
+{
+    bool children = false;
+    bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+    if (menuItem.Page.PageTypeName == "Home")
+    {
+        <li>
+            @if (children)
+            {
+                @Html.PageLink(menuItem.Page)
+                <span class="dropdown-toggle-arrow"></span>
+                <ul class="nav-val-main-submenu submenu-1">
+                    @Html.MenuList(menuItem.Page.ContentLink, SubMenuTemplate)
+                </ul>
+            }
+            else
+            {
+                @Html.PageLink(menuItem.Page)
+            }
+        </li>
+    }
+     return new HelperResult(w => Task.CompletedTask);
+}
+}
+
+@{ 
+HelperResult SubMenuTemplate(HtmlHelpers.MenuItem menuItem)
+{
+    bool children = false;
+    bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+    if (menuItem.Page.PageTypeName == "Home")
+    {
+        <li>
+            @if (children)
+            {
+                @Html.PageLink(menuItem.Page)
+                
+                <span class="dropdown-toggle-arrow"></span>
+                <ul class="nav-val-main-submenu submenu-2">
+                    @Html.MenuList(menuItem.Page.ContentLink, SubMenuTemplateTwo)
+                </ul>
+            }
+            else
+            {
+                @Html.PageLink(menuItem.Page)
+                <span></span>
+            }
+        </li>
+    }
+    return new HelperResult(w => Task.CompletedTask);
+}
+}
+@{ 
+HelperResult SubMenuTemplateTwo(HtmlHelpers.MenuItem menuItem)
+{
+    bool children = false;
+    bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+    if (menuItem.Page.PageTypeName == "Home")
+    {
+        <li>
+            @Html.PageLink(menuItem.Page)
+            <span></span>
+        </li>
+    }
+    return new HelperResult(w => Task.CompletedTask);
+}
+}
+
+
+<header class="top-bar">
+    <div class="container">
+        <!-- Search on top right hidden in mobile -->
+        <div class="col-md-12">
+            <div class="col-md-3 site-logo">
+
+                @Html.PropertyFor(x => x.CurrentPage.HeaderLinksMobile, new { })
+
+            </div>
+            <div class="col-md-9 pull-right nopaddr">
+                <!-- Main website navigation-->
+                <nav class="nav-val-main style">
+                    <ul class="nav-val-main-menu ">
+
+                        @Html.MenuList(SiteDefinition.Current.StartPage, MenuTemplate)
+
+                        <li class="serch-icon"><i class="fa fa-search"></i></li>
+                        <div class="search-area">
+
+                            @Html.PropertyFor(x => x.CurrentPage.HeaderLinksAboveMenu, new { })
+
+                        </div>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>

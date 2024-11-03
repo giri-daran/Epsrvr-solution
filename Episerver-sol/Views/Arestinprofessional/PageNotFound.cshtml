@@ -1,0 +1,328 @@
+@using EPiServer.Framework.Web.Mvc.Html
+@using EPiServer.ServiceLocation;
+@using EpiserverBH.Business
+@using EPiServer.Web
+@using System
+@using EPiServer.Core
+@using Microsoft.AspNetCore.Http.Extensions;
+@{ Layout = null; }
+@model IPageViewModel<SitePageData>
+@{
+    string schemaInformation = Convert.ToString(ViewBag.SchemaInformation);
+    var pageRef = ContentReference.StartPage;
+
+    var repository = EPiServer.ServiceLocation.ServiceLocator.Current.GetInstance<IContentRepository>();
+    var startPage = ContentReference.StartPage;
+
+    PageData SiteStartPage = repository.Get<PageData>(pageRef);
+
+    var currentpage = ((EpiserverBH.Models.ViewModels.PageViewModel<EpiserverBH.Models.Pages.Development.GenericError>)Model).CurrentPage;
+    string[] sitecss = currentpage.SiteCSS;
+    string[] sitejs = currentpage.SiteJs;
+}
+<!DOCTYPE html>
+<html lang="@(Model.CurrentPage.Language)">
+<head id="Head">
+    <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/3000b2a061a83.js" data-cmp-host="d.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="1"></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <meta name="viewport" Content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <meta id="MetaRobots" name="ROBOTS" content="INDEX, FOLLOW" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="google-site-verification" content="q_f_Pfgq8GFZmVW0R5uGrzuJ5PH7z4_eP7ekU_C4-qU" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="/Assets/Arestinprofessional/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Assets/Arestinprofessional/css/aos.css" rel="stylesheet" />
+    <link href="/Assets/Arestinprofessional/css/slick.css" rel="stylesheet" />
+    <link href="/Assets/Arestinprofessional/css/global.css" rel="stylesheet" />
+    
+    <link rel="shortcut icon" href="/siteassets/img/favicon.ico" type="image/x-icon" />
+    <script src="/Assets/Arestinprofessional/js/jquery.min.js"></script>
+
+     
+    <script type="text/javascript">
+        (function () {
+            var didInit = false;
+            function initMunchkin() {
+                if (didInit === false) {
+                    didInit = true;
+                    Munchkin.init('350-OKO-721', { "wsInfo": "j05NcQ%3D%3D" });
+                }
+            }
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = '//munchkin.marketo.net/munchkin-beta.js';
+            s.onreadystatechange = function () {
+                if (this.readyState == 'complete' || this.readyState == 'loaded') {
+                    initMunchkin();
+                }
+            };
+            s.onload = initMunchkin;
+            document.getElementsByTagName('head')[0].appendChild(s);
+        })();
+    </script>
+
+
+    <title>@Model.CurrentPage.MetaTitle</title>
+
+
+    @if (Model.CurrentPage.MetaKeywords != null && Model.CurrentPage.MetaKeywords.Length > 0)
+    {
+        <meta name="keywords" content="@string.Join(",", Model.CurrentPage.MetaKeywords)" />
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Model.CurrentPage.MetaDescription))
+    {
+        <meta name="description" content="@Model.CurrentPage.MetaDescription" />
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Convert.ToString(Model.CurrentPage.Property["OGTitle"].Value)))
+    {
+        <meta property="og:title" content="@Model.CurrentPage.Property["OGTitle"].Value" />
+    }
+    else
+    {
+        <meta property="og:title" content="@Model.CurrentPage.MetaTitle" />
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Convert.ToString(Model.CurrentPage.Property["OGDescription"].Value)))
+    {
+        <meta property="og:description" content="@Model.CurrentPage.Property["OGDescription"].Value" />
+    }
+    else if (!string.IsNullOrWhiteSpace(Model.CurrentPage.MetaDescription))
+    {
+        <meta property="og:description" content="Model.CurrentPage.MetaDescription" />
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Convert.ToString(Model.CurrentPage.Property["OGImage"].Value)))
+    {
+        <meta property="og:image" content="@EpiserverBH.Helpers.HtmlHelpers.ToExternalImage(Convert.ToString(Model.CurrentPage.Property["OGImage"].Value)))" />
+    }
+
+    <meta property="og:url" content="@Context.Request.GetDisplayUrl().ToLower()" />
+
+    @if (!string.IsNullOrWhiteSpace(Model.CurrentPage.MetaData))
+    {
+        @Html.Raw(Model.CurrentPage.MetaData)
+    }
+
+    @Html.CanonicalLink()
+    @Html.AlternateLinks()
+
+    <required-client-resources area="Header" />
+
+
+    @if (sitecss != null && sitecss.Length > 0)
+    {
+        for (var i = 0; i < sitecss.Length; i++)
+        {
+            <link href="@Url.ContentUrl(sitecss[i])" type="text/css" rel="stylesheet" />
+        }
+    }
+
+    @if (Model.Layout.GoogleTagManager != null)
+    {
+        <script type="text/javascript">
+
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({ 'eaSendGaEvents': true, 'pageVariant': 'Default' });
+                w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+
+            })(window, document, 'script', 'dataLayer', '@Model.Layout.GoogleTagManager');
+
+        </script>
+    }
+
+</head>
+
+<body>
+    @await Html.RenderEPiServerQuickNavigatorAsync()
+
+    <noscript>
+        @if (Model.Layout.GoogleTagManager != null)
+        {
+            <iframe src="//www.googletagmanager.com/ns.html?id=@Model.Layout.GoogleTagManager"
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        }
+    </noscript>
+
+    <div id="Wrapper">
+        @{
+            string layouturl = null;
+
+            layouturl = "/Views/" + "Arestinprofessional" + Model.Layout.SiteTemplate;
+        }
+
+        @if (Model.Layout.IsInReadonlyMode)
+        {
+            await Html.RenderPartialAsync("Readonly", Model);
+        }
+
+        @Html.FullRefreshPropertiesMetaData()
+
+@{
+            HelperResult MenuTemplate(HtmlHelpers.MenuItem menuItem)
+            {
+                bool children = false;
+                bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+                <li class="nav-item nav-link dropdown">
+                    @if (children)
+                    {
+
+                        <div class="dropdown-toggle">
+                            @Html.PageLink(menuItem.Page)
+                            <div class="dropdown-menu">
+                                <ul class="container">
+                                    @Html.MenuList(menuItem.Page.ContentLink, SubMainMenuTemplate)
+
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    }
+                    else
+                    {
+
+                        @Html.PageLink(menuItem.Page)
+                    }
+
+                </li>
+
+
+
+                return new HelperResult(w => Task.CompletedTask);
+
+            }
+
+}
+
+@{
+    HelperResult SubMainMenuTemplate(HtmlHelpers.MenuItem menuItem)
+    {
+        bool children = false;
+        bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+
+        <li class="">
+
+            @if (children)
+            {
+
+                @Html.PageLink(menuItem.Page)
+
+
+                <ul class="submenu">
+
+                    @Html.MenuList(menuItem.Page.ContentLink, SubMenuTemplate)
+
+                </ul>
+            }
+            else
+            {
+                @Html.PageLink(menuItem.Page)
+            }
+
+        </li>
+        return new HelperResult(w => Task.CompletedTask);
+
+    }
+}
+
+@{
+    HelperResult SubMenuTemplate(HtmlHelpers.MenuItem menuItem)
+    {
+        bool children = false;
+        bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+
+        <li> @Html.PageLink(menuItem.Page)</li>
+        return new HelperResult(w => Task.CompletedTask);
+    }
+}
+
+        <header>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <a class="logo" href="@Model.Layout.LogotypeLinkUrl" title="@Model.Layout.Logotype.Title">
+                            <img class="img-fluid" src="@EpiserverBH.Helpers.HtmlHelpers.ToExternalImage(Convert.ToString(Model.Layout.Logotype.Url))" alt="@Model.Layout.Logotype.Title" />
+                        </a>
+                    </div>
+                    <div class="col-lg-8 d-none d-lg-block">
+                        @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).HeaderLinks, new { })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        @*@Html.PropertyFor(x => x.CurrentPage.Property["HeaderLinks"].Value, new { })*@
+
+                        <nav class="navbar navbar-expand-lg">
+
+                            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarCollapse">
+                                <div class="navbar-nav">
+                                    <ul class="navbar-nav">
+                                        @Html.MenuList(SiteDefinition.Current.StartPage, MenuTemplate)
+                                    </ul>
+                                    <div class="topLinkNav d-block d-lg-none">
+                                        @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).HeaderLinks, new { })
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 p-0">
+                    @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).BannerSlider, new { })
+                    @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).BannerContent, new { })
+                    @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).ContentArea, new { })
+                    @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).ISISection, new { })
+                </div>
+
+                <!--<div class="col-lg-3 p-0">
+                @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).ISISection, new { })
+
+                </div>-->
+            </div>
+        </div>
+
+        <footer>
+            @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).Footer, new { })
+			@* <div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-9 p-0">
+					  @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).Footer, new { })
+					</div>
+				</div>
+			</div> *@
+		</footer>
+    </div>
+
+    <required-client-resources area="Footer" />
+
+
+    @if (sitejs != null && sitejs.Length > 0)
+    {
+        for (var i = 0; i < sitejs.Length; i++)
+        {
+            <script src="@Url.ContentUrl(sitejs[i])" type="text/javascript" async></script>
+        }
+    }
+    <script src="/Assets/Arestinprofessional/js/bootstrap.min.js"></script>
+    <script src="/Assets/Animation/js/aos.js" type="text/javascript" async></script>
+    <script src="/Assets/Arestinprofessional/js/global.js"></script>
+
+    
+</body>
+</html>

@@ -1,0 +1,103 @@
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Editor
+@using EPiServer.Web
+@model PageViewModel<EpiserverBH.Models.Pages.HCP>
+
+
+@*Menu Code Starts Here*@
+
+@{
+    HelperResult HCPMenuTemplate(HtmlHelpers.MenuItem menuItem)
+    {
+        bool children = false;
+        bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+        if (menuItem.Page.PageTypeName == "HCP")
+        {
+            <ul class="navbar-nav">
+                @if (children)
+                {
+                    @Html.MenuList(menuItem.Page.ContentLink, SubMenuTemplate)
+
+                }
+                else
+                {
+                    @Html.PageLink(menuItem.Page)
+                }
+            </ul>
+        }
+            return new HelperResult(w => Task.CompletedTask);
+    }
+
+    HelperResult SubMenuTemplate(HtmlHelpers.MenuItem menuItem)
+    {
+        bool children = false;
+        bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+        if (menuItem.Page.PageTypeName == "HCP")
+        {
+            <li class="submenu">
+                @if (children)
+                {
+                    
+                    @Html.PageLink(menuItem.Page)
+
+                    <ul class="subnav">
+                        @Html.MenuList(menuItem.Page.ContentLink, SubMenuTemplateTwo)
+                    </ul>
+
+                }
+                else
+                {
+                    @Html.PageLink(menuItem.Page)
+                }
+            </li>
+        }
+        return new HelperResult(w => Task.CompletedTask);
+    }
+
+    HelperResult SubMenuTemplateTwo(HtmlHelpers.MenuItem menuItem)
+    {
+        bool children = false;
+        bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+        if (menuItem.Page.PageTypeName == "HCP")
+        {
+            <li>
+                @Html.PageLink(menuItem.Page)
+            </li>
+        }
+            return new HelperResult(w => Task.CompletedTask);
+    }
+
+}
+
+
+<header class="d-print-none sticky-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 mob-link">
+                @Html.PropertyFor(x => x.CurrentPage.HeaderLinksMobile, new { })
+                <button class="navbar-toggler d-lg-none d-block" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="header-right">
+                    <div class="header-top-links d-none d-lg-block" id="topLinks">
+                        @Html.PropertyFor(x => x.CurrentPage.HeaderLinksAboveMenu, new { })
+                    </div>
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <!--<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        </button>-->
+
+                        <div class="collapse navbar-collapse" id="navbarCollapse">
+                            <div class="header-top-links d-block d-lg-none">
+                                @Html.PropertyFor(x => x.CurrentPage.HeaderLinksAboveMenu, new { })
+                            </div>
+                            <div class="navbar-nav ms-auto p-lg-0">
+                                @Html.MenuList(SiteDefinition.Current.StartPage, HCPMenuTemplate)
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

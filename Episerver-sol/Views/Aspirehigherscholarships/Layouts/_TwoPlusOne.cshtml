@@ -1,0 +1,15 @@
+﻿@using EpiserverBH
+@model PageViewModel<Home>
+
+@{
+    string layouturl = null;
+    if (Model.Layout.SiteTemplate != null) {
+        layouturl = "~/Views/" + Model.Layout.SiteTemplate + "/Layouts/_Root.cshtml";
+    }
+}
+@{
+    Layout = layouturl;
+}
+
+@RenderBody()
+

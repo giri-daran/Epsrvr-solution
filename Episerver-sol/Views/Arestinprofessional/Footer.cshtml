@@ -1,0 +1,21 @@
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Editor
+@using EPiServer.Core
+@using EPiServer.Web
+@using EPiServer.SpecializedProperties
+@model IPageViewModel<SitePageData>
+@*@Html.PropertyFor(x => x.CurrentPage.Property["Footer"].Value)*@
+
+
+
+<footer>
+    @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).Footer, new { })
+  @*  <div class="container">
+        <div class="row">
+            <div class="col-lg-12 p-0">
+              @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).Footer, new { })
+            </div>
+        </div>
+    </div>*@
+</footer>

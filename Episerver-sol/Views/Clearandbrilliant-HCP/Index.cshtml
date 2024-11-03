@@ -1,0 +1,67 @@
+@using EpiserverBH
+@using EPiServer.Web.Mvc.Html
+@using EpiserverBH.Business
+@model PageViewModel<HCP>
+
+@{
+    string layouturl = null;
+    if (Model.Layout.SiteTemplate != null)
+    {
+        layouturl = "/Views/" + Model.Layout.SiteTemplate + "/Layouts/_Root.cshtml";
+    }
+}
+
+@{ Layout = layouturl;}
+
+
+<div class="container-fluid banner" id="home">
+    @Html.PropertyFor(x => x.CurrentPage.Banner, new { })
+</div>
+
+<div class="container-fluid" id="the-clear-brilliant-system">
+    @Html.PropertyFor(x => x.CurrentPage.ContentArea_5, new { })
+</div>
+
+<div class="container-fluid" id="results">
+    <div class="row results-carousel">
+        <div class="col-12">
+            <div class="container">
+                <div id="beforeafterpane">
+                    @Html.PropertyFor(x => x.CurrentPage.ContentArea_2, new { })
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#beforeAfterCarousel" data-slide="prev" aria-label="carousel-control-prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#beforeAfterCarousel" data-slide="next" aria-label="carousel-control-next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+</div>
+
+<div id="why-clear-brilliant">
+    <div id="whyClearBrilliantBg">
+        @Html.PropertyFor(x => x.CurrentPage.ContentArea_3, new { })
+    </div>
+    <div class="service-history-bg">
+        <div class="container">
+            <div class="service-history">
+                @Html.PropertyFor(x => x.CurrentPage.ContentArea_4, new { })
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" id="contact-a-representative">
+    <div class="row contact-representative">
+        <div class="col-12">
+            <div class="container p-0">
+                @Html.PropertyFor(x => x.CurrentPage.ContentArea_6, new { })
+                <div id="contactrepPane">
+                    @Html.PropertyFor(x => x.CurrentPage.ContentArea_7, new { })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

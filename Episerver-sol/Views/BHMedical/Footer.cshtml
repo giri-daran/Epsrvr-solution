@@ -1,0 +1,45 @@
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Editor
+@using EPiServer.Web
+@using EPiServer.SpecializedProperties
+@model IPageViewModel<SitePageData>
+@*@Html.PropertyFor(x => x.CurrentPage.Property["Footer"].Value)*@
+<footer>   
+    <div class="footer">
+       
+        @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).Footer, new { })
+
+         <div class="footer-contents">
+            
+            @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).FooterSocial, new { })
+             @if (Model.Layout.FooterLinks != null)
+                {
+                  <ul class="footer-links">
+                     @{ foreach (var link in Model.Layout.FooterLinks)
+                           {
+                                 string URL = link.Href;
+                         <li>
+                             <a target="@link.Target" href="@Url.PageUrl(URL)">
+                                 @link.Text
+                            </a>
+                       </li> } }
+                    </ul>}
+
+             
+            @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).FooterLegal, new { })
+             @if (!string.IsNullOrWhiteSpace(Convert.ToString(@Model.CurrentPage.Property["PRCCode"].Value)))
+                     {
+                        <div class="prc-footer">
+                              <p class="copy">
+                                   @EpiserverBH.Helpers.HtmlHelpers.ReturnString(Model.CurrentPage, "PRCCode");
+                           </p>
+                        </div>}
+
+               
+            @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).FooterAfterPRC, new { })
+
+         </div>
+    </div>
+                    
+</footer>

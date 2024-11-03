@@ -1,0 +1,20 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Editor
+@using EPiServer.Web
+@using EpiserverBH.Helpers;
+@model PageViewModel<EpiserverBH.Models.Pages.Home>
+
+
+
+
+<header class="header" id="header">
+
+    @Html.PropertyFor(x => x.CurrentPage.HeaderLinksAboveMenu, new { })
+
+</header>
+
+
+
+
+

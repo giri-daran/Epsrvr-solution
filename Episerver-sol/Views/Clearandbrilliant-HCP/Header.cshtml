@@ -1,0 +1,84 @@
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Editor
+@using EPiServer.Web
+@model PageViewModel<EpiserverBH.Models.Pages.HCP>
+
+@{
+    HelperResult HCPMenuTemplate(HtmlHelpers.MenuItem menuItem)
+    {
+        bool children = false;
+        bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+        if (menuItem.Page.PageTypeName == "HCP")
+        {
+            <li>
+                @if (children)
+                {
+                    @Html.DisplayName(menuItem.Page.Name)
+                }
+                else
+                {
+                    @Html.PageLink(menuItem.Page)
+                }
+            </li>
+        }
+
+        return new HelperResult(w => Task.CompletedTask);
+    }
+}
+
+
+<header class="mainHeader">
+    <div class="container-fluid mini-header">
+        <div class="row">
+            <div class="col-12">
+                <div class="container">
+                    @Html.PropertyFor(x => x.CurrentPage.HeaderLinksAboveMenu, new { })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid products-menu">
+        <div class="row">
+            <div class="col-12">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 products-nav">
+                            <nav class="navbar">
+                                <div id="dnn_brandnavpane"></div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <div class="container-fluid menu-header">
+        <div class="row">
+            <div class="col-12">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-2 product-logo-div">
+                            <div id="productlogopane">
+                                @Html.PropertyFor(x => x.CurrentPage.HeaderLinksMobile, new { })
+                            </div>
+                        </div>
+                        <div class="col-10 main-nav">
+                            <nav class="navbar">
+                                <div id="productnavpane">
+                                    <div class="social-media-link">
+                                        @Html.PropertyFor(x => x.CurrentPage.ContentArea_1, new { })
+                                    </div>
+                                    <ul class="nav nav-pills anchor">
+                                        @Html.MenuList(SiteDefinition.Current.StartPage, HCPMenuTemplate)
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,28 @@
+﻿@using EpiserverBH
+@using EPiServer.Web.Mvc.Html
+@using EpiserverBH.Business
+@model PageViewModel<Home>
+
+@{
+    string layouturl = null;
+    if (Model.Layout.SiteTemplate != null)
+    {
+        layouturl = "~/Views/" + Model.Layout.SiteTemplate + "/Layouts/_TwoPlusOne.cshtml";
+
+    }
+}
+@{
+    Layout = layouturl;
+}
+
+<section class="content">
+
+    @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Home)x.CurrentPage).ContentArea_1, new { })
+
+</section>
+
+<section class="content-win">
+    @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Home)x.CurrentPage).ContentArea_2, new { })
+
+
+</section>

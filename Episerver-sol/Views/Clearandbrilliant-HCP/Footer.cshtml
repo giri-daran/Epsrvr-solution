@@ -1,0 +1,35 @@
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Editor
+@using EPiServer.Web
+@model PageViewModel<EpiserverBH.Models.Pages.HCP>
+
+
+<div>
+	<footer class="container-fluid">
+		<div class="row footer">
+			<div class="col-12">
+				<div class="container">
+                    <div id="footerpane">
+                        @Html.PropertyFor(x => x.CurrentPage.Footer, new { })
+                    </div>                
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+
+<div class="modal fade in" id="isiContainer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-mobile-header">
+        <div id="modalMobileHeader">
+            @Html.PropertyFor(x => x.CurrentPage.FixedISI, new { })
+        </div>
+	</div>
+	<div class="modal-dialog" role="document">
+		<div class="modal-content isi-modal-content">
+            <div class="modal-body isi-content">
+                @Html.PropertyFor(x => x.CurrentPage.BodyISI, new { })
+            </div>
+		</div>
+	</div>
+</div>

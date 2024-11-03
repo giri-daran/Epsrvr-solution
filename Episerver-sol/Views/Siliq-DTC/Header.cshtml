@@ -1,0 +1,120 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Editor
+@using EPiServer.Web
+@using EpiserverBH.Helpers
+@using Microsoft.AspNetCore.Mvc.Razor
+
+@model IPageViewModel<SitePageData>
+
+@{
+    HelperResult MenuTemplate(HtmlHelpers.MenuItem menuItem)
+    {
+        bool children = false;
+        bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+
+
+        <li class="nav-item nav-link dropdown">
+            @if (children)
+            {
+
+                <div class="dropdown-toggle">
+                    @Html.PageLink(menuItem.Page)
+
+                    <ul class="dropdown-menu" aria-label="navbarDropdown">
+                        @Html.MenuList(menuItem.Page.ContentLink, SubMainMenuTemplate)
+
+                    </ul>
+
+                </div>
+
+            }
+            else
+            {
+
+                @Html.PageLink(menuItem.Page)
+            }
+
+        </li>
+
+        return new HelperResult(w => Task.CompletedTask);
+
+    }
+}
+
+@{
+    HelperResult SubMainMenuTemplate(HtmlHelpers.MenuItem menuItem)
+    {
+        bool children = false;
+        bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+
+        <li class="">
+
+            @if (children)
+            {
+
+                @Html.PageLink(menuItem.Page)
+
+
+                <ul class="submenu">
+
+                    @Html.MenuList(menuItem.Page.ContentLink, SubMenuTemplate)
+
+                </ul>
+            }
+            else
+            {
+                @Html.PageLink(menuItem.Page)
+            }
+
+        </li>
+        return new HelperResult(w => Task.CompletedTask);
+
+    }
+}
+
+@{
+    HelperResult SubMenuTemplate(HtmlHelpers.MenuItem menuItem)
+    {
+        bool children = false;
+        bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+
+        <li> @Html.PageLink(menuItem.Page)</li>
+        return new HelperResult(w => Task.CompletedTask);
+    }
+}
+
+<header class="d-print-none sticky-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="headerLogo" class="header-logo">
+                    <a class="logo" href="@Model.Layout.LogotypeLinkUrl" title="@Model.Layout.Logotype.Title">
+                        <img class="img-fluid" src="@EpiserverBH.Helpers.HtmlHelpers.ToExternalImage(Convert.ToString(Model.Layout.Logotype.Url))" alt="Siliq logo" />
+                    </a>
+                </div>
+                <button class="navbar-toggler d-lg-none d-block" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="header-right">
+                    <div class="header-top-links d-none d-lg-block" id="topLinks">
+                        @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).HeaderLinks, new { })
+                    </div>
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        
+                        <div class="collapse navbar-collapse" id="navbarCollapse">
+                            <div class="header-top-links d-block d-lg-none">
+                                @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).HeaderLinks, new { })
+                            </div>
+                            <div class="navbar-nav ms-auto p-lg-0">
+                                <ul class="navbar-nav">
+                                    @Html.MenuList(SiteDefinition.Current.StartPage, MenuTemplate)
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

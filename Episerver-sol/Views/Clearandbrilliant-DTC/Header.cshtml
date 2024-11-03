@@ -1,0 +1,72 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Editor
+@using EPiServer.Web
+@using EpiserverBH.Helpers;
+@model PageViewModel<EpiserverBH.Models.Pages.Home>
+
+
+<header class="mainHeader">
+    <!-- Products Header Starts -->
+    <div class="container-fluid mini-header">
+        <div class="row">
+            <div class="col-12">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-lg-8 col-sm-8 brand-logo-div">
+                            <div id="logopane">
+                                @Html.PropertyFor(x => x.CurrentPage.HeaderLinksMobile, new { })
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4 col-sm-4" id="TopLinks">
+                            @Html.PropertyFor(x => x.CurrentPage.HeaderLinksAboveMenu, new { })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid products-menu">
+        <div class="row">
+            <div class="col-12">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 products-nav">
+                            <nav class="navbar">
+                                <div id="brandnavpane">
+                                    @Html.PropertyFor(x => x.CurrentPage.Banner, new { })
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Products Header Ends -->
+    <!-- Menu Header Starts -->
+    <div class="container-fluid menu-header nav-404">
+        <div class="row">
+            <div class="col-12">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-2 product-logo-div">
+                            <div id="productlogopane">
+                                @Html.PropertyFor(x => x.CurrentPage.MainContentArea, new { })
+                            </div>
+                        </div>
+                        <div class="col-10 main-nav">
+                            <nav class="navbar">
+                                <div id="productnavpane">
+                                    @Html.PropertyFor(x => x.CurrentPage.ContentArea_1, new { })
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Menu Header Ends -->
+</header>
+<!-- Page Header Ends -->

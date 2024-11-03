@@ -1,0 +1,18 @@
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Editor
+@using EPiServer.Web
+@model PageViewModel<EpiserverBH.Models.Pages.HCP>
+
+
+<div id="footer" class="footer">
+    @Html.PropertyFor(x => x.CurrentPage.Footer, new { })
+</div>
+
+<div id="leavingSitePane">
+    @Html.PropertyFor(x => x.CurrentPage.FixedISI, new { })
+</div>
+
+<div id="ISIContentsPane" class="isi-contents-main">
+    @Html.PropertyFor(x => x.CurrentPage.BodyISI, new { })
+</div>

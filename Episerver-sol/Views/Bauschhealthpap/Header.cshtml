@@ -1,0 +1,76 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Editor
+@using EPiServer.Web
+@using EpiserverBH.Helpers;
+@model PageViewModel<EpiserverBH.Models.Pages.Home>
+
+@*Menu Code Starts Here*@
+
+@{ 
+    HelperResult MenuTemplate(HtmlHelpers.MenuItem menuItem)
+    {
+        bool children = false;
+        bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+        //If it is HCP Website, change to  if (menuItem.Page.PageTypeName == "HCP")
+        //If it is HCP Website, change to  if (menuItem.Page.PageTypeName == "ECP")
+        //If it is HCP Website, change to  if (menuItem.Page.PageTypeName == "Rx")
+        if (menuItem.Page.PageTypeName == "Home")
+        {
+            <li>
+                @if (children)
+                {
+
+                }
+                else
+                {
+                    @Html.PageLink(menuItem.Page)
+                }
+            </li>
+        }
+        return new HelperResult(w => Task.CompletedTask);
+    }
+}
+<!--  Header BEGIN  -->
+
+<header>
+    <div class="header">
+        <div class="container">
+            <div class="col-sm-12 col-md-12 col-xs-8 no-padding logo">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 no-padding">
+
+                        @Html.PropertyFor(x => x.CurrentPage.HeaderLinksMobile, new { })
+
+                    </div>
+                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 no-padding">
+                        <div id="HeaderLinksPane">
+
+                            @Html.PropertyFor(x => x.CurrentPage.HeaderLinksAboveMenu, new { })
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-12 col-md-12 col-xs-4 no-padding menu">
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="navigation">
+
+                    @Html.MenuList(SiteDefinition.Current.StartPage, MenuTemplate)
+
+                    @*<li class="submenu-1"><a href="https://www.bauschhealthpap.com/eligibility" class="">Are you Eligible?</a></li>
+                        <li class="submenu-2"><a href="https://www.bauschhealthpap.com/products" class="">Eligible Products</a></li>
+                        <li class="submenu-3"><a href="https://www.bauschhealthpap.com/contact" class="">Contact Us</a></li>*@
+                </ul>
+            </div>
+            <div class="cusmobileheaderlinks col-sm-12 col-md-12 col-xs-12 "></div>
+        </div>
+    </div>
+</header>
+<!--  Header END  -->

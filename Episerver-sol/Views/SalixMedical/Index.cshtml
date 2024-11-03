@@ -1,0 +1,23 @@
+@using EpiserverBH
+@using EPiServer.Web.Mvc.Html
+@using EpiserverBH.Business
+@model PageViewModel<EpiserverBH.Models.Pages.Development.GenericHome>
+
+
+@{ string layouturl = null;
+    
+    Layout = "~/Views/SalixMedical/Layouts/_Root.cshtml"; }
+
+@{
+    @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).BannerSlider, new { })
+
+    @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).BannerContent, new { })
+
+    @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).ContentArea, new { })
+
+    @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).FormArea, new { })
+
+    @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).ISISection, new { })
+
+    @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).PopUp, new { })
+}

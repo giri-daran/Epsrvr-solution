@@ -1,0 +1,69 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Editor
+@using EPiServer.Core
+@using EPiServer.Web
+@using EpiserverBH.Helpers;
+@model PageViewModel<EpiserverBH.Models.Pages.Home>
+
+
+@*Menu Code Starts Here*@
+@{
+    HelperResult MenuTemplate(HtmlHelpers.MenuItem menuItem)
+    {
+        bool children = false;
+        bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+        if (menuItem.Page.PageTypeName == "Home")
+        {
+            <li>
+                @if (children)
+                {
+
+                }
+                else
+                {
+                    @Html.PageLink(menuItem.Page)
+                }
+            </li>
+        }
+        return new HelperResult(w => Task.CompletedTask);
+    }
+}
+
+
+<header class="header" id="header">
+
+    @Html.PropertyFor(x => x.CurrentPage.HeaderLinksAboveMenu, new { })
+
+</header>
+
+
+
+
+<div class="banner">
+    <div class="container">
+        <div class="row">
+
+            @Html.PropertyFor(x => x.CurrentPage.Banner, new { })
+
+        </div>
+    </div>
+    <nav class="nav">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row">
+
+                        @Html.PropertyFor(x => x.CurrentPage.MainContentArea, new { })
+
+                        <ul class="menu-bar">
+
+                            @Html.MenuList(SiteDefinition.Current.StartPage, MenuTemplate)
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>

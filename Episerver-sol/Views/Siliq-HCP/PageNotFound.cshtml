@@ -1,0 +1,259 @@
+﻿@using EpiserverBH
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Framework.Web.Mvc.Html
+@using EpiserverBH.Business
+@model IPageViewModel<Error>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="@Model.CurrentPage.Language">
+<head>
+    <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/0d210cc011330.js" data-cmp-host="a.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="1"></script>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes" />
+    <meta id="MetaRobots" name="ROBOTS" content="INDEX, FOLLOW" />
+    <link href="https://fonts.googleapis.com/css?family=Archivo:400,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow:400,500i,600,700&display=swap" rel="stylesheet">
+
+    <link href="/Assets/Siliq-HCP/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css" rel="stylesheet" />
+    <link href="/Assets/Siliq-HCP/css/ba-slider.css" rel="stylesheet" />
+    <link href="/Assets/Siliq-HCP/css/pagenotfound.css" rel="stylesheet" />
+    <link href="/Assets/Siliq-HCP/css/global.css" rel="stylesheet" />
+    <script type="text/javascript">
+        (function () {
+            var didInit = false;
+            function initMunchkin() {
+                if (didInit === false) {
+                    didInit = true;
+                    Munchkin.init('350-OKO-721', { "wsInfo": "h1RQ" });
+                }
+            }
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = '//munchkin.marketo.net/munchkin-beta.js';
+            s.onreadystatechange = function () {
+                if (this.readyState == 'complete' || this.readyState == 'loaded') {
+                    initMunchkin();
+                }
+            };
+            s.onload = initMunchkin;
+            document.getElementsByTagName('head')[0].appendChild(s);
+        })();
+    </script>
+    <title>@Model.CurrentPage.MetaTitle</title>
+
+    @if (Model.CurrentPage.MetaKeywords != null)
+    {
+        <meta name="keywords" content="@string.Join(",", Model.CurrentPage.MetaKeywords)" />
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.CurrentPage.MetaDescription))
+    {
+        <meta name="description" content="@Model.CurrentPage.MetaDescription" />
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.CurrentPage.MetaData))
+    {
+        @Html.Raw(Model.CurrentPage.MetaData)
+    }
+    <link rel="shortcut icon" href="@Url.Content("~/siteassets/hcp/img/silqhcpfavicon.ico")" type="image/x-icon" />
+
+    @Html.CanonicalLink()
+    @Html.AlternateLinks()
+
+    <required-client-resources area="Header" />
+    @await Html.RenderEPiServerQuickNavigatorAsync()
+
+    @if (Model.CurrentPage.SiteCSS != null && Model.CurrentPage.SiteCSS.Length > 0)
+    {
+        for (var i = 0; i < Model.CurrentPage.SiteCSS.Length; i++)
+        {
+            <link href="@Url.ContentUrl(Convert.ToString(Model.CurrentPage.SiteCSS[i]))" type="text/css" rel="stylesheet" />
+        }
+    }
+    @{
+
+        if (Model.Layout.GoogleTagManager != null)
+        {
+
+            <script type="text/javascript">
+
+                (function (w, d, s, l, i) {
+                    w[l] = w[l] || []; w[l].push({ 'eaSendGaEvents': true, 'pageVariant': 'Default' });
+                    w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                            'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                    /**/
+                })(window, document, 'script', 'dataLayer', '@Model.Layout.GoogleTagManager');
+            </script>
+        }
+
+    }
+</head>
+<body id="Body">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        @{
+            if (Model.Layout.GoogleTagManager != null)
+            {
+                <iframe src="//www.googletagmanager.com/ns.html?id=@Model.Layout.GoogleTagManager"
+                        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+            }
+        }
+    </noscript>
+    <div class="wrapper">
+        <div class="base-wrapper sticky-header-on">
+
+            @{
+                string layouturl = null;
+                if (Model.Layout.SiteTemplate != null)
+                {
+                    layouturl = "~/Views/" + Model.Layout.SiteTemplate;
+
+                }
+            }
+
+            @if (Model.Layout.IsInReadonlyMode)
+            {
+                await Html.RenderPartialAsync("Readonly", Model);
+            }
+            @Html.FullRefreshPropertiesMetaData()
+
+            @{
+                HelperResult HCPMenuTemplate(HtmlHelpers.MenuItem menuItem)
+                {
+                    bool children = false;
+                    bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+                    if (menuItem.Page.PageTypeName == "HCP")
+                    {
+                        <ul class="navbar-nav">
+                            @if (children)
+                            {
+                                @Html.MenuList(menuItem.Page.ContentLink, SubMenuTemplate)
+
+                            }
+                            else
+                            {
+                                @Html.PageLink(menuItem.Page)
+                            }
+                        </ul>
+                    }
+                    return new HelperResult(w => Task.CompletedTask);
+                }
+
+                HelperResult SubMenuTemplate(HtmlHelpers.MenuItem menuItem)
+                {
+                    bool children = false;
+                    bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+                    if (menuItem.Page.PageTypeName == "HCP")
+                    {
+                        <li class="submenu">
+                            @if (children)
+                            {
+                                //@Html.MenuList(menuItem.Page.ContentLink, SubMenuTemplateTwo)
+                                @Html.PageLink(menuItem.Page)
+
+                                <ul class="subnav">
+                                    @Html.MenuList(menuItem.Page.ContentLink, SubMenuTemplateTwo)
+                                </ul>
+
+                            }
+                            else
+                            {
+                                @Html.PageLink(menuItem.Page)
+                            }
+                        </li>
+                    }
+                    return new HelperResult(w => Task.CompletedTask);
+                }
+
+                HelperResult SubMenuTemplateTwo(HtmlHelpers.MenuItem menuItem)
+                {
+                    bool children = false;
+                    bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+                    if (menuItem.Page.PageTypeName == "HCP")
+                    {
+                        <li>
+                            @Html.PageLink(menuItem.Page)
+                        </li>
+                    }
+                    return new HelperResult(w => Task.CompletedTask);
+                }
+
+            }
+
+
+            <header class="d-print-none sticky-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 mob-link">
+                            @Html.PropertyFor(x => x.CurrentPage.HeaderLinksMobile, new { })
+                            <button class="navbar-toggler d-lg-none d-block" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="header-right">
+                                <div class="header-top-links d-none d-lg-block" id="topLinks">
+                                    @Html.PropertyFor(x => x.CurrentPage.HeaderLinksAboveMenu, new { })
+                                </div>
+                                <nav class="navbar navbar-expand-lg navbar-light">
+                                    <!--<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                                    </button>-->
+
+                                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                                        <div class="header-top-links d-block d-lg-none">
+                                            @Html.PropertyFor(x => x.CurrentPage.HeaderLinksAboveMenu, new { })
+                                        </div>
+                                        <div class="navbar-nav ms-auto p-lg-0">
+                                            @Html.MenuList(SiteDefinition.Current.StartPage, HCPMenuTemplate)
+                                        </div>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            @Html.PropertyFor(x => (x.CurrentPage).Banner, new { })
+            @Html.PropertyFor(x => (x.CurrentPage).ContentArea_2, new { })
+            @Html.PropertyFor(x => x.CurrentPage.BodyISI, new { })
+            
+
+            <footer id="footer" class="footer">
+                @Html.PropertyFor(x => x.CurrentPage.Footer, new { })
+            </footer>
+            <div id="interstitial-modal" class="interstitial">
+                @Html.PropertyFor(x => x.CurrentPage.ContentArea_6, new { })
+            </div>
+            <div id="leavingSitePane">
+                @Html.PropertyFor(x => x.CurrentPage.FixedISI, new { })
+            </div>
+            <div id="footer-modal" class="footer-modal">
+                @Html.PropertyFor(x => x.CurrentPage.ContentArea_7, new { })
+            </div>
+        </div>
+    </div>
+
+    <required-client-resources area="Footer" />
+
+    @if (Model.CurrentPage.SiteJs != null && Model.CurrentPage.SiteJs.Length > 0)
+    {
+        for (var i = 0; i < Model.CurrentPage.SiteJs.Length; i++)
+        {
+
+            <script src="@Url.ContentUrl(Model.CurrentPage.SiteJs[i])" type="text/javascript"></script>
+        }
+    }
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+    <script src="/Assets/Siliq-HCP/js/bootstrap.min.js"></script>
+    <script src="/Assets/Siliq-HCP/js/jquery.lazy.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="/Assets/Siliq-HCP/js/ba-slider.min.js"></script>
+    <script src="/Assets/Siliq-HCP/js/global.min.js"></script>
+    <script src="/Assets/Siliq-HCP/js/isi.min.js"></script>
+</body>
+</html>

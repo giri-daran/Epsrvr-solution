@@ -1,0 +1,150 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Editor
+@using EPiServer.Web
+@model IPageViewModel<SitePageData>
+
+@{
+    HelperResult MenuTemplate(HtmlHelpers.MenuItem menuItem)
+    {
+    bool children = false;
+    bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+
+
+    <li class="menu-li">
+        @if (children)
+        {
+
+            <div class="dropdown">
+                <div class="dropdown-new">
+                    @Html.PageLink(menuItem.Page)
+                </div>
+
+                <ul class="dropdown-menu">
+                    @Html.MenuList(menuItem.Page.ContentLink, SubMainMenuTemplate)
+
+                </ul>
+
+            </div>
+
+        }
+        else
+        {
+
+            @Html.PageLink(menuItem.Page)
+        }
+
+    </li>
+        return new HelperResult(w => Task.CompletedTask);
+    }
+}
+@{
+    HelperResult SubMainMenuTemplate(HtmlHelpers.MenuItem menuItem)
+    {
+    bool children = false;
+    bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+
+    <li class="">
+
+        @if (children)
+        {
+
+            @Html.PageLink(menuItem.Page)
+
+
+            <ul class="submenu">
+
+                @Html.MenuList(menuItem.Page.ContentLink, SubMenuTemplate)
+
+            </ul>
+        }
+        else
+        {
+            @Html.PageLink(menuItem.Page)
+        }
+
+    </li>
+       return new HelperResult(w => Task.CompletedTask);
+    }
+}
+
+@{
+    HelperResult SubMenuTemplate(HtmlHelpers.MenuItem menuItem)
+    {
+    bool children = false;
+    bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+
+    <li> @Html.PageLink(menuItem.Page)</li>
+        return new HelperResult(w => Task.CompletedTask);
+    }
+}
+
+<header class="top-bar">
+    <div class="d-none d-lg-block new-desktop">
+        @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).HeaderLinks, new { })
+    </div>
+
+    
+
+
+
+    <div class="container d-none d-lg-block">
+
+
+        
+        <div class="row justify-content-between">
+            <div class="col-lg-2">
+                    <a class="logo" href="@Model.Layout.LogotypeLinkUrl" title="@Model.Layout.Logotype.Title">
+                    @{
+                 
+                    if (Model.CurrentPage.URLSegment == "salixmedical")
+                    {
+    <img class="img-fluid" src="@EpiserverBH.Helpers.HtmlHelpers.ToExternalImage(Convert.ToString(Model.Layout.Logotype.Url))" alt="@Model.Layout.Logotype.Title" />
+                    }
+                    else
+                    {
+                        var Logotype = ((EpiserverBH.Models.Pages.Development.GenericHome)Model.CurrentPage).SiteLogotype;
+<img class="img-fluid sub-logo" src="@EpiserverBH.Helpers.HtmlHelpers.ToExternalImage(Convert.ToString(Logotype.Property["Url"]))" alt="@Model.Layout.Logotype.Title" />
+                    }
+                    }
+                </a>
+            </div>
+
+            <div class="col-lg-10 navLinks">
+
+
+                <div class="menu ms-auto p-lg-0">
+                    <ul class="navbar-menu">
+                        @Html.MenuList(SiteDefinition.Current.StartPage, MenuTemplate)
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container d-block d-lg-none">
+
+        <div class="row">
+            <div class="col-12 p-0">
+                <a class="logo" href="@Model.Layout.LogotypeLinkUrl" title="@Model.Layout.Logotype.Title">
+                  @{
+                    if (Model.CurrentPage.URLSegment == "salixmedical")
+                    {
+    <img class="img-fluid home-logo" src="@EpiserverBH.Helpers.HtmlHelpers.ToExternalImage(Convert.ToString(Model.Layout.Logotype.Url))" alt="@Model.Layout.Logotype.Title" />
+                    }
+                    else
+                    {
+                        var Logotype = ((EpiserverBH.Models.Pages.Development.GenericHome)Model.CurrentPage).SiteLogotype;
+<img class="img-fluid sub-logo" src="@EpiserverBH.Helpers.HtmlHelpers.ToExternalImage(Convert.ToString(Logotype.Property["Url"]))" alt="@Model.Layout.Logotype.Title" />
+                    }
+                    }
+                </a>
+                @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).HeaderLinks, new { })
+            </div>
+        </div>
+
+        
+    </div>
+
+</header>

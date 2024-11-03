@@ -1,0 +1,67 @@
+﻿@using EpiserverBH
+@using EPiServer.Web.Mvc.Html
+@using EpiserverBH.Business
+@model PageViewModel<Home>
+
+@{
+    string layouturl = null;
+    if (Model.Layout.SiteTemplate != null)
+    {
+        layouturl = "/Views/" + Model.Layout.SiteTemplate + "/Layouts/_TwoPlusOne.cshtml";
+
+    }
+}
+@{ Layout = layouturl;}
+
+
+<section class="banner-image">
+    <div id="BannerPane">
+
+        @Html.PropertyFor(x => x.CurrentPage.Banner, new { })
+
+    </div>
+</section>
+
+<section>
+    <div id="ContentPane">
+
+        @Html.PropertyFor(x => x.CurrentPage.ContentArea_1, new { })
+
+    </div>
+</section>
+
+<section>
+    <div class="elgbty-frm-secblck">
+        <div class="inner-content-block eligibility-form">
+            <div class="loading"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div id="ContentPane">
+
+                            @Html.PropertyFor(x => x.CurrentPage.ContentArea_2, new { })
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div id="EligibilityPane">
+                    <div class="elgiblty-frms-sect">
+                        <div class="pnlMessage sunny bstrap30 avt-action-form">
+                            <div class="form-root bstrap30 ng-scope" style=";padding: 0px;color: ;">
+                                <div class="row">
+                                    <div class="c-form  form-horizontal normal label-align-right col-sm-12">
+
+                                        @Html.PropertyFor(x => x.CurrentPage.ContentArea_3, new { })
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+</section>

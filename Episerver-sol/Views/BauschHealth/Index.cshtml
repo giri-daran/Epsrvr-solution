@@ -1,0 +1,266 @@
+﻿@using EpiserverBH
+@using EPiServer.Web
+@using EPiServer.Web.Mvc.Html
+@using EpiserverBH.Business
+@model PageViewModel<Home>
+
+@{
+    string layouturl = null;
+    if (Model.Layout.SiteTemplate != null)
+    {
+        layouturl = "~/Views/" + Model.Layout.SiteTemplate + "/Layouts/_TwoPlusOne.cshtml";
+
+    }
+}
+@{ Layout = layouturl;}
+
+
+@*side bar Menu Code Starts Here*@
+
+@{
+    HelperResult SidebarMenuTemplate(HtmlHelpers.MenuItem menuItem)
+{
+    bool children = false;
+    bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+    //If it is HCP Website, change to  if (menuItem.Page.PageTypeName == "HCP")
+    //If it is HCP Website, change to  if (menuItem.Page.PageTypeName == "ECP")
+    //If it is HCP Website, change to  if (menuItem.Page.PageTypeName == "Rx")
+    if (menuItem.Page.PageTypeName == "Home")
+    {
+        <li>
+            @if (children)
+            {
+
+                <ul class="sidebar-lists inrmnu">
+                    @Html.MenuList(menuItem.Page.ContentLink, SidebarSubMenuTemplate)
+                </ul>
+            }
+            else
+            {
+                @Html.PageLink(menuItem.Page)
+            }
+        </li>
+
+    }
+      return new HelperResult(w => Task.CompletedTask);
+}
+}
+
+@{
+    HelperResult SidebarSubMenuTemplate(HtmlHelpers.MenuItem menuItem)
+{
+    bool children = false;
+    bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+    //If it is HCP Website, change to  if (menuItem.Page.PageTypeName == "HCP")
+    //If it is HCP Website, change to  if (menuItem.Page.PageTypeName == "ECP")
+    //If it is HCP Website, change to  if (menuItem.Page.PageTypeName == "Rx")
+    if (menuItem.Page.PageTypeName == "Home")
+    {
+        <li>
+            @if (children)
+            {
+                @Html.PageLink(menuItem.Page)
+
+                <ul class="sidebar-lists inrmnu-2">
+                    @Html.MenuList(menuItem.Page.ContentLink, SidebarSubMenuTemplateTwo)
+                </ul>
+            }
+            else
+            {
+                @Html.PageLink(menuItem.Page)
+            }
+        </li>
+    }
+      return new HelperResult(w => Task.CompletedTask);
+}
+}
+
+@{
+    HelperResult SidebarSubMenuTemplateTwo(HtmlHelpers.MenuItem menuItem)
+{
+    bool children = false;
+    bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+    //If it is HCP Website, change to  if (menuItem.Page.PageTypeName == "HCP")
+    //If it is HCP Website, change to  if (menuItem.Page.PageTypeName == "ECP")
+    //If it is HCP Website, change to  if (menuItem.Page.PageTypeName == "Rx")
+    if (menuItem.Page.PageTypeName == "Home")
+    {
+        <li>
+            @Html.PageLink(menuItem.Page)
+        </li>
+    }
+      return new HelperResult(w => Task.CompletedTask);
+}
+}
+
+
+<div id="BannerPane">
+
+    @Html.PropertyFor(x => x.CurrentPage.Banner, new { })
+
+</div>
+
+<!-- Blog and Latest News Section Start -->
+<section class="newssec-mainpg">
+    <div class="container article-sections">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bod_wrapper blog-section-mobile">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 nopaddl-md dnnFormWarning">
+
+
+
+                <div class="carousel homepage-carousel equal HomePageBlogSection">
+                    <div class="homepage-carousel-head">Our Perspective</div>
+                    <div class="carousel slide" data-ride="carousel" id="carousel-example-generic1">
+                        <div class="slider-control"><a class="left carousel-control home-page-car-left" data-slide="prev" href="#carousel-example-generic1"><span class="fa fa-chevron-left">  </span></a> <a class="right carousel-control home-page-car-right" data-slide="next" href="#carousel-example-generic1"><span class="fa fa-chevron-right">  </span></a></div>
+                        <div id="HomeBlogPane">
+                            <div class="DnnModule DnnModule-EasyDNNnews DnnModule-649">
+
+                                <div class="DNNContainer_Default">
+                                    <div id="dnn_ctr649_ContentPane">
+                                        <div id="dnn_ctr649_ModuleContent" class="DNNModuleContent ModEasyDNNnewsC">
+                                            <div class="eds_news_module_649 news eds_subCollection_news eds_news_BauschHealth eds_template_List_Article_BauschHealthBlogCarousel eds_styleSwitchCriteria_module-649">
+                                                <div id="dnn_ctr649_ViewEasyDNNNewsMain_ctl00_pnlListArticles">
+
+
+
+                                                    @Html.PropertyFor(x => x.CurrentPage.ContentArea_2, new { })
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 equal nopaddmob HomePageLatestNews">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 homepage-news-section">
+
+
+                    @Html.PropertyFor(x => x.CurrentPage.ContentArea_3, new { })
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Blog and Latest News Section end -->
+
+
+@if (Convert.ToString(this.Context.Request.Path).ToLower().Contains("/news-room"))
+{
+<section class="newsroom-page nwsrm-pg-sec">
+    <div class="container">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 newsroom-col">
+            <div id="newsPane" ds="">
+
+                @Html.PropertyFor(x => x.CurrentPage.MainContentArea, new { })
+
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 newsroom-col">
+            <div id="ContentPane">
+
+                @Html.PropertyFor(x => x.CurrentPage.RawHTMLContent, new { })
+
+            </div>
+        </div>
+    </div>
+</section>
+}
+
+
+<div id="ContentPane">
+
+    @Html.PropertyFor(x => x.CurrentPage.ContentArea_1, new { })
+
+</div>
+
+<section class="frm-inerpge">
+    <div class="container main-article_wrapper">
+        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 main-article">
+            <div class="main-article_content">
+                <div id="ContentPane">
+
+                    @Html.PropertyFor(x => x.CurrentPage.ContentArea_4, new { })
+
+                    @if (Convert.ToString(this.Context.Request.Path).ToLower().Contains("/about-us/contact-us/medical-inquiry"))
+                    {
+                        <div class="pnlMessage sunny bstrap30 avt-action-form">
+                            <div class="form-root bstrap30 ng-scope" style=";padding: 0px;color: ;">
+                                <div class="row">
+                                    <div class="c-form  form-horizontal normal label-align-inside col-sm-12 ">
+                                        <div class="contact-us row">
+
+                                            @Html.PropertyFor(x => x.CurrentPage.RawHTMLContent, new { })
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    @if (Convert.ToString(this.Context.Request.Path).ToLower().Contains("/about-us/contact-us/charitable-requests"))
+                    {
+                        <div class="pnlMessage sunny bstrap30 charitable-requests">
+                            <div class="form-root bstrap30 ng-scope" style=";padding: 0px;color: ;">
+                                <div class="row">
+                                    <div class="c-form  form-horizontal normal label-align-inside col-sm-12 ">
+                                        <div class="contact-us row">
+
+                                            @Html.PropertyFor(x => x.CurrentPage.MainContentArea, new { })
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            @Html.PropertyFor(x => x.CurrentPage.RawHTMLContent, new { })
+                        </div>
+                    }
+
+                    @if (Convert.ToString(this.Context.Request.Path).ToLower().Contains("/submitting-a-supplier-diversity-profile"))
+                    {
+                        <div class="pnlMessage sunny bstrap30 avt-action-form">
+                            <div class="form-root bstrap30 ng-scope" style=";padding: 0px;color: ;">
+                                <div class="row">
+                                    <div class="c-form  form-horizontal normal label-align-inside col-sm-12 ">
+
+                                        @Html.PropertyFor(x => x.CurrentPage.MainContentArea, new { })
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            @Html.PropertyFor(x => x.CurrentPage.RawHTMLContent, new { })
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 sidebar">
+            <div class="sidebar-bg sidebar-bg-mobile">
+                <ul class="main-sidebr-lst">
+
+                    @Html.MenuList(SiteDefinition.Current.StartPage, SidebarMenuTemplate)
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="FullWidthContentPane">
+
+    @Html.PropertyFor(x => x.CurrentPage.FixedISI, new { })
+
+</div>

@@ -1,0 +1,10 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Editor
+@using EPiServer.Web
+@model PageViewModel<EpiserverBH.Models.Pages.Home>
+
+
+<footer class="footer" id="footer">
+    @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Home)x.CurrentPage).Footer, new { })
+</footer>

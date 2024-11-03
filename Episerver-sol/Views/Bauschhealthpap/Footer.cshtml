@@ -1,0 +1,15 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Editor
+@using EPiServer.Web
+@model PageViewModel<EpiserverBH.Models.Pages.Home>
+
+<!-- Footer BEGIN -->
+<footer>
+    <div id="FooterMainPane" class="footer-section">
+
+        @Html.PropertyFor(x => x.CurrentPage.Footer, new { })
+
+    </div>
+</footer>
+<!-- Footer END -->

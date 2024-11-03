@@ -1,0 +1,1969 @@
+@media (max-width: 360px) {
+    .banner-image {
+        .container {
+            .banner-text-home {
+                p {
+                    &:nth-child(2) {
+                        bottom: 49px;
+                        width: 75%;
+                        left: 12%;
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 489px){
+    header {
+        .logo {
+            width: auto;
+        }
+    }
+    .footer {
+        height: 760px;
+        .footer-logo-section {
+            margin-bottom: 30px;
+
+            img {
+                max-width: 270px;
+            }
+
+            .footer-logo {
+                margin-bottom: 45px;
+            }
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,.1);
+            padding-top: 28px;
+            color: #fff;
+            font-size: 14px;
+            line-height: 27px;
+
+            ul {
+                margin: 0;
+                flex-direction: column;
+                padding-top: 20px;
+                margin-left: -40px;
+
+                li {
+                    width: 100%;
+                    text-align: center;
+                    margin: 0 0 17px;
+
+                    a {
+                        text-decoration: none;
+                        color: #fff;
+
+                        &:focus {
+                            outline: 0;
+                        }
+
+                        &:visited {
+                            outline: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .dark-blue-sec1{
+        min-height: 50px;
+    }
+    .dark-blue-sec2 {
+        min-height: 50px;
+    }
+    .dark-blue-sec3 {
+        min-height: 50px;
+    }
+}
+@media screen and (max-width: 479px) and (min-width: 415px){
+    .home-banner-section {
+        .banner-image {
+            .container {
+                .banner-text-home {
+                    top: 30% !important;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 559px) and (min-width: 480px){
+    .home-banner-section {
+        .banner-image {
+            .container {
+                .banner-text-home {
+                    top: 28% !important;
+
+                    p {
+                        &:nth-child(2) {
+                            font-size: 18px;
+                            line-height: 26px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 767px) and (min-width: 576px){
+    .dark-blue-sec1 {
+        min-height: 100px;
+    }
+    .dark-blue-sec2 {
+        min-height: 100px;
+    }
+    .dark-blue-sec3 {
+        min-height: 100px;
+    }
+}
+@media screen and (max-width: 991px) and (min-width: 576px){
+    header {
+        .logo {
+            width: auto;
+        }
+    }
+    .footer {
+        height: 760px;
+        .footer-logo-section {
+            margin-bottom: 50px;
+
+            .footer-logo {
+                margin-bottom: 45px;
+            }
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,.1);
+            padding-top: 28px;
+            color: #fff;
+            font-size: 14px;
+            line-height: 27px;
+
+            ul {
+                margin: 0;
+                flex-direction: column;
+                padding-top: 20px;
+                margin-left: -40px;
+
+                li {
+                    width: 100%;
+                    text-align: center;
+                    margin: 0 0 17px;
+
+                    a {
+                        text-decoration: none;
+                        color: #fff;
+
+                        &:focus {
+                            outline: 0;
+                        }
+
+                        &:visited {
+                            outline: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .isi-contents-main {
+        #sticky-isi-module {
+            height: 136px !important;
+            position: fixed;
+            bottom: -1px;
+        }
+    }
+}
+
+@media screen and (max-width: 767px){
+    /* Style for home page banner */
+    .banner-text-home-mobile p:nth-child(3) {
+        bottom: -14px !important;
+    }
+    .banner {
+        .banner-image {
+            min-height: 380px;
+        }
+    }
+    
+    /* Style for about siliq page */
+    .about-taking-siliq {
+        h3 {
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+    }
+    /* Style for taking siliq page */
+    .remember-siliq-steps {
+        .container {
+            padding-top: 40px;
+        }
+
+        .steps-title {
+            margin: 23px 0px;
+        }
+
+        .col-12 {
+            &:last-child {
+                .easy-steps {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        .easy-steps {
+            margin-bottom: 40px;
+
+            .easy-white-box {
+                .number {
+                    width: 15%;
+                    position: relative;
+                    top: 0px;
+                    margin-right: 10px;
+                }
+
+                .steps-content {
+                    width: 75%;
+                    padding-right: 0px;
+
+                    p {
+                        font-size: 18px;
+                        line-height: 24px;
+
+                        span.line-align {
+                            padding-right: 0px;
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+        }
+
+        .steps-container {
+            .steps-info {
+                padding-top: 0px;
+                padding-bottom: 40px;
+            }
+        }
+    }
+    /* style for success stories page */
+    .sucess-stories-banner {
+        .banner {
+            .banner-image {
+                .container {
+                    .title {
+                        padding: 5px 46px;
+
+                        .tabspace {
+                            margin-left: 6px;
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    /*.have-questions {
+        .container {
+            .block1 {
+                .content-direction-rtl {
+                    .blk-img {
+                        p.blk-img-text {
+                            top: 6%;
+                            bottom: auto;
+                            left: auto;
+                            right: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }*/
+    /* Style for faq page */
+    .faq-wrapper {
+        position: relative;
+
+        .faq-head {
+            font-size: 20px;
+            width: 100%;
+            position: static;
+        }
+
+        .faq_body {
+            font-size: 16px;
+        }
+    }
+
+    .accordion-button {
+        &::after {
+            width: 35px;
+            height: 35px;
+            position: absolute;
+            right: 0;
+            top: -5px;
+        }
+    }
+
+    .accordion-item {
+        button {
+            &.accordion-button {
+                font-size: 20px;
+                width: 100%;
+                position: static;
+                padding-right: 75px; 
+            }
+        }
+    }
+    .faq-wrapper {
+        .accordion-item {
+            button {
+                &.collapsed {
+                    font-size: 20px;
+                    width: 100%;
+                    position: static;
+                    padding-right: 70px;
+                    padding-top: 0;
+                }
+            }
+        }
+    }
+    /* Style for talking to doctor */
+    .siliq-quiz {
+        .radio-container {
+            width: 100%;
+            margin-right: 20px;
+        }
+
+        .checobox-container {
+            width: 100%;
+            margin-right: 20px;
+
+            &.padding-checkbox {
+                padding-right: 30px;
+            }
+        }
+
+        .activities-box {
+            height: 140px;
+        }
+    }
+    .footnotebreak {
+        display: inline;
+    }
+    .about-section-three {
+        .mobile-about-sec {
+            .dark-blue-sec1 {
+                margin-bottom: 0px;
+            }
+        }
+    }
+    .footer {
+        height: 830px;
+
+        .footer-bottom {
+            p {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    p{
+        font-size: 16px;
+    }
+    .slick-dots {
+        display: block !important;
+        position: relative;
+        bottom: 0;
+    }
+    .navbar-light .navbar-toggler {
+        border-color: transparent;
+    }
+    .home-banner-section {
+        padding-top: 0px;
+    }
+    header {
+        height: auto;
+
+        .btn-close {
+            position: absolute;
+            top: 20px;
+            right: 15px;
+
+            &:focus {
+                outline: 0;
+                border: 0;
+                box-shadow: none;
+            }
+        }
+
+        div[class^=col-] {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .header-logo {
+            padding-bottom: 15px;
+            padding-left: 12px;
+        }
+
+        .header-right {
+            padding-top: 15px;
+            float: none;
+        }
+
+        .header-right.expanded {
+            float: none;
+            width: 100%;
+        }
+
+        .navbar {
+            width: 100%;
+            align-items: flex-start;
+            padding-top: 0;
+            padding-bottom: 0;
+
+            .navbar-collapse {
+                .header-top-links {
+                    background: #f5f7fa;
+                    padding: 30px 0;
+                    margin-bottom: 40px;
+
+                    ul {
+                        flex-direction: column;
+                        width: 100%;
+                        margin: 0;
+                        margin-left: -20px !important;
+                        align-items: center;
+                        padding-top: 0;
+
+                        li {
+                            display: block;
+                            text-align: center;
+                            margin-top: 15px;
+                            margin-left: 0;
+
+                            &:first-child {
+                                margin-top: 0;
+                            }
+
+                            a {
+                                display: inline-block;
+                                font-size: 14px;
+                                font-weight: 700;
+                                color: $colordarkblue;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .navbar-nav {
+                padding: 0 30px;
+                height: 100vh;
+
+                .nav-item {
+                    text-align: left;
+                    padding: 0;
+                    margin-bottom: 20px;
+                    margin-top: 0;
+                    margin-left: 0;
+                    display: block;
+
+                    &.btns-active {
+                        margin-bottom: 20px;
+
+                        a {
+                            padding-bottom: 0px;
+                        }
+                    }
+
+                    &:nth-child(2) {
+                        margin-left: 0px;
+                    }
+
+                    a {
+                        display: inline-block;
+                        font-size: 16px;
+                        font-weight: 700;
+                        padding-bottom: 0;
+                    }
+
+                    .dropdown-toggle {
+                        &:after {
+                            right: 30px;
+                        }
+
+                        .dropdown-menu {
+                            position: relative;
+                            margin-left: 0;
+                            width: 100%;
+                            right: -18px;
+                            top: 0px;
+                            padding-top: 10px;
+                            border: 0;
+
+                            &:before {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    /* Style for banner */
+    .banner {
+        .banner-image {
+            min-height: 380px;
+            display: block;
+            height: auto;
+
+            .banner-text-home {
+                width: 100%;
+                height: 67%;
+                left: 0;
+                top: 34%;
+                text-transform: none;
+            }
+
+            .container {
+                .banner-text-home {
+                    h1 {
+                        font-size: 32px !important;
+                        line-height: 32px !important;
+                        margin: auto;
+                        padding: 5px 12px;
+                        width: 270px;
+                    }
+                }
+            }
+        }
+    }
+    /* Style for block after banner in home page */
+    .blk-container {
+        .content-direction-rtl {
+            display: flex;
+            flex-direction: column;
+
+            .blk-img {
+                max-width: 100%;
+            }
+
+            .blk-para {
+                max-width: 100%;
+                padding: 18px;
+                height: auto;
+
+                p {
+                    font-size: 16px;
+                }
+
+                p.font-18 {
+                    font-size: 18px;
+                }
+            }
+        }
+
+        .content-direction-ltr {
+            display: flex;
+            flex-direction: column;
+
+            .blk-img {
+                max-width: 100%;
+            }
+
+            .blk-para {
+                max-width: 100%;
+                padding: 18px;
+                height: auto;
+
+                p {
+                    font-size: 16px;
+                }
+
+                p.font-18 {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+    .section-tired {
+        margin-bottom: 50px;
+
+        .blk-container {
+            box-shadow: 0 13px 26px rgba(0,0,0,.16);
+            border-radius: 35px;
+
+            .content-direction-rtl {
+                .blk-para {
+                    padding: 30px;
+                }
+            }
+        }
+    }
+    .gray-back {
+        background: #f5f7fa;
+        display: none;
+        .blk-container {
+            padding-top: 90px;
+            padding-bottom: 90px;
+
+            .content-direction-rtl {
+                flex-direction: column;
+                background-color: #fff;
+                box-shadow: 0 13px 26px rgba(0,0,0,.16);
+                border-radius: 20px;
+
+                .blk-img {
+                    max-width: 100%;
+                    flex: 0 0 100%;
+                    padding-left: 0;
+                    padding-right: 0;
+                    width: 100%;
+                    img{
+                        width: 100%;
+                    }
+                }
+
+                .blk-para {
+                    padding: 30px;
+                    max-width: 100%;
+                    flex: 0 0 100%;
+
+                    p {
+                        font-size: 16px;
+                        line-height: 1.6;
+                    }
+
+                    p.font-14 {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+    /* Style for before and after in home page */
+    .home-section-three {
+        .gray-back {
+            .before-after-compare {
+                height: 350px !important;
+
+                img.twentytwenty-before {
+                    clip: rect(0px, 172.5px, 350px, 0px) !important;
+                }
+
+                img.twentytwenty-after {
+                    clip: rect(0px, 345px, 350px, 172.5px) !important;
+                }
+
+                .before-text-bsa {
+                    background: rgba(255,255,255,.8);
+                    position: absolute;
+                    z-index: 27;
+                    left: 0;
+                    padding: 5px 20px;
+                    top: 0;
+                }
+
+                .after-text-bsa {
+                    background: rgba(255,255,255,.8);
+                    position: absolute;
+                    z-index: 27;
+                    right: 0;
+                    padding: 5px 20px;
+                    top: 0;
+                }
+            }
+        }
+    }
+    .dark-blue-sec1 {
+        padding-left: 12px;
+
+        img {
+            padding: 0;
+            position: relative;
+            right: 0px;
+            width: 100%;
+        }
+
+        img.timeline-ribbon {
+            /*width: auto;*/
+            width: 100%;
+            margin: 0 auto;
+        }
+    }
+    .drag-drop {
+        .img-head {
+            color: $colormediumgreen;
+            margin-bottom: 0;
+        }
+
+        .comparison-slider-wrapper {
+            margin: 10px 0;
+        }
+    } 
+    .mob-pt-0 {
+        padding-top: 0 !important;
+    }
+    .drag-drop {
+        display: block;
+    }
+    span.wordspace {
+        display: block;
+    }
+    /* Style for find a doctor page */
+    .find-a-doctor-sec {
+        background: #f5f7fa;
+        margin: 0px;
+
+        .gray-box-back {
+            img {
+                max-width: 100%;
+            }
+
+            .box-content {
+                padding: 40px 45px 40px 25px;
+                text-align: center;
+            }
+        }
+    }
+    .locator_top {
+        .search_fields {
+
+            #lblCode {
+                padding-left: 10px;
+            }
+
+            #locator_search {
+                top: 43px;
+            }
+        }
+    }
+    .mob-pb-40 {
+        padding-bottom: 40px !important;
+    }
+    .home-section-five {
+        p.note {
+            line-height: 1.6;
+        }
+    }
+    .find-a-doctor-sec {
+        section.block1{
+            padding: 0;
+        } 
+        .blk-container {
+            .content-direction-rtl {
+                .blk-img {
+                    max-width: 100%;
+                    flex: 0 0 100%;
+                }
+
+                .blk-para {
+                    max-width: 100%;
+                    flex: 0 0 100%;
+                    padding: 40px 45px 40px 60px;
+                }
+            }
+        }
+    }
+    /* Style for home page */
+    .home-banner-section {
+        .banner-image {
+            .container {
+                .banner-text-home {
+                    width: 100% !important;
+                    height: 67%;
+                    left: 0;
+                    top: 34%;
+                }
+            }
+        }
+    }
+
+    .mob-mb-75 {
+        margin-bottom: 75px;
+    }
+    /* Style for ISI menu */
+    .isi-contents-main {
+        #sticky-isi-module {
+            height: 205px !important;
+            z-index: 11;
+
+            &.expanded {
+                height: 100% !important; 
+                bottom: 0;
+                z-index: 90;
+
+                .see-more-links {
+                    span.expand {
+                        display: none;
+
+                        & + img {
+                            display: none;
+                        }
+                    }
+
+                    .isi-close {
+                        em {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            .container {
+                padding: 0;
+            }
+
+            .isi-inner {
+                padding: 20px;
+            }
+
+            .see-more-links {
+                span.expand {
+                    display: none;
+                }
+
+                a {
+                    height: 40px;
+                    width: 62px;
+                    text-align: center;
+                    padding: 8px 0 0;
+                }
+            }
+
+            h5 {
+                font-size: 18px;
+            }
+
+            .indications-inner-section {
+                h5.isi-heading-mobile {
+                    padding-right: 50px;
+                }
+
+                p.ex-smaller {
+                    font-size: 16px;
+                }
+            }
+
+            .indications-section {
+                h5 {
+                    font-size: 18px;
+                }
+            }
+
+            .expanded-state {
+                ul {
+                    li {
+                        font-size: 16px;
+                    }
+                }
+
+                h5 {
+                    padding-right: 45px;
+                }
+            }
+        }
+    }
+    /* Style for about siliq page */
+    .mob-mt-0 {
+        margin-top: 0;
+    }
+    .about-section-one {
+        .mob-mb-0 {
+            margin-bottom: 40px;
+        }
+    }
+    .mob-mb-0 {
+        margin-bottom: 0;
+    }
+    .mob-pt-40 {
+        padding-top: 40px !important;
+    }
+    .mob-mt-60 {
+        margin-top: 60px;
+    }
+    .mob-mb-60 {
+        margin-bottom: 60px;
+    }
+    #how-siliq-works {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+    .mob-ptb-80 {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    .mob-mb-40 {
+        margin-bottom: 40px;
+    }
+    .video-wrap {
+        overflow: hidden;
+        border-radius: 20px;
+        box-shadow: 0 13px 26px rgba(0,0,0,.16);
+    }
+    .about-page-sec {
+        p {
+            font-size: 16px;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+    }
+    .about-section-three {
+        .mobile-about-sec {
+            margin-top: 0;
+            margin-bottom: 40px;
+        }
+
+        .ribbon-footnote {
+
+            p {
+                font-size: 16px;
+                line-height: 1.2;
+            }
+        }
+    }
+    
+    .about-section-four {
+        .mobile-about-sec2 {
+            margin-top: 0;
+            margin-bottom: 0px;
+        }
+    }
+
+    .about-section-five {
+        .mobile-about-sec3 {
+            margin-top: 0;
+            margin-bottom: 0px;
+        }
+    }
+    .dark-blue-sec1 {
+        height: auto;
+    }
+    .dark-blue-sec2 {
+        height: auto;
+    }
+    .dark-blue-sec3 {
+        height: auto;
+    }
+    .darkblue-sec {
+
+        .blk-container {
+            padding-top: 78px;
+
+            .content-direction-ltr {
+                .blk-img {
+                    max-width: 100%;
+                    flex: 0 0 100%;
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+
+                .blk-para {
+                    max-width: 100%;
+                    flex: 0 0 100%;
+                    padding-left: 0;
+                    padding-right: 0;
+
+                    h3 {
+                        color: $colorwhite;
+                        padding-top: 60px;
+                    }
+
+                    p {
+                        color: $colorwhite;
+                        font-size: 16px;
+                        line-height: 1.6;
+                    }
+                }
+            }
+        }
+    }
+    .how-siliq-works {
+        .img-moa {
+            width: 100%;
+        }
+    }
+    .patient-result {
+        box-shadow: 0 13px 26px rgba(0, 0, 0, 0.16);
+        border-radius: 20px;
+        margin-top: 60px;
+        margin-bottom: 60px;
+
+        .block1 {
+            padding: 0;
+
+            .block-1.content-direction-rtl {
+                flex-direction: column;
+
+                .blk-img {
+                    width: 100%;
+                    padding: 0;
+
+                    img {
+                        border-radius: 20px;
+                    }
+                }
+
+                .blk-para {
+                    width: 100%;
+                    padding: 30px;
+                }
+            }
+        }
+    }
+    .have-questions {
+        box-shadow: 0 13px 26px rgba(0, 0, 0, 0.16);
+        margin-top: 60px;
+        margin-bottom: 60px;
+        border-radius: 20px;
+
+        .block1 {
+            padding: 0;
+
+
+            .content-direction-rtl {
+
+                .blk-img {
+                    width: 100%;
+                    padding: 0;
+
+                    img {
+                        width: 100%;
+                        border-radius: 20px;
+                    }
+
+                    p.blk-img-text {
+                        top: 10%;
+                        bottom: auto;
+                        left: auto;
+                        right: 14%;
+                    }
+                }
+
+                .blk-para {
+                    max-width: 100%;
+                    padding: 30px;
+
+                    h3 {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+    /* Style for Taking Siliq page */
+    .about-taking-siliq {
+        #taking-siliq {
+            h3 {
+                padding-top: 0px;
+                padding-bottom: 0px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+    .banner {
+        .banner-image {
+            .container {
+                .desktop-banner-title {
+                    padding-left: 0;
+                    position: absolute;
+                    font-size: 32px;
+                    bottom: 100px;
+                    width: 80%;
+                    margin: auto;
+                    left: 0;
+                    right: 0;
+                    padding-right: 0;
+                }
+
+                .banner-text {
+                    bottom: 60px;
+                    left: 50%;
+                    transform: translate(-50%);
+                    padding-left: 0;
+                }
+
+                .title {
+                    padding: 0;
+                    text-align: center;
+                    margin-bottom: 14px;
+                    padding: 5px 8px;
+                }
+
+                color: #fff;
+                font-weight: 700;
+                text-transform: uppercase;
+                font-family: "Archivo Narrow",sans-serif;
+                display: flex;
+                margin: auto;
+            }
+        }
+    }
+    .about-taking-siliq p {
+        font-size: 16px;
+    }
+    .taking-siliq-banner {
+        .banner {
+            .banner-image {
+                .container {
+                    .banner-text {
+                        bottom: 0px;
+                        left: 50%;
+                        transform: translate(-50%);
+                        padding-left: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    h1.f-32 {
+        font-size: 30px;
+        line-height: 30px;
+    }
+
+    .graph-in-pro {
+        img {
+            max-width: 100%;
+        }
+    }
+
+    .easy-steps {
+        margin-bottom: 80px;
+    }
+
+    .col-md-3 {
+        &:last-child {
+            .easy-steps {
+                margin-bottom: 0px;
+            }
+        }
+    }
+    .mob-pt-60 {
+        padding-top: 60px;
+    }
+    /* Style for success stories */
+    .video_popup {
+        .video_Container {
+            width: 95%;
+        }
+
+        .videoclosebutton {
+            font-size: 14px;
+            width: 25px;
+            height: 25px;
+            top: -15px;
+            right: -15px;
+        }
+    }
+    /* Style for slick slider in success stories */
+    .slick-slide {
+        img {
+            margin-bottom: 5px;
+            border-radius: 0;
+        }
+    }
+
+    .after-image, .before-image {
+        .img-wrap {
+            .tag-wrapper {
+                display: flex;
+                justify-content: center;
+            }
+
+            .tag {
+                font-size: 12px;
+                width: 100%;
+                padding: 0;
+                height: 40px;
+                line-height: 38px;
+            }
+
+            .small {
+                font-size: 12px;
+            }
+        }
+    }
+
+    .before-image {
+        padding-right: 5px;
+    }
+
+    .after-image {
+        padding-left: 5px;
+        margin-top: 25px;
+    }
+    .slider {
+        .slick-next {
+            right: -20px;
+
+            &:before {
+                height: 35px;
+                width: 35px;
+                right: 23px;
+                top: -35px;
+            }
+        }
+    }
+    .slider {
+        .slick-prev {
+            left: -15px;
+            z-index: 1;
+
+            &:before {
+                height: 35px;
+                width: 35px;
+                right: 0px;
+                top: -35px;
+            }
+        }
+    }
+    /* Style for faq page */
+    .mob-pb-80 {
+        padding-bottom: 80px;
+    }
+    .mob-mb-80 {
+        margin-bottom: 80px;
+    }
+    .mob-pt-80 {
+        padding-top: 80px;
+    }
+    
+    /* Style for find a doctor page */
+    h2 {
+        font-size: 32px;
+        font-weight: 700;
+    }
+    .siliq-quiz {
+        h2 {
+            text-align: center;
+        }
+
+        h6 {
+            font-size: 20px;
+            margin-bottom: 21px;
+            margin-top: 24px;
+            font-weight: 700;
+            text-align: center;
+        }
+    }
+    .m-b-40 {
+        margin-bottom: 40px;
+    }
+    #take-a-siliq-quiz {
+        padding-bottom: 0;
+    }
+    /* Style for support page */
+    .saving-section-two {
+        h5 {
+            padding-right: 10px;
+
+            a {
+                color: $linkcolor;
+            }
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+
+            a {
+                color: $linkcolor;
+            }
+        }
+    }
+    div#patient-assistance {
+        width: 100%;
+    }
+    
+    .mob-mt-50 {
+        margin-top: 50px; 
+    }
+    /* Style for modal popup */
+    .isi-heading-desktop {
+        display: none;
+    }
+    .isi-heading-mobile {
+        display: block;
+    }
+    #externalSite {
+        .modal-body {
+            padding: 40px;
+
+            .mobBtn {
+                .btn-grey {
+                    margin-bottom: 10px; 
+                }
+            }
+
+            p {
+                line-height: 1.6;
+                color: $colordarkblue;
+            }
+        }
+    }
+
+    #leavingSite {
+        .modal-body {
+            padding: 40px;
+
+            .mobBtn {
+                .btn-grey {
+                    margin-bottom: 10px;
+                }
+            }
+
+            p {
+                line-height: 1.6;
+                color: $colordarkblue;
+            }
+        }
+    }
+    #referencesPop {
+        .modal-dialog {
+            .modal-content {
+                .referencespop-centent {
+                    padding: 50px 40px;
+
+                    ol {
+                        margin-left: -13px !important;
+                    }
+                }
+            }
+        }
+    }
+    .slider {
+        .slick-dots {
+            bottom: -15px;
+            li{
+                margin:0;
+            }
+        }
+    }
+    .next-to-banner {
+        margin-bottom: 0;
+    }
+    .footer {
+        .footer-bottom {
+            ul {
+                margin: 0;
+                flex-direction: column;
+                padding-top: 20px;
+                margin-left: -40px;
+
+                li {
+                    width: 100%;
+                    text-align: center;
+                    margin: 0 0 17px;
+                }
+            }
+        }
+    }
+    .remember-siliq-steps {
+        .callout {
+            padding: 0px 0px;
+        }
+    }
+}
+@media screen and (max-width: 991px) and (min-width: 768px){
+    .banner-image {
+        .container {
+
+            .banner-text-home {
+                p:nth-child(2) {
+                    position: absolute;
+                    bottom: 112px;
+                    font-size: 31px;
+                    line-height: 48px;
+                    font-weight: 700;
+                    width: 70%;
+                    left: 15%;
+                    text-align: center;
+                }
+
+                a {
+                    bottom: 20px;
+                }
+            }
+
+            .desktop-banner-title {
+                padding-left: 100px;
+                position: absolute;
+                bottom: 0px;
+            }
+        }
+    }
+    .after-image {
+        padding-left: 5px;
+        margin-top: 15px;
+    }
+    .dark-blue-sec1 {
+        min-height: 100px;
+    }
+
+    .dark-blue-sec2 {
+        min-height: 100px;
+    }
+
+    .dark-blue-sec3 {
+        min-height: 100px;
+    }
+    .blk-container {
+        .content-direction-rtl {
+            .blk-img {
+                flex: 0 0 100%;
+                width: 100%;
+                padding-left: 0;
+                padding-right: 0;
+
+                img {
+                    position: relative;
+                    bottom: 15px;
+                }
+            }
+        }
+    }
+    .locator_top {
+        .search_fields {
+            #locator_search {
+                top: 33px;
+            }
+        }
+    }
+    .have-questions {
+        .block1 {
+            .content-direction-rtl {
+                .blk-img {
+                    img {
+                        width: 100%;
+                        border-radius: 20px;
+                        bottom: -15px;
+                    }
+                }
+            }
+        }
+    }
+    .find-a-doctor-sec {
+        .blk-container {
+            .content-direction-rtl {
+                .blk-img {
+                    img {
+                        bottom: 0px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 1024px) and (min-width: 992px){
+    .home-banner-section {
+        .banner-image {
+            .container {
+                .banner-text-home {
+                    top: 27%;
+                    width: 450px;
+
+                    h1 {
+                        font-size: 35px !important;
+                        line-height: 36px !important;
+                        margin-top: 5px;
+                        margin-bottom: 8px;
+                    }
+
+                    p {
+                        line-height: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 767px) and (min-width: 560px){
+    .home-banner-section {
+        .banner-image {
+            .container {
+                .banner-text-home {
+                    top: 30%;
+
+                    p {
+                        &:nth-child(2) {
+                            font-size: 26px;
+                            line-height: 36px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 767px) and (min-width: 425px){
+    .after-image {
+        padding-left: 5px;
+        margin-top: 15px;
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+    .real-patient {
+        .after-image {
+            padding-left: 5px;
+            margin-top: 15px;
+
+            p {
+                margin-bottom: 0;
+            }
+        }
+    }
+    .slider {
+        .slick-slide {
+            .after-image {
+                .img-wrap {
+                    .img {
+                        p {
+                            margin-bottom: 0px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+} 
+@media all and (max-width:991px) {
+    .talking-doctor {
+        .banner {
+            .banner-image {
+                .container {
+                    .desktop-banner-title {
+                        padding-right: 0px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media print {
+    .banner {
+        .banner-image {
+            .container {
+                .title {
+                    margin: initial;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .home-section-five {
+        .siliq-savigs-green-circle {
+            height: 260px;
+            width: 260px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 12px;
+            margin-bottom: 30px;
+        }
+    }
+    /* style for siliq savings block */
+    .siliq-savings {
+        .row {
+            justify-content: normal;
+
+            section.block1 {
+                max-width: 100%;
+                padding: 0;
+
+                .blk-container {
+                    .content-direction-ltr {
+                        .blk-img {
+
+                            img {
+                                width: 260px;
+                                height: 260px;
+                                border-radius: 50%;
+                                padding: 12px;
+                                margin-bottom: 30px;
+                                margin-left: auto;
+                                margin-right: auto;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 1199px) and (min-width: 1025px){
+    .home-banner-section {
+        .banner-image {
+            .container {
+                .banner-text-home {
+                    left: 20px;
+                    top: 29%;
+                    width: 450px;
+
+                    h1 {
+                        font-size: 35px !important;
+                        line-height: 36px !important;
+                        margin-top: 5px;
+                    }
+                    p{
+                        line-height: 20px;
+                    }
+                }
+            }
+        }
+    }
+    .siliq-savings {
+        .row {
+            section.block1 {
+                .blk-container {
+                    .content-direction-ltr {
+                        .blk-img {
+                            img {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1199px) and (min-width: 992px) {
+    .banner {
+        .banner-image {
+            .container {
+                .desktop-banner-title {
+                    padding-left: 100px;
+                    position: absolute;
+                    bottom: 60px;
+                }
+
+                .banner-text {
+                    bottom: 40px;
+                }
+            }
+        }
+    }
+    .about-banner {
+        .banner {
+            .banner-image {
+                .container {
+                    .desktop-banner-title {
+                        padding-left: 0px;
+                        position: absolute;
+                        bottom: 35px;
+                    }
+
+                    .banner-text {
+                        bottom: 40px;
+                        padding-left: 0;
+                    }
+                }
+            }
+        }
+    }
+    .have-questions {
+        .content-direction-rtl {
+            .blk-img {
+                p.blk-img-text {
+                    top: 30px;
+                }
+            }
+        }
+    }
+    .find-a-doctor-sec {
+        .gray-box-back {
+            .box-content {
+                padding: 40px 45px 40px 36px;
+            }
+        }
+    }
+
+    .remember-siliq-steps {
+        .steps-title {
+            margin: 46px 0px;
+        }
+
+        .easy-steps {
+            .easy-white-box {
+                display: flex;
+                position: relative;
+
+                .number {
+                    width: 25%;
+                    position: relative;
+                    top: 0px;
+                    margin-right: 10px;
+                }
+
+                .steps-content {
+                    width: 75%;
+                    padding-right: 0px;
+
+                    p {
+                        font-size: 18px;
+                        line-height: 24px;
+
+                        span.line-align {
+                            padding-right: 0px;
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .dark-blue-sec1 {
+        min-height: 135px;
+    }
+
+    .dark-blue-sec2 {
+        min-height: 135px;
+    }
+
+    .dark-blue-sec3 {
+        min-height: 135px;
+    }
+    .footer {
+        .footer-bottom {
+            ul {
+
+                li {
+                    margin-left: 22px;
+                }
+            }
+        }
+    }
+    .remember-siliq-steps {
+        .callout {
+            padding: 0px 40px;
+        } 
+    }
+}
+@media screen and (max-width: 1300px) and (min-width: 1200px){
+    .home-banner-section {
+        .banner-image {
+            .container {
+                .banner-text-home {
+                    position: absolute;
+                    left: 20px;
+                    top: 25%;
+                    width: 570px;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 374px) and (min-width: 320px) {
+    .sucess-stories-banner {
+        .banner {
+            .banner-image {
+                .container {
+                    .title {
+                        padding: 5px 24px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 575px) and (min-width:415px){
+    #sticky-isi-module {
+        position: fixed;
+        bottom: -1px;
+        margin: 0px;
+    }
+}
+@media only screen and (max-width: 575px) and (min-width: 490px){
+    .dark-blue-sec1 {
+        min-height: 65px;
+    }
+    .dark-blue-sec2 {
+        min-height: 65px;
+    }
+    .dark-blue-sec3 {
+        min-height: 65px;
+    }
+}
+@media only screen and (max-width: 1440px) and (min-width: 1200px){
+    .dark-blue-sec1 {
+        min-height: 166px;
+    }
+    .dark-blue-sec2 {
+        min-height: 166px;
+    }
+    .dark-blue-sec3 {
+        min-height: 166px;
+    }
+}
+@media only screen and (max-width: 1800px) and (min-width: 1525px){
+    .dark-blue-sec1, .dark-blue-sec2, .dark-blue-sec3 {
+        min-height: 205px;
+    }
+}
+@media only screen and (min-width: 1801px){
+    .dark-blue-sec1, .dark-blue-sec2, .dark-blue-sec3 {
+        min-height: 233px;
+    }
+}
+/* Style for iphone XR and iphone 12pro */
+@media only screen and (device-width : 414px) and (device-height : 896px) and (-webkit-device-pixel-ratio : 2) {
+    .banner-text-home-mobile {
+        p:nth-child(2) {
+            bottom: 78px !important;
+        }
+
+        p:nth-child(3) {
+            bottom: 0px !important;
+        }
+    }
+}
+
+@media only screen and (device-width : 390px) and (device-height : 844px) and (-webkit-device-pixel-ratio : 3) {
+    .banner-text-home-mobile {
+        p:nth-child(2) {
+            bottom: 78px !important;
+        }
+
+        p:nth-child(3) {
+            bottom: 0px !important;
+        }
+    }
+}
+@media only screen and (max-width: 428px) and (max-height: 926px) and (-webkit-device-pixel-ratio: 3) {
+    .isi-contents-main {
+        #sticky-isi-module {
+            position: fixed;
+            bottom: -11px;
+        }
+    }
+}
+@media screen and (max-width: 414px) and (min-width: 320px) {
+    #sticky-isi-module {
+        padding-top: 0; 
+        bottom: -20px;
+    }
+}
+@media screen and (min-width: 1920px){
+    .find-a-doctor-sec {
+        background: linear-gradient(90deg,#f5f7fa 0,#f5f7fa 50%,#b2c0cf 50%,#c1ccd8 85.5%,#fff 85%);
+    }
+}
+/* Style for print talking to your doctor page */
+@media print {
+    body {
+        -webkit-print-color-adjust: exact !important;
+        padding-top: 30px
+    }
+
+    .footer {
+        display: none;
+    }
+}
+/* Only for iphone 14 plus */
+@media only screen and (width: 428px) and (height: 926px) and (-webkit-device-pixel-ratio: 3) {
+    .home-banner-section {
+        .banner-image {
+            .container {
+                .title {
+                    &.home-banner-h1 {
+                        margin: 0px auto 0;
+                    }
+                }
+            }
+        }
+    }
+    .slider {
+        .slick-slide {
+            .after-image {
+                .img-wrap {
+                    .img {
+                        p {
+                            margin-bottom: 0px;
+                        } 
+                    }
+                }
+            }
+        }
+    }
+}
+/* Only for iphone 12 pro */
+@media only screen and (width: 390px) and (height: 844px) and (-webkit-device-pixel-ratio: 3) {
+    .home-banner-section {
+        .banner-image {
+            .container {
+                .title {
+                    &.home-banner-h1 {
+                        margin: 0px auto 0;
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 374px){
+    .banner-image {
+        .container {
+            .banner-text-home {
+                p:nth-child(2) {
+                    bottom: 56px;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 399px){
+    .about-section-three {
+        .ribbon-footnote {
+            p {
+                font-size: 14px;
+                line-height: 1.2;
+            }
+        }
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+    #ISIContentsPane.isi-contents-main {
+        #sticky-isi-module {
+            height: 175px !important;
+        }
+    }
+	body.isi-open {
+		#ISIContentsPane.isi-contents-main {
+			#sticky-isi-module {
+				height: 100% !important;
+			}
+		}
+	}
+}
+
+@media (min-width: 400px) and (max-width: 500px) {
+
+    #ISIContentsPane.isi-contents-main {
+        #sticky-isi-module {
+            height: 208px !important;
+        }
+    } 
+	body.isi-open {
+		#ISIContentsPane.isi-contents-main {
+			#sticky-isi-module {
+				height: 100% !important;
+			}
+		}
+	}
+}
+
+/* Ends here */

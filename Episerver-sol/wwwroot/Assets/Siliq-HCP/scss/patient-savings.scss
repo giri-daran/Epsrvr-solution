@@ -1,0 +1,173 @@
+
+.patient-assistance-program, .instant-savings-program {
+    .blk-container {
+        max-width: 75%;
+        margin: 0 auto;
+
+        .content-direction-ltr {
+            margin-bottom: 40px;
+            padding-top: 3rem;
+
+            .blk-img {
+                max-width: 33.333333%;
+                flex: 0 0 33.333333%;
+            }
+
+            .blk-para {
+                max-width: 66.666666%;
+                flex: 0 0 66.666666%;
+
+                p {
+                    font-size: 18px;
+                    line-height: 1.6;
+
+                    a {
+                        color: $linkcolor;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.program-content-sec {
+    p {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    h5 {
+        a {
+            color: $linkcolor;
+        }
+    }
+}
+
+.back-gray {
+    background: $coloroffwhite;
+}
+
+.p-b-80 {
+    padding-bottom: 80px;
+}
+
+.p-t-80 {
+    padding-top: 80px;
+}
+
+.uninsured-text {
+    padding-bottom: 70px;
+
+    p {
+        font-size: 14px;
+
+        :nth-child(1) {
+            text-indent: -6px;
+        }
+
+        :nth-child(2) {
+            text-indent: -6px;
+        }
+    }
+}
+
+.green-color {
+    color: #1f5a32;
+}
+
+ul.li-mb-10 {
+    li {
+        margin-bottom: 10px;
+    }
+}
+
+.call-siliq-box {
+    position: relative;
+    border-radius: 20px;
+    background: #215732;
+    background: -webkit-gradient(linear,left top,right top,from(#215732),to(#00852F));
+    background: -o-linear-gradient(left,#215732 0%,#00852F 100%);
+    background: linear-gradient(90deg,#215732 0%,#00852F 100%);
+    -webkit-box-shadow: 0 0px 0px rgba(0,0,0,0.16);
+    box-shadow: 0 0px 0px rgba(0,0,0,0.16);
+    text-align: center;
+    padding: 40px 0 58px;
+    max-width: 390px;
+
+    &.white {
+        background: #00852F;
+
+        .silic-icon {
+            background: white;
+            height: 76px;
+            width: 76px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-shadow: 0 13px 26px rgba(0,0,0,0.16);
+            box-shadow: 0 13px 26px rgba(0,0,0,0.16);
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+            top: -38px;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        h3 {
+            color: #fff !important;
+            margin-bottom: 10px;
+            padding-top: 10px;
+
+            a {
+                color: #fff;
+                text-decoration: none;
+            }
+        }
+
+        p {
+            font-size: 18px;
+            color: #fff !important;
+
+            &:nth-child(3) {
+                line-height: 28px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 1192px) and (min-width: 992px) {
+    .patient-savngs {
+        .banner {
+            .banner-image {
+                .container {
+
+                    .banner-text {
+                        bottom: 40px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 1024px) and (min-width: 992px) {
+    .patient-savngs {
+        .banner {
+            .banner-image {
+                .container {
+                    
+                    .banner-text {
+                        bottom: 40px;
+                        padding-left: 0px;
+                    }
+                }
+            }
+        }
+    }
+}

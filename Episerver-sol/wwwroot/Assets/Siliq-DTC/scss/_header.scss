@@ -1,0 +1,222 @@
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: $colorwhite;
+    display: flex;
+    align-items: flex-end;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+
+    &.sticky-top {
+        z-index: 90;
+    }
+
+    .header-right {
+        float: right;
+    }
+
+    .header-logo {
+        float: left;
+        width: 159px;
+        padding-top: 10px;
+    }
+
+    .header-top-links {
+        ul {
+            list-style-type: none;
+            padding-top: 11px;
+            margin-bottom: 14px;
+
+            li {
+                margin-left: 20px;
+
+                a {
+                    display: block;
+                    line-height: 20px;
+                    font-size: 14px;
+                    color: $colordarkblue;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .navbar {
+        padding-bottom: 0;
+
+        .navbar-nav {
+            position: relative;
+            right: 8px;
+
+            button {
+                &.navbar-toggler {
+                    &:active {
+                        outline: 0;
+                    }
+
+                    &:visited {
+                        outline: 0;
+                    }
+                }
+
+                &.btn-close {
+                    &:active {
+                        outline: 0;
+                    }
+
+                    &:visited {
+                        outline: 0;
+                    }
+                }
+            }
+
+            .nav-item {
+                position: relative;
+                display: inline-block;
+                margin-left: 28px;
+                margin-top: -15px;
+                padding-right: 0;
+                padding-left: 0;
+                padding-bottom: 1px;
+
+                &.btns-active {
+                    margin-bottom: -16px;
+
+                    a {
+                        color: $colorheader;
+                        border-bottom: 2px solid $colorheader;
+                        padding-bottom: 8px;
+                    }
+                }
+
+                &:nth-child(2) {
+                    margin-left: 53px;
+                }
+
+                &:nth-child(4) {
+                    display: none;
+                }
+
+                &:nth-child(5) {
+                    display: none;
+                }
+
+                .dropdown-toggle {
+                    position: relative;
+
+                    &:after {
+                        content: "";
+                        width: 8px;
+                        height: 8px;
+                        position: absolute;
+                        right: -15px;
+                        top: 5px;
+                        border: $colordarkblue solid;
+                        -webkit-transform: rotate(45deg);
+                        -ms-transform: rotate(45deg);
+                        transform: rotate(45deg);
+                        border-width: 0 2px 2px 0;
+                    }
+
+                    &.btns-active {
+                        margin-bottom: 8px;
+
+                        a {
+                            color: $colorheader;
+                            border-bottom: 2px solid $colorheader;
+                        }
+                    }
+
+                    &:hover {
+                        .dropdown-menu {
+                            display: block;
+                        }
+                    }
+
+                    .dropdown-menu {
+                        position: absolute;
+                        margin-left: 0;
+                        width: 230px;
+                        right: -18px;
+                        padding-top: 10px;
+                        display: none;
+                        background: transparent;
+                        border: 0;
+                        padding-left: 40px;
+                        top: 32px;
+
+                        &:before {
+                            content: '';
+                            display: block;
+                            width: 0;
+                            height: 0;
+                            border-left: 12px solid transparent;
+                            border-right: 12px solid transparent;
+                            border-bottom: 12px solid rgba(255,255,255,.8);
+                            position: absolute;
+                            top: -2px;
+                            right: 15px;
+                        }
+
+                        li {
+                            margin-left: 0;
+                            width: 100%;
+                            background: rgba(255,255,255,.8);
+
+                            &.btns-active {
+                                a {
+                                    color: $colorgreen;
+                                    border-left: 2px solid $colorgreen;
+                                }
+                            }
+
+                            a {
+                                border-bottom: 0;
+                                padding: 10px 10px;
+                                color: $colordarkblue;
+
+                                &:hover {
+                                    color: $colorgreen;
+                                }
+
+                                &:focus {
+                                    outline: 0;
+                                }
+
+                                &:visited {
+                                    outline: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                a {
+                    font-size: 16px;
+                    font-weight: 700;
+                    letter-spacing: 1px;
+                    padding: 0 0 8px;
+                    color: $colordarkblue;
+                    display: block;
+                    text-decoration: none;
+
+                    &:hover {
+                        color: $colorgreen;
+                    }
+
+                    &:focus {
+                        outline: 0;
+                    }
+
+                    &:visited {
+                        outline: 0;
+                    }
+                }
+            }
+        }
+    }
+}

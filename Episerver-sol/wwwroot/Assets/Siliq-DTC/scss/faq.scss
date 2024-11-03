@@ -1,0 +1,90 @@
+/*faq*/
+.faq-banner {
+    background-image: $lineargreen;
+    padding: 25px 0 25px 0;
+
+    h1 {
+        color: $colorwhite;
+    }
+
+    .faq-icon {
+        width: 100px;
+    }
+}
+
+.faq-container {
+    color: $colordarkblue;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.faq-wrapper {
+    width: 100%;
+    border-bottom: solid 1px #d9d9d9;
+    margin-bottom: 25px;
+    display: inline-block;
+}
+
+.accordion-item {
+    background: $coloroffwhite;
+    border: 0;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+
+    button.accordion-button.collapsed, button.accordion-button {
+        font-size: 26px;
+        line-height: 25px;
+        position: relative;
+        padding-bottom: 5px;
+        padding-left: 0;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: Archivo,sans-serif;
+        color: #253746;
+        background-color: $coloroffwhite;
+        box-shadow: none;
+        padding-top: 0;
+    }
+}
+
+.accordion-body {
+    padding: 1rem 0rem 0rem;
+}
+
+.faq_body {
+    font-size: 18px;
+    padding-left: 0;
+    line-height: 25px;
+}
+
+button.accordion-button.collapsed {
+    background-color: $coloroffwhite;
+}
+
+.accordion-button::after {
+    background-color: #00852f;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    float: right;
+    text-align: center;
+    background-image: url(/siteassets/img/icon-25x25-arrow-down.svg);
+    background-position: center;
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url(/siteassets/img/icon-25x25-arrow-down.svg);
+    transform: rotate(180deg);
+}
+
+.p-t-60 {
+    padding-top: 60px;
+}
+
+.p-b-150 {
+    padding-bottom: 150px;
+}
+
+.faq_body a {
+    color: $colordarkblue;
+    text-decoration: underline;
+}

@@ -1,0 +1,76 @@
+﻿
+<script src="/Assets/PhysicianFinder/Templates/duobrii/js/locations.js" type="text/javascript"></script>
+<script src="/Assets/PhysicianFinder/Templates/duobrii/js/Validation.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="/Assets/PhysicianFinder/Templates/duobrii/css/Locator.css">
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#locator_search').on('click', function () {
+            validateZipCode();
+        });
+    });
+
+  
+
+</script>
+<div class="bg-blue">
+    <div class="container">
+        <div class="about-psoriasis-cont finddoc">
+            <div class="psoriasis-para-first">
+                <h2 class="text-center" data-gtm-vis-first-on-screen-8760069_307="220" data-gtm-vis-recent-on-screen-8760069_307="821302" data-gtm-vis-total-visible-time-8760069_307="100" data-gtm-vis-has-fired-8760069_307="1">Schedule an appointment</h2>
+
+                <p class="mob-font-16 mob-font-medium mob-montserrat">Call a doctor in your area today and discuss if DUOBRII Lotion is right for you.</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <fieldset class="locator_top">
+                    <div class="search_fields">
+                        <span id="lblCode">ZIP Code</span>
+                        <input id="locator_zip" placeholder="Enter your ZIP Code" maxlength="5" required   onkeypress="allowAlphaNumericSpace(event)"/>
+                        <div id="zipCodeError"></div>
+                        <!--<div class="field">
+                        <select name="cars" id="locator_radius">
+                            <option value="">Distance</option>
+                            <option value="5">5 miles</option>
+                            <option value="10">10 miles</option>
+                            <option value="25">25 miles</option>
+                            <option value="50">50 miles</option>
+                            <option value="100">100 miles</option>
+                            <option value="200">200 miles</option>
+                        </select>
+
+                    </div>-->
+                        <input id="locator_search" name="Find" title="Find" class="btn btn-default" type="button">
+                    </div>
+
+
+                    <!--<button id="locator_print" class="print_button">Print List</button>-->
+                </fieldset>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div id="results" style="display: none;">
+
+                    <div id="locator_map"></div>
+
+                    <div class="locations_holder">
+
+                        <div class="list_holder">
+                            <div id="location_list"></div>
+                        </div>
+                    </div>
+                    <nav aria-label="page_navigation" id="map_page_navigation">
+                        <ul class="pagination">
+                            <li class="page-item previous disabled" id="previous_result"><a class="page-link" href="#">Previous</a></li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item next" id="next_result"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

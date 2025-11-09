@@ -1,0 +1,85 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Editor
+@using EPiServer.Web
+@using EpiserverBH.Helpers
+@using Microsoft.AspNetCore.Mvc.Razor
+@model PageViewModel<EpiserverBH.Models.Pages.Development.GenericHEHCP>
+@{
+    HelperResult RootTemplate(HtmlHelpers.MenuItem menuItem)
+    {
+        bool children = false;
+        bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+        if (menuItem.Page.PageTypeName == "GenericHCP")
+        {
+            @Html.MenuList(menuItem.Page.ContentLink, MenuTemplate)
+        }
+
+        return new HelperResult(w => Task.CompletedTask);
+    }
+}
+
+@{
+    HelperResult MenuTemplate(HtmlHelpers.MenuItem menuItem)
+    {
+        bool children = false;
+        bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+        if (menuItem.Page.PageTypeName == "GenericHEHCP")
+        {
+            @Html.MenuList(menuItem.Page.ContentLink, HCPMenuTemplate)
+        }
+        return new HelperResult(w => Task.CompletedTask);
+
+    }
+}
+
+@{
+    HelperResult HCPMenuTemplate(HtmlHelpers.MenuItem menuItem)
+    {
+        {
+            bool children = false;
+            bool.TryParse(menuItem.HasChildren.Value.ToString(), out children);
+            if (menuItem.Page.PageTypeName == "GenericHEHCP")
+            {
+                <li>
+                    @if (children)
+                    {
+                        @Html.PageLink(menuItem.Page)
+                    }
+                    else
+                    {
+                        @Html.PageLink(menuItem.Page)
+                    }
+                </li>
+            }
+            return new HelperResult(w => Task.CompletedTask);
+        }
+    }
+}
+<header>
+    <section class="topLinks">
+        @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHEHCP)x.CurrentPage).HeaderLinks, new { })
+    </section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-lg">
+
+                    @Html.PropertyFor(x => x.CurrentPage.PopUp)
+                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <div class="navbar-nav ms-auto p-lg-0">
+                            <ul class="navbar-nav">
+                                @Html.MenuList(SiteDefinition.Current.StartPage, RootTemplate)
+                            </ul>
+                            <div class="topLinkNav d-block d-lg-none">
+                                @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHEHCP)x.CurrentPage).HeaderLinks, new { })
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>

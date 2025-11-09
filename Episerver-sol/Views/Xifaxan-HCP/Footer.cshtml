@@ -1,0 +1,24 @@
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Editor
+@using EPiServer.Core
+@using EPiServer.Web
+@using EPiServer.SpecializedProperties
+@model IPageViewModel<SitePageData>
+@*@Html.PropertyFor(x => x.CurrentPage.Property["Footer"].Value)*@
+
+
+
+@if (Model.CurrentPage.URLSegment == "rep-request")
+{
+    <footer class="form-footer">
+        @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).Footer, new { })
+    </footer>
+
+}
+else
+{
+    <footer>
+        @Html.PropertyFor(x => ((EpiserverBH.Models.Pages.Development.GenericHome)x.CurrentPage).Footer, new { })
+    </footer>
+}

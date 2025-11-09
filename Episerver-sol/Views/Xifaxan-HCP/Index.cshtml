@@ -1,0 +1,31 @@
+@using EpiserverBH
+@using EPiServer.Web.Mvc.Html
+@using EpiserverBH.Business
+@model PageViewModel<EpiserverBH.Models.Pages.Development.GenericHCP>
+
+
+@{ string layouturl = null;
+    Layout = "/Views/Xifaxan-HCP/Layouts/_Root.cshtml"; 
+}
+
+    @if (Model.CurrentPage.URLSegment == "hcp")
+		{
+		    <section class="banner-hcp">
+		        @Html.PropertyFor(x => x.CurrentPage.BannerSlider, new { })
+		        @Html.PropertyFor(x => x.CurrentPage.BannerContent, new { })
+			</section>
+		        @Html.PropertyFor(x => x.CurrentPage.ContentArea, new { })
+		        @Html.PropertyFor(x => x.CurrentPage.FormArea)
+		        @Html.PropertyFor(x => x.CurrentPage.PopUp)
+		        @Html.PropertyFor(x => x.CurrentPage.ISISection)
+		    
+		}
+		else
+		{
+		    @Html.PropertyFor(x => x.CurrentPage.BannerSlider, new { })
+		    @Html.PropertyFor(x => x.CurrentPage.BannerContent, new { })
+		    @Html.PropertyFor(x => x.CurrentPage.ContentArea, new { })
+		    @Html.PropertyFor(x => x.CurrentPage.FormArea)
+		    @Html.PropertyFor(x => x.CurrentPage.ISISection)
+	}
+	

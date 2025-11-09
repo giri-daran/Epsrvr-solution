@@ -1,0 +1,20 @@
+﻿@using EpiserverBH
+@using EPiServer.Web.Mvc.Html
+@using EpiserverBH.Business
+@model PageViewModel<EpiserverBH.Models.Pages.Development.GenericHome>
+
+
+@{
+	string layouturl = null;
+
+	Layout = "~/Views/Xifaxan-DTC/Layouts/_Root.cshtml";
+}
+
+
+
+@Html.PropertyFor(x => x.CurrentPage.BannerSlider, new { })
+@Html.PropertyFor(x => x.CurrentPage.ContentArea, new { })
+@Html.PropertyFor(x => x.CurrentPage.BannerContent, new { })
+@Html.PropertyFor(x => x.CurrentPage.FormArea)
+
+@Html.PropertyFor(x => x.CurrentPage.ISISection)
